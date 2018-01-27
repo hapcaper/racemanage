@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.racemanage.dao.StudentDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.springboot.racemanage.po.Student">
+        <result column="id" property="id"/>
+        <result column="uuid" property="uuid"/>
+        <result column="name" property="name"/>
+        <result column="account" property="account"/>
+        <result column="stu_number" property="stuNumber"/>
+        <result column="description" property="description"/>
+        <result column="status" property="status"/>
+        <result column="gender" property="gender"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `uuid`,
+        `name`,
+        `account`,
+        `stu_number`,
+        `description`,
+        `status`,
+        `gender`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO student (
+            `id`,
+            `uuid`,
+            `name`,
+            `account`,
+            `stu_number`,
+            `description`,
+            `status`,
+            `gender`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.uuid},
+            #{pojo.name},
+            #{pojo.account},
+            #{pojo.stuNumber},
+            #{pojo.description},
+            #{pojo.status},
+            #{pojo.gender}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO student
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.uuid!=null"> `uuid`,</if>
+            <if test="pojo.name!=null"> `name`,</if>
+            <if test="pojo.account!=null"> `account`,</if>
+            <if test="pojo.stuNumber!=null"> `stu_number`,</if>
+            <if test="pojo.description!=null"> `description`,</if>
+            <if test="pojo.status!=null"> `status`,</if>
+            <if test="pojo.gender!=null"> `gender`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.uuid!=null">#{pojo.uuid},</if>
+            <if test="pojo.name!=null">#{pojo.name},</if>
+            <if test="pojo.account!=null">#{pojo.account},</if>
+            <if test="pojo.stuNumber!=null">#{pojo.stuNumber},</if>
+            <if test="pojo.description!=null">#{pojo.description},</if>
+            <if test="pojo.status!=null">#{pojo.status},</if>
+            <if test="pojo.gender!=null">#{pojo.gender},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO student (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.uuid},
+            #{pojo.name},
+            #{pojo.account},
+            #{pojo.stuNumber},
+            #{pojo.description},
+            #{pojo.status},
+            #{pojo.gender}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE student
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.uuid != null"> `uuid` = #{pojo.uuid}, </if>
+            <if test="pojo.name != null"> `name` = #{pojo.name}, </if>
+            <if test="pojo.account != null"> `account` = #{pojo.account}, </if>
+            <if test="pojo.stuNumber != null"> `stu_number` = #{pojo.stuNumber}, </if>
+            <if test="pojo.description != null"> `description` = #{pojo.description}, </if>
+            <if test="pojo.status != null"> `status` = #{pojo.status}, </if>
+            <if test="pojo.gender != null"> `gender` = #{pojo.gender} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+</mapper>
+
