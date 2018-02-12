@@ -18,29 +18,29 @@
 		<meta content="" name="author" />
 		<!-- end: META -->
 		<!-- start: MAIN CSS -->
-		<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="assets/fonts/style.css">
-		<link rel="stylesheet" href="assets/css/main.css">
-		<link rel="stylesheet" href="assets/css/main-responsive.css">
-		<link rel="stylesheet" href="assets/plugins/iCheck/skins/all.css">
-		<link rel="stylesheet" href="assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
-		<link rel="stylesheet" href="assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
-		<link rel="stylesheet" href="assets/css/theme_light.css" type="text/css" id="skin_color">
-		<link rel="stylesheet" href="assets/css/print.css" type="text/css" media="print"/>
+		<link rel="stylesheet" href="../static/assets/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/assets/plugins/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/assets/fonts/style.css">
+		<link rel="stylesheet" href="../static/assets/css/main.css">
+		<link rel="stylesheet" href="../static/assets/css/main-responsive.css">
+		<link rel="stylesheet" href="../static/assets/plugins/iCheck/skins/all.css">
+		<link rel="stylesheet" href="../static/assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
+		<link rel="stylesheet" href="../static/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+		<link rel="stylesheet" href="../static/assets/css/theme_light.css" type="text/css" id="skin_color">
+		<link rel="stylesheet" href="../static/assets/css/print.css" type="text/css" media="print"/>
 		<!--[if IE 7]>
 		<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
 		<![endif]-->
 		<!-- end: MAIN CSS -->
 		<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
-		<link rel="stylesheet" href="assets/plugins/select2/select2.css">
-		<link rel="stylesheet" href="assets/plugins/datepicker/css/datepicker.css">
-		<link rel="stylesheet" href="assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css">
-		<link rel="stylesheet" href="assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css">
-		<link rel="stylesheet" href="assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css">
-		<link rel="stylesheet" href="assets/plugins/jQuery-Tags-Input/jquery.tagsinput.css">
-		<link rel="stylesheet" href="assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
-		<link rel="stylesheet" href="assets/plugins/summernote/build/summernote.css">
+		<link rel="stylesheet" href="../static/assets/plugins/select2/select2.css">
+		<link rel="stylesheet" href="../static/assets/plugins/datepicker/css/datepicker.css">
+		<link rel="stylesheet" href="../static/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css">
+		<link rel="stylesheet" href="../static/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css">
+		<link rel="stylesheet" href="../static/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css">
+		<link rel="stylesheet" href="../static/assets/plugins/jQuery-Tags-Input/jquery.tagsinput.css">
+		<link rel="stylesheet" href="../static/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
+		<link rel="stylesheet" href="../static/assets/plugins/summernote/build/summernote.css">
 		<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 		<link rel="shortcut icon" href="favicon.ico" />
 	</head>
@@ -49,7 +49,8 @@
 	<body>
 		<!-- start: HEADER -->
         <div th:text="sdsd">sdsd</div>
-		<div class="navbar navbar-inverse navbar-fixed-top">
+
+		<div th:fragment="top" class="navbar navbar-inverse navbar-fixed-top">
 			<!-- start: TOP NAVIGATION CONTAINER -->
 			<div class="container">
 				<div class="navbar-header">
@@ -59,7 +60,7 @@
 					</button>
 					<!-- end: RESPONSIVE MENU TOGGLER -->
 					<!-- start: LOGO -->
-					<a class="navbar-brand" href="index.html">
+					<a class="navbar-brand" href="../static/index.html">
 						CLIP<i class="clip-clip"></i>ONE
 					</a>
 					<!-- end: LOGO -->
@@ -300,7 +301,7 @@
 												<a href="javascript:;">
 													<div class="clearfix">
 														<div class="thread-image">
-															<img alt="" src="./assets/images/avatar-2.jpg">
+															<img alt="" src="../static/assets/images/avatar-2.jpg">
 														</div>
 														<div class="thread-content">
 															<span class="author">Nicole Bell</span>
@@ -314,7 +315,7 @@
 												<a href="javascript:;">
 													<div class="clearfix">
 														<div class="thread-image">
-															<img alt="" src="./assets/images/avatar-1.jpg">
+															<img alt="" src="../static/assets/images/avatar-1.jpg">
 														</div>
 														<div class="thread-content">
 															<span class="author">Peter Clark</span>
@@ -328,7 +329,7 @@
 												<a href="javascript:;">
 													<div class="clearfix">
 														<div class="thread-image">
-															<img alt="" src="./assets/images/avatar-3.jpg">
+															<img alt="" src="../static/assets/images/avatar-3.jpg">
 														</div>
 														<div class="thread-content">
 															<span class="author">Steven Thompson</span>
@@ -342,7 +343,7 @@
 												<a href="javascript:;">
 													<div class="clearfix">
 														<div class="thread-image">
-															<img alt="" src="./assets/images/avatar-1.jpg">
+															<img alt="" src="../static/assets/images/avatar-1.jpg">
 														</div>
 														<div class="thread-content">
 															<span class="author">Peter Clark</span>
@@ -356,7 +357,7 @@
 												<a href="javascript:;">
 													<div class="clearfix">
 														<div class="thread-image">
-															<img alt="" src="./assets/images/avatar-5.jpg">
+															<img alt="" src="../static/assets/images/avatar-5.jpg">
 														</div>
 														<div class="thread-content">
 															<span class="author">Kenneth Ross</span>
@@ -380,7 +381,7 @@
 						<!-- start: USER DROPDOWN -->
 						<li class="dropdown current-user">
 							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
-								<img src="assets/images/avatar-1-small.jpg" class="circle-img" alt="">
+								<img src="../static/assets/images/avatar-1-small.jpg" class="circle-img" alt="">
 								<span class="username">Peter Clark</span>
 								<i class="clip-chevron-down"></i>
 							</a>
@@ -437,7 +438,7 @@
 					<!-- start: MAIN NAVIGATION MENU -->
 					<ul class="main-navigation-menu">
 						<li>
-							<a href="index.html"><i class="clip-home-3"></i>
+							<a href="../static/index.html"><i class="clip-home-3"></i>
 								<span class="title"> Dashboard </span><span class="selected"></span>
 							</a>
 						</li>
@@ -951,21 +952,21 @@
 										Backgrounds for Boxed Version
 									</div>
 									<div class="images boxed-patterns">
-										<a id="bg_style_1" href="#"><img alt="" src="assets/images/bg.png"></a>
-										<a id="bg_style_2" href="#"><img alt="" src="assets/images/bg_2.png"></a>
-										<a id="bg_style_3" href="#"><img alt="" src="assets/images/bg_3.png"></a>
-										<a id="bg_style_4" href="#"><img alt="" src="assets/images/bg_4.png"></a>
-										<a id="bg_style_5" href="#"><img alt="" src="assets/images/bg_5.png"></a>
+										<a id="bg_style_1" href="#"><img alt="" src="../static/assets/images/bg.png"></a>
+										<a id="bg_style_2" href="#"><img alt="" src="../static/assets/images/bg_2.png"></a>
+										<a id="bg_style_3" href="#"><img alt="" src="../static/assets/images/bg_3.png"></a>
+										<a id="bg_style_4" href="#"><img alt="" src="../static/assets/images/bg_4.png"></a>
+										<a id="bg_style_5" href="#"><img alt="" src="../static/assets/images/bg_5.png"></a>
 									</div>
 									<div class="box-title">
 										5 Predefined Color Schemes
 									</div>
 									<div class="images icons-color">
-										<a id="light" href="#"><img class="active" alt="" src="assets/images/lightgrey.png"></a>
-										<a id="dark" href="#"><img alt="" src="assets/images/darkgrey.png"></a>
-										<a id="black_and_white" href="#"><img alt="" src="assets/images/blackandwhite.png"></a>
-										<a id="navy" href="#"><img alt="" src="assets/images/navy.png"></a>
-										<a id="green" href="#"><img alt="" src="assets/images/green.png"></a>
+										<a id="light" href="#"><img class="active" alt="" src="../static/assets/images/lightgrey.png"></a>
+										<a id="dark" href="#"><img alt="" src="../static/assets/images/darkgrey.png"></a>
+										<a id="black_and_white" href="#"><img alt="" src="../static/assets/images/blackandwhite.png"></a>
+										<a id="navy" href="#"><img alt="" src="../static/assets/images/navy.png"></a>
+										<a id="green" href="#"><img alt="" src="../static/assets/images/green.png"></a>
 									</div>
 									<div class="box-title">
 										Style it with LESS
@@ -2287,43 +2288,43 @@
 		<!-- end: FOOTER -->
 		<!-- start: MAIN JAVASCRIPTS -->
 		<!--[if lt IE 9]>
-		<script src="assets/plugins/respond.min.js"></script>
-		<script src="assets/plugins/excanvas.min.js"></script>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<![endif]-->
+        <script  src="../static/assets/plugins/respond.min.js"></script>
+        <script src="../static/assets/plugins/excanvas.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <![endif]-->
 		<!--[if gte IE 9]><!-->
 		<script type="text/javascript" src="http://libs.useso.com/js/jquery/2.0.3/jquery.min.js"></script>
 		<!--<![endif]-->
-		<script src="assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
-		<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-		<script src="assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
-		<script src="assets/plugins/blockUI/jquery.blockUI.js"></script>
-		<script src="assets/plugins/iCheck/jquery.icheck.min.js"></script>
-		<script src="assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
-		<script src="assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
-		<script src="assets/plugins/less/less-1.5.0.min.js"></script>
-		<script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
-		<script src="assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
-		<script src="assets/js/main.js"></script>
+		<script src="../static/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+		<script src="../static/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+		<script src="../static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+		<script src="../static/assets/plugins/blockUI/jquery.blockUI.js"></script>
+		<script src="../static/assets/plugins/iCheck/jquery.icheck.min.js"></script>
+		<script src="../static/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+		<script src="../static/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+		<script src="../static/assets/plugins/less/less-1.5.0.min.js"></script>
+		<script src="../static/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+		<script src="../static/assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
+		<script src="../static/assets/js/main.js"></script>
 		<!-- end: MAIN JAVASCRIPTS -->
 		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-		<script src="assets/plugins/jquery-inputlimiter/jquery.inputlimiter.1.3.1.min.js"></script>
-		<script src="assets/plugins/autosize/jquery.autosize.min.js"></script>
-		<script src="assets/plugins/select2/select2.min.js"></script>
-		<script src="assets/plugins/jquery.maskedinput/src/jquery.maskedinput.js"></script>
-		<script src="assets/plugins/jquery-maskmoney/jquery.maskMoney.js"></script>
-		<script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-		<script src="assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
-		<script src="assets/plugins/bootstrap-daterangepicker/moment.min.js"></script>
-		<script src="assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-		<script src="assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
-		<script src="assets/plugins/bootstrap-colorpicker/js/commits.js"></script>
-		<script src="assets/plugins/jQuery-Tags-Input/jquery.tagsinput.js"></script>
-		<script src="assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
-		<script src="assets/plugins/summernote/build/summernote.min.js"></script>
-		<script src="assets/plugins/ckeditor/ckeditor.js"></script>
-		<script src="assets/plugins/ckeditor/adapters/jquery.js"></script>
-		<script src="assets/js/form-elements.js"></script>
+		<script src="../static/assets/plugins/jquery-inputlimiter/jquery.inputlimiter.1.3.1.min.js"></script>
+		<script src="../static/assets/plugins/autosize/jquery.autosize.min.js"></script>
+		<script src="../static/assets/plugins/select2/select2.min.js"></script>
+		<script src="../static/assets/plugins/jquery.maskedinput/src/jquery.maskedinput.js"></script>
+		<script src="../static/assets/plugins/jquery-maskmoney/jquery.maskMoney.js"></script>
+		<script src="../static/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+		<script src="../static/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+		<script src="../static/assets/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+		<script src="../static/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+		<script src="../static/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+		<script src="../static/assets/plugins/bootstrap-colorpicker/js/commits.js"></script>
+		<script src="../static/assets/plugins/jQuery-Tags-Input/jquery.tagsinput.js"></script>
+		<script src="../static/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+		<script src="../static/assets/plugins/summernote/build/summernote.min.js"></script>
+		<script src="../static/assets/plugins/ckeditor/ckeditor.js"></script>
+		<script src="../static/assets/plugins/ckeditor/adapters/jquery.js"></script>
+		<script src="../static/assets/js/form-elements.js"></script>
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<script>
 			jQuery(document).ready(function() {

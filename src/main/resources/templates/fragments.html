@@ -1,0 +1,111 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+
+
+<div th:fragment="common_css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <!-- end: META -->
+    <!-- start: MAIN CSS -->
+    <link rel="stylesheet"  th:href="@{/assets/plugins/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet"  th:href="@{/assets/fonts/style.css}">
+    <link rel="stylesheet"  th:href="@{/assets/css/main.css}">
+    <link rel="stylesheet"  th:href="@{/assets/css/main-responsive.css}">
+    <link rel="stylesheet"  th:href="@{/assets/plugins/iCheck/skins/all.css}">
+    <link rel="stylesheet"  th:href="@{/assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css}">
+    <link rel="stylesheet"  th:href="@{/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css}">
+    <link rel="stylesheet"  id="skin_color" th:href="@{/assets/css/theme_light.css}">
+    <link rel="stylesheet"  type="text/css" media="print" th:href="@{/assets/css/print.css}"/>
+    <!-- end: MAIN CSS -->
+
+    <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <link rel="stylesheet" th:href="@{/assets/plugins/select2/select2.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/datepicker/css/datepicker.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/jQuery-Tags-Input/jquery.tagsinput.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/summernote/build/summernote.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/gritter/css/jquery.gritter.css}">
+
+    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+</div>
+
+
+
+
+<div th:fragment="common_js">
+    <!-- start: MAIN JAVASCRIPTS -->
+
+    <!--[if gte IE 9]><!-->
+    <script type="text/javascript" th:src="@{http://libs.useso.com/js/jquery/2.0.3/jquery.min.js}"></script>
+    <!--<![endif]-->
+    <script th:src="@{/assets/plugins/respond.min.js}"></script>
+    <script th:src="@{/assets/plugins/excanvas.min.js}"></script>
+    <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js}"></script>
+    <script th:src="@{/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js}"></script>
+    <script th:src="@{/assets/plugins/blockUI/jquery.blockUI.js}"></script>
+    <script th:src="@{/assets/plugins/iCheck/jquery.icheck.min.js}"></script>
+    <script th:src="@{/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js}"></script>
+    <script th:src="@{/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js}"></script>
+    <script th:src="@{/assets/plugins/less/less-1.5.0.min.js}"></script>
+    <script th:src="@{/assets/plugins/jquery-cookie/jquery.cookie.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js}"></script>
+    <script th:src="@{/assets/js/main.js}"></script>
+    <!-- end: MAIN JAVASCRIPTS -->
+
+
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script th:src="@{/assets/plugins/jquery-inputlimiter/jquery.inputlimiter.1.3.1.min.js}"></script>
+    <script th:src="@{/assets/plugins/autosize/jquery.autosize.min.js}"></script>
+    <script th:src="@{/assets/plugins/select2/select2.min.js}"></script>
+    <script th:src="@{/assets/plugins/jquery.maskedinput/src/jquery.maskedinput.js}"></script>
+    <script th:src="@{/assets/plugins/jquery-maskmoney/jquery.maskMoney.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-daterangepicker/moment.min.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-daterangepicker/daterangepicker.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-colorpicker/js/commits.js}"></script>
+    <script th:src="@{/assets/plugins/jQuery-Tags-Input/jquery.tagsinput.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js}"></script>
+    <script th:src="@{/assets/plugins/summernote/build/summernote.min.js}"></script>
+    <script th:src="@{/assets/plugins/ckeditor/ckeditor.js}"></script>
+    <script th:src="@{/assets/plugins/ckeditor/adapters/jquery.js}"></script>
+    <script th:src="@{/assets/js/form-elements.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-paginator/src/bootstrap-paginator.js}"></script>
+    <script th:src="@{/assets/plugins/jquery.pulsate/jquery.pulsate.min.js}"></script>
+    <script th:src="@{/assets/plugins/gritter/js/jquery.gritter.min.js}"></script>
+    <script th:src="@{/assets/js/ui-elements.js}"></script>
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script>
+        jQuery(document).ready(function () {
+            Main.init();
+            FormElements.init();
+        });
+    </script>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+</html>

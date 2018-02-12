@@ -3,25 +3,33 @@ package com.springboot.racemanage.po;
 public class Student {
 
     private Integer id;
-    private String uuid;
-    private String name;
-    private String account;
+    private String stuUuid;
+    private String stuEmail;
     private String stuNumber;
-    private String description;
-    private Integer status;
-    private String gender;
+    private String stuName;
+    private String stuPhone;
+    private String stuPassword;
+    private String stuDescription;
+    private String stuDuty;
+    private Integer stuStatus;
+    private String stuGender;
+    private String photo;
+
 
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
-                ", uuid='" + uuid + '\'' +
-                ", name='" + name + '\'' +
-                ", account='" + account + '\'' +
+                ", stuUuid='" + stuUuid + '\'' +
+                ", stuEmail='" + stuEmail + '\'' +
                 ", stuNumber='" + stuNumber + '\'' +
-                ", description='" + description + '\'' +
-                ", status=" + status +
-                ", gender='" + gender + '\'' +
+                ", stuName='" + stuName + '\'' +
+                ", stuPhone='" + stuPhone + '\'' +
+                ", stuPassword='" + stuPassword + '\'' +
+                ", stuDescription='" + stuDescription + '\'' +
+                ", stuDuty='" + stuDuty + '\'' +
+                ", stuStatus='" + stuStatus + '\'' +
+                ", stuGender='" + stuGender + '\'' +
                 '}';
     }
 
@@ -33,28 +41,20 @@ public class Student {
         this.id = id;
     }
 
-    public String getUuid() {
-        return uuid;
+    public String getStuUuid() {
+        return stuUuid;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
+    public void setStuUuid(String stuUuid) {
+        this.stuUuid = stuUuid;
     }
 
-    public String getName() {
-        return name;
+    public String getStuEmail() {
+        return stuEmail;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAccount() {
-        return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
+    public void setStuEmail(String stuEmail) {
+        this.stuEmail = stuEmail;
     }
 
     public String getStuNumber() {
@@ -65,27 +65,67 @@ public class Student {
         this.stuNumber = stuNumber;
     }
 
-    public String getDescription() {
-        return description;
+    public String getStuName() {
+        return stuName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setStuName(String stuName) {
+        this.stuName = stuName;
     }
 
-    public Integer getStatus() {
-        return status;
+    public String getStuPhone() {
+        return stuPhone;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setStuPhone(String stuPhone) {
+        this.stuPhone = stuPhone;
     }
 
-    public String getGender() {
-        return gender;
+    public String getStuPassword() {
+        return stuPassword;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setStuPassword(String stuPassword) {
+        this.stuPassword = stuPassword;
+    }
+
+    public String getStuDescription() {
+        return stuDescription;
+    }
+
+    public void setStuDescription(String stuDescription) {
+        this.stuDescription = stuDescription;
+    }
+
+    public String getStuDuty() {
+        return stuDuty;
+    }
+
+    public void setStuDuty(String stuDuty) {
+        this.stuDuty = stuDuty;
+    }
+
+    public Integer getStuStatus() {
+        return stuStatus;
+    }
+
+    public void setStuStatus(Integer stuStatus) {
+        this.stuStatus = stuStatus;
+    }
+
+    public String getStuGender() {
+        return stuGender;
+    }
+
+    public void setStuGender(String stuGender) {
+        this.stuGender = stuGender;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }
