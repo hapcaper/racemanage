@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.racemanage.dao.RaceDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.springboot.racemanage.po.Race">
+        <result column="id" property="id"/>
+        <result column="uuid" property="uuid"/>
+        <result column="racename" property="racename"/>
+        <result column="raceteacher" property="raceteacher"/>
+        <result column="status" property="status"/>
+        <result column="description" property="description"/>
+        <result column="kind" property="kind"/>
+        <result column="progress" property="progress"/>
+        <result column="result" property="result"/>
+        <result column="t_uuid" property="tUuid"/>
+        <result column="term" property="term"/>
+        <result column="proname" property="proname"/>
+        <result column="file1" property="file1"/>
+        <result column="file2" property="file2"/>
+        <result column="file3" property="file3"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `uuid`,
+        `racename`,
+        `raceteacher`,
+        `status`,
+        `description`,
+        `kind`,
+        `progress`,
+        `result`,
+        `t_uuid`,
+        `term`,
+        `proname`,
+        `file1`,
+        `file2`,
+        `file3`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO race (
+            `id`,
+            `uuid`,
+            `racename`,
+            `raceteacher`,
+            `status`,
+            `description`,
+            `kind`,
+            `progress`,
+            `result`,
+            `t_uuid`,
+            `term`,
+            `proname`,
+            `file1`,
+            `file2`,
+            `file3`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.uuid},
+            #{pojo.racename},
+            #{pojo.raceteacher},
+            #{pojo.status},
+            #{pojo.description},
+            #{pojo.kind},
+            #{pojo.progress},
+            #{pojo.result},
+            #{pojo.tUuid},
+            #{pojo.term},
+            #{pojo.proname},
+            #{pojo.file1},
+            #{pojo.file2},
+            #{pojo.file3}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO race
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.uuid!=null"> `uuid`,</if>
+            <if test="pojo.racename!=null"> `racename`,</if>
+            <if test="pojo.raceteacher!=null"> `raceteacher`,</if>
+            <if test="pojo.status!=null"> `status`,</if>
+            <if test="pojo.description!=null"> `description`,</if>
+            <if test="pojo.kind!=null"> `kind`,</if>
+            <if test="pojo.progress!=null"> `progress`,</if>
+            <if test="pojo.result!=null"> `result`,</if>
+            <if test="pojo.tUuid!=null"> `t_uuid`,</if>
+            <if test="pojo.term!=null"> `term`,</if>
+            <if test="pojo.proname!=null"> `proname`,</if>
+            <if test="pojo.file1!=null"> `file1`,</if>
+            <if test="pojo.file2!=null"> `file2`,</if>
+            <if test="pojo.file3!=null"> `file3`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.uuid!=null">#{pojo.uuid},</if>
+            <if test="pojo.racename!=null">#{pojo.racename},</if>
+            <if test="pojo.raceteacher!=null">#{pojo.raceteacher},</if>
+            <if test="pojo.status!=null">#{pojo.status},</if>
+            <if test="pojo.description!=null">#{pojo.description},</if>
+            <if test="pojo.kind!=null">#{pojo.kind},</if>
+            <if test="pojo.progress!=null">#{pojo.progress},</if>
+            <if test="pojo.result!=null">#{pojo.result},</if>
+            <if test="pojo.tUuid!=null">#{pojo.tUuid},</if>
+            <if test="pojo.term!=null">#{pojo.term},</if>
+            <if test="pojo.proname!=null">#{pojo.proname},</if>
+            <if test="pojo.file1!=null">#{pojo.file1},</if>
+            <if test="pojo.file2!=null">#{pojo.file2},</if>
+            <if test="pojo.file3!=null">#{pojo.file3},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO race (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.uuid},
+            #{pojo.racename},
+            #{pojo.raceteacher},
+            #{pojo.status},
+            #{pojo.description},
+            #{pojo.kind},
+            #{pojo.progress},
+            #{pojo.result},
+            #{pojo.tUuid},
+            #{pojo.term},
+            #{pojo.proname},
+            #{pojo.file1},
+            #{pojo.file2},
+            #{pojo.file3}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE race
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.uuid != null"> `uuid` = #{pojo.uuid}, </if>
+            <if test="pojo.racename != null"> `racename` = #{pojo.racename}, </if>
+            <if test="pojo.raceteacher != null"> `raceteacher` = #{pojo.raceteacher}, </if>
+            <if test="pojo.status != null"> `status` = #{pojo.status}, </if>
+            <if test="pojo.description != null"> `description` = #{pojo.description}, </if>
+            <if test="pojo.kind != null"> `kind` = #{pojo.kind}, </if>
+            <if test="pojo.progress != null"> `progress` = #{pojo.progress}, </if>
+            <if test="pojo.result != null"> `result` = #{pojo.result}, </if>
+            <if test="pojo.tUuid != null"> `t_uuid` = #{pojo.tUuid}, </if>
+            <if test="pojo.term != null"> `term` = #{pojo.term}, </if>
+            <if test="pojo.proname != null"> `proname` = #{pojo.proname}, </if>
+            <if test="pojo.file1 != null"> `file1` = #{pojo.file1}, </if>
+            <if test="pojo.file2 != null"> `file2` = #{pojo.file2}, </if>
+            <if test="pojo.file3 != null"> `file3` = #{pojo.file3} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+</mapper>
+

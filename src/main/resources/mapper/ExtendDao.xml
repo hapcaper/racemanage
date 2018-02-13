@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.racemanage.dao.ExtendDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.springboot.racemanage.po.Extend">
+        <result column="id" property="id"/>
+        <result column="uuid" property="uuid"/>
+        <result column="key" property="key"/>
+        <result column="value" property="value"/>
+        <result column="forwho" property="forwho"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `uuid`,
+        `key`,
+        `value`,
+        `forwho`,
+        `status`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO extend (
+            `id`,
+            `uuid`,
+            `key`,
+            `value`,
+            `forwho`,
+            `status`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.uuid},
+            #{pojo.key},
+            #{pojo.value},
+            #{pojo.forwho},
+            #{pojo.status}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO extend
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.uuid!=null"> `uuid`,</if>
+            <if test="pojo.key!=null"> `key`,</if>
+            <if test="pojo.value!=null"> `value`,</if>
+            <if test="pojo.forwho!=null"> `forwho`,</if>
+            <if test="pojo.status!=null"> `status`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.uuid!=null">#{pojo.uuid},</if>
+            <if test="pojo.key!=null">#{pojo.key},</if>
+            <if test="pojo.value!=null">#{pojo.value},</if>
+            <if test="pojo.forwho!=null">#{pojo.forwho},</if>
+            <if test="pojo.status!=null">#{pojo.status},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO extend (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.uuid},
+            #{pojo.key},
+            #{pojo.value},
+            #{pojo.forwho},
+            #{pojo.status}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE extend
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.uuid != null"> `uuid` = #{pojo.uuid}, </if>
+            <if test="pojo.key != null"> `key` = #{pojo.key}, </if>
+            <if test="pojo.value != null"> `value` = #{pojo.value}, </if>
+            <if test="pojo.forwho != null"> `forwho` = #{pojo.forwho}, </if>
+            <if test="pojo.status != null"> `status` = #{pojo.status} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+</mapper>
+

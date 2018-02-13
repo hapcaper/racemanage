@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.racemanage.dao.LeaderDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.springboot.racemanage.po.Leader">
+        <result column="id" property="id"/>
+        <result column="l_uuid" property="lUuid"/>
+        <result column="l_name" property="lName"/>
+        <result column="l_email" property="lEmail"/>
+        <result column="l_photo" property="lPhoto"/>
+        <result column="l_password" property="lPassword"/>
+        <result column="l_phone" property="lPhone"/>
+        <result column="l_number" property="lNumber"/>
+        <result column="l_status" property="lStatus"/>
+        <result column="l_duty" property="lDuty"/>
+        <result column="l_description" property="lDescription"/>
+        <result column="l_gender" property="lGender"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `l_uuid`,
+        `l_name`,
+        `l_email`,
+        `l_photo`,
+        `l_password`,
+        `l_phone`,
+        `l_number`,
+        `l_status`,
+        `l_duty`,
+        `l_description`,
+        `l_gender`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO leader (
+            `id`,
+            `l_uuid`,
+            `l_name`,
+            `l_email`,
+            `l_photo`,
+            `l_password`,
+            `l_phone`,
+            `l_number`,
+            `l_status`,
+            `l_duty`,
+            `l_description`,
+            `l_gender`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.lUuid},
+            #{pojo.lName},
+            #{pojo.lEmail},
+            #{pojo.lPhoto},
+            #{pojo.lPassword},
+            #{pojo.lPhone},
+            #{pojo.lNumber},
+            #{pojo.lStatus},
+            #{pojo.lDuty},
+            #{pojo.lDescription},
+            #{pojo.lGender}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO leader
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.lUuid!=null"> `l_uuid`,</if>
+            <if test="pojo.lName!=null"> `l_name`,</if>
+            <if test="pojo.lEmail!=null"> `l_email`,</if>
+            <if test="pojo.lPhoto!=null"> `l_photo`,</if>
+            <if test="pojo.lPassword!=null"> `l_password`,</if>
+            <if test="pojo.lPhone!=null"> `l_phone`,</if>
+            <if test="pojo.lNumber!=null"> `l_number`,</if>
+            <if test="pojo.lStatus!=null"> `l_status`,</if>
+            <if test="pojo.lDuty!=null"> `l_duty`,</if>
+            <if test="pojo.lDescription!=null"> `l_description`,</if>
+            <if test="pojo.lGender!=null"> `l_gender`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.lUuid!=null">#{pojo.lUuid},</if>
+            <if test="pojo.lName!=null">#{pojo.lName},</if>
+            <if test="pojo.lEmail!=null">#{pojo.lEmail},</if>
+            <if test="pojo.lPhoto!=null">#{pojo.lPhoto},</if>
+            <if test="pojo.lPassword!=null">#{pojo.lPassword},</if>
+            <if test="pojo.lPhone!=null">#{pojo.lPhone},</if>
+            <if test="pojo.lNumber!=null">#{pojo.lNumber},</if>
+            <if test="pojo.lStatus!=null">#{pojo.lStatus},</if>
+            <if test="pojo.lDuty!=null">#{pojo.lDuty},</if>
+            <if test="pojo.lDescription!=null">#{pojo.lDescription},</if>
+            <if test="pojo.lGender!=null">#{pojo.lGender},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO leader (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.lUuid},
+            #{pojo.lName},
+            #{pojo.lEmail},
+            #{pojo.lPhoto},
+            #{pojo.lPassword},
+            #{pojo.lPhone},
+            #{pojo.lNumber},
+            #{pojo.lStatus},
+            #{pojo.lDuty},
+            #{pojo.lDescription},
+            #{pojo.lGender}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE leader
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.lUuid != null"> `l_uuid` = #{pojo.lUuid}, </if>
+            <if test="pojo.lName != null"> `l_name` = #{pojo.lName}, </if>
+            <if test="pojo.lEmail != null"> `l_email` = #{pojo.lEmail}, </if>
+            <if test="pojo.lPhoto != null"> `l_photo` = #{pojo.lPhoto}, </if>
+            <if test="pojo.lPassword != null"> `l_password` = #{pojo.lPassword}, </if>
+            <if test="pojo.lPhone != null"> `l_phone` = #{pojo.lPhone}, </if>
+            <if test="pojo.lNumber != null"> `l_number` = #{pojo.lNumber}, </if>
+            <if test="pojo.lStatus != null"> `l_status` = #{pojo.lStatus}, </if>
+            <if test="pojo.lDuty != null"> `l_duty` = #{pojo.lDuty}, </if>
+            <if test="pojo.lDescription != null"> `l_description` = #{pojo.lDescription}, </if>
+            <if test="pojo.lGender != null"> `l_gender` = #{pojo.lGender} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+</mapper>
+

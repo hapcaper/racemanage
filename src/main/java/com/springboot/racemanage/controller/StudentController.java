@@ -16,22 +16,17 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
-    @RequestMapping("/toInsertStudent")
+    @RequestMapping("/toInsertStudent.do")
     public String toInsertStudent(Model model) {
 
         return "student/toInsertStudent";
     }
 
-    @RequestMapping("/insertStudent")
+    @RequestMapping("/insertStudent.do")
     public String insertStudent(Model model) {
         Student student = new Student();
-        student.setAccount("232");
-        student.setUuid(UUID.randomUUID().toString());
-        student.setName("李自豪");
-        student.setGender("男");
-        student.setStatus(1);
         student.setStuNumber("201470024136");
-        int a = studentService.insert(student);
+        int a = studentService.insertSelective(student);
         System.out.println(a+"'''''''''''''");
         return "fuck";
     }

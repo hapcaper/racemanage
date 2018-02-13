@@ -1,5 +1,7 @@
 package com.springboot.racemanage.po;
 
+import java.util.UUID;
+
 public class Student {
 
     private Integer id;
@@ -15,6 +17,22 @@ public class Student {
     private String stuGender;
     private String photo;
 
+    public Student() {
+    }
+
+    public Student(String stuEmail, String stuNumber, String stuName, String stuPhone, String stuPassword, String stuDescription, String stuDuty, Integer stuStatus, String stuGender, String photo) {
+        this.stuUuid = UUID.randomUUID().toString();
+        this.stuEmail = stuEmail;
+        this.stuNumber = stuNumber;
+        this.stuName = stuName;
+        this.stuPhone = stuPhone;
+        this.stuPassword = stuPassword;
+        this.stuDescription = stuDescription;
+        this.stuDuty = stuDuty;
+        this.stuStatus = stuStatus;
+        this.stuGender = stuGender;
+        this.photo = photo;
+    }
 
     @Override
     public String toString() {

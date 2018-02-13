@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.racemanage.dao.InviteDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.springboot.racemanage.po.Invite">
+        <result column="id" property="id"/>
+        <result column="uuid" property="uuid"/>
+        <result column="from" property="from"/>
+        <result column="to" property="to"/>
+        <result column="sendtime" property="sendtime"/>
+        <result column="status" property="status"/>
+        <result column="pro_uuid" property="proUuid"/>
+        <result column="proname" property="proname"/>
+        <result column="teamer_description" property="teamerDescription"/>
+        <result column="duty" property="duty"/>
+        <result column="dutydescription" property="dutydescription"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `uuid`,
+        `from`,
+        `to`,
+        `sendtime`,
+        `status`,
+        `pro_uuid`,
+        `proname`,
+        `teamer_description`,
+        `duty`,
+        `dutydescription`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO invite (
+            `id`,
+            `uuid`,
+            `from`,
+            `to`,
+            `sendtime`,
+            `status`,
+            `pro_uuid`,
+            `proname`,
+            `teamer_description`,
+            `duty`,
+            `dutydescription`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.uuid},
+            #{pojo.from},
+            #{pojo.to},
+            #{pojo.sendtime},
+            #{pojo.status},
+            #{pojo.proUuid},
+            #{pojo.proname},
+            #{pojo.teamerDescription},
+            #{pojo.duty},
+            #{pojo.dutydescription}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO invite
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.uuid!=null"> `uuid`,</if>
+            <if test="pojo.from!=null"> `from`,</if>
+            <if test="pojo.to!=null"> `to`,</if>
+            <if test="pojo.sendtime!=null"> `sendtime`,</if>
+            <if test="pojo.status!=null"> `status`,</if>
+            <if test="pojo.proUuid!=null"> `pro_uuid`,</if>
+            <if test="pojo.proname!=null"> `proname`,</if>
+            <if test="pojo.teamerDescription!=null"> `teamer_description`,</if>
+            <if test="pojo.duty!=null"> `duty`,</if>
+            <if test="pojo.dutydescription!=null"> `dutydescription`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.uuid!=null">#{pojo.uuid},</if>
+            <if test="pojo.from!=null">#{pojo.from},</if>
+            <if test="pojo.to!=null">#{pojo.to},</if>
+            <if test="pojo.sendtime!=null">#{pojo.sendtime},</if>
+            <if test="pojo.status!=null">#{pojo.status},</if>
+            <if test="pojo.proUuid!=null">#{pojo.proUuid},</if>
+            <if test="pojo.proname!=null">#{pojo.proname},</if>
+            <if test="pojo.teamerDescription!=null">#{pojo.teamerDescription},</if>
+            <if test="pojo.duty!=null">#{pojo.duty},</if>
+            <if test="pojo.dutydescription!=null">#{pojo.dutydescription},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO invite (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.uuid},
+            #{pojo.from},
+            #{pojo.to},
+            #{pojo.sendtime},
+            #{pojo.status},
+            #{pojo.proUuid},
+            #{pojo.proname},
+            #{pojo.teamerDescription},
+            #{pojo.duty},
+            #{pojo.dutydescription}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE invite
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.uuid != null"> `uuid` = #{pojo.uuid}, </if>
+            <if test="pojo.from != null"> `from` = #{pojo.from}, </if>
+            <if test="pojo.to != null"> `to` = #{pojo.to}, </if>
+            <if test="pojo.sendtime != null"> `sendtime` = #{pojo.sendtime}, </if>
+            <if test="pojo.status != null"> `status` = #{pojo.status}, </if>
+            <if test="pojo.proUuid != null"> `pro_uuid` = #{pojo.proUuid}, </if>
+            <if test="pojo.proname != null"> `proname` = #{pojo.proname}, </if>
+            <if test="pojo.teamerDescription != null"> `teamer_description` = #{pojo.teamerDescription}, </if>
+            <if test="pojo.duty != null"> `duty` = #{pojo.duty}, </if>
+            <if test="pojo.dutydescription != null"> `dutydescription` = #{pojo.dutydescription} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+</mapper>
+

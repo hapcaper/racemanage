@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.racemanage.dao.TeacherDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.springboot.racemanage.po.Teacher">
+        <result column="id" property="id"/>
+        <result column="t_uuid" property="tUuid"/>
+        <result column="t_name" property="tName"/>
+        <result column="t_email" property="tEmail"/>
+        <result column="t_photo" property="tPhoto"/>
+        <result column="t_password" property="tPassword"/>
+        <result column="t_phone" property="tPhone"/>
+        <result column="t_number" property="tNumber"/>
+        <result column="t_status" property="tStatus"/>
+        <result column="t_duty" property="tDuty"/>
+        <result column="t_description" property="tDescription"/>
+        <result column="t_gender" property="tGender"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `t_uuid`,
+        `t_name`,
+        `t_email`,
+        `t_photo`,
+        `t_password`,
+        `t_phone`,
+        `t_number`,
+        `t_status`,
+        `t_duty`,
+        `t_description`,
+        `t_gender`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO teacher (
+            `id`,
+            `t_uuid`,
+            `t_name`,
+            `t_email`,
+            `t_photo`,
+            `t_password`,
+            `t_phone`,
+            `t_number`,
+            `t_status`,
+            `t_duty`,
+            `t_description`,
+            `t_gender`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.tUuid},
+            #{pojo.tName},
+            #{pojo.tEmail},
+            #{pojo.tPhoto},
+            #{pojo.tPassword},
+            #{pojo.tPhone},
+            #{pojo.tNumber},
+            #{pojo.tStatus},
+            #{pojo.tDuty},
+            #{pojo.tDescription},
+            #{pojo.tGender}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO teacher
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.tUuid!=null"> `t_uuid`,</if>
+            <if test="pojo.tName!=null"> `t_name`,</if>
+            <if test="pojo.tEmail!=null"> `t_email`,</if>
+            <if test="pojo.tPhoto!=null"> `t_photo`,</if>
+            <if test="pojo.tPassword!=null"> `t_password`,</if>
+            <if test="pojo.tPhone!=null"> `t_phone`,</if>
+            <if test="pojo.tNumber!=null"> `t_number`,</if>
+            <if test="pojo.tStatus!=null"> `t_status`,</if>
+            <if test="pojo.tDuty!=null"> `t_duty`,</if>
+            <if test="pojo.tDescription!=null"> `t_description`,</if>
+            <if test="pojo.tGender!=null"> `t_gender`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.tUuid!=null">#{pojo.tUuid},</if>
+            <if test="pojo.tName!=null">#{pojo.tName},</if>
+            <if test="pojo.tEmail!=null">#{pojo.tEmail},</if>
+            <if test="pojo.tPhoto!=null">#{pojo.tPhoto},</if>
+            <if test="pojo.tPassword!=null">#{pojo.tPassword},</if>
+            <if test="pojo.tPhone!=null">#{pojo.tPhone},</if>
+            <if test="pojo.tNumber!=null">#{pojo.tNumber},</if>
+            <if test="pojo.tStatus!=null">#{pojo.tStatus},</if>
+            <if test="pojo.tDuty!=null">#{pojo.tDuty},</if>
+            <if test="pojo.tDescription!=null">#{pojo.tDescription},</if>
+            <if test="pojo.tGender!=null">#{pojo.tGender},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO teacher (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.tUuid},
+            #{pojo.tName},
+            #{pojo.tEmail},
+            #{pojo.tPhoto},
+            #{pojo.tPassword},
+            #{pojo.tPhone},
+            #{pojo.tNumber},
+            #{pojo.tStatus},
+            #{pojo.tDuty},
+            #{pojo.tDescription},
+            #{pojo.tGender}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE teacher
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.tUuid != null"> `t_uuid` = #{pojo.tUuid}, </if>
+            <if test="pojo.tName != null"> `t_name` = #{pojo.tName}, </if>
+            <if test="pojo.tEmail != null"> `t_email` = #{pojo.tEmail}, </if>
+            <if test="pojo.tPhoto != null"> `t_photo` = #{pojo.tPhoto}, </if>
+            <if test="pojo.tPassword != null"> `t_password` = #{pojo.tPassword}, </if>
+            <if test="pojo.tPhone != null"> `t_phone` = #{pojo.tPhone}, </if>
+            <if test="pojo.tNumber != null"> `t_number` = #{pojo.tNumber}, </if>
+            <if test="pojo.tStatus != null"> `t_status` = #{pojo.tStatus}, </if>
+            <if test="pojo.tDuty != null"> `t_duty` = #{pojo.tDuty}, </if>
+            <if test="pojo.tDescription != null"> `t_description` = #{pojo.tDescription}, </if>
+            <if test="pojo.tGender != null"> `t_gender` = #{pojo.tGender} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+</mapper>
+
