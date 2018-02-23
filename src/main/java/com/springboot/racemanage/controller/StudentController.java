@@ -30,4 +30,9 @@ public class StudentController {
         System.out.println(a+"'''''''''''''");
         return "fuck";
     }
+    @RequestMapping("/toBlankPage.do")
+    public String toBlankPage(Model model) {
+        return "student/blank";
+    }
+
 }
