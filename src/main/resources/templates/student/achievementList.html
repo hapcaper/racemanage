@@ -935,82 +935,109 @@
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-
-            <div class="row">
-                <div class="col-sm-10">
-                    <h3>团队人员 : <small>lzh jjj SAO</small></h3>
-                </div>
-                <div class="col-sm-2">
-                    <button data-original-title="项目进度日志" data-placement="top" class="btn tooltips">
-                        项目日志
-                    </button>
-                </div>
-            </div>
-
-            <br>
-
-            <div class="tabbable">
-                <ul id="myTab" class="nav nav-tabs tab-bricky">
-                    <li class="active">
-                        <a href="#panel_tab2_example1" data-toggle="tab">
-                            <i class="green fa fa-home"></i> 待完成任务<span class="badge badge-default">4</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#panel_tab2_example2" data-toggle="tab">
-                            已完成任务 <span class="badge badge-default">4</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#panel_tab2_example3" data-toggle="tab">
-                            所有任务 <span class="badge badge-default">tasklist.size</span>
-                        </a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane in active" id="panel_tab2_example1">
-                        <div class="alert alert-block alert-warning fade in">
-                                <h4 class="alert-heading"><i class="fa clip-spinner-2"></i> task[0].title</h4>
-                                <p>
-                                    task[0].description
-                                    Duis mollis, est non commodo luctus,
-                                    nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
-                                </p>
-                                <p>
-                                    <a href="submitTask.html" class="btn btn-blue">
-                                        提交进度
-                                    </a>
-                                    <a href="#" class="btn btn-yellow">
-                                        交互
-                                    </a>
-                                </p>
+            <div class="table-responsive">
+                <table class="table table-hover" id="sample-table-1">
+                    <thead>
+                    <tr>
+                        <th class="center">#</th>
+                        <th>赛事名称</th>
+                        <th class="hidden-xs">赛事类型</th>
+                        <th>参赛人员</th>
+                        <th class="hidden-xs">参赛项目</th>
+                        <th>所获奖项</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="center">1</td>
+                        <td class="hidden-xs"><a href="raceDetail.html" rel="nofollow">race.racename</a></td>
+                        <td>race.kind</td>
+                        <td>teamer.name  teamer.name</td>
+                        <td class="hidden-xs">race.proname</td>
+                        <td >race.result</td>
+                    </tr>
+                    <tr>
+                        <td class="center">2</td>
+                        <td>Internet Explorer</td>
+                        <td class="hidden-xs">Microsoft, Spyglass</td>
+                        <td>
+                            <a href="#" rel="nofollow" target="_blank">
+                                Proprietary
+                            </a></td>
+                        <td class="hidden-xs">Trident</td>
+                        <td class="center">
+                            <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                <a href="#" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="#" class="btn btn-xs btn-green tooltips" data-placement="top" data-original-title="Share"><i class="fa fa-share"></i></a>
+                                <a href="#" class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="Remove"><i class="fa fa-times fa fa-white"></i></a>
                             </div>
-                    </div>
-                    <div class="tab-pane" id="panel_tab2_example2">
-                        <div class="alert alert-block alert-success fade in">
-                            <h4 class="alert-heading"><i class="fa fa-check-circle"></i> task[1].title</h4>
-                            <p>
-                                task[1].description
-                            </p>
-                            <p>
-                                Duis mollis, est non commodo luctus,
-                                nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="panel_tab2_example3">
-                        <div class="alert alert-block alert-success fade in">
-                            <h4 class="alert-heading"><i class="fa fa-check-circle"></i> task[1].title</h4>
-                            <p>
-                                task[1].description
-                            </p>
-                            <p>
-                                Duis mollis, est non commodo luctus,
-                                nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                            <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                <div class="btn-group">
+                                    <a class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-cog"></i> <span class="caret"></span>
+                                    </a>
+                                    <ul role="menu" class="dropdown-menu pull-right">
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="#">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="#">
+                                                <i class="fa fa-share"></i> Share
+                                            </a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="#">
+                                                <i class="fa fa-times"></i> Remove
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div></td>
+                    </tr>
+                    <tr>
+                        <td class="center">3</td>
+                        <td>Mozilla Firefox</td>
+                        <td class="hidden-xs">Mozilla Foundation</td>
+                        <td>
+                            <a href="#" rel="nofollow" target="_blank">
+                                MPR
+                            </a></td>
+                        <td class="hidden-xs">Gecko</td>
+                        <td class="center">
+                            <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                <a href="#" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="#" class="btn btn-xs btn-green tooltips" data-placement="top" data-original-title="Share"><i class="fa fa-share"></i></a>
+                                <a href="#" class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="Remove"><i class="fa fa-times fa fa-white"></i></a>
+                            </div>
+                            <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                <div class="btn-group">
+                                    <a class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-cog"></i> <span class="caret"></span>
+                                    </a>
+                                    <ul role="menu" class="dropdown-menu pull-right">
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="#">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="#">
+                                                <i class="fa fa-share"></i> Share
+                                            </a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="#">
+                                                <i class="fa fa-times"></i> Remove
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
             <!-- end: PAGE CONTENT-->
         </div>
