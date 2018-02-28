@@ -15,6 +15,7 @@
         <result column="file" property="file"/>
         <result column="status" property="status"/>
         <result column="progress" property="progress"/>
+        <result column="solver" property="solver"/>
     </resultMap>
 
     <!--auto generated Code-->
@@ -30,7 +31,8 @@
         `pro_uuid`,
         `file`,
         `status`,
-        `progress`
+        `progress`,
+        `solver`
     </sql>
 
     <!--auto generated Code-->
@@ -47,7 +49,8 @@
             `pro_uuid`,
             `file`,
             `status`,
-            `progress`
+            `progress`,
+            `solver`
         ) VALUES (
             #{pojo.id},
             #{pojo.uuid},
@@ -60,7 +63,8 @@
             #{pojo.proUuid},
             #{pojo.file},
             #{pojo.status},
-            #{pojo.progress}
+            #{pojo.progress},
+            #{pojo.solver}
         )
     </insert>
 
@@ -80,6 +84,7 @@
             <if test="pojo.file!=null"> `file`,</if>
             <if test="pojo.status!=null"> `status`,</if>
             <if test="pojo.progress!=null"> `progress`,</if>
+            <if test="pojo.solver!=null"> `solver`,</if>
         </trim>
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -95,6 +100,7 @@
             <if test="pojo.file!=null">#{pojo.file},</if>
             <if test="pojo.status!=null">#{pojo.status},</if>
             <if test="pojo.progress!=null">#{pojo.progress},</if>
+            <if test="pojo.solver!=null">#{pojo.solver},</if>
         </trim>
     </insert>
 
@@ -116,7 +122,8 @@
             #{pojo.proUuid},
             #{pojo.file},
             #{pojo.status},
-            #{pojo.progress}
+            #{pojo.progress},
+            #{pojo.solver}
             )
         </foreach>
     </insert>
@@ -136,7 +143,8 @@
             <if test="pojo.proUuid != null"> `pro_uuid` = #{pojo.proUuid}, </if>
             <if test="pojo.file != null"> `file` = #{pojo.file}, </if>
             <if test="pojo.status != null"> `status` = #{pojo.status}, </if>
-            <if test="pojo.progress != null"> `progress` = #{pojo.progress} </if>
+            <if test="pojo.progress != null"> `progress` = #{pojo.progress}, </if>
+            <if test="pojo.solver != null"> `solver` = #{pojo.solver} </if>
         </set>
         WHERE id = #{pojo.id}
     </update>

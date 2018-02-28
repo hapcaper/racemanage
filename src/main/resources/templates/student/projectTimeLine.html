@@ -928,7 +928,7 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>project.proname <small>project.description</small></h1>
+                        <h1>标题 <small>细微描述</small></h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
@@ -936,82 +936,81 @@
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
 
-            <div class="row">
-                <div class="col-sm-10">
-                    <h3>团队人员 : <small>lzh jjj SAO</small></h3>
+            <div class="row"><div class="col-sm-2 col-sm-offset-10">
+                <button  data-placement="top" class="btn tooltips">
+                    <a href="projectDetail.html">返回</a>
+                </button>
+            </div></div>
+            <div class="timeline">
+                <div class="spine"></div>
+                <div class="date_separator">
+                    <span> 2018年5月</span>
                 </div>
-                <div class="col-sm-2">
-                    <button data-original-title="项目进度日志" data-placement="top" class="btn tooltips">
-                        <a href="projectTimeLine.html">项目日志</a>
-                    </button>
-                </div>
-            </div>
-
-            <br>
-
-            <div class="tabbable">
-                <ul id="myTab" class="nav nav-tabs tab-bricky">
-                    <li class="active">
-                        <a href="#panel_tab2_example1" data-toggle="tab">
-                            <i class="green fa fa-home"></i> 待完成任务<span class="badge badge-default">4</span>
-                        </a>
+                <ul class="columns">
+                    <li>
+                        <div class="timeline_element bricky">
+                            <div class="timeline_title">
+                                <span class="timeline_label">solved by LZH {task.solver}</span><span class="timeline_date" th:text="@{task.endtime}">task.endtime</span>
+                            </div>
+                            <div class="content">
+                                <b> task.title</b>
+                                <p>task.description</p>
+                            </div>
+                            <div class="readmore">
+                                <a href="#" class="btn btn-warning">
+                                    Read More <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
                     </li>
                     <li>
-                        <a href="#panel_tab2_example2" data-toggle="tab">
-                            已完成任务 <span class="badge badge-default">4</span>
-                        </a>
+                        <div class="timeline_element purple">
+                            <div class="timeline_title">
+                                <span class="timeline_label">Event Title</span><span class="timeline_date">12 December 2014</span>
+                            </div>
+                            <div class="content">
+                                <b>Lorem Ipsum</b> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            </div>
+                            <div class="readmore">
+                                <a href="#" class="btn btn-dark-grey">
+                                    Read More <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
                     </li>
                     <li>
-                        <a href="#panel_tab2_example3" data-toggle="tab">
-                            所有任务 <span class="badge badge-default">tasklist.size</span>
-                        </a>
+                        <div class="timeline_element">
+                            <div class="timeline_title">
+                                <span class="timeline_label">Event Title</span><span class="timeline_date">16 December 2014</span>
+                            </div>
+                            <div class="content">
+                                <b>Lorem Ipsum</b> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            </div>
+                            <div class="readmore">
+                                <a href="#" class="btn btn-info">
+                                    Read More <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline_element teal">
+                            <div class="timeline_title">
+                                <span class="timeline_label">Event Title</span><span class="timeline_date">18 December 2014</span>
+                            </div>
+                            <div class="content">
+                                <b>Lorem Ipsum</b> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            </div>
+                            <div class="readmore">
+                                <a href="#" class="btn btn-dark-beige">
+                                    Read More <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
                     </li>
                 </ul>
-                <div class="tab-content">
-                    <div class="tab-pane in active" id="panel_tab2_example1">
-                        <div class="alert alert-block alert-warning fade in">
-                                <h4 class="alert-heading"><i class="fa clip-spinner-2"></i> task[0].title</h4>
-                                <p>
-                                    task[0].description
-                                    Duis mollis, est non commodo luctus,
-                                    nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
-                                </p>
-                                <p>
-                                    <a href="submitTask.html" class="btn btn-blue">
-                                        提交进度
-                                    </a>
-                                    <a href="#" class="btn btn-yellow">
-                                        交互
-                                    </a>
-                                </p>
-                            </div>
-                    </div>
-                    <div class="tab-pane" id="panel_tab2_example2">
-                        <div class="alert alert-block alert-success fade in">
-                            <h4 class="alert-heading"><i class="fa fa-check-circle"></i> task[1].title</h4>
-                            <p>
-                                task[1].description
-                            </p>
-                            <p>
-                                Duis mollis, est non commodo luctus,
-                                nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="panel_tab2_example3">
-                        <div class="alert alert-block alert-success fade in">
-                            <h4 class="alert-heading"><i class="fa fa-check-circle"></i> task[1].title</h4>
-                            <p>
-                                task[1].description
-                            </p>
-                            <p>
-                                Duis mollis, est non commodo luctus,
-                                nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
-                            </p>
-                        </div>
-                    </div>
-                </div>
             </div>
+
             <!-- end: PAGE CONTENT-->
         </div>
     </div>
@@ -1021,7 +1020,7 @@
 <!-- start: FOOTER -->
 <div th:replace="student/fragments::footer" class="footer clearfix">
     <div class="footer-inner">
-        2018 &copy; 竞赛管理 by 李自豪 & 贾进进 @ SAO
+        2018 &copy; 竞赛管理 by 李自豪 & 贾进进 & SAO
     </div>
     <div class="footer-items">
         <span class="go-top"><i class="clip-chevron-up"></i></span>
