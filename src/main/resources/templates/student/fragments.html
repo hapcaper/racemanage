@@ -36,8 +36,6 @@
     <link rel="stylesheet" th:href="@{/assets/plugins/summernote/build/summernote.css}">
     <link rel="stylesheet" th:href="@{/assets/plugins/gritter/css/jquery.gritter.css}">
 
-    <link rel="stylesheet" th:href="@{assets/plugins/select2/select2.css}">
-
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </div>
 
@@ -98,10 +96,11 @@
         // });
 
     </script>
-
-
-
-
+    <script>
+        jQuery(document).ready(function() {
+            Main.init();
+        });
+    </script>
 
 </div>
 
