@@ -1,11 +1,264 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->
+<!--[if IE 8]>
+<html class="ie8 no-js" lang="en"><![endif]-->
+<!--[if IE 9]>
+<html class="ie9 no-js" lang="en"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<!-- start: HEAD -->
 <head>
-    <meta charset="UTF-8">
-    <title>index</title>
+    <title>竞赛管理系统</title>
+    <!-- start: META -->
+    <meta charset="utf-8"/>
+    <!--[if IE]>
+    <meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1"/><![endif]-->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <!-- end: META -->
+    <!-- start: MAIN CSS -->
+    <div th:replace="student/fragments::common_css">
+        <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/fonts/style.css">
+        <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="assets/css/main-responsive.css">
+        <link rel="stylesheet" href="assets/plugins/iCheck/skins/all.css">
+        <link rel="stylesheet" href="assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
+        <link rel="stylesheet" href="assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+        <link rel="stylesheet" href="assets/css/theme_light.css" type="text/css" id="skin_color">
+        <link rel="stylesheet" href="assets/css/print.css" type="text/css" media="print"/>
+        <!--[if IE 7]>
+        <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+        <![endif]-->
+        <!-- end: MAIN CSS -->
+
+    </div>
+    <!-- end: MAIN CSS -->
+    <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+
+    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
-<body>
-index
-<a href="/student/toInsertStudent.do">sdsdsds</a>
+<!-- end: HEAD -->
+<!-- start: BODY -->
+<body class="login example1">
+<div class="main-login col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+    <div class="logo">竞赛管理
+    </div>
+    <!-- start: LOGIN BOX -->
+    <div class="box-login">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-reorder"></i>
+                角色
+            </div>
+            <div class="panel-body">
+                <div class="tabbable panel-tabs">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a data-toggle="tab" href="#panel_tab_example1">
+                                学生
+                            </a>
+                        </li>
+                        <li class="">
+                            <a data-toggle="tab" href="#panel_tab_example2">
+                                教师
+                            </a>
+                        </li>
+                        <li class="">
+                            <a data-toggle="tab" href="#panel_tab_example3">
+                                竞赛组长
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="panel_tab_example1" class="tab-pane active">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h3>学生登录</h3><p class="text-danger" th:text="${errorMsg}"></p>
+                                    <p>
+                                        请输入你的学号和密码登陆
+                                    </p>
+                                    <form class="form-login" action="/student/login.do" method="post">
+                                        <div class="errorHandler alert alert-danger no-display">
+                                            <i class="fa fa-remove-sign"></i> You have some form errors. Please check
+                                            below.
+                                        </div>
+                                        <fieldset>
+                                            <div class="form-group">
+							<span class="input-icon">
+								<input type="text" class="form-control" name="stunumber" placeholder="学号">
+								<i class="fa fa-user"></i> </span>
+                                                <!-- To mark the incorrectly filled input, you must add the class "error" to the input -->
+                                                <!-- example: <input type="text" class="login error" name="login" value="Username" /> -->
+                                            </div>
+                                            <div class="form-group form-actions">
+							<span class="input-icon">
+								<input type="password" class="form-control password" name="password"
+                                       placeholder="密码">
+								<i class="fa fa-lock"></i>
+								 </span>
+                                            </div>
+                                            <div class="form-actions">
+                                                <label for="remember1" class="checkbox-inline">
+                                                    <input type="checkbox" class="grey remember" id="remember1"
+                                                           name="remember">
+                                                    Keep me signed in
+                                                </label>
+                                                <button type="submit" class="btn btn-bricky pull-right">
+                                                    登陆 <i class="fa fa-arrow-circle-right"></i>
+                                                </button>
+
+                                            </div>
+
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="panel_tab_example2" class="tab-pane">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h3>教师登录</h3>
+                                    <p>
+                                        请输入你的教师号和密码登陆
+                                    </p>
+                                    <form class="form-login" action="">
+                                        <div class="errorHandler alert alert-danger no-display">
+                                            <i class="fa fa-remove-sign"></i> You have some form errors. Please check
+                                            below.
+                                        </div>
+                                        <fieldset>
+                                            <div class="form-group">
+							<span class="input-icon">
+								<input type="text" class="form-control" name="username" placeholder="学号">
+								<i class="fa fa-user"></i> </span>
+                                                <!-- To mark the incorrectly filled input, you must add the class "error" to the input -->
+                                                <!-- example: <input type="text" class="login error" name="login" value="Username" /> -->
+                                            </div>
+                                            <div class="form-group form-actions">
+							<span class="input-icon">
+								<input type="password" class="form-control password" name="password"
+                                       placeholder="密码">
+								<i class="fa fa-lock"></i>
+								 </span>
+                                            </div>
+                                            <div class="form-actions">
+                                                <label for="remember2" class="checkbox-inline">
+                                                    <input type="checkbox" class="grey remember" id="remember2"
+                                                           name="remember">
+                                                    Keep me signed in
+                                                </label>
+                                                <button type="submit" class="btn btn-bricky pull-right">
+                                                    登陆 <i class="fa fa-arrow-circle-right"></i>
+                                                </button>
+                                            </div>
+
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="panel_tab_example3" class="tab-pane">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h3>竞赛组长登录</h3>
+                                    <p>
+                                        请输入你的工号和密码登陆
+                                    </p>
+                                    <form class="form-login" action="">
+                                        <div class="errorHandler alert alert-danger no-display">
+                                            <i class="fa fa-remove-sign"></i> You have some form errors. Please check
+                                            below.
+                                        </div>
+                                        <fieldset>
+                                            <div class="form-group">
+							<span class="input-icon">
+								<input type="text" class="form-control" name="username" placeholder="学号">
+								<i class="fa fa-user"></i> </span>
+                                                <!-- To mark the incorrectly filled input, you must add the class "error" to the input -->
+                                                <!-- example: <input type="text" class="login error" name="login" value="Username" /> -->
+                                            </div>
+                                            <div class="form-group form-actions">
+							<span class="input-icon">
+								<input type="password" class="form-control password" name="password"
+                                       placeholder="密码">
+								<i class="fa fa-lock"></i>
+								 </span>
+                                            </div>
+                                            <div class="form-actions">
+                                                <label for="remember3" class="checkbox-inline">
+                                                    <input type="checkbox" class="grey remember" id="remember3"
+                                                           name="remember">
+                                                    Keep me signed in
+                                                </label>
+                                                <button type="submit" class="btn btn-bricky pull-right">
+                                                    登陆 <i class="fa fa-arrow-circle-right"></i>
+                                                </button>
+                                            </div>
+
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- end: LOGIN BOX -->
+    <!-- start: FORGOT BOX -->
+
+    <!-- end: FORGOT BOX -->
+    <!-- start: REGISTER BOX -->
+
+    <!-- end: REGISTER BOX -->
+    <!-- start: COPYRIGHT -->
+    <div class="copyright">
+        2018 &copy; 竞赛管理 by lzh & JJJ & SAO
+    </div>
+    <!-- end: COPYRIGHT -->
+</div>
+<
+<div th:replace="student/fragments::common_js">
+    <!-- start: MAIN JAVASCRIPTS -->
+    <!--[if lt IE 9]>
+    <script src="assets/plugins/respond.min.js"></script>
+    <script src="assets/plugins/excanvas.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="http://libs.useso.com/js/jquery/2.0.3/jquery.min.js"></script>
+    <!--<![endif]-->
+    <script src="assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+    <script src="assets/plugins/blockUI/jquery.blockUI.js"></script>
+    <script src="assets/plugins/iCheck/jquery.icheck.min.js"></script>
+    <script src="assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+    <script src="assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+    <script src="assets/plugins/less/less-1.5.0.min.js"></script>
+    <script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+    <script src="assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- end: MAIN JAVASCRIPTS -->
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="assets/js/login.js"></script>
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+
+</div>
+<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+
+<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 </body>
+<!-- end: BODY -->
 </html>

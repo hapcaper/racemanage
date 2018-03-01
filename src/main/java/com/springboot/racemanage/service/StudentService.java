@@ -10,4 +10,6 @@ public interface StudentService {
     int insertList(List<Student> pojos);
     int update(Student pojo);
 
+    Student findFirstByStuNumberAndStuPasswordAndStuStatus(String stunumber,String password,Integer status);
+
 }
