@@ -15,4 +15,9 @@ public interface TeamerDao {
     int insertList(@Param("pojos") List<Teamer> pojo);
 
     int update(@Param("pojo") Teamer pojo);
+
+    Integer countByStuUuid(@Param("stuUuid")String stuUuid);
+    
+
+
 }

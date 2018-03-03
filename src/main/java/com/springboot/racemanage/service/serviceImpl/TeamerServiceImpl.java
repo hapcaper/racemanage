@@ -28,4 +28,9 @@ public class TeamerServiceImpl implements TeamerService{
     public int update(Teamer pojo){
         return teamerDao.update(pojo);
     }
+
+    @Override
+    public Integer countByStuUuid(String stuUuid) {
+        return teamerDao.countByStuUuid(stuUuid);
+    }
 }

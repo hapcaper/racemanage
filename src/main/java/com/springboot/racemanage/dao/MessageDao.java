@@ -15,4 +15,8 @@ public interface MessageDao {
     int insertList(@Param("pojos") List<Message> pojo);
 
     int update(@Param("pojo") Message pojo);
+
+    Integer countByToAndStatus(@Param("to")String to,@Param("status")Integer status);
+
+
 }

@@ -12,4 +12,6 @@ public interface MessageService {
     int insertList(List<Message> pojo);
 
     int update(Message pojo);
+
+    Integer countByToAndStatus(String to,Integer status);
 }

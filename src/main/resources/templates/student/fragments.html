@@ -101,6 +101,19 @@
             Main.init();
         });
     </script>
+    <script>
+        var level1menuId = '${menuSelected1}';
+        var level2menuId = '${menuSelected2}';
+        $(".open").each(function() {
+            $(this).removeClass('active open');
+        });
+
+        $('#' + level1menuId).click();
+        $('#' + level1menuId).addClass('active open');
+        if ($('#' + level2menuId)) {
+            $('#' + level2menuId).addClass('active open');
+        }
+    </script>
 
 </div>
 
@@ -407,7 +420,7 @@
                 </a>
             </li>
             <li>
-                <a href="javascript:void(0)"><i class="clip-user-2"></i>
+                <a href="javascript:void(0)" th:href="@{/student/profile.do}"><i class="clip-user-2"></i>
                     <span class="title">个人信息</span>
                     <span class="selected"></span>
                 </a>

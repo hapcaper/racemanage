@@ -135,7 +135,7 @@
             <if test="pojo.stuDescription != null"> `stu_description` = #{pojo.stuDescription}, </if>
             <if test="pojo.stuDuty != null"> `stu_duty` = #{pojo.stuDuty}, </if>
             <if test="pojo.stuStatus != null"> `stu_status` = #{pojo.stuStatus}, </if>
-            <if test="pojo.stuGender != null"> `stu_gender` = #{pojo.stuGender} </if>
+            <if test="pojo.stuGender != null"> `stu_gender` = #{pojo.stuGender}, </if>
             <if test="pojo.photo != null"> `photo` = #{pojo.photo} </if>
         </set>
         WHERE id = #{pojo.id}
