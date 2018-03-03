@@ -965,7 +965,7 @@
                                     <div class="col-sm-5 col-md-4">
                                         <div class="user-left">
                                             <div class="center">
-                                                <h4>student.name</h4>
+                                                <h4 th:text="${session.student.stuName}">student.name</h4>
                                                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                                     <div class="user-image">
                                                         <div class="fileupload-new thumbnail"><img
@@ -1008,44 +1008,44 @@
                                             <table class="table table-condensed table-hover">
                                                 <thead>
                                                 <tr>
-                                                    <th colspan="3">Comment Information</th>
+                                                    <th colspan="3">基础信息</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <tr>
                                                     <td>学号</td>
-                                                    <td>
+                                                    <td th:text="${session.student.stuNumber}">
                                                         student.stunumber 201470024137
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>email:</td>
                                                     <td>
-                                                        <a href="">
+                                                        <a href="#" th:text="${session.student.stuEmail}">
                                                             student.email
                                                         </a>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>phone:</td>
-                                                    <td>student.phone</td>
+                                                    <td>电话:</td>
+                                                    <td th:text="${session.student.stuPhone}">student.phone</td>
                                                 </tr>
                                                 <tr>
                                                     <td>性别</td>
-                                                    <td>
+                                                    <td th:text="${session.student.stuGender}">
                                                         student.gender 男
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>角色</td>
-                                                    <td><span class="label label-sm label-info">学生</span></td>
+                                                    <td><span class="label label-sm label-info" th:text="${session.student.stuDuty}">学生</span></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                     <div class="col-sm-7 col-md-8">
-                                        <p>
+                                        <p th:text="${session.student.stuDescription}">
                                             {student.description}
                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas convallis
                                             porta purus, pulvinar mattis nulla tempus ut. Curabitur quis dui orci. Ut
@@ -1058,7 +1058,7 @@
                                                 <a href="projectList.html">
                                                 <button class="btn btn-icon btn-block">
                                                     <i class="clip-clip"></i>
-                                                    项目 <span class="badge badge-info"> 4 </span>
+                                                    项目 <span class="badge badge-info" th:text="${proNum}"> 4 </span>
 
                                                 </button>
                                                 </a>
@@ -1067,7 +1067,7 @@
                                                 <button class="btn btn-icon btn-block pulsate"
                                                         style="outline: 0px; box-shadow: rgba(196, 60, 53, 0) 0px 0px 13px; outline-offset: 20px;">
                                                     <i class="clip-bubble-2"></i>
-                                                    消息 <span class="badge badge-info"> 23 </span>
+                                                    消息 <span class="badge badge-info" th:text="${msgNum}"> 23 </span>
                                                 </button>
                                             </div>
                                             <div class="col-sm-3">
@@ -1075,7 +1075,7 @@
                                                     <button class="btn btn-icon btn-block">
 
                                                         <i class="clip-calendar"></i>
-                                                        邀请 <span class="badge badge-info"> 5 </span>
+                                                        邀请 <span class="badge badge-info" th:text="${inviteNum}"> 5 </span>
                                                     </button>
                                                 </a>
 
@@ -1183,10 +1183,13 @@
                                 </div>
                             </div>
                             <div id="panel_edit_account" class="tab-pane">
-                                <form action="#" role="form" id="form">
+                                <form th:action="${'/student/updateProfile.do'}" method="post" action="#" role="form" id="form">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <h3>个人信息</h3>
+                                            <h3>个人信息
+                                                <small th:if="${updateMsg=='更新成功'}" class="text-info" th:text="${updateMsg}"></small>
+                                                <small th:if="${updateMsg=='更新失败'}" class="text-danger" th:text="${updateMsg}"></small>
+                                            </h3>
                                             <hr>
                                         </div>
                                         <div class="col-md-6">
@@ -1194,21 +1197,21 @@
                                                 <label class="control-label">
                                                     姓名
                                                 </label>
-                                                <input type="text" placeholder="姓名" class="form-control" disabled="disabled"
+                                                <input th:value="${session.student.stuName}" type="text" placeholder="姓名" class="form-control" disabled="disabled"
                                                        id="firstname" name="name"/>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label">
                                                     邮件
                                                 </label>
-                                                <input type="email" placeholder="peter@example.com" class="form-control"
+                                                <input th:value="${session.student.stuEmail}" type="email" placeholder="peter@example.com" class="form-control"
                                                        id="email" name="email"/>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label">
                                                     电话
                                                 </label>
-                                                <input type="email" placeholder="(641)-734-4763" class="form-control"
+                                                <input th:value="${session.student.stuPhone}" type="tel" placeholder="(641)-734-4763" class="form-control"
                                                        id="phone" name="phone"/>
                                             </div>
                                             <div class="form-group">
@@ -1216,14 +1219,14 @@
                                                     旧密码
                                                 </label>
                                                 <input type="password" placeholder="password" class="form-control"
-                                                       name="password" id="oldPassword"/>
+                                                       name="oldPasswd" id="oldPasswd"/>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label">
                                                     新密码
                                                 </label>
                                                 <input type="password" placeholder="password" class="form-control"
-                                                       id="password_again" name="newPassword"/>
+                                                       id="password_again" name="newPasswd"/>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -1232,7 +1235,7 @@
                                                     性别
                                                 </label>
                                                 <div>
-                                                    <input type="email" placeholder="peter@example.com" class="form-control" disabled="disabled"
+                                                    <input th:value="${session.student.stuGender}" type="text" placeholder="?" class="form-control" disabled="disabled"
                                                            id="gender" name="gender"/>
                                                 </div>
                                             </div>
@@ -1243,7 +1246,7 @@
                                                 <div class="fileupload fileupload-new" data-provides="fileupload"><input
                                                         type="hidden">
                                                     <div class="fileupload-new thumbnail"
-                                                         style="width: 250px; height: 250px;"><img
+                                                         style="width: 250px; height: 250px;"><img th:src="${session.student.photo}"
                                                             src="assets/images/avatar-1-xl.jpg" alt="">
                                                     </div>
                                                     <div class="fileupload-preview fileupload-exists thumbnail"
@@ -1254,7 +1257,7 @@
                                                                         class="fa fa-picture"></i> Select image</span><span
                                                                         class="fileupload-exists"><i
                                                                         class="fa fa-picture"></i> Change</span>
-																	<input type="file">
+																	<input name="photo" th:value="${session.student.photo}" type="file">
 																</span>
                                                         <a href="#" class="btn fileupload-exists btn-light-grey"
                                                            data-dismiss="fileupload">

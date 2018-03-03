@@ -46,8 +46,9 @@ public class Student {
                 ", stuPassword='" + stuPassword + '\'' +
                 ", stuDescription='" + stuDescription + '\'' +
                 ", stuDuty='" + stuDuty + '\'' +
-                ", stuStatus='" + stuStatus + '\'' +
+                ", stuStatus=" + stuStatus +
                 ", stuGender='" + stuGender + '\'' +
+                ", photo='" + photo + '\'' +
                 '}';
     }
 

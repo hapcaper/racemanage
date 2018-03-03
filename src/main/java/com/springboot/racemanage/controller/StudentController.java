@@ -7,6 +7,7 @@ import com.springboot.racemanage.service.StudentService;
 import com.springboot.racemanage.service.TeamerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -77,12 +78,13 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/updateProfile.do",method = RequestMethod.POST)
-    public String updateProfile(Model model ,HttpSession httpSession,
+    public String updateProfile(Model model , HttpSession httpSession,
                                 @RequestParam("email")String email,
                                 @RequestParam("phone")String phone,
                                 @RequestParam("oldPasswd")String oldPasswd,
                                 @RequestParam("newPasswd")String newPasswd,
                                 @RequestParam("photo")String photo) {
+        model.addAttribute("menuSelected1", "");
         Student student = (Student) httpSession.getAttribute("student");
         if (phone.length()!=0) {
             student.setPhoto(photo);
@@ -118,7 +120,7 @@ public class StudentController {
 
         System.out.println(student+"--------------------");
 
-        return "redirect:/student/profile.do";
+        return "student/profile";
 
     }
 
