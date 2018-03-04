@@ -1,15 +1,13 @@
 <!DOCTYPE html >
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->
-<!--[if IE 8]>
-<html class="ie8 no-js" lang="en"><![endif]-->
-<!--[if IE 9]>
-<html class="ie9 no-js" lang="en"><![endif]-->
+<!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9 no-js" lang="en"><![endif]-->
 <!--[if !IE]><!-->
 <html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
 <!--<![endif]-->
 <!-- start: HEAD -->
 <head>
-    <title>静态模板</title>
+    <title>Clip-One - Responsive Admin Template</title>
     <!-- start: MAIN CSS -->
     <div th:replace="student/fragments::common_css">
         <link rel="stylesheet" href="../../static/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -63,8 +61,7 @@
             <ul class="nav navbar-right">
                 <!-- start: TO-DO DROPDOWN -->
                 <li class="dropdown">
-                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
-                       href="#">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
                         <i class="clip-list-5"></i>
                         <span class="badge"> 12</span>
                     </a>
@@ -78,8 +75,7 @@
                                     <li>
                                         <a class="todo-actions" href="javascript:void(0)">
                                             <i class="fa fa-square-o"></i>
-                                            <span class="desc"
-                                                  style="opacity: 1; text-decoration: none;">Staff Meeting</span>
+                                            <span class="desc" style="opacity: 1; text-decoration: none;">Staff Meeting</span>
                                             <span class="label label-danger" style="opacity: 1;"> today</span>
                                         </a>
                                     </li>
@@ -135,8 +131,7 @@
                                     <li>
                                         <a class="todo-actions" href="javascript:void(0)">
                                             <i class="fa fa-square-o"></i>
-                                            <span class="desc"
-                                                  style="opacity: 1; text-decoration: none;">Staff Meeting</span>
+                                            <span class="desc" style="opacity: 1; text-decoration: none;">Staff Meeting</span>
                                             <span class="label label-danger" style="opacity: 1;"> today</span>
                                         </a>
                                     </li>
@@ -167,8 +162,7 @@
                 <!-- end: TO-DO DROPDOWN-->
                 <!-- start: NOTIFICATION DROPDOWN -->
                 <li class="dropdown">
-                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
-                       href="#">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
                         <i class="clip-notification-2"></i>
                         <span class="badge"> 11</span>
                     </a>
@@ -283,8 +277,7 @@
                 <!-- end: NOTIFICATION DROPDOWN -->
                 <!-- start: MESSAGE DROPDOWN -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown"
-                       href="#">
+                    <a class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown" href="#">
                         <i class="clip-bubble-3"></i>
                         <span class="badge"> 9</span>
                     </a>
@@ -378,8 +371,7 @@
                 <!-- end: MESSAGE DROPDOWN -->
                 <!-- start: USER DROPDOWN -->
                 <li class="dropdown current-user">
-                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
-                       href="#">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
                         <img src="assets/images/avatar-1-small.jpg" class="circle-img" alt="">
                         <span class="username">Peter Clark</span>
                         <i class="clip-chevron-down"></i>
@@ -936,96 +928,161 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>标题
-                            <small>细微描述</small>
-                        </h1>
+                        <h1>主页 <small>还没决定弄啥 发布的新闻？</small>
+                            <a href="/student/toBlankPage.do">blank</a></h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            <form action="" role="form" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-1">
-                        项目名称
-                    </label>
-                    <div class="col-sm-9">
-                        <input type="text" placeholder="" id="form-field-1" class="form-control"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-2">
-                        项目描述
-                    </label>
-                    <div class="col-sm-9">
-                        <textarea placeholder="项目大致描述" id="form-field-2" class="form-control"
-                                  style="margin: 0px 33.4px 0px 0px; height: 124px; width: 493px;"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-2">
-                        项目文档
-                    </label>
-                    <div class="col-sm-9">
-                        <div class="fileupload fileupload-new" data-provides="fileupload">
-                            <div class="input-group">
-                                <div class="form-control uneditable-input">
-                                    <i class="fa fa-file fileupload-exists"></i>
-                                    <span class="fileupload-preview"></span>
-                                </div>
-                                <div class="input-group-btn">
-                                    <div class="btn btn-light-grey btn-file">
-                                        <span class="fileupload-new"><i
-                                                class="fa fa-folder-open-o"></i> Select file</span>
-                                        <span class="fileupload-exists"><i
-                                                class="fa fa-folder-open-o"></i> Change</span>
-                                        <input type="file" class="file-input">
-                                    </div>
-                                    <a href="#" class="btn btn-light-grey fileupload-exists" data-dismiss="fileupload">
-                                        <i class="fa fa-times"></i> Remove
-                                    </a>
-                                </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- start: SEARCH RESULT -->
+                    <div class="search-classic">
+                        <form action="#" class="form-inline">
+                            <div class="input-group well">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+											<button class="btn btn-primary" type="button">
+												<i class="fa fa-search"></i> Search
+											</button> </span>
                             </div>
+                        </form>
+                        <h3>Search results for 'Clip-One'</h3>
+                        <hr>
+                        <div class="search-result">
+                            <h4>
+                                <a href="#">
+                                    Clip-One - Responsive Admin Template
+                                </a></h4>
+                            <a href="#">
+                                http://www.apple.com
+                            </a>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, obcaecati consequuntur aspernatur neque voluptatum mollitia eaque tenetur ea tempora itaque dolore incidunt explicabo voluptate quaerat at reprehenderit iste iusto asperiores?
+                            </p>
                         </div>
+                        <hr>
+                        <div class="search-result">
+                            <h4>
+                                <a href="#">
+                                    Clip-One - Responsive Admin Dashboard Template
+                                </a></h4>
+                            <a href="#">
+                                http://www.apple.com
+                            </a>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, ut, quis, molestias dolor nobis doloremque eos distinctio perferendis alias aspernatur quam natus necessitatibus fugiat quo nostrum ipsum tempore. Expedita eveniet impedit dolorum unde rerum temporibus.
+                            </p>
+                        </div>
+                        <hr>
+                        <div class="search-result">
+                            <h4>
+                                <a href="#">
+                                    Clip-One - Responsive Admin Template
+                                </a></h4>
+                            <a href="#">
+                                http://www.apple.com
+                            </a>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, voluptates, nulla vero beatae deserunt impedit quas fugiat cupiditate error soluta veritatis delectus cumque possimus fugit libero eligendi provident voluptatum nostrum nesciunt.
+                            </p>
+                        </div>
+                        <hr>
+                        <div class="search-result">
+                            <h4>
+                                <a href="#">
+                                    Clip-One - Responsive Admin Dashboard Template
+                                </a></h4>
+                            <a href="#">
+                                http://www.apple.com
+                            </a>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, reprehenderit, cumque, quas, voluptatibus expedita aspernatur alias enim laboriosam eum sunt perspiciatis a pariatur dignissimos eligendi repellat harum hic!
+                            </p>
+                        </div>
+                        <hr>
+                        <div class="search-result">
+                            <h4>
+                                <a href="#">
+                                    Clip-One - Responsive Admin Template
+                                </a></h4>
+                            <a href="#">
+                                http://www.apple.com
+                            </a>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, incidunt.
+                            </p>
+                        </div>
+                        <hr>
+                        <div class="search-result">
+                            <h4>
+                                <a href="#">
+                                    Clip-One - Responsive Admin Dashboard Template
+                                </a></h4>
+                            <a href="#">
+                                http://www.apple.com
+                            </a>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus adipisci laborum provident enim quam!
+                            </p>
+                        </div>
+                        <hr>
+                        <div class="search-result">
+                            <h4>
+                                <a href="#">
+                                    Clip-One - Responsive Admin Template
+                                </a></h4>
+                            <a href="#">
+                                http://www.apple.com
+                            </a>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, harum temporibus beatae assumenda ipsum. Dignissimos deleniti temporibus ut obcaecati possimus.
+                            </p>
+                        </div>
+                        <hr>
+                        <ol class="pagination text-center pull-right">
+                            <li class="prev disabled">
+                                <a href="#">
+                                    Prev
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="#">
+                                    1
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    2
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    3
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    4
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    5
+                                </a>
+                            </li>
+                            <li class="next">
+                                <a href="#">
+                                    Next
+                                </a>
+                            </li>
+                        </ol>
                     </div>
+                    <!-- end: SEARCH RESULT -->
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        邀请成员
-                    </label>
-                    <div class="col-sm-9">
-                            <select multiple="multiple" name="teamers[]" id="select2"
-                                    class="form-control search-select select2-offscreen" tabindex="-1">
-                                <!-- 未加入项目的人员list -->
-                                <option value="${member.mid0 }">stunamelist[0]</option>
-                                <option value="${member.mid1 }">stunamelist[1]</option>
-                                <option value="${member.mid2 }">stunamelist[2]</option>
-                            </select>
-                            <br>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        邀请导师
-                    </label>
-                    <div class="col-sm-9">
-                        <select  class="form-control">
-                            <option value="">&nbsp;</option>
-                            <option value="AL">teachernamelist[0]</option>
-                            <option value="AK">teachernamelist[1]</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group" style="margin-top: 50px">
-                    <div class="col-sm-2 col-sm-offset-9">
-                        <button  class="btn btn-blue next-step btn-block">
-                            <a href="projectList.html">提交</a>
-                        </button>
-                    </div>
-                </div>
-            </form>
+            </div>
             <!-- end: PAGE CONTENT-->
         </div>
     </div>
@@ -1084,18 +1141,12 @@
     <script src="../../static/assets/plugins/ckeditor/adapters/jquery.js"></script>
     <script src="../../static/assets/js/form-elements.js"></script>
     <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script>
+
+    </script>
 
 </div>
-<script>
-    jQuery(document).ready(function () {
-        $('#select2').select2();
-        // Main.init();
-        // Index.init();
-        // FormElements.init();
-        // UIButtons.init();
-        // FormValidator.init();
-    });
-</script>
+
 </body>
 <!-- end: BODY -->
 </html>

@@ -28,4 +28,9 @@ public class MessageServiceImpl implements MessageService{
     public int update(Message pojo){
         return messageDao.update(pojo);
     }
+
+    @Override
+    public Integer countByToAndStatus(String to, Integer status) {
+        return messageDao.countByToAndStatus(to,status);
+    }
 }

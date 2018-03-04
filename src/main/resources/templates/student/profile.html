@@ -9,7 +9,7 @@
 <!--<![endif]-->
 <!-- start: HEAD -->
 <head>
-    <title>静态模板</title>
+    <title>Clip-One - Responsive Admin Template</title>
     <!-- start: MAIN CSS -->
     <div th:replace="student/fragments::common_css">
         <link rel="stylesheet" href="../../static/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -936,8 +936,7 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>标题
-                            <small>细微描述</small>
+                        <h1>个人信息
                         </h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
@@ -945,87 +944,419 @@
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            <form action="" role="form" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-1">
-                        项目名称
-                    </label>
-                    <div class="col-sm-9">
-                        <input type="text" placeholder="" id="form-field-1" class="form-control"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-2">
-                        项目描述
-                    </label>
-                    <div class="col-sm-9">
-                        <textarea placeholder="项目大致描述" id="form-field-2" class="form-control"
-                                  style="margin: 0px 33.4px 0px 0px; height: 124px; width: 493px;"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-2">
-                        项目文档
-                    </label>
-                    <div class="col-sm-9">
-                        <div class="fileupload fileupload-new" data-provides="fileupload">
-                            <div class="input-group">
-                                <div class="form-control uneditable-input">
-                                    <i class="fa fa-file fileupload-exists"></i>
-                                    <span class="fileupload-preview"></span>
-                                </div>
-                                <div class="input-group-btn">
-                                    <div class="btn btn-light-grey btn-file">
-                                        <span class="fileupload-new"><i
-                                                class="fa fa-folder-open-o"></i> Select file</span>
-                                        <span class="fileupload-exists"><i
-                                                class="fa fa-folder-open-o"></i> Change</span>
-                                        <input type="file" class="file-input">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs tab-padding tab-space-3 tab-blue" id="myTab4">
+                            <li class="active">
+                                <a data-toggle="tab" href="#panel_overview">
+                                    Overview
+                                </a>
+                            </li>
+                            <li class="">
+                                <a data-toggle="tab" href="#panel_edit_account">
+                                    Edit Account
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="panel_overview" class="tab-pane active">
+                                <div class="row">
+                                    <div class="col-sm-5 col-md-4">
+                                        <div class="user-left">
+                                            <div class="center">
+                                                <h4 th:text="${session.student.stuName}">student.name</h4>
+                                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                    <div class="user-image">
+                                                        <div class="fileupload-new thumbnail"><img
+                                                                src="assets/images/avatar-1-xl.jpg" alt="">
+                                                        </div>
+                                                        <div class="fileupload-preview fileupload-exists thumbnail"
+                                                             style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                                        <div class="user-image-buttons">
+																	<span class="btn btn-teal btn-file btn-sm"><span
+                                                                            class="fileupload-new"><i
+                                                                            class="fa fa-pencil"></i></span><span
+                                                                            class="fileupload-exists"><i
+                                                                            class="fa fa-pencil"></i></span>
+																		<input type="file">
+																	</span>
+                                                            <a href="#" class="btn fileupload-exists btn-bricky btn-sm"
+                                                               data-dismiss="fileupload">
+                                                                <i class="fa fa-times"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <p>
+                                                    <a class="btn btn-twitter btn-sm btn-squared">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                    <a class="btn btn-linkedin btn-sm btn-squared">
+                                                        <i class="fa fa-linkedin"></i>
+                                                    </a>
+                                                    <a class="btn btn-google-plus btn-sm btn-squared">
+                                                        <i class="fa fa-google-plus"></i>
+                                                    </a>
+                                                    <a class="btn btn-github btn-sm btn-squared">
+                                                        <i class="fa fa-github"></i>
+                                                    </a>
+                                                </p>
+                                                <hr>
+                                            </div>
+                                            <table class="table table-condensed table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th colspan="3">基础信息</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>学号</td>
+                                                    <td th:text="${session.student.stuNumber}">
+                                                        student.stunumber 201470024137
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>email:</td>
+                                                    <td>
+                                                        <a href="#" th:text="${session.student.stuEmail}">
+                                                            student.email
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>电话:</td>
+                                                    <td th:text="${session.student.stuPhone}">student.phone</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>性别</td>
+                                                    <td th:text="${session.student.stuGender}">
+                                                        student.gender 男
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>角色</td>
+                                                    <td><span class="label label-sm label-info" th:text="${session.student.stuDuty}">学生</span></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-                                    <a href="#" class="btn btn-light-grey fileupload-exists" data-dismiss="fileupload">
-                                        <i class="fa fa-times"></i> Remove
-                                    </a>
+                                    <div class="col-sm-7 col-md-8">
+                                        <p th:text="${session.student.stuDescription}">
+                                            {student.description}
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas convallis
+                                            porta purus, pulvinar mattis nulla tempus ut. Curabitur quis dui orci. Ut
+                                            nisi dolor, dignissim a aliquet quis, vulputate id dui. Proin ultrices
+                                            ultrices ligula, dictum varius turpis faucibus non. Curabitur faucibus
+                                            ultrices nunc, nec aliquet leo tempor cursus.
+                                        </p>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <a href="projectList.html">
+                                                <button class="btn btn-icon btn-block">
+                                                    <i class="clip-clip"></i>
+                                                    项目 <span class="badge badge-info" th:text="${proNum}"> 4 </span>
+
+                                                </button>
+                                                </a>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <button class="btn btn-icon btn-block pulsate"
+                                                        style="outline: 0px; box-shadow: rgba(196, 60, 53, 0) 0px 0px 13px; outline-offset: 20px;">
+                                                    <i class="clip-bubble-2"></i>
+                                                    消息 <span class="badge badge-info" th:text="${msgNum}"> 23 </span>
+                                                </button>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <a href="teamInterview.html">
+                                                    <button class="btn btn-icon btn-block">
+
+                                                        <i class="clip-calendar"></i>
+                                                        邀请 <span class="badge badge-info" th:text="${inviteNum}"> 5 </span>
+                                                    </button>
+                                                </a>
+
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <button class="btn btn-icon btn-block">
+                                                    <i class="clip-list-3"></i>
+                                                    提示 <span class="badge badge-info"> 9 </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-white">
+                                            <div class="panel-heading">
+                                                <i class="clip-menu"></i>
+                                                我的动态（coming soon）
+                                                <div class="panel-tools">
+                                                    <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+                                                    </a>
+                                                    <a class="btn btn-xs btn-link panel-config" href="#panel-config"
+                                                       data-toggle="modal">
+                                                        <i class="fa fa-wrench"></i>
+                                                    </a>
+                                                    <a class="btn btn-xs btn-link panel-refresh" href="#">
+                                                        <i class="fa fa-refresh"></i>
+                                                    </a>
+                                                    <a class="btn btn-xs btn-link panel-close" href="#">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body panel-scroll ps-container" style="height:300px">
+                                                <ul class="activities">
+                                                    <li>
+                                                        <a class="activity" href="javascript:void(0)">
+                                                            <i class="clip-upload-2 circle-icon circle-green"></i>
+                                                            <span class="desc">You uploaded a new release.</span>
+                                                            <div class="time">
+                                                                <i class="fa fa-time bigger-110"></i>
+                                                                2 hours ago
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="activity" href="javascript:void(0)">
+                                                            <img alt="image" src="assets/images/avatar-2.jpg">
+                                                            <span class="desc">Nicole Bell sent you a message.</span>
+                                                            <div class="time">
+                                                                <i class="fa fa-time bigger-110"></i>
+                                                                3 hours ago
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="activity" href="javascript:void(0)">
+                                                            <i class="clip-data circle-icon circle-bricky"></i>
+                                                            <span class="desc">DataBase Migration.</span>
+                                                            <div class="time">
+                                                                <i class="fa fa-time bigger-110"></i>
+                                                                5 hours ago
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="activity" href="javascript:void(0)">
+                                                            <i class="clip-clock circle-icon circle-teal"></i>
+                                                            <span class="desc">You added a new event to the calendar.</span>
+                                                            <div class="time">
+                                                                <i class="fa fa-time bigger-110"></i>
+                                                                8 hours ago
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="activity" href="javascript:void(0)">
+                                                            <i class="clip-images-2 circle-icon circle-green"></i>
+                                                            <span class="desc">Kenneth Ross uploaded new images.</span>
+                                                            <div class="time">
+                                                                <i class="fa fa-time bigger-110"></i>
+                                                                9 hours ago
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="activity" href="javascript:void(0)">
+                                                            <i class="clip-image circle-icon circle-green"></i>
+                                                            <span class="desc">Peter Clark uploaded a new image.</span>
+                                                            <div class="time">
+                                                                <i class="fa fa-time bigger-110"></i>
+                                                                12 hours ago
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="ps-scrollbar-x-rail"
+                                                     style="left: 0px; bottom: 3px; width: 657px; display: none;">
+                                                    <div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div>
+                                                </div>
+                                                <div class="ps-scrollbar-y-rail"
+                                                     style="top: 0px; right: 3px; height: 300px; display: inherit;">
+                                                    <div class="ps-scrollbar-y" style="top: 0px; height: 206px;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+                            <div id="panel_edit_account" class="tab-pane">
+                                <form th:action="${'/student/updateProfile.do'}" method="post" action="#" role="form" id="form">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h3>个人信息
+                                                <small th:if="${updateMsg=='更新成功'}" class="text-info" th:text="${updateMsg}"></small>
+                                                <small th:if="${updateMsg=='更新失败'}" class="text-danger" th:text="${updateMsg}"></small>
+                                            </h3>
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    姓名
+                                                </label>
+                                                <input th:value="${session.student.stuName}" type="text" placeholder="姓名" class="form-control" disabled="disabled"
+                                                       id="firstname" name="name"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    邮件
+                                                </label>
+                                                <input th:value="${session.student.stuEmail}" type="email" placeholder="peter@example.com" class="form-control"
+                                                       id="email" name="email"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    电话
+                                                </label>
+                                                <input th:value="${session.student.stuPhone}" type="tel" placeholder="(641)-734-4763" class="form-control"
+                                                       id="phone" name="phone"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    旧密码
+                                                </label>
+                                                <input type="password" placeholder="password" class="form-control"
+                                                       name="oldPasswd" id="oldPasswd"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    新密码
+                                                </label>
+                                                <input type="password" placeholder="password" class="form-control"
+                                                       id="password_again" name="newPasswd"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    性别
+                                                </label>
+                                                <div>
+                                                    <input th:value="${session.student.stuGender}" type="text" placeholder="?" class="form-control" disabled="disabled"
+                                                           id="gender" name="gender"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>
+                                                    Image Upload
+                                                </label>
+                                                <div class="fileupload fileupload-new" data-provides="fileupload"><input
+                                                        type="hidden">
+                                                    <div class="fileupload-new thumbnail"
+                                                         style="width: 250px; height: 250px;"><img th:src="${session.student.photo}"
+                                                            src="assets/images/avatar-1-xl.jpg" alt="">
+                                                    </div>
+                                                    <div class="fileupload-preview fileupload-exists thumbnail"
+                                                         style="max-width: 150px; max-height: 150px; line-height: 10px;"></div>
+                                                    <div class="user-edit-image-buttons">
+																<span class="btn btn-light-grey btn-file"><span
+                                                                        class="fileupload-new"><i
+                                                                        class="fa fa-picture"></i> Select image</span><span
+                                                                        class="fileupload-exists"><i
+                                                                        class="fa fa-picture"></i> Change</span>
+																	<input name="photo" th:value="${session.student.photo}" type="file">
+																</span>
+                                                        <a href="#" class="btn fileupload-exists btn-light-grey"
+                                                           data-dismiss="fileupload">
+                                                            <i class="fa fa-times"></i> Remove
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h3>社交媒体信息 （coming soon）</h3>
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Twitter
+                                                </label>
+                                                <span class="input-icon">
+															<input class="form-control" type="text"
+                                                                   placeholder="Text Field">
+															<i class="clip-twitter"></i> </span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Facebook
+                                                </label>
+                                                <span class="input-icon">
+															<input class="form-control" type="text"
+                                                                   placeholder="Text Field">
+															<i class="clip-facebook"></i> </span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Google Plus
+                                                </label>
+                                                <span class="input-icon">
+															<input class="form-control" type="text"
+                                                                   placeholder="Text Field">
+															<i class="clip-google-plus"></i> </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Github
+                                                </label>
+                                                <span class="input-icon">
+															<input class="form-control" type="text"
+                                                                   placeholder="Text Field">
+															<i class="clip-github-2"></i> </span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Linkedin
+                                                </label>
+                                                <span class="input-icon">
+															<input class="form-control" type="text"
+                                                                   placeholder="Text Field">
+															<i class="clip-linkedin"></i> </span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Skype
+                                                </label>
+                                                <span class="input-icon">
+															<input class="form-control" type="text"
+                                                                   placeholder="Text Field">
+															<i class="clip-skype"></i> </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <p>
+                                                点击更新将会更新已修改信息
+                                            </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button class="btn btn-teal btn-block" type="submit">
+                                                更新 <i class="fa fa-arrow-circle-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        邀请成员
-                    </label>
-                    <div class="col-sm-9">
-                            <select multiple="multiple" name="teamers[]" id="select2"
-                                    class="form-control search-select select2-offscreen" tabindex="-1">
-                                <!-- 未加入项目的人员list -->
-                                <option value="${member.mid0 }">stunamelist[0]</option>
-                                <option value="${member.mid1 }">stunamelist[1]</option>
-                                <option value="${member.mid2 }">stunamelist[2]</option>
-                            </select>
-                            <br>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        邀请导师
-                    </label>
-                    <div class="col-sm-9">
-                        <select  class="form-control">
-                            <option value="">&nbsp;</option>
-                            <option value="AL">teachernamelist[0]</option>
-                            <option value="AK">teachernamelist[1]</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group" style="margin-top: 50px">
-                    <div class="col-sm-2 col-sm-offset-9">
-                        <button  class="btn btn-blue next-step btn-block">
-                            <a href="projectList.html">提交</a>
-                        </button>
-                    </div>
-                </div>
-            </form>
+            </div>
             <!-- end: PAGE CONTENT-->
         </div>
     </div>
@@ -1084,18 +1415,14 @@
     <script src="../../static/assets/plugins/ckeditor/adapters/jquery.js"></script>
     <script src="../../static/assets/js/form-elements.js"></script>
     <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script>
+        jQuery(document).ready(function () {
+            Main.init();
+        });
+    </script>
 
 </div>
-<script>
-    jQuery(document).ready(function () {
-        $('#select2').select2();
-        // Main.init();
-        // Index.init();
-        // FormElements.init();
-        // UIButtons.init();
-        // FormValidator.init();
-    });
-</script>
+
 </body>
 <!-- end: BODY -->
 </html>

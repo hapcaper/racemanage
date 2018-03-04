@@ -1,15 +1,13 @@
 <!DOCTYPE html >
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->
-<!--[if IE 8]>
-<html class="ie8 no-js" lang="en"><![endif]-->
-<!--[if IE 9]>
-<html class="ie9 no-js" lang="en"><![endif]-->
+<!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9 no-js" lang="en"><![endif]-->
 <!--[if !IE]><!-->
 <html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
 <!--<![endif]-->
 <!-- start: HEAD -->
 <head>
-    <title>静态模板</title>
+    <title>Clip-One - Responsive Admin Template</title>
     <!-- start: MAIN CSS -->
     <div th:replace="student/fragments::common_css">
         <link rel="stylesheet" href="../../static/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -63,8 +61,7 @@
             <ul class="nav navbar-right">
                 <!-- start: TO-DO DROPDOWN -->
                 <li class="dropdown">
-                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
-                       href="#">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
                         <i class="clip-list-5"></i>
                         <span class="badge"> 12</span>
                     </a>
@@ -78,8 +75,7 @@
                                     <li>
                                         <a class="todo-actions" href="javascript:void(0)">
                                             <i class="fa fa-square-o"></i>
-                                            <span class="desc"
-                                                  style="opacity: 1; text-decoration: none;">Staff Meeting</span>
+                                            <span class="desc" style="opacity: 1; text-decoration: none;">Staff Meeting</span>
                                             <span class="label label-danger" style="opacity: 1;"> today</span>
                                         </a>
                                     </li>
@@ -135,8 +131,7 @@
                                     <li>
                                         <a class="todo-actions" href="javascript:void(0)">
                                             <i class="fa fa-square-o"></i>
-                                            <span class="desc"
-                                                  style="opacity: 1; text-decoration: none;">Staff Meeting</span>
+                                            <span class="desc" style="opacity: 1; text-decoration: none;">Staff Meeting</span>
                                             <span class="label label-danger" style="opacity: 1;"> today</span>
                                         </a>
                                     </li>
@@ -167,8 +162,7 @@
                 <!-- end: TO-DO DROPDOWN-->
                 <!-- start: NOTIFICATION DROPDOWN -->
                 <li class="dropdown">
-                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
-                       href="#">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
                         <i class="clip-notification-2"></i>
                         <span class="badge"> 11</span>
                     </a>
@@ -283,8 +277,7 @@
                 <!-- end: NOTIFICATION DROPDOWN -->
                 <!-- start: MESSAGE DROPDOWN -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown"
-                       href="#">
+                    <a class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown" href="#">
                         <i class="clip-bubble-3"></i>
                         <span class="badge"> 9</span>
                     </a>
@@ -378,8 +371,7 @@
                 <!-- end: MESSAGE DROPDOWN -->
                 <!-- start: USER DROPDOWN -->
                 <li class="dropdown current-user">
-                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
-                       href="#">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
                         <img src="assets/images/avatar-1-small.jpg" class="circle-img" alt="">
                         <span class="username">Peter Clark</span>
                         <i class="clip-chevron-down"></i>
@@ -911,8 +903,7 @@
             <!-- start: PAGE HEADER -->
             <div class="row">
                 <div class="col-sm-12">
-                    <!-- start: STYLE SELECTOR BOX -->
-                    <!-- end: STYLE SELECTOR BOX -->
+
                     <!-- start: PAGE TITLE & BREADCRUMB -->
                     <ol class="breadcrumb">
                         <li>
@@ -936,19 +927,105 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>标题
-                            <small>细微描述</small>
-                        </h1>
+                        <h1>标题 <small>细微描述</small></h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
+            <div class="panel-group accordion-custom accordion-teal" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-10">
+
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                        <i class="icon-arrow"></i>
+                                        msg.title
+                                    </a></h4>
+
+                        </div>
+                        <div class="col-sm-2">
+                            <h6>msg.date</h6>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+                        <div class="panel-body">
+                            <p>msg.form</p>
+                            <p>msg.content</p>
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                <i class="icon-arrow"></i>
+                                Collapsible Group Item #2
+                            </a></h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" style="height: 0px;">
+                        <div class="panel-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                <i class="icon-arrow"></i>
+                                Collapsible Group Item #3
+                            </a></h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" style="height: 0px;">
+                        <div class="panel-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+            </div>
             <form action="" role="form" class="form-horizontal">
                 <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        发送给同学
+                    </label>
+                    <div class="col-sm-9">
+                        <select multiple="multiple" name="teamers[]" id="select2"
+                                class="form-control search-select select2-offscreen" tabindex="-1">
+                            <!-- 除了自己的学生 -->
+                            <option value="${member.mid0 }">stunamelist[0]</option>
+                            <option value="${member.mid1 }">stunamelist[1]</option>
+                            <option value="${member.mid2 }">stunamelist[2]</option>
+                        </select>
+                        <br>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        发送给老师
+                    </label>
+                    <div class="col-sm-9">
+                        <select multiple="multiple" name="teamers[]" id="select3"
+                                class="form-control search-select select2-offscreen" tabindex="-1">
+                            <!-- 除了自己的学生 -->
+                            <option value="${teacher.tid0 }">teacher.tid0</option>
+                            <option value="${teacher.tid1 }">teacher.tid0</option>
+                            <option value="${teacher.tid2 }">teacher.tid0</option>
+                        </select>
+                        <br>
+                    </div>
+
+                </div>
+                <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-1">
-                        项目名称
+                        标题
                     </label>
                     <div class="col-sm-9">
                         <input type="text" placeholder="" id="form-field-1" class="form-control"/>
@@ -956,72 +1033,17 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-2">
-                        项目描述
+                        内容
                     </label>
                     <div class="col-sm-9">
-                        <textarea placeholder="项目大致描述" id="form-field-2" class="form-control"
+                        <textarea placeholder="内容" id="form-field-2" class="form-control"
                                   style="margin: 0px 33.4px 0px 0px; height: 124px; width: 493px;"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-2">
-                        项目文档
-                    </label>
-                    <div class="col-sm-9">
-                        <div class="fileupload fileupload-new" data-provides="fileupload">
-                            <div class="input-group">
-                                <div class="form-control uneditable-input">
-                                    <i class="fa fa-file fileupload-exists"></i>
-                                    <span class="fileupload-preview"></span>
-                                </div>
-                                <div class="input-group-btn">
-                                    <div class="btn btn-light-grey btn-file">
-                                        <span class="fileupload-new"><i
-                                                class="fa fa-folder-open-o"></i> Select file</span>
-                                        <span class="fileupload-exists"><i
-                                                class="fa fa-folder-open-o"></i> Change</span>
-                                        <input type="file" class="file-input">
-                                    </div>
-                                    <a href="#" class="btn btn-light-grey fileupload-exists" data-dismiss="fileupload">
-                                        <i class="fa fa-times"></i> Remove
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        邀请成员
-                    </label>
-                    <div class="col-sm-9">
-                            <select multiple="multiple" name="teamers[]" id="select2"
-                                    class="form-control search-select select2-offscreen" tabindex="-1">
-                                <!-- 未加入项目的人员list -->
-                                <option value="${member.mid0 }">stunamelist[0]</option>
-                                <option value="${member.mid1 }">stunamelist[1]</option>
-                                <option value="${member.mid2 }">stunamelist[2]</option>
-                            </select>
-                            <br>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        邀请导师
-                    </label>
-                    <div class="col-sm-9">
-                        <select  class="form-control">
-                            <option value="">&nbsp;</option>
-                            <option value="AL">teachernamelist[0]</option>
-                            <option value="AK">teachernamelist[1]</option>
-                        </select>
                     </div>
                 </div>
                 <div class="form-group" style="margin-top: 50px">
                     <div class="col-sm-2 col-sm-offset-9">
                         <button  class="btn btn-blue next-step btn-block">
-                            <a href="projectList.html">提交</a>
+                            <a href="#">发送</a>
                         </button>
                     </div>
                 </div>
@@ -1086,16 +1108,7 @@
     <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 
 </div>
-<script>
-    jQuery(document).ready(function () {
-        $('#select2').select2();
-        // Main.init();
-        // Index.init();
-        // FormElements.init();
-        // UIButtons.init();
-        // FormValidator.init();
-    });
-</script>
+
 </body>
 <!-- end: BODY -->
 </html>

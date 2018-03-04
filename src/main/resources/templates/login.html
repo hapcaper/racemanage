@@ -23,18 +23,18 @@
     <!-- end: META -->
     <!-- start: MAIN CSS -->
     <div th:replace="student/fragments::common_css">
-        <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="assets/fonts/style.css">
-        <link rel="stylesheet" href="assets/css/main.css">
-        <link rel="stylesheet" href="assets/css/main-responsive.css">
-        <link rel="stylesheet" href="assets/plugins/iCheck/skins/all.css">
-        <link rel="stylesheet" href="assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
-        <link rel="stylesheet" href="assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
-        <link rel="stylesheet" href="assets/css/theme_light.css" type="text/css" id="skin_color">
-        <link rel="stylesheet" href="assets/css/print.css" type="text/css" media="print"/>
+        <link rel="stylesheet" href="../static/assets/plugins/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../static/assets/plugins/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../static/assets/fonts/style.css">
+        <link rel="stylesheet" href="../static/assets/css/main.css">
+        <link rel="stylesheet" href="../static/assets/css/main-responsive.css">
+        <link rel="stylesheet" href="../static/assets/plugins/iCheck/skins/all.css">
+        <link rel="stylesheet" href="../static/assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
+        <link rel="stylesheet" href="../static/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+        <link rel="stylesheet" href="../static/assets/css/theme_light.css" type="text/css" id="skin_color">
+        <link rel="stylesheet" href="../static/assets/css/print.css" type="text/css" media="print"/>
         <!--[if IE 7]>
-        <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+        <link rel="stylesheet" href="../static/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
         <![endif]-->
         <!-- end: MAIN CSS -->
 
@@ -110,9 +110,9 @@
                                                            name="remember">
                                                     Keep me signed in
                                                 </label>
-                                                <button type="submit" class="btn btn-bricky pull-right">
-                                                    登陆 <i class="fa fa-arrow-circle-right"></i>
-                                                </button>
+                                                    <button type="submit" class="btn btn-bricky pull-right">
+                                                        登陆 <i class="fa fa-arrow-circle-right"></i>
+                                                    </button>
 
                                             </div>
 
@@ -231,34 +231,40 @@
 <div th:replace="student/fragments::common_js">
     <!-- start: MAIN JAVASCRIPTS -->
     <!--[if lt IE 9]>
-    <script src="assets/plugins/respond.min.js"></script>
-    <script src="assets/plugins/excanvas.min.js"></script>
+    <script src="../static/assets/plugins/respond.min.js"></script>
+    <script src="../static/assets/plugins/excanvas.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <![endif]-->
     <!--[if gte IE 9]><!-->
     <script type="text/javascript" src="http://libs.useso.com/js/jquery/2.0.3/jquery.min.js"></script>
     <!--<![endif]-->
-    <script src="assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
-    <script src="assets/plugins/blockUI/jquery.blockUI.js"></script>
-    <script src="assets/plugins/iCheck/jquery.icheck.min.js"></script>
-    <script src="assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
-    <script src="assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
-    <script src="assets/plugins/less/less-1.5.0.min.js"></script>
-    <script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
-    <script src="assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="../static/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="../static/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+    <script src="../static/assets/plugins/blockUI/jquery.blockUI.js"></script>
+    <script src="../static/assets/plugins/iCheck/jquery.icheck.min.js"></script>
+    <script src="../static/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+    <script src="../static/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+    <script src="../static/assets/plugins/less/less-1.5.0.min.js"></script>
+    <script src="../static/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+    <script src="../static/assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
+    <script src="../static/assets/js/main.js"></script>
     <!-- end: MAIN JAVASCRIPTS -->
     <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-    <script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="assets/js/login.js"></script>
+    <script src="../static/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="../static/assets/js/login.js"></script>
     <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 
 </div>
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script>
+    jQuery(document).ready(function () {
+        Main.init();
+        Login.init();
+    });
+</script>
 </body>
 <!-- end: BODY -->
 </html>

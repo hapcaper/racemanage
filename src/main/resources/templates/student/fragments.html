@@ -36,8 +36,6 @@
     <link rel="stylesheet" th:href="@{/assets/plugins/summernote/build/summernote.css}">
     <link rel="stylesheet" th:href="@{/assets/plugins/gritter/css/jquery.gritter.css}">
 
-    <link rel="stylesheet" th:href="@{assets/plugins/select2/select2.css}">
-
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </div>
 
@@ -98,10 +96,24 @@
         // });
 
     </script>
+    <script>
+        jQuery(document).ready(function() {
+            Main.init();
+        });
+    </script>
+    <script>
+        var level1menuId = '${menuSelected1}';
+        var level2menuId = '${menuSelected2}';
+        $(".open").each(function() {
+            $(this).removeClass('active open');
+        });
 
-
-
-
+        $('#' + level1menuId).click();
+        $('#' + level1menuId).addClass('active open');
+        if ($('#' + level2menuId)) {
+            $('#' + level2menuId).addClass('active open');
+        }
+    </script>
 
 </div>
 
@@ -401,84 +413,72 @@
         <!-- start: MAIN NAVIGATION MENU -->
         <ul class="main-navigation-menu">
 
-            <li class="active open">
+            <li id="index" class="active open">
                 <a href="javascript:void(0)"><i class="clip-pencil"></i>
                     <span class="title"> 首页 </span>
                     <span class="selected"></span>
                 </a>
             </li>
-            <li>
-                <a href="javascript:void(0)"><i class="clip-user-2"></i>
+            <li id="profile">
+                <a href="javascript:void(0)" th:href="@{/student/profile.do}"><i class="clip-user-2"></i>
                     <span class="title">个人信息</span>
                     <span class="selected"></span>
                 </a>
             </li>
-            <li>
+            <li id="projectManage">
                 <a href="javascript:void(0)"><i class="clip-file"></i>
                     <span class="title">项目管理</span><i class="icon-arrow"></i>
                     <span class="selected"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li>
+                    <li id="addProject">
                         <a href="pages_user_profile.html">
                             <span class="title">添加项目</span>
                         </a>
                     </li>
-                    <li>
+                    <li id="projectList">
                         <a href="pages_invoice.html">
-                            <span class="title">Invoice</span>
+                            <span class="title">项目列表</span>
                             <span class="badge badge-new">new</span>
                         </a>
                     </li>
-                    <li>
+                    <li id="invitation">
                         <a href="pages_gallery.html">
-                            <span class="title">Gallery</span>
+                            <span class="title">邀请信息</span>
                         </a>
                     </li>
                 </ul>
             </li>
-            <li>
+            <li id="raceManage">
                 <a href="javascript:void(0)"><i class="clip-attachment-2"></i>
                     <span class="title">竞赛管理</span><i class="icon-arrow"></i>
                     <span class="selected"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li>
+                    <li id="raceInfo">
                         <a href="utility_faq.html">
-                            <span class="title">赛事查询</span>
+                            <span class="title">赛事信息</span>
                         </a>
                     </li>
-                    <li>
+                    <li id="myRace">
                         <a href="utility_lock_screen.html">
                             <span class="title">我的赛事</span>
                         </a>
                     </li>
                 </ul>
             </li>
-            <li>
+            <li id="achievement">
                 <a href="javascript:;" class="active">
                     <i class="clip-folder"></i>
                     <span class="title">成果查询</span>
                 </a>
             </li>
-            <li>
+            <li id="messageCenter">
                 <a href="javascript:;">
                     <i class="clip-folder-open"></i>
                     <span class="title">消息管理</span><i class="icon-arrow"></i>
                     <span class="arrow "></span>
                 </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="javascript:;">
-                            我的消息
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            发送消息
-                        </a>
-                    </li>
-                </ul>
             </li>
         </ul>
         <!-- end: MAIN NAVIGATION MENU -->

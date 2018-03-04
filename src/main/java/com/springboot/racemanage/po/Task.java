@@ -15,8 +15,23 @@ public class Task {
     private String file;
     private Integer status;
     private Integer progress;
+    private String solver;
 
+    public String getProUuid() {
+        return proUuid;
+    }
 
+    public void setProUuid(String proUuid) {
+        this.proUuid = proUuid;
+    }
+
+    public String getSolver() {
+        return solver;
+    }
+
+    public void setSolver(String solver) {
+        this.solver = solver;
+    }
 
     @Override
     public String toString() {
@@ -29,10 +44,11 @@ public class Task {
                 ", endtime=" + endtime +
                 ", from='" + from + '\'' +
                 ", to='" + to + '\'' +
-                ", prouuid='" + proUuid + '\'' +
+                ", proUuid='" + proUuid + '\'' +
                 ", file='" + file + '\'' +
                 ", status=" + status +
                 ", progress=" + progress +
+                ", solver='" + solver + '\'' +
                 '}';
     }
 

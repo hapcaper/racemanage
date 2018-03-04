@@ -4,7 +4,7 @@ public class Teamer {
     private Integer id;
     private String uuid;
     private String proUuid;
-    private String strUuid;
+    private String stuUuid;
     private String description;
     private String duty;
     private String stuname;
@@ -19,7 +19,7 @@ public class Teamer {
                 "id=" + id +
                 ", uuid='" + uuid + '\'' +
                 ", proUuid='" + proUuid + '\'' +
-                ", strUuid='" + strUuid + '\'' +
+                ", strUuid='" + stuUuid + '\'' +
                 ", description='" + description + '\'' +
                 ", duty='" + duty + '\'' +
                 ", stuname='" + stuname + '\'' +
@@ -54,12 +54,12 @@ public class Teamer {
         this.proUuid = proUuid;
     }
 
-    public String getStrUuid() {
-        return strUuid;
+    public String getStuUuid() {
+        return stuUuid;
     }
 
-    public void setStrUuid(String strUuid) {
-        this.strUuid = strUuid;
+    public void setStuUuid(String stuUuid) {
+        this.stuUuid = stuUuid;
     }
 
     public String getDescription() {

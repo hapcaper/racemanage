@@ -12,4 +12,6 @@ public interface TeamerService {
     int insertList(List<Teamer> pojo);
 
     int update(Teamer pojo);
+
+    Integer countByStuUuid(String stuUuid);
 }

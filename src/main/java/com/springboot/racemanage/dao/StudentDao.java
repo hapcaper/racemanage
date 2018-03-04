@@ -16,4 +16,7 @@ public interface StudentDao {
     int insertList(@Param("pojos") List<Student> pojo);
 
     int update(@Param("pojo") Student pojo);
+
+    Student findFirstByStuNumberAndStuPasswordAndStuStatus(@Param("stuNumber")String stuNumber,@Param("stuPassword")String stuPassword,@Param("stuStatus")Integer stuStatus);
+
 }

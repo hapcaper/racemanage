@@ -12,4 +12,8 @@ public interface InviteService {
     int insertList( List<Invite> pojo);
 
     int update( Invite pojo);
+
+    Integer countByTo(String to);
+
+    Integer countByToAndStatus(String to,Integer status);
 }

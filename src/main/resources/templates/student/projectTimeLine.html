@@ -1,15 +1,13 @@
 <!DOCTYPE html >
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->
-<!--[if IE 8]>
-<html class="ie8 no-js" lang="en"><![endif]-->
-<!--[if IE 9]>
-<html class="ie9 no-js" lang="en"><![endif]-->
+<!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9 no-js" lang="en"><![endif]-->
 <!--[if !IE]><!-->
 <html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
 <!--<![endif]-->
 <!-- start: HEAD -->
 <head>
-    <title>静态模板</title>
+    <title>Clip-One - Responsive Admin Template</title>
     <!-- start: MAIN CSS -->
     <div th:replace="student/fragments::common_css">
         <link rel="stylesheet" href="../../static/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -63,8 +61,7 @@
             <ul class="nav navbar-right">
                 <!-- start: TO-DO DROPDOWN -->
                 <li class="dropdown">
-                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
-                       href="#">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
                         <i class="clip-list-5"></i>
                         <span class="badge"> 12</span>
                     </a>
@@ -78,8 +75,7 @@
                                     <li>
                                         <a class="todo-actions" href="javascript:void(0)">
                                             <i class="fa fa-square-o"></i>
-                                            <span class="desc"
-                                                  style="opacity: 1; text-decoration: none;">Staff Meeting</span>
+                                            <span class="desc" style="opacity: 1; text-decoration: none;">Staff Meeting</span>
                                             <span class="label label-danger" style="opacity: 1;"> today</span>
                                         </a>
                                     </li>
@@ -135,8 +131,7 @@
                                     <li>
                                         <a class="todo-actions" href="javascript:void(0)">
                                             <i class="fa fa-square-o"></i>
-                                            <span class="desc"
-                                                  style="opacity: 1; text-decoration: none;">Staff Meeting</span>
+                                            <span class="desc" style="opacity: 1; text-decoration: none;">Staff Meeting</span>
                                             <span class="label label-danger" style="opacity: 1;"> today</span>
                                         </a>
                                     </li>
@@ -167,8 +162,7 @@
                 <!-- end: TO-DO DROPDOWN-->
                 <!-- start: NOTIFICATION DROPDOWN -->
                 <li class="dropdown">
-                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
-                       href="#">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
                         <i class="clip-notification-2"></i>
                         <span class="badge"> 11</span>
                     </a>
@@ -283,8 +277,7 @@
                 <!-- end: NOTIFICATION DROPDOWN -->
                 <!-- start: MESSAGE DROPDOWN -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown"
-                       href="#">
+                    <a class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown" href="#">
                         <i class="clip-bubble-3"></i>
                         <span class="badge"> 9</span>
                     </a>
@@ -378,8 +371,7 @@
                 <!-- end: MESSAGE DROPDOWN -->
                 <!-- start: USER DROPDOWN -->
                 <li class="dropdown current-user">
-                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
-                       href="#">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
                         <img src="assets/images/avatar-1-small.jpg" class="circle-img" alt="">
                         <span class="username">Peter Clark</span>
                         <i class="clip-chevron-down"></i>
@@ -936,96 +928,89 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>标题
-                            <small>细微描述</small>
-                        </h1>
+                        <h1>标题 <small>细微描述</small></h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            <form action="" role="form" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-1">
-                        项目名称
-                    </label>
-                    <div class="col-sm-9">
-                        <input type="text" placeholder="" id="form-field-1" class="form-control"/>
-                    </div>
+
+            <div class="row"><div class="col-sm-2 col-sm-offset-10">
+                <button  data-placement="top" class="btn tooltips">
+                    <a href="projectDetail.html">返回</a>
+                </button>
+            </div></div>
+            <div class="timeline">
+                <div class="spine"></div>
+                <div class="date_separator">
+                    <span> 2018年5月</span>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-2">
-                        项目描述
-                    </label>
-                    <div class="col-sm-9">
-                        <textarea placeholder="项目大致描述" id="form-field-2" class="form-control"
-                                  style="margin: 0px 33.4px 0px 0px; height: 124px; width: 493px;"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-2">
-                        项目文档
-                    </label>
-                    <div class="col-sm-9">
-                        <div class="fileupload fileupload-new" data-provides="fileupload">
-                            <div class="input-group">
-                                <div class="form-control uneditable-input">
-                                    <i class="fa fa-file fileupload-exists"></i>
-                                    <span class="fileupload-preview"></span>
-                                </div>
-                                <div class="input-group-btn">
-                                    <div class="btn btn-light-grey btn-file">
-                                        <span class="fileupload-new"><i
-                                                class="fa fa-folder-open-o"></i> Select file</span>
-                                        <span class="fileupload-exists"><i
-                                                class="fa fa-folder-open-o"></i> Change</span>
-                                        <input type="file" class="file-input">
-                                    </div>
-                                    <a href="#" class="btn btn-light-grey fileupload-exists" data-dismiss="fileupload">
-                                        <i class="fa fa-times"></i> Remove
-                                    </a>
-                                </div>
+                <ul class="columns">
+                    <li>
+                        <div class="timeline_element bricky">
+                            <div class="timeline_title">
+                                <span class="timeline_label">solved by LZH {task.solver}</span><span class="timeline_date" th:text="@{task.endtime}">task.endtime</span>
+                            </div>
+                            <div class="content">
+                                <b> task.title</b>
+                                <p>task.description</p>
+                            </div>
+                            <div class="readmore">
+                                <a href="#" class="btn btn-warning">
+                                    Read More <i class="fa fa-arrow-circle-right"></i>
+                                </a>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        邀请成员
-                    </label>
-                    <div class="col-sm-9">
-                            <select multiple="multiple" name="teamers[]" id="select2"
-                                    class="form-control search-select select2-offscreen" tabindex="-1">
-                                <!-- 未加入项目的人员list -->
-                                <option value="${member.mid0 }">stunamelist[0]</option>
-                                <option value="${member.mid1 }">stunamelist[1]</option>
-                                <option value="${member.mid2 }">stunamelist[2]</option>
-                            </select>
-                            <br>
-                    </div>
+                    </li>
+                    <li>
+                        <div class="timeline_element purple">
+                            <div class="timeline_title">
+                                <span class="timeline_label">Event Title</span><span class="timeline_date">12 December 2014</span>
+                            </div>
+                            <div class="content">
+                                <b>Lorem Ipsum</b> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            </div>
+                            <div class="readmore">
+                                <a href="#" class="btn btn-dark-grey">
+                                    Read More <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline_element">
+                            <div class="timeline_title">
+                                <span class="timeline_label">Event Title</span><span class="timeline_date">16 December 2014</span>
+                            </div>
+                            <div class="content">
+                                <b>Lorem Ipsum</b> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            </div>
+                            <div class="readmore">
+                                <a href="#" class="btn btn-info">
+                                    Read More <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline_element teal">
+                            <div class="timeline_title">
+                                <span class="timeline_label">Event Title</span><span class="timeline_date">18 December 2014</span>
+                            </div>
+                            <div class="content">
+                                <b>Lorem Ipsum</b> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            </div>
+                            <div class="readmore">
+                                <a href="#" class="btn btn-dark-beige">
+                                    Read More <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        邀请导师
-                    </label>
-                    <div class="col-sm-9">
-                        <select  class="form-control">
-                            <option value="">&nbsp;</option>
-                            <option value="AL">teachernamelist[0]</option>
-                            <option value="AK">teachernamelist[1]</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group" style="margin-top: 50px">
-                    <div class="col-sm-2 col-sm-offset-9">
-                        <button  class="btn btn-blue next-step btn-block">
-                            <a href="projectList.html">提交</a>
-                        </button>
-                    </div>
-                </div>
-            </form>
             <!-- end: PAGE CONTENT-->
         </div>
     </div>
@@ -1035,7 +1020,7 @@
 <!-- start: FOOTER -->
 <div th:replace="student/fragments::footer" class="footer clearfix">
     <div class="footer-inner">
-        2018 &copy; 竞赛管理 by 李自豪 & 贾进进 @ SAO
+        2018 &copy; 竞赛管理 by 李自豪 & 贾进进 & SAO
     </div>
     <div class="footer-items">
         <span class="go-top"><i class="clip-chevron-up"></i></span>
@@ -1084,18 +1069,14 @@
     <script src="../../static/assets/plugins/ckeditor/adapters/jquery.js"></script>
     <script src="../../static/assets/js/form-elements.js"></script>
     <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script>
+        jQuery(document).ready(function() {
+            Main.init();
+        });
+    </script>
 
 </div>
-<script>
-    jQuery(document).ready(function () {
-        $('#select2').select2();
-        // Main.init();
-        // Index.init();
-        // FormElements.init();
-        // UIButtons.init();
-        // FormValidator.init();
-    });
-</script>
+
 </body>
 <!-- end: BODY -->
 </html>

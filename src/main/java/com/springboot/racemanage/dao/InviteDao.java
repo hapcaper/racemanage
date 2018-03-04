@@ -15,4 +15,11 @@ public interface InviteDao {
     int insertList(@Param("pojos") List<Invite> pojo);
 
     int update(@Param("pojo") Invite pojo);
+
+    Integer countByTo(@Param("to")String to);
+
+    Integer countByToAndStatus(@Param("to")String to,@Param("status")Integer status);
+
+
+
 }

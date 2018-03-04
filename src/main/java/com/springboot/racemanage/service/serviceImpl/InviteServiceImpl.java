@@ -28,4 +28,14 @@ public class InviteServiceImpl implements InviteService{
     public int update(Invite pojo){
         return inviteDao.update(pojo);
     }
+
+    @Override
+    public Integer countByTo(String to) {
+        return inviteDao.countByTo(to);
+    }
+
+    @Override
+    public Integer countByToAndStatus(String to, Integer status) {
+        return inviteDao.countByToAndStatus(to,status);
+    }
 }

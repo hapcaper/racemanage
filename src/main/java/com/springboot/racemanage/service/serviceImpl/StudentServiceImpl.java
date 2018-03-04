@@ -28,4 +28,10 @@ public class StudentServiceImpl implements StudentService{
     public int update(Student pojo){
         return studentDao.update(pojo);
     }
+
+    @Override
+    public Student findFirstByStuNumberAndStuPasswordAndStuStatus(String stunumber, String password, Integer status) {
+        Student student = studentDao.findFirstByStuNumberAndStuPasswordAndStuStatus(stunumber, password, status);
+        return student;
+    }
 }
