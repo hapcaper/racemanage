@@ -16,7 +16,8 @@ public interface MessageDao {
 
     int update(@Param("pojo") Message pojo);
 
-    Integer countByToAndStatus(@Param("to")String to,@Param("status")Integer status);
+    Integer countByToUuidAndStatus(@Param("toUuid")String toUuid,@Param("status")Integer status);
+
 
 
 }

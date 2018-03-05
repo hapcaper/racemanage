@@ -16,9 +16,11 @@ public interface InviteDao {
 
     int update(@Param("pojo") Invite pojo);
 
-    Integer countByTo(@Param("to")String to);
+    Integer countByToUuid(@Param("toUuid")String toUuid);
 
-    Integer countByToAndStatus(@Param("to")String to,@Param("status")Integer status);
+    Integer countByToUuidAndStatus(@Param("toUuid")String toUuid,@Param("status")Integer status);
+
+
 
 
 

@@ -13,25 +13,25 @@ public class Log {
     private String description;
     private String taskUuid;
     private Integer status;
-    private Date time;  //log的产生时间
+    private Date theTime;  //log的产生时间
     private String action;
 
-    @Override
-    public String toString() {
-        return "Log{" +
-                "id=" + id +
-                ", uuid='" + uuid + '\'' +
-                ", taskname='" + tasktitle + '\'' +
-                ", proUuid='" + proUuid + '\'' +
-                ", teamerUuid='" + teamerUuid + '\'' +
-                ", starttime=" + starttime +
-                ", endtime=" + endtime +
-                ", description='" + description + '\'' +
-                ", taskUuid='" + taskUuid + '\'' +
-                ", status=" + status +
-                ", time=" + time +
-                ", action='" + action + '\'' +
-                '}';
+
+
+    public String getTasktitle() {
+        return tasktitle;
+    }
+
+    public void setTasktitle(String tasktitle) {
+        this.tasktitle = tasktitle;
+    }
+
+    public Date getTheTime() {
+        return theTime;
+    }
+
+    public void setTheTime(Date theTime) {
+        this.theTime = theTime;
     }
 
     public Integer getId() {
@@ -112,14 +112,6 @@ public class Log {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public Date getTime() {
-        return time;
-    }
-
-    public void setTime(Date time) {
-        this.time = time;
     }
 
     public String getAction() {

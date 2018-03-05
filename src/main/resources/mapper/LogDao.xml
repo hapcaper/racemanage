@@ -13,7 +13,7 @@
         <result column="description" property="description"/>
         <result column="task_uuid" property="taskUuid"/>
         <result column="status" property="status"/>
-        <result column="time" property="time"/>
+        <result column="the_time" property="theTime"/>
         <result column="action" property="action"/>
     </resultMap>
 
@@ -29,7 +29,7 @@
         `description`,
         `task_uuid`,
         `status`,
-        `time`,
+        `the_time`,
         `action`
     </sql>
 
@@ -46,7 +46,7 @@
             `description`,
             `task_uuid`,
             `status`,
-            `time`,
+            `the_time`,
             `action`
         ) VALUES (
             #{pojo.id},
@@ -59,7 +59,7 @@
             #{pojo.description},
             #{pojo.taskUuid},
             #{pojo.status},
-            #{pojo.time},
+            #{pojo.theTime},
             #{pojo.action}
         )
     </insert>
@@ -78,7 +78,7 @@
             <if test="pojo.description!=null"> `description`,</if>
             <if test="pojo.taskUuid!=null"> `task_uuid`,</if>
             <if test="pojo.status!=null"> `status`,</if>
-            <if test="pojo.time!=null"> `time`,</if>
+            <if test="pojo.theTime!=null"> `the_time`,</if>
             <if test="pojo.action!=null"> `action`,</if>
         </trim>
         VALUES
@@ -93,7 +93,7 @@
             <if test="pojo.description!=null">#{pojo.description},</if>
             <if test="pojo.taskUuid!=null">#{pojo.taskUuid},</if>
             <if test="pojo.status!=null">#{pojo.status},</if>
-            <if test="pojo.time!=null">#{pojo.time},</if>
+            <if test="pojo.theTime!=null">#{pojo.theTime},</if>
             <if test="pojo.action!=null">#{pojo.action},</if>
         </trim>
     </insert>
@@ -115,7 +115,7 @@
             #{pojo.description},
             #{pojo.taskUuid},
             #{pojo.status},
-            #{pojo.time},
+            #{pojo.theTime},
             #{pojo.action}
             )
         </foreach>
@@ -135,7 +135,7 @@
             <if test="pojo.description != null"> `description` = #{pojo.description}, </if>
             <if test="pojo.taskUuid != null"> `task_uuid` = #{pojo.taskUuid}, </if>
             <if test="pojo.status != null"> `status` = #{pojo.status}, </if>
-            <if test="pojo.time != null"> `time` = #{pojo.time}, </if>
+            <if test="pojo.theTime != null"> `time` = #{pojo.theTime}, </if>
             <if test="pojo.action != null"> `action` = #{pojo.action} </if>
         </set>
         WHERE id = #{pojo.id}

@@ -14,4 +14,6 @@ public interface TeamerService {
     int update(Teamer pojo);
 
     Integer countByStuUuid(String stuUuid);
+
+    List<String> findUuidByStuUuid(String stuUuid);
 }

@@ -9,10 +9,10 @@
         <result column="description" property="description"/>
         <result column="starttime" property="starttime"/>
         <result column="endtime" property="endtime"/>
-        <result column="from" property="from"/>
-        <result column="to" property="to"/>
+        <result column="from_uuid" property="fromUuid"/>
+        <result column="to_uuid" property="toUuid"/>
         <result column="pro_uuid" property="proUuid"/>
-        <result column="file" property="file"/>
+        <result column="file1" property="file1"/>
         <result column="status" property="status"/>
         <result column="progress" property="progress"/>
         <result column="solver" property="solver"/>
@@ -26,10 +26,10 @@
         `description`,
         `starttime`,
         `endtime`,
-        `from`,
-        `to`,
+        `from_uuid`,
+        `to_uuid`,
         `pro_uuid`,
-        `file`,
+        `file1`,
         `status`,
         `progress`,
         `solver`
@@ -38,33 +38,33 @@
     <!--auto generated Code-->
     <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
         INSERT INTO task (
-            `id`,
-            `uuid`,
-            `title`,
-            `description`,
-            `starttime`,
-            `endtime`,
-            `from`,
-            `to`,
-            `pro_uuid`,
-            `file`,
-            `status`,
-            `progress`,
-            `solver`
+        `id`,
+        `uuid`,
+        `title`,
+        `description`,
+        `starttime`,
+        `endtime`,
+        `from_uuid`,
+        `to_uuid`,
+        `pro_uuid`,
+        `file1`,
+        `status`,
+        `progress`,
+        `solver`
         ) VALUES (
-            #{pojo.id},
-            #{pojo.uuid},
-            #{pojo.title},
-            #{pojo.description},
-            #{pojo.starttime},
-            #{pojo.endtime},
-            #{pojo.from},
-            #{pojo.to},
-            #{pojo.proUuid},
-            #{pojo.file},
-            #{pojo.status},
-            #{pojo.progress},
-            #{pojo.solver}
+        #{pojo.id},
+        #{pojo.uuid},
+        #{pojo.title},
+        #{pojo.description},
+        #{pojo.starttime},
+        #{pojo.endtime},
+        #{pojo.fromUuid},
+        #{pojo.toUuid},
+        #{pojo.proUuid},
+        #{pojo.file1},
+        #{pojo.status},
+        #{pojo.progress},
+        #{pojo.solver}
         )
     </insert>
 
@@ -78,10 +78,10 @@
             <if test="pojo.description!=null"> `description`,</if>
             <if test="pojo.starttime!=null"> `starttime`,</if>
             <if test="pojo.endtime!=null"> `endtime`,</if>
-            <if test="pojo.from!=null"> `from`,</if>
-            <if test="pojo.to!=null"> `to`,</if>
+            <if test="pojo.fromUuid!=null"> `from_uuid`,</if>
+            <if test="pojo.toUuid!=null"> `to_uuid`,</if>
             <if test="pojo.proUuid!=null"> `pro_uuid`,</if>
-            <if test="pojo.file!=null"> `file`,</if>
+            <if test="pojo.file1!=null"> `file1`,</if>
             <if test="pojo.status!=null"> `status`,</if>
             <if test="pojo.progress!=null"> `progress`,</if>
             <if test="pojo.solver!=null"> `solver`,</if>
@@ -94,10 +94,10 @@
             <if test="pojo.description!=null">#{pojo.description},</if>
             <if test="pojo.starttime!=null">#{pojo.starttime},</if>
             <if test="pojo.endtime!=null">#{pojo.endtime},</if>
-            <if test="pojo.from!=null">#{pojo.from},</if>
-            <if test="pojo.to!=null">#{pojo.to},</if>
+            <if test="pojo.fromUuid!=null">#{pojo.fromUuid},</if>
+            <if test="pojo.toUuid!=null">#{pojo.toUuid},</if>
             <if test="pojo.proUuid!=null">#{pojo.proUuid},</if>
-            <if test="pojo.file!=null">#{pojo.file},</if>
+            <if test="pojo.file1!=null">#{pojo.file1},</if>
             <if test="pojo.status!=null">#{pojo.status},</if>
             <if test="pojo.progress!=null">#{pojo.progress},</if>
             <if test="pojo.solver!=null">#{pojo.solver},</if>
@@ -117,10 +117,10 @@
             #{pojo.description},
             #{pojo.starttime},
             #{pojo.endtime},
-            #{pojo.from},
-            #{pojo.to},
+            #{pojo.fromUuid},
+            #{pojo.toUuid},
             #{pojo.proUuid},
-            #{pojo.file},
+            #{pojo.file1},
             #{pojo.status},
             #{pojo.progress},
             #{pojo.solver}
@@ -138,15 +138,33 @@
             <if test="pojo.description != null"> `description` = #{pojo.description}, </if>
             <if test="pojo.starttime != null"> `starttime` = #{pojo.starttime}, </if>
             <if test="pojo.endtime != null"> `endtime` = #{pojo.endtime}, </if>
-            <if test="pojo.from != null"> `from` = #{pojo.from}, </if>
-            <if test="pojo.to != null"> `to` = #{pojo.to}, </if>
+            <if test="pojo.fromUuid != null"> `from_uuid` = #{pojo.fromUuid}, </if>
+            <if test="pojo.toUuid != null"> `to_uuid` = #{pojo.toUuid}, </if>
             <if test="pojo.proUuid != null"> `pro_uuid` = #{pojo.proUuid}, </if>
-            <if test="pojo.file != null"> `file` = #{pojo.file}, </if>
+            <if test="pojo.file1 != null"> `file1` = #{pojo.file1}, </if>
             <if test="pojo.status != null"> `status` = #{pojo.status}, </if>
             <if test="pojo.progress != null"> `progress` = #{pojo.progress}, </if>
             <if test="pojo.solver != null"> `solver` = #{pojo.solver} </if>
         </set>
         WHERE id = #{pojo.id}
     </update>
+
+<!--auto generated by codehelper on 2018-03-05 22:29:42-->
+    <select id="countByStatusAndToUuid" resultType="java.lang.Integer">
+        select count(1)
+        from task
+        where `status`=#{status} and `to_uuid`=#{toUuid}
+    </select>
+
+<!--auto generated by codehelper on 2018-03-05 22:30:30-->
+    <select id="countByStatusAndToUuidIn" resultType="java.lang.Integer">
+        select count(1)
+        from task
+        where `status`=#{status} and `to_uuid` in
+        <foreach item="item" index="index" collection="toUuidList"
+                 open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
 </mapper>
 

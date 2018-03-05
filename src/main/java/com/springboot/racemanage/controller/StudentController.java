@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 @Controller
 @RequestMapping("/student")
@@ -69,13 +70,14 @@ public class StudentController {
     public String profile(Model model , HttpSession httpSession) {
         Student student = (Student) httpSession.getAttribute("student");
         Integer proNum = teamerService.countByStuUuid(student.getStuUuid());
-        Integer inviteNum = inviteService.countByToAndStatus(student.getStuUuid(),1);
-        Integer msgNum = messageService.countByToAndStatus(student.getStuUuid(), 1);
+        Integer inviteNum = inviteService.countByToUuidAndStatus(student.getStuUuid(),1);
+        Integer msgNum = messageService.countByToUuidAndStatus(student.getStuUuid(), 1);
         model.addAttribute("inviteNum", inviteNum).addAttribute("msgNum", msgNum);
         model.addAttribute("proNum",proNum);
         model.addAttribute("student", student);
         return "student/profile";
     }
+
 
     @RequestMapping(value = "/updateProfile.do",method = RequestMethod.POST)
     public String updateProfile(Model model , HttpSession httpSession,
@@ -110,8 +112,8 @@ public class StudentController {
             updateMsg = "更新失败";
         }
         Integer proNum = teamerService.countByStuUuid(student.getStuUuid());
-        Integer inviteNum = inviteService.countByToAndStatus(student.getStuUuid(),1);
-        Integer msgNum = messageService.countByToAndStatus(student.getStuUuid(), 1);
+        Integer inviteNum = inviteService.countByToUuidAndStatus(student.getStuUuid(),1);
+        Integer msgNum = messageService.countByToUuidAndStatus(student.getStuUuid(), 1);
         model.addAttribute("inviteNum", inviteNum).addAttribute("msgNum", msgNum);
         model.addAttribute("proNum",proNum);
         model.addAttribute("student", student);

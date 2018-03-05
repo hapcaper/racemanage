@@ -12,7 +12,7 @@
         <result column="endtime" property="endtime"/>
         <result column="status" property="status"/>
         <result column="term" property="term"/>
-        <result column="file" property="file"/>
+        <result column="file1" property="file1"/>
     </resultMap>
 
     <!--auto generated Code-->
@@ -26,7 +26,7 @@
         `endtime`,
         `status`,
         `term`,
-        `file`
+        `file1`
     </sql>
 
     <!--auto generated Code-->
@@ -41,7 +41,7 @@
             `endtime`,
             `status`,
             `term`,
-            `file`
+            `file1`
         ) VALUES (
             #{pojo.id},
             #{pojo.uuid},
@@ -52,7 +52,7 @@
             #{pojo.endtime},
             #{pojo.status},
             #{pojo.term},
-            #{pojo.file}
+            #{pojo.file1}
         )
     </insert>
 
@@ -69,7 +69,7 @@
             <if test="pojo.endtime!=null"> `endtime`,</if>
             <if test="pojo.status!=null"> `status`,</if>
             <if test="pojo.term!=null"> `term`,</if>
-            <if test="pojo.file!=null"> `file`,</if>
+            <if test="pojo.file1!=null"> `file1`,</if>
         </trim>
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -82,7 +82,7 @@
             <if test="pojo.endtime!=null">#{pojo.endtime},</if>
             <if test="pojo.status!=null">#{pojo.status},</if>
             <if test="pojo.term!=null">#{pojo.term},</if>
-            <if test="pojo.file!=null">#{pojo.file},</if>
+            <if test="pojo.file1!=null">#{pojo.file1},</if>
         </trim>
     </insert>
 
@@ -102,7 +102,7 @@
             #{pojo.endtime},
             #{pojo.status},
             #{pojo.term},
-            #{pojo.file}
+            #{pojo.file1}
             )
         </foreach>
     </insert>
@@ -120,7 +120,7 @@
             <if test="pojo.endtime != null"> `endtime` = #{pojo.endtime}, </if>
             <if test="pojo.status != null"> `status` = #{pojo.status}, </if>
             <if test="pojo.term != null"> `term` = #{pojo.term}, </if>
-            <if test="pojo.file != null"> `file` = #{pojo.file} </if>
+            <if test="pojo.file1 != null"> `file1` = #{pojo.file1} </if>
         </set>
         WHERE id = #{pojo.id}
     </update>

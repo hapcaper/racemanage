@@ -25,7 +25,4 @@ public class ExtendServiceImpl implements ExtendService{
         return extendDao.insertList(pojos);
     }
 
-    public int update(Extend pojo){
-        return extendDao.update(pojo);
-    }
 }

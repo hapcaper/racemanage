@@ -13,5 +13,6 @@ public interface MessageService {
 
     int update(Message pojo);
 
-    Integer countByToAndStatus(String to,Integer status);
+    Integer countByToUuidAndStatus(String toUuid,Integer status);
+
 }

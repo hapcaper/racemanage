@@ -13,7 +13,7 @@ public interface InviteService {
 
     int update( Invite pojo);
 
-    Integer countByTo(String to);
+    Integer countByToUuid(String toUuid);
 
-    Integer countByToAndStatus(String to,Integer status);
+    Integer countByToUuidAndStatus(String toUuid,Integer status);
 }

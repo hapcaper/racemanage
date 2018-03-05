@@ -17,6 +17,10 @@ public interface TeamerDao {
     int update(@Param("pojo") Teamer pojo);
 
     Integer countByStuUuid(@Param("stuUuid")String stuUuid);
+
+    List<String> findUuidByStuUuid(@Param("stuUuid")String stuUuid);
+
+
     
 
 

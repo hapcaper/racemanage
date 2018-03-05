@@ -7,11 +7,13 @@ public class Message {
     private Integer id;
     private String uuid;
     private String content;
-    private String from;
-    private String to;
+    private String fromUuid;
+    private String toUuid;
     private Date sendtime;
     private String title;
     private Integer status;
+
+
 
     @Override
     public String toString() {
@@ -19,12 +21,28 @@ public class Message {
                 "id=" + id +
                 ", uuid='" + uuid + '\'' +
                 ", content='" + content + '\'' +
-                ", from='" + from + '\'' +
-                ", to='" + to + '\'' +
+                ", fromUuid='" + fromUuid + '\'' +
+                ", toUuid='" + toUuid + '\'' +
                 ", sendtime=" + sendtime +
                 ", title='" + title + '\'' +
                 ", status=" + status +
                 '}';
+    }
+
+    public String getFromUuid() {
+        return fromUuid;
+    }
+
+    public void setFromUuid(String fromUuid) {
+        this.fromUuid = fromUuid;
+    }
+
+    public String getToUuid() {
+        return toUuid;
+    }
+
+    public void setToUuid(String toUuid) {
+        this.toUuid = toUuid;
     }
 
     public Integer getId() {
@@ -49,22 +67,6 @@ public class Message {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public void setFrom(String from) {
-        this.from = from;
-    }
-
-    public String getTo() {
-        return to;
-    }
-
-    public void setTo(String to) {
-        this.to = to;
     }
 
     public Date getSendtime() {

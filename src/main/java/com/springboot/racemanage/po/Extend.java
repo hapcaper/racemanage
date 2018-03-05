@@ -4,8 +4,8 @@ public class Extend {
 
     private Integer id;
     private String uuid;
-    private String key;
-    private String value;
+    private String theKey;
+    private String theValue;
     private String forwho;
     private Integer status;
 
@@ -14,11 +14,27 @@ public class Extend {
         return "Extend{" +
                 "id=" + id +
                 ", uuid='" + uuid + '\'' +
-                ", key='" + key + '\'' +
-                ", value='" + value + '\'' +
+                ", theKey='" + theKey + '\'' +
+                ", theValue='" + theValue + '\'' +
                 ", forwho='" + forwho + '\'' +
                 ", status=" + status +
                 '}';
+    }
+
+    public String getTheKey() {
+        return theKey;
+    }
+
+    public void setTheKey(String theKey) {
+        this.theKey = theKey;
+    }
+
+    public String getTheValue() {
+        return theValue;
+    }
+
+    public void setTheValue(String theValue) {
+        this.theValue = theValue;
     }
 
     public Integer getId() {
@@ -35,22 +51,6 @@ public class Extend {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
     }
 
     public String getForwho() {

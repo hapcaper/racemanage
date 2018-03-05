@@ -12,7 +12,7 @@ public class Raceinfo {
     private Date endtime;
     private Integer status;
     private Integer term;
-    private String file;
+    private String file1;
 
     @Override
     public String toString() {
@@ -26,8 +26,16 @@ public class Raceinfo {
                 ", endtime=" + endtime +
                 ", status=" + status +
                 ", term=" + term +
-                ", file='" + file + '\'' +
+                ", file1='" + file1 + '\'' +
                 '}';
+    }
+
+    public String getFile1() {
+        return file1;
+    }
+
+    public void setFile1(String file1) {
+        this.file1 = file1;
     }
 
     public Integer getId() {
@@ -102,11 +110,4 @@ public class Raceinfo {
         this.term = term;
     }
 
-    public String getFile() {
-        return file;
-    }
-
-    public void setFile(String file) {
-        this.file = file;
-    }
 }

@@ -30,12 +30,14 @@ public class InviteServiceImpl implements InviteService{
     }
 
     @Override
-    public Integer countByTo(String to) {
-        return inviteDao.countByTo(to);
+    public Integer countByToUuid(String toUuid) {
+        return inviteDao.countByToUuid(toUuid);
     }
 
     @Override
-    public Integer countByToAndStatus(String to, Integer status) {
-        return inviteDao.countByToAndStatus(to,status);
+    public Integer countByToUuidAndStatus(String toUuid, Integer status) {
+        return inviteDao.countByToUuidAndStatus(toUuid,status);
     }
+
+
 }

@@ -33,4 +33,9 @@ public class TeamerServiceImpl implements TeamerService{
     public Integer countByStuUuid(String stuUuid) {
         return teamerDao.countByStuUuid(stuUuid);
     }
+
+    @Override
+    public List<String> findUuidByStuUuid(String stuUuid) {
+        return teamerDao.findUuidByStuUuid(stuUuid);
+    }
 }

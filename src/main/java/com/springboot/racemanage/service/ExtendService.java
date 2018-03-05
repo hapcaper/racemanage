@@ -11,5 +11,4 @@ public interface ExtendService {
 
     int insertList(List<Extend> pojo);
 
-    int update(Extend pojo);
 }

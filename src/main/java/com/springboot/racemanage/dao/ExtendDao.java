@@ -14,5 +14,5 @@ public interface ExtendDao {
 
     int insertList(@Param("pojos") List<Extend> pojo);
 
-    int update(@Param("pojo") Extend pojo);
+
 }

@@ -9,13 +9,56 @@ public class Task {
     private String description;
     private Date starttime;
     private Date endtime;
-    private String from; // 组长或教师的uuid
-    private String to; //teamer 的uuid
+    private String fromUuid; // 组长或教师的uuid
+    private String toUuid; //teamer 的uuid
     private String proUuid;
-    private String file;
+    private String file1;
     private Integer status;
     private Integer progress;
-    private String solver;
+    private String solver;//解决者的名字
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", uuid='" + uuid + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", starttime=" + starttime +
+                ", endtime=" + endtime +
+                ", fromUuid='" + fromUuid + '\'' +
+                ", toUuid='" + toUuid + '\'' +
+                ", proUuid='" + proUuid + '\'' +
+                ", file1='" + file1 + '\'' +
+                ", status=" + status +
+                ", progress=" + progress +
+                ", solver='" + solver + '\'' +
+                '}';
+    }
+
+    public String getFile1() {
+        return file1;
+    }
+
+    public void setFile1(String file1) {
+        this.file1 = file1;
+    }
+
+    public String getFromUuid() {
+        return fromUuid;
+    }
+
+    public void setFromUuid(String fromUuid) {
+        this.fromUuid = fromUuid;
+    }
+
+    public String getToUuid() {
+        return toUuid;
+    }
+
+    public void setToUuid(String toUuid) {
+        this.toUuid = toUuid;
+    }
 
     public String getProUuid() {
         return proUuid;
@@ -33,24 +76,6 @@ public class Task {
         this.solver = solver;
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", uuid='" + uuid + '\'' +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", starttime=" + starttime +
-                ", endtime=" + endtime +
-                ", from='" + from + '\'' +
-                ", to='" + to + '\'' +
-                ", proUuid='" + proUuid + '\'' +
-                ", file='" + file + '\'' +
-                ", status=" + status +
-                ", progress=" + progress +
-                ", solver='" + solver + '\'' +
-                '}';
-    }
 
     public Integer getId() {
         return id;
@@ -100,21 +125,6 @@ public class Task {
         this.endtime = endtime;
     }
 
-    public String getFrom() {
-        return from;
-    }
-
-    public void setFrom(String from) {
-        this.from = from;
-    }
-
-    public String getTo() {
-        return to;
-    }
-
-    public void setTo(String to) {
-        this.to = to;
-    }
 
     public String getProuuid() {
         return proUuid;
@@ -124,13 +134,6 @@ public class Task {
         this.proUuid = proUuid;
     }
 
-    public String getFile() {
-        return file;
-    }
-
-    public void setFile(String file) {
-        this.file = file;
-    }
 
     public Integer getStatus() {
         return status;

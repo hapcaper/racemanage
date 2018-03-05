@@ -30,7 +30,8 @@ public class MessageServiceImpl implements MessageService{
     }
 
     @Override
-    public Integer countByToAndStatus(String to, Integer status) {
-        return messageDao.countByToAndStatus(to,status);
+    public Integer countByToUuidAndStatus(String toUuid, Integer status) {
+        return messageDao.countByToUuidAndStatus(toUuid,status);
     }
+
 }

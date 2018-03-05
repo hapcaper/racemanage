@@ -5,8 +5,8 @@ import java.util.Date;
 public class Invite {
     private Integer id;
     private String uuid;
-    private String from;
-    private String to;
+    private String fromUuid;
+    private String toUuid;
     private Date sendtime;
     private Integer status;
     private String proUuid;
@@ -20,8 +20,8 @@ public class Invite {
         return "Invite{" +
                 "id=" + id +
                 ", uuid='" + uuid + '\'' +
-                ", from='" + from + '\'' +
-                ", to='" + to + '\'' +
+                ", fromUuid='" + fromUuid + '\'' +
+                ", toUuid='" + toUuid + '\'' +
                 ", sendtime=" + sendtime +
                 ", status=" + status +
                 ", proUuid='" + proUuid + '\'' +
@@ -30,6 +30,22 @@ public class Invite {
                 ", duty='" + duty + '\'' +
                 ", dutydescription='" + dutydescription + '\'' +
                 '}';
+    }
+
+    public String getFromUuid() {
+        return fromUuid;
+    }
+
+    public void setFromUuid(String fromUuid) {
+        this.fromUuid = fromUuid;
+    }
+
+    public String getToUuid() {
+        return toUuid;
+    }
+
+    public void setToUuid(String toUuid) {
+        this.toUuid = toUuid;
     }
 
     public Integer getId() {
@@ -46,22 +62,6 @@ public class Invite {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
-    }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public void setFrom(String from) {
-        this.from = from;
-    }
-
-    public String getTo() {
-        return to;
-    }
-
-    public void setTo(String to) {
-        this.to = to;
     }
 
     public Date getSendtime() {

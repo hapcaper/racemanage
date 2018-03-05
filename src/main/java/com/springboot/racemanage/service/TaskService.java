@@ -1,10 +1,9 @@
 package com.springboot.racemanage.service;
 
 import com.springboot.racemanage.po.Task;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TaskService {
     int insert(Task pojo);
@@ -14,4 +13,9 @@ public interface TaskService {
     int insertList(List<Task> pojo);
 
     int update(Task pojo);
+
+
+    Integer countByStatusAndToUuid(Integer status,String toUuid);
+
+    Integer countByStatusAndToUuidIn(Integer status,List<String> toUuidList);
 }
