@@ -12,4 +12,8 @@ public interface ProjectService {
     int insertList(List<Project> pojo);
 
     int update(Project pojo);
+
+    List<Project> findByUuid(String uuid);
+
+    Project findFirstByUuid(String uuid);
 }

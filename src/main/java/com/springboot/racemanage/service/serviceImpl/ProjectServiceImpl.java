@@ -28,4 +28,14 @@ public class ProjectServiceImpl implements ProjectService{
     public int update(Project pojo){
         return projectDao.update(pojo);
     }
+
+    @Override
+    public List<Project> findByUuid(String uuid) {
+        return projectDao.findByUuid(uuid);
+    }
+
+    @Override
+    public Project findFirstByUuid(String uuid) {
+        return projectDao.findFirstByUuid(uuid);
+    }
 }

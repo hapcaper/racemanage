@@ -34,4 +34,14 @@ public class StudentServiceImpl implements StudentService{
         Student student = studentDao.findFirstByStuNumberAndStuPasswordAndStuStatus(stunumber, password, status);
         return student;
     }
+
+    @Override
+    public List<Student> findStuUuidAndStuName() {
+        return studentDao.findStuUuidAndStuName();
+    }
+
+    @Override
+    public List<Student> findStuUuidAndStuNameByStuUuidNot(String notStuUuid) {
+        return studentDao.findStuUuidAndStuNameByStuUuidNot(notStuUuid);
+    }
 }

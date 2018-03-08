@@ -15,4 +15,10 @@ public interface ProjectDao {
     int insertList(@Param("pojos") List<Project> pojo);
 
     int update(@Param("pojo") Project pojo);
+
+    List<Project> findByUuid(@Param("uuid")String uuid);
+
+    Project findFirstByUuid(@Param("uuid")String uuid);
+
+
 }

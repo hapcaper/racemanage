@@ -39,5 +39,10 @@ public class InviteServiceImpl implements InviteService{
         return inviteDao.countByToUuidAndStatus(toUuid,status);
     }
 
+    @Override
+    public List<Invite> findByToUuidAndStatus(String toUuid, Integer status) {
+        return inviteDao.findByToUuidAndStatus(toUuid,status);
+    }
+
 
 }

@@ -19,4 +19,18 @@ public interface StudentDao {
 
     Student findFirstByStuNumberAndStuPasswordAndStuStatus(@Param("stuNumber")String stuNumber,@Param("stuPassword")String stuPassword,@Param("stuStatus")Integer stuStatus);
 
+    List<Student> findStuUuidAndStuName();
+
+    List<Student> findStuUuidAndStuNameByStuUuidNot(@Param("notStuUuid")String notStuUuid);
+
+    List<Integer> findidByStuUuidNotIn(@Param("stuUuidList")List<String> stuUuidList);
+
+
+
+
+
+
+
+
+
 }

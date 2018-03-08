@@ -911,8 +911,6 @@
             <!-- start: PAGE HEADER -->
             <div class="row">
                 <div class="col-sm-12">
-                    <!-- start: STYLE SELECTOR BOX -->
-                    <!-- end: STYLE SELECTOR BOX -->
                     <!-- start: PAGE TITLE & BREADCRUMB -->
                     <ol class="breadcrumb">
                         <li>
@@ -936,8 +934,8 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>标题
-                            <small>细微描述</small>
+                        <h1>添加项目
+                            <small>项目组长：<small th:text="${session.student.stuName}">?</small></small>
                         </h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
@@ -945,13 +943,13 @@
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            <form action="" role="form" class="form-horizontal">
+            <form th:action="@{/student/addProject.do}" action="#" role="form" class="form-horizontal" enctype="multipart/form-data">
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-1">
                         项目名称
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" placeholder="" id="form-field-1" class="form-control"/>
+                        <input name="proName" type="text" placeholder="" id="form-field-1" class="form-control"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -959,7 +957,7 @@
                         项目描述
                     </label>
                     <div class="col-sm-9">
-                        <textarea placeholder="项目大致描述" id="form-field-2" class="form-control"
+                        <textarea name="proDescription" placeholder="项目大致描述" id="form-field-2" class="form-control"
                                   style="margin: 0px 33.4px 0px 0px; height: 124px; width: 493px;"></textarea>
                     </div>
                 </div>
@@ -980,7 +978,7 @@
                                                 class="fa fa-folder-open-o"></i> Select file</span>
                                         <span class="fileupload-exists"><i
                                                 class="fa fa-folder-open-o"></i> Change</span>
-                                        <input type="file" class="file-input">
+                                        <input name="document" type="file" class="file-input">
                                     </div>
                                     <a href="#" class="btn btn-light-grey fileupload-exists" data-dismiss="fileupload">
                                         <i class="fa fa-times"></i> Remove
@@ -995,26 +993,26 @@
                         邀请成员
                     </label>
                     <div class="col-sm-9">
-                            <select multiple="multiple" name="teamers[]" id="select2"
-                                    class="form-control search-select select2-offscreen" tabindex="-1">
+                            <select multiple="multiple" name="stuUuid[]" id="select2"
+                                    class="form-control search-select select2-offscreen" >
                                 <!-- 未加入项目的人员list -->
-                                <option value="${member.mid0 }">stunamelist[0]</option>
-                                <option value="${member.mid1 }">stunamelist[1]</option>
-                                <option value="${member.mid2 }">stunamelist[2]</option>
+                                <div th:each="stu:${stuList}">
+                                    <option th:text="${stu.stuName}" th:value="${stu.stuUuid}">?</option>
+                                </div>
                             </select>
                             <br>
                     </div>
-
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">
                         邀请导师
                     </label>
                     <div class="col-sm-9">
-                        <select  class="form-control">
+                        <select  class="form-control" name="teUuid">
                             <option value="">&nbsp;</option>
-                            <option value="AL">teachernamelist[0]</option>
-                            <option value="AK">teachernamelist[1]</option>
+                            <div th:each="te:${teList}">
+                                <option th:value="${te.tUuid}" value="AL" th:text="${te.tName}">teachernamelist[0]</option>
+                            </div>
                         </select>
                     </div>
                 </div>

@@ -940,13 +940,12 @@
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            <div class="alert alert-info">
-                <i class="fa clip-folder-2"></i>
-                <strong><a class="no-underline" href="projectDetail.html">projectlist[0].proname</a></strong> projectlist[0].description
-            </div>
-            <div class="alert alert-info">
-                <i class="fa clip-folder-2"></i>
-                <strong>projectlist[1].proname</strong> projectlist[1].description
+            <div th:each="project:${projectList}">
+                <div class="alert alert-info">
+                    <i class="fa clip-folder-2"></i>
+                    <strong><a class="no-underline" href="projectDetail.html" th:text="${project.name}">projectlist[0].proname</a></strong>
+                    <p th:text="${project.description}">projectlist[0].description</p>
+                </div>
             </div>
             <!-- end: PAGE CONTENT-->
         </div>

@@ -20,6 +20,8 @@ public interface InviteDao {
 
     Integer countByToUuidAndStatus(@Param("toUuid")String toUuid,@Param("status")Integer status);
 
+    List<Invite> findByToUuidAndStatus(@Param("toUuid")String toUuid,@Param("status")Integer status);
+
 
 
 

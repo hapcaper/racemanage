@@ -14,4 +14,5 @@ public interface TeacherService {
     int insertList(List<Teacher> pojo);
 
     int update( Teacher pojo);
+    List<Teacher> findTNameAndTUuid();
 }

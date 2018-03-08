@@ -18,4 +18,6 @@ public interface TaskService {
     Integer countByStatusAndToUuid(Integer status,String toUuid);
 
     Integer countByStatusAndToUuidIn(Integer status,List<String> toUuidList);
+
+    List<Task> findByStatusAndToUuid(Integer status,String toUuid);
 }

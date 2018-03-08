@@ -16,4 +16,8 @@ public interface TeamerService {
     Integer countByStuUuid(String stuUuid);
 
     List<String> findUuidByStuUuid(String stuUuid);
+
+    List<Teamer> findByUuid(String uuid);
+
+    List<Teamer> findByStuUuid(String stuUuid);
 }

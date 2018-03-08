@@ -28,4 +28,9 @@ public class TeacherServiceImpl implements TeacherService{
     public int update(Teacher pojo){
         return teacherDao.update(pojo);
     }
+
+    @Override
+    public List<Teacher> findTNameAndTUuid() {
+        return teacherDao.findTNameAndTUuid();
+    }
 }

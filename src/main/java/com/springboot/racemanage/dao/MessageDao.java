@@ -18,6 +18,10 @@ public interface MessageDao {
 
     Integer countByToUuidAndStatus(@Param("toUuid")String toUuid,@Param("status")Integer status);
 
+    List<Message> findByToUuidAndStatus(@Param("toUuid")String toUuid,@Param("status")Integer status);
+
+
+
 
 
 }

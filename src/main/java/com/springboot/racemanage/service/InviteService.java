@@ -16,4 +16,6 @@ public interface InviteService {
     Integer countByToUuid(String toUuid);
 
     Integer countByToUuidAndStatus(String toUuid,Integer status);
+
+    List<Invite> findByToUuidAndStatus(String toUuid,Integer status);
 }

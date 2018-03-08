@@ -15,4 +15,6 @@ public interface MessageService {
 
     Integer countByToUuidAndStatus(String toUuid,Integer status);
 
+    List<Message> findByToUuidAndStatus(String toUuid,Integer status);
+
 }

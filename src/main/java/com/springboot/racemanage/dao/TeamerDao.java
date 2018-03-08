@@ -20,6 +20,14 @@ public interface TeamerDao {
 
     List<String> findUuidByStuUuid(@Param("stuUuid")String stuUuid);
 
+    List<Teamer> findByUuid(@Param("uuid")String uuid);
+
+    List<Teamer> findByStuUuid(@Param("stuUuid")String stuUuid);
+
+
+
+
+
 
     
 

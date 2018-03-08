@@ -40,4 +40,9 @@ public class TaskServiceImpl implements TaskService{
     public Integer countByStatusAndToUuidIn(Integer status, List<String> toUuidList) {
         return taskDao.countByStatusAndToUuidIn(status,toUuidList);
     }
+
+    @Override
+    public List<Task> findByStatusAndToUuid(Integer status, String toUuid) {
+        return findByStatusAndToUuid(status,toUuid);
+    }
 }

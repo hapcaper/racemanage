@@ -38,4 +38,14 @@ public class TeamerServiceImpl implements TeamerService{
     public List<String> findUuidByStuUuid(String stuUuid) {
         return teamerDao.findUuidByStuUuid(stuUuid);
     }
+
+    @Override
+    public List<Teamer> findByUuid(String uuid) {
+        return teamerDao.findByUuid(uuid);
+    }
+
+    @Override
+    public List<Teamer> findByStuUuid(String stuUuid) {
+        return teamerDao.findByStuUuid(stuUuid);
+    }
 }

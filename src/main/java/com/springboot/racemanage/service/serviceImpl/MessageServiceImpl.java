@@ -34,4 +34,9 @@ public class MessageServiceImpl implements MessageService{
         return messageDao.countByToUuidAndStatus(toUuid,status);
     }
 
+    @Override
+    public List<Message> findByToUuidAndStatus(String toUuid, Integer status) {
+        return messageDao.findByToUuidAndStatus(toUuid,status);
+    }
+
 }

@@ -96,14 +96,43 @@
         // });
 
     </script>
+    <!--<input type="hidden" th:value="${student.stuUuid}" id="stuUuid"/>-->
     <script>
         jQuery(document).ready(function() {
             Main.init();
+            let stuUuid = [[${session.student.stuUuid}]];
+            initNum(stuUuid);
         });
+
+
+        let initNum = function (stuUuid) {
+            $.get('http://127.0.0.1:8080/restful/student/newTaskNum?stuUUID=' + stuUuid, function (data) {
+                newTaskNum(data)
+            });
+            $.get('http://127.0.0.1:8080/restful/student/newMsgNum?stuUUID=' + stuUuid, function (data) {
+                newMsgNum(data)
+            });
+            $.get('http://127.0.0.1:8080/restful/student/newInvititionNum?stuUUID=' + stuUuid, function (data) {
+                newInviteNum(data)
+            });
+        };
+        let newMsgNum = function (data) {
+            $("#newMsgNum").text(data);
+            $("#newMsgNumber").text(data);
+        };
+        let newInviteNum = function (data) {
+            $("#newInviteNum").text(data);
+            $("#newInviteNumber").text(data);
+        };
+        let newTaskNum = function (data) {
+            $("#newTaskNum").text(data);
+            $("#newTaskNumber").text(data);
+        };
+
     </script>
-    <script>
-        var level1menuId = '${menuSelected1}';
-        var level2menuId = '${menuSelected2}';
+    <script th:inline="javascript">
+        var level1menuId = [[${menuSelected1}]];
+        var level2menuId = [[${menuSelected2}]];
         $(".open").each(function() {
             $(this).removeClass('active open');
         });
@@ -141,11 +170,11 @@
                 <li class="dropdown">
                     <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
                         <i class="clip-list-5"></i>
-                        <span class="badge"> 12</span>
+                        <span class="badge" id="newTaskNumber"> 12</span>
                     </a>
                     <ul class="dropdown-menu todo">
                         <li>
-                            <span class="dropdown-menu-title"> 你有？个新任务</span>
+                            <span class="dropdown-menu-title" > 你有<small id="newTaskNum">？</small>个新任务</span>
                         </li>
                         <li>
                             <div class="drop-down-wrapper">
@@ -214,11 +243,11 @@
                 <li class="dropdown">
                     <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
                         <i class="clip-notification-2"></i>
-                        <span class="badge"> 11</span>
+                        <span class="badge" id="newInviteNumber"> 11</span>
                     </a>
                     <ul class="dropdown-menu notifications">
                         <li>
-                            <span class="dropdown-menu-title"> 你收到了？个邀请信息</span>
+                            <span class="dropdown-menu-title"> 你收到了<small id="newInviteNum">？</small>个邀请信息</span>
                         </li>
                         <li>
                             <div class="drop-down-wrapper">
@@ -280,11 +309,11 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown" href="#">
                         <i class="clip-bubble-3"></i>
-                        <span class="badge"> 9</span>
+                        <span class="badge" id="newMsgNumber"> 9</span>
                     </a>
                     <ul class="dropdown-menu posts">
                         <li>
-                            <span class="dropdown-menu-title"> 你有？条未读消息</span>
+                            <span class="dropdown-menu-title"> 你有<small id="newMsgNum">？</small>条未读消息</span>
                         </li>
                         <li>
                             <div class="drop-down-wrapper">
@@ -374,7 +403,7 @@
                 <li class="dropdown current-user">
                     <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
                         <img src="../../static/assets/images/avatar-1-small.jpg" class="circle-img" alt="">
-                        <span class="username">username</span>
+                        <span class="username" th:text="${session.student.stuName}">username</span>
                         <i class="clip-chevron-down"></i>
                     </a>
                     <ul class="dropdown-menu">
@@ -386,7 +415,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="login_example1.html">
+                            <a th:href="@{/student/logout.do}" href="#">
                                 <i class="clip-exit"></i>
                                 &nbsp;登出
                             </a>
@@ -414,7 +443,7 @@
         <ul class="main-navigation-menu">
 
             <li id="index" class="active open">
-                <a href="javascript:void(0)"><i class="clip-pencil"></i>
+                <a th:href="@{/student/index.do}" href="javascript:void(0)"><i class="clip-pencil"></i>
                     <span class="title"> 首页 </span>
                     <span class="selected"></span>
                 </a>
@@ -432,18 +461,18 @@
                 </a>
                 <ul class="sub-menu">
                     <li id="addProject">
-                        <a href="pages_user_profile.html">
+                        <a th:href="@{/student/toAddProject.do}" href="#">
                             <span class="title">添加项目</span>
                         </a>
                     </li>
                     <li id="projectList">
-                        <a href="pages_invoice.html">
+                        <a th:href="@{/student/projectList.do}" href="#">
                             <span class="title">项目列表</span>
                             <span class="badge badge-new">new</span>
                         </a>
                     </li>
                     <li id="invitation">
-                        <a href="pages_gallery.html">
+                        <a href="#" th:href="@{/student/inviteList.do}">
                             <span class="title">邀请信息</span>
                         </a>
                     </li>
@@ -456,27 +485,27 @@
                 </a>
                 <ul class="sub-menu">
                     <li id="raceInfo">
-                        <a href="utility_faq.html">
+                        <a href="#" th:href="@{/student/raceInfo.do}">
                             <span class="title">赛事信息</span>
                         </a>
                     </li>
                     <li id="myRace">
-                        <a href="utility_lock_screen.html">
+                        <a href="#" th:href="@{/student/myRace.do}">
                             <span class="title">我的赛事</span>
                         </a>
                     </li>
                 </ul>
             </li>
             <li id="achievement">
-                <a href="javascript:;" class="active">
+                <a th:href="@{/student/achievement.do}" href="javascript:;" class="active">
                     <i class="clip-folder"></i>
                     <span class="title">成果查询</span>
                 </a>
             </li>
             <li id="messageCenter">
-                <a href="javascript:;">
+                <a th:href="@{/student/msgCenter.do}" href="javascript:;">
                     <i class="clip-folder-open"></i>
-                    <span class="title">消息管理</span><i class="icon-arrow"></i>
+                    <span class="title">消息管理</span>
                     <span class="arrow "></span>
                 </a>
             </li>

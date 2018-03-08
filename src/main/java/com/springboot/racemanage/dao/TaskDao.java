@@ -21,7 +21,13 @@ public interface TaskDao {
 
     Integer countByStatusAndToUuid(@Param("status")Integer status,@Param("toUuid")String toUuid);
 
+    List<Task> findByStatusAndToUuid(@Param("status")Integer status,@Param("toUuid")String toUuid);
+
+
+
     Integer countByStatusAndToUuidIn(@Param("status")Integer status,@Param("toUuidList")List<String> toUuidList);
+
+
 
 
 

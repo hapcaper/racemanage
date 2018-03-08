@@ -15,4 +15,8 @@ public interface TeacherDao {
     int insertList(@Param("pojos") List<Teacher> pojo);
 
     int update(@Param("pojo") Teacher pojo);
+
+    List<Teacher> findTNameAndTUuid();
+
+
 }

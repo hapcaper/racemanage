@@ -12,4 +12,8 @@ public interface StudentService {
 
     Student findFirstByStuNumberAndStuPasswordAndStuStatus(String stunumber,String password,Integer status);
 
+    List<Student> findStuUuidAndStuName();
+
+    List<Student> findStuUuidAndStuNameByStuUuidNot(String notStuUuid);
+
 }
