@@ -6,8 +6,6 @@ import com.springboot.racemanage.po.Teacher;
 import com.springboot.racemanage.po.Teamer;
 import com.springboot.racemanage.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.logging.Logger;
 
 @Controller
 @RequestMapping("/student")
@@ -176,12 +174,47 @@ public class StudentController {
         project.setDescription(proDescription);
         project.settUuid(teUuid);
         project.setHeadman(student.getStuUuid());
+
+        //得到文件名并拼接UUID ， 防止文件重名
+        StringBuffer docName = new StringBuffer(UUID.randomUUID().toString());
+        docName.append("_"+document.getOriginalFilename());
+
+        /**
+         * ???
+         * "src\\main\\resources\\static\\uploadFiles\\projectDoc\\" 会导致404错误  ?不知为何?  尾部好像不能以\\结尾
+         * "src\\main\\resources\\static\\uploadFiles\\projectDoc\\p" 正确
+         * 为何会导致404错误？？？？
+         * ???
+         */
+        StringBuffer docPath = new StringBuffer("src\\main\\resources\\static\\uploadFiles\\projectDoc\\p");
+        docPath.append(docName.toString());
+
         try {
-            OutputStream outputStream = new FileOutputStream("");
-            outputStream.write(document.getBytes());
+            BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(docPath.toString())));
+            out.write(document.getBytes());
+            out.flush();
+            out.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+//        File d = new File(docPath,docName.toString());
+//        try {
+//            document.transferTo(d);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        System.out.println(document.getOriginalFilename()+"666666666666");
+        System.out.println(httpSession.getServletContext().getRealPath("static\\uploadFiles\\projectDoc")+"55555555555555555555");
+
+//        try {
+//
+//            OutputStream outputStream = new FileOutputStream("");
+//            outputStream.write(document.getBytes());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         return "redirect:/student/projectList.do";
     }

@@ -943,7 +943,7 @@
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            <form th:action="@{/student/addProject.do}" action="#" role="form" class="form-horizontal" enctype="multipart/form-data">
+            <form th:action="${'/student/addProject.do'}" action="#" role="form" class="form-horizontal" enctype="multipart/form-data" method="post">
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-1">
                         项目名称
