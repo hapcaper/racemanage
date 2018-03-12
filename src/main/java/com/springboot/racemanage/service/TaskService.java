@@ -20,4 +20,23 @@ public interface TaskService {
     Integer countByStatusAndToUuidIn(Integer status,List<String> toUuidList);
 
     List<Task> findByStatusAndToUuid(Integer status,String toUuid);
+
+    List<Task> findByProUuidAndStatusNot(String proUuid,Integer notStatus);
+
+    List<Task> findByToUuidAndStatusOrStatus(String toUuid,Integer status1,Integer status2);
+
+    List<Task> findByToUuidAndStatusNot(String toUuid,Integer notStatus);
+
+    Integer countByStatusAndToUuidAndProgress(Integer status,String toUuid,Integer progress);
+
+    Integer countByStatusNotAndToUuidAndProgress(Integer notStatus,String toUuid,Integer progress);
+
+
+    Task findFirstByUuid(String uuid);
+
+
+
+
+
+
 }

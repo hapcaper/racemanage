@@ -1,7 +1,9 @@
 <!DOCTYPE html >
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->
-<!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
-<!--[if IE 9]><html class="ie9 no-js" lang="en"><![endif]-->
+<!--[if IE 8]>
+<html class="ie8 no-js" lang="en"><![endif]-->
+<!--[if IE 9]>
+<html class="ie9 no-js" lang="en"><![endif]-->
 <!--[if !IE]><!-->
 <html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
 <!--<![endif]-->
@@ -61,7 +63,8 @@
             <ul class="nav navbar-right">
                 <!-- start: TO-DO DROPDOWN -->
                 <li class="dropdown">
-                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
+                       href="#">
                         <i class="clip-list-5"></i>
                         <span class="badge"> 12</span>
                     </a>
@@ -75,7 +78,8 @@
                                     <li>
                                         <a class="todo-actions" href="javascript:void(0)">
                                             <i class="fa fa-square-o"></i>
-                                            <span class="desc" style="opacity: 1; text-decoration: none;">Staff Meeting</span>
+                                            <span class="desc"
+                                                  style="opacity: 1; text-decoration: none;">Staff Meeting</span>
                                             <span class="label label-danger" style="opacity: 1;"> today</span>
                                         </a>
                                     </li>
@@ -131,7 +135,8 @@
                                     <li>
                                         <a class="todo-actions" href="javascript:void(0)">
                                             <i class="fa fa-square-o"></i>
-                                            <span class="desc" style="opacity: 1; text-decoration: none;">Staff Meeting</span>
+                                            <span class="desc"
+                                                  style="opacity: 1; text-decoration: none;">Staff Meeting</span>
                                             <span class="label label-danger" style="opacity: 1;"> today</span>
                                         </a>
                                     </li>
@@ -162,7 +167,8 @@
                 <!-- end: TO-DO DROPDOWN-->
                 <!-- start: NOTIFICATION DROPDOWN -->
                 <li class="dropdown">
-                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
+                       href="#">
                         <i class="clip-notification-2"></i>
                         <span class="badge"> 11</span>
                     </a>
@@ -277,7 +283,8 @@
                 <!-- end: NOTIFICATION DROPDOWN -->
                 <!-- start: MESSAGE DROPDOWN -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown" href="#">
+                    <a class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown"
+                       href="#">
                         <i class="clip-bubble-3"></i>
                         <span class="badge"> 9</span>
                     </a>
@@ -371,7 +378,8 @@
                 <!-- end: MESSAGE DROPDOWN -->
                 <!-- start: USER DROPDOWN -->
                 <li class="dropdown current-user">
-                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
+                       href="#">
                         <img src="assets/images/avatar-1-small.jpg" class="circle-img" alt="">
                         <span class="username">Peter Clark</span>
                         <i class="clip-chevron-down"></i>
@@ -928,7 +936,9 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>project.proname <small>project.description</small></h1>
+                        <h1 th:text="${project.name}">project.proname
+                        </h1>
+                        <small th:text="${project.description}">project.description</small>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
@@ -938,11 +948,13 @@
 
             <div class="row">
                 <div class="col-sm-10">
-                    <h3>团队人员 : <small>lzh jjj SAO</small></h3>
+                    <h3>项目文档:
+                        <small ><a th:href="'/'+${project.document}" href="#">下载</a></small>
+                    </h3>
                 </div>
                 <div class="col-sm-2">
                     <button data-original-title="项目进度日志" data-placement="top" class="btn tooltips">
-                        <a href="projectTimeLine.html">项目日志</a>
+                        <a th:href="${'/student/projecttimeline.do?proUUID='+project.uuid}" href="projectTimeLine.html">项目日志</a>
                     </button>
                 </div>
             </div>
@@ -960,39 +972,51 @@
                         <table class="table table-striped table-hover" id="sample-table-1">
                             <thead>
                             <tr>
-                                <th class="center"> </th>
+                                <th class="center"></th>
                                 <th>姓名</th>
-                                <th class="hidden-xs">Email</th>
+                                <th class="hidden-xs">担任任务</th>
                                 <th></th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody th:each="teamer:${proTeamerListt}">
+
                             <tr>
                                 <td class="center"><img src="assets/images/avatar-1.jpg" alt="image"></td>
-                                <td>teamer.name</td>
+                                <td th:text="${teamer.stuname}">teamer.name</td>
                                 <td class="hidden-xs">
-                                    <a href="#" rel="nofollow" target="_blank">
-                                        stu.email
-                                    </a></td>
+                                    <a th:text="${teamer.dutydescription}" href="#" rel="nofollow" target="_blank">
+                                        stu.dutyDescription
+                                    </a>
+                                </td>
                                 <td class="center">
                                     <div>
                                         <div class="btn-group">
-                                            <a class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" href="#">
+                                            <a class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown"
+                                               href="#">
                                                 <i class="fa fa-cog"></i> <span class="caret"></span>
                                             </a>
                                             <ul role="menu" class="dropdown-menu pull-right">
                                                 <li role="presentation">
-                                                    <a role="menuitem" tabindex="-1" href="messageCenter.html">
+                                                    <a role="menuitem" tabindex="-1"
+                                                       th:href="${'/student/messageCenter.do?toUUID='+teamer.stuUuid}"
+                                                       href="messageCenter.html">
                                                         <i class="fa fa-edit"></i> 发消息
                                                     </a>
                                                 </li>
                                             </ul>
                                         </div>
-                                    </div></td>
+                                    </div>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
-                        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px; width: 583px; display: none;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 300px; display: inherit;"><div class="ps-scrollbar-y" style="top: 0px; height: 230px;"></div></div></div>
+                        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px; width: 583px; display: none;">
+                            <div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 300px; display: inherit;">
+                            <div class="ps-scrollbar-y" style="top: 0px; height: 230px;"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1002,61 +1026,55 @@
                 <ul id="myTab" class="nav nav-tabs tab-bricky">
                     <li class="active">
                         <a href="#panel_tab2_example1" data-toggle="tab">
-                            <i class="green fa fa-home"></i> 待完成任务<span class="badge badge-default">4</span>
+                            <i class="green fa fa-home"></i> 待完成任务<span class="badge badge-default" id="notCompleteNum">0</span>
                         </a>
                     </li>
                     <li>
                         <a href="#panel_tab2_example2" data-toggle="tab">
-                            已完成任务 <span class="badge badge-default">4</span>
+                            已完成任务 <span class="badge badge-default" id="completedNum">0</span>
                         </a>
                     </li>
                     <li>
                         <a href="#panel_tab2_example3" data-toggle="tab">
-                            所有任务 <span class="badge badge-default">tasklist.size</span>
+                            待审阅任务 <span class="badge badge-default" th:text="${myTaskList.size()}">0</span>
                         </a>
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane in active" id="panel_tab2_example1">
-                        <div class="alert alert-block alert-warning fade in">
-                                <h4 class="alert-heading"><i class="fa clip-spinner-2"></i> task[0].title</h4>
-                                <p>
-                                    task[0].description
-                                    Duis mollis, est non commodo luctus,
-                                    nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
-                                </p>
-                                <p>
-                                    <a href="submitTask.html" class="btn btn-blue">
-                                        提交进度
-                                    </a>
-                                    <a href="#" class="btn btn-yellow">
-                                        交互
-                                    </a>
-                                </p>
-                            </div>
-                    </div>
-                    <div class="tab-pane" id="panel_tab2_example2">
-                        <div class="alert alert-block alert-success fade in">
-                            <h4 class="alert-heading"><i class="fa fa-check-circle"></i> task[1].title</h4>
-                            <p>
-                                task[1].description
+                    <div class="tab-pane in active" id="panel_tab2_example1" th:each="task:${myTaskList}">
+                        <div class="alert alert-block alert-warning fade in" th:if="${task.progress==2}">
+                            <h4 class="alert-heading"><i class="fa clip-spinner-2" th:text="${task.title}"></i> task[0].title</h4>
+                            <p th:text="${task.description}">
+                                task[0].description
+                                Duis mollis, est non commodo luctus,
+                                nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur
+                                purus sit amet fermentum.
                             </p>
                             <p>
-                                Duis mollis, est non commodo luctus,
-                                nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
+                                <a th:href="${'/student/toSubmitTask.do?taskUUID='+ task.uuid}" href="submitTask.html" class="btn btn-blue">
+                                    提交进度
+                                </a>
+                                <a href="#" class="btn btn-yellow">
+                                    交互
+                                </a>
                             </p>
                         </div>
                     </div>
-                    <div class="tab-pane" id="panel_tab2_example3">
-                        <div class="alert alert-block alert-success fade in">
-                            <h4 class="alert-heading"><i class="fa fa-check-circle"></i> task[1].title</h4>
-                            <p>
+                    <div class="tab-pane" id="panel_tab2_example2" th:each="task:${myTaskList}">
+                        <div class="alert alert-block alert-success fade in" th:if="${task.progress==1}">
+                            <h4 class="alert-heading" th:text="${task.title}"><i class="fa fa-check-circle"></i> task[1].title</h4>
+                            <p th:text="${task.description}">
                                 task[1].description
                             </p>
-                            <p>
-                                Duis mollis, est non commodo luctus,
-                                nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="panel_tab2_example3" th:each="task:${myTaskList}">
+                        <div class="alert alert-block alert-info fade in" th:if="${task.progress==3}">
+                            <h4 class="alert-heading" th:text="${task.title}"><i class="fa fa-check-circle"></i> task[1].title</h4>
+                            <p th:text="${task.description}">
+                                task[1].description
                             </p>
+
                         </div>
                     </div>
                 </div>
@@ -1129,12 +1147,40 @@
     <script src="../../static/assets/js/index.js"></script>
     <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
     <script>
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             Main.init();
         });
     </script>
 
 </div>
+
+<script>
+
+    jQuery(document).ready(function () {
+        initTaskNum();
+    });
+
+    let initTaskNum = function () {
+        let myTeamerUUID = [[${myTeamer.uuid}]];
+        $.get('http://127.0.0.1:8080/restful/student/notCompleteTaskNum?teamerUUID=' + myTeamerUUID, function (data) {
+            setNotCompleteNum(data);
+        });
+
+        $.get('http://127.0.0.1:8080/restful/student/completedTaskNum?teamerUUID='+myTeamerUUID,function (data) {
+            setCompletedNum(data);
+        })
+    }
+
+
+    let setNotCompleteNum = function (data) {
+        $("#notCompleteNum").text(data);
+    };
+
+    let setCompletedNum = function (data) {
+        $("#completedNum").text(data);
+    };
+
+</script>
 
 </body>
 <!-- end: BODY -->

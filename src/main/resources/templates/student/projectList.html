@@ -933,7 +933,7 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>标题 <small>细微描述</small></h1>
+                        <h1>所参与的项目 <small></small></h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
@@ -943,7 +943,7 @@
             <div th:each="project:${projectList}">
                 <div class="alert alert-info">
                     <i class="fa clip-folder-2"></i>
-                    <strong><a class="no-underline" href="projectDetail.html" th:text="${project.name}">projectlist[0].proname</a></strong>
+                    <strong><a th:href="${'/student/projectDetail.do?proUUID='+project.uuid}" class="no-underline" href="projectDetail.html" th:text="${project.name}">projectlist[0].proname</a></strong>
                     <p th:text="${project.description}">projectlist[0].description</p>
                 </div>
             </div>

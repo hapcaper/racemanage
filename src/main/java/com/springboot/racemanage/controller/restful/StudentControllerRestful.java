@@ -86,5 +86,20 @@ public class StudentControllerRestful {
         return inviteList;
     }
 
+    @RequestMapping(value = "/notCompleteTaskNum",method = RequestMethod.GET)
+    public Integer notCompleteTaskNum(@RequestParam("teamerUUID")String teamerUUID) {
+        Integer num = 0;
+        num = taskService.countByStatusNotAndToUuidAndProgress(0, teamerUUID, 2);
+        return num;
+    }
+
+    @RequestMapping(value = "/completedTaskNum",method = RequestMethod.GET)
+    public Integer completedTaskNum(@RequestParam("teamerUUID")String teamerUUID) {
+        Integer num = 0;
+        num = taskService.countByStatusNotAndToUuidAndProgress(0, teamerUUID, 1);
+        return num;
+    }
+
+
 
 }

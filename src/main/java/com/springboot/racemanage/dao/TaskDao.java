@@ -23,9 +23,28 @@ public interface TaskDao {
 
     List<Task> findByStatusAndToUuid(@Param("status")Integer status,@Param("toUuid")String toUuid);
 
-
-
     Integer countByStatusAndToUuidIn(@Param("status")Integer status,@Param("toUuidList")List<String> toUuidList);
+
+    List<Task> findByProUuidAndStatusNot(@Param("proUuid")String proUuid,@Param("notStatus")Integer notStatus);
+
+    List<Task> findByToUuidAndStatusOrStatus(@Param("toUuid")String toUuid,@Param("status1")Integer status1,@Param("status2")Integer status2);
+
+    List<Task> findByToUuidAndStatusNot(@Param("toUuid")String toUuid,@Param("notStatus")Integer notStatus);
+
+    Integer countByStatusAndToUuidAndProgress(@Param("status")Integer status,@Param("toUuid")String toUuid,@Param("progress")Integer progress);
+
+    Integer countByStatusNotAndToUuidAndProgress(@Param("notStatus")Integer notStatus,@Param("toUuid")String toUuid,@Param("progress")Integer progress);
+
+
+    Task findFirstByUuid(@Param("uuid")String uuid);
+
+
+
+
+
+
+
+
 
 
 

@@ -24,12 +24,22 @@ public interface TeamerDao {
 
     List<Teamer> findByStuUuid(@Param("stuUuid")String stuUuid);
 
+    Teamer findFirstByStatusAndStuUuidAndProUuid(@Param("status")Integer status,@Param("stuUuid")String stuUuid,@Param("proUuid")String proUuid);
+
+    List<Teamer> findByStatusAndProUuid(@Param("status")Integer status,@Param("proUuid")String proUuid);
+
+    Teamer findFirstByUuid(@Param("uuid")String uuid);
+
+    List<Teamer> findByStatusAndStuUuid(@Param("status")Integer status,@Param("stuUuid")String stuUuid);
 
 
 
 
 
-    
+
+
+
+
 
 
 }

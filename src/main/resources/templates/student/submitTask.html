@@ -936,8 +936,8 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>标题
-                            <small>细微描述</small>
+                        <h1>提交结果
+                            <small></small>
                         </h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
@@ -945,13 +945,21 @@
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            <form action="" role="form" class="form-horizontal">
+            <div class="well well-lg">
+                <h4 th:text="${task.title}">Look, I'm in a small well!</h4>
+                <p th:text="${task.description}">
+                    Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet. Integer molestie lorem at massa Integer molestie lorem at massa  Integer molestie lorem at massa
+                </p>
+            </div>
+            <hr>
+            <form th:action="${'/student/postSolution.do'}" action="#" role="form" class="form-horizontal" enctype="multipart/form-data" method="post">
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-1">
                         标题
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" placeholder="" id="form-field-1" class="form-control"/>
+                        <input name="title" type="text" placeholder="" id="form-field-1" class="form-control"/>
+                        <input name="taskUUID" th:value="${task.uuid}" type="text" placeholder="" hidden="hidden" class="form-control"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -959,7 +967,7 @@
                         描述
                     </label>
                     <div class="col-sm-8">
-                        <textarea placeholder="解决状况描述" id="form-field-2" class="form-control"
+                        <textarea name="content" placeholder="解决状况描述" id="form-field-2" class="form-control"
                                   style="margin: 0px 33.4px 0px 0px; height: 124px; width: 550px;"></textarea>
                     </div>
                 </div>
@@ -980,7 +988,7 @@
                                                 class="fa fa-folder-open-o"></i> Select file</span>
                                         <span class="fileupload-exists"><i
                                                 class="fa fa-folder-open-o"></i> Change</span>
-                                        <input type="file" class="file-input">
+                                        <input name="file1" type="file" class="file-input">
                                     </div>
                                     <a href="#" class="btn btn-light-grey fileupload-exists" data-dismiss="fileupload">
                                         <i class="fa fa-times"></i> Remove
@@ -992,7 +1000,7 @@
                 </div>
                 <div class="form-group" style="margin-top: 50px">
                     <div class="col-sm-2 col-sm-offset-8">
-                        <button class="btn btn-blue next-step btn-block">
+                        <button type="submit" class="btn btn-blue next-step btn-block">
                             <a href="projectDetail.html">提交</a>
                         </button>
                     </div>

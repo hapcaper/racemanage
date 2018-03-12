@@ -1,12 +1,11 @@
 package com.springboot.racemanage.controller;
 
-import com.springboot.racemanage.po.Project;
-import com.springboot.racemanage.po.Student;
-import com.springboot.racemanage.po.Teacher;
-import com.springboot.racemanage.po.Teamer;
+import com.springboot.racemanage.po.*;
 import com.springboot.racemanage.service.*;
+import com.sun.javafx.tools.packager.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,16 +13,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 @Controller
 @RequestMapping("/student")
+@Transactional
 public class StudentController {
 
     @Autowired
@@ -50,11 +49,18 @@ public class StudentController {
     @Autowired
     ProjectService projectService;
 
+    @Autowired
+    TaskService taskService;
+
+    @Autowired
+    SolutionService solutionService;
+
     @RequestMapping(value = "/login.do",method = RequestMethod.POST)
     public String login(HttpSession httpSession,Model model, @RequestParam("stunumber") String stunumber, @RequestParam("password") String password){
         model.addAttribute("menuSelected1", "index");
         Student student = studentService.findFirstByStuNumberAndStuPasswordAndStuStatus(stunumber, password, 1);
         List<Teamer> teamerList = teamerService.findByStuUuid(student.getStuUuid());
+        System.out.println(teamerList);
         if (student != null)
             if (teamerList != null) {
                 httpSession.setAttribute("student", student);
@@ -146,7 +152,8 @@ public class StudentController {
 
     @RequestMapping("/toAddProject.do")
     public String toAddProject(Model model,HttpSession httpSession) {
-        model.addAttribute("menuSelected1", "addProject");
+        model.addAttribute("menuSelected1","projectManage");
+        model.addAttribute("menuSelected2", "addProject");
         Student student = (Student) httpSession.getAttribute("student");
         List<Student> stuList = studentService.findStuUuidAndStuNameByStuUuidNot(student.getStuUuid());
         System.out.println(stuList);
@@ -166,7 +173,7 @@ public class StudentController {
                              @RequestParam("proDescription")String proDescription,
                              @RequestParam("document")MultipartFile document,
                              @RequestParam("stuUuid[]")List<String> stuUuids,
-                             @RequestParam("teUuid")String teUuid) {
+                             @RequestParam("teUuid")String teUuid) throws IOException {
         Student student = (Student) httpSession.getAttribute("student");
         Project project = new Project();
         project.setUuid(UUID.randomUUID().toString());
@@ -179,24 +186,62 @@ public class StudentController {
         StringBuffer docName = new StringBuffer(UUID.randomUUID().toString());
         docName.append("_"+document.getOriginalFilename());
 
-        /**
-         * ???
-         * "src\\main\\resources\\static\\uploadFiles\\projectDoc\\" 会导致404错误  ?不知为何?  尾部好像不能以\\结尾
-         * "src\\main\\resources\\static\\uploadFiles\\projectDoc\\p" 正确
-         * 为何会导致404错误？？？？
-         * ???
-         */
-        StringBuffer docPath = new StringBuffer("src\\main\\resources\\static\\uploadFiles\\projectDoc\\p");
+        StringBuffer docPath = new StringBuffer("src\\main\\resources\\templates\\uploadFiles\\projectDoc\\p");
         docPath.append(docName.toString());
 
-        try {
-            BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(docPath.toString())));
-            out.write(document.getBytes());
-            out.flush();
-            out.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(docPath.toString())));
+        out.write(document.getBytes());
+        out.flush();
+        out.close();
+
+        StringBuffer docPath2 = docPath;
+        docPath2.replace(0, 19, "");
+        System.out.println(docPath2);
+        project.setDocument(docPath2.toString());
+
+        //TODO 添加自己teamer
+        Teamer teamer = new Teamer();
+        teamer.setDuty("队长");
+        teamer.setProame(project.getName());
+        teamer.setProUuid(project.getUuid());
+        teamer.setStatus(1);
+        teamer.setStuname(student.getStuName());
+        teamer.setStuUuid(student.getStuUuid());
+        teamer.setUuid(UUID.randomUUID().toString());
+        teamerService.insertSelective(teamer);
+
+        //发送学生邀请
+        Invite stuInvite = new Invite();
+        for (String tostuuuid:stuUuids) {
+            stuInvite.setId(null);
+            stuInvite.setDuty("1");
+            stuInvite.setTeamerDescription(project.getDescription());
+            stuInvite.setFromUuid(student.getStuUuid());
+            stuInvite.setUuid(UUID.randomUUID().toString());
+            stuInvite.setProname(project.getName());
+            stuInvite.setProUuid(project.getUuid());
+            stuInvite.setSendtime(new Date());
+            stuInvite.setToUuid(tostuuuid);
+            stuInvite.setStatus(1);
+            System.out.println("****----****"+stuInvite);
+            inviteService.insertSelective(stuInvite);
         }
+
+        //发送教师邀请
+        Invite teInvite = new Invite();
+        teInvite.setStatus(1);
+        teInvite.setToUuid(teUuid);
+        teInvite.setSendtime(new Date());
+        teInvite.setProUuid(project.getUuid());
+        teInvite.setProname(project.getName());
+        teInvite.setUuid(UUID.randomUUID().toString());
+        teInvite.setFromUuid(student.getStuUuid());
+        teInvite.setTeamerDescription(project.getDescription());
+        teInvite.setDuty("2");
+        inviteService.insertSelective(teInvite);
+
+        projectService.insertSelective(project);
+
 
 //        File d = new File(docPath,docName.toString());
 //        try {
@@ -205,8 +250,9 @@ public class StudentController {
 //            e.printStackTrace();
 //        }
 
-        System.out.println(document.getOriginalFilename()+"666666666666");
-        System.out.println(httpSession.getServletContext().getRealPath("static\\uploadFiles\\projectDoc")+"55555555555555555555");
+        System.out.println("============"+httpSession.getServletContext().getContextPath());
+        System.out.println("666666666666"+document.getOriginalFilename());
+        System.out.println("55555555555555555555"+httpSession.getServletContext().getRealPath("static\\uploadFiles\\projectDoc"));
 
 //        try {
 //
@@ -216,19 +262,110 @@ public class StudentController {
 //            e.printStackTrace();
 //        }
 
-        return "redirect:/student/projectList.do";
+//        return "redirect:/student/projectList.do";
+        return "redirect:/student/projectList1.do";
     }
 
-    @RequestMapping("/projectList.do")
+    @RequestMapping("/projectList1.do")
     public String projectList(Model model, HttpSession httpSession) {
-        model.addAttribute("menuSelected1", "projectList");
-        List<Teamer> teamerList = (List<Teamer>) httpSession.getAttribute("teamerList");
-        System.out.println(teamerList+"///////////////");
+        model.addAttribute("menuSelected1", "projectManage");
+        model.addAttribute("menuSelected2", "projectList");
+        Student student = (Student) httpSession.getAttribute("student");
+
+        List<Teamer> teamerList = teamerService.findByStatusAndStuUuid(1,student.getStuUuid());
         List<Project> projectList = new ArrayList<>();
         for (Teamer t:teamerList) {
             projectList.add(projectService.findFirstByUuid(t.getProUuid()));
         }
+
+        System.out.println(teamerList);
+        System.out.println(projectList.size());
+        System.out.println(projectList);
         model.addAttribute("projectList", projectList);
         return "student/projectList";
+    }
+
+    @RequestMapping("/projectDetail.do")
+    public String projectDetail(Model model,HttpSession httpSession,
+                                @RequestParam("proUUID")String proUUID) {
+        model.addAttribute("menuSelected1", "projectManage");
+        Student student = (Student) httpSession.getAttribute("student");
+        Project project = projectService.findFirstByUuid(proUUID);
+        System.out.println(project);
+        Teamer myTeamer = teamerService.findFirstByStatusAndStuUuidAndProUuid(1, student.getStuUuid(), proUUID);
+        List<Task> myTaskList = taskService.findByToUuidAndStatusNot(myTeamer.getUuid(), 0);
+        List<Teamer> proTeamerList = teamerService.findByStatusAndProUuid(1, proUUID);
+
+        model.addAttribute("myTeamer", myTeamer);
+        model.addAttribute("project", project);
+        model.addAttribute("myTaskList", myTaskList);
+        model.addAttribute("proTeamerListt", proTeamerList);
+        return "student/projectDetail";
+    }
+
+    @RequestMapping("/toSubmitTask.do")
+    public String toSubmitTask(Model model,@RequestParam("taskUUID")String taskUUID) {
+
+        Task task = taskService.findFirstByUuid(taskUUID);
+        model.addAttribute("task", task);
+        return "student/submitTask";
+    }
+
+    @RequestMapping(value = "/postSolution.do",method = RequestMethod.POST)
+    public String postSolution(Model model,HttpSession httpSession,
+                               @RequestParam("title")String title,
+                               @RequestParam("taskUUID")String taskUUID,
+                               @RequestParam("content")String content,
+                               @RequestParam("file1")MultipartFile file1) throws IOException {
+        Student student = (Student) httpSession.getAttribute("student");
+        Solution solution = new Solution();
+        solution.setUuid(UUID.randomUUID().toString());
+        solution.setTitle(title);
+        solution.setContent(content);
+
+
+        StringBuffer file1Name = new StringBuffer(UUID.randomUUID().toString());
+        file1Name.append("_"+file1.getOriginalFilename());
+        StringBuffer file1Path = new StringBuffer("src\\main\\resources\\templates\\uploadFiles\\solutionFiles\\");
+        file1Path.append(file1Name.toString());
+        BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(file1Path.toString())));
+        out.write(file1.getBytes());
+        out.flush();
+        out.close();
+
+        //更改数据库存储文件的路径
+        file1Path.replace(0, 19, "");
+
+        solution.setFile1(file1Path.toString());
+        solution.setResult(3);
+        solution.setStatus(1);
+        solution.setStuUuid(student.getStuUuid());
+        solution.setTaskUuid(taskUUID);
+
+        solutionService.insertSelective(solution);
+        //更新task状态为待审阅
+        Task t = taskService.findFirstByUuid(taskUUID);
+        t.setProgress(3);
+        taskService.update(t);
+        //主要是为了得到project的UUID  以后有机会改为sql查询
+        Teamer teamer = teamerService.findFirstByUuid(t.getToUuid());
+        String proUUID = teamer.getProUuid();
+
+
+//        model.addAttribute("menuSelected1", "projectManage");
+//        Project project = projectService.findFirstByUuid(proUUID);
+//        System.out.println(project);
+//        Teamer myTeamer = teamerService.findFirstByStatusAndStuUuidAndProUuid(1, student.getStuUuid(), proUUID);
+//        List<Task> myTaskList = taskService.findByToUuidAndStatusNot(myTeamer.getUuid(), 0);
+//        List<Teamer> proTeamerList = teamerService.findByStatusAndProUuid(1, proUUID);
+//
+//        model.addAttribute("myTeamer", myTeamer);
+//        model.addAttribute("project", project);
+//        model.addAttribute("myTaskList", myTaskList);
+//        model.addAttribute("proTeamerListt", proTeamerList);
+//        return "student/projectDetail";
+
+        return "redirect:/student/projectDetail.do?proUUID="+proUUID;
+
     }
 }
