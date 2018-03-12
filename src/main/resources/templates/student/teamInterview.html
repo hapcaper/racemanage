@@ -935,27 +935,31 @@
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            <div class="alert alert-info">
-                <div class="row">
-                    <div class="col-sm-7">
-                        <i class="fa fa-envelope-o"></i>
-                        <strong><a href="projectDetail.html">X项目</a></strong>
+            <div th:each="invite:${inviteList}">
+                <div class="alert alert-info">
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <i class="fa fa-envelope-o"></i>
+                            <strong><a href="projectDetail.html" th:text="${invite.proname}">X项目</a></strong>
+                            <small th:text="${invite.teamerDescription}">desc</small>
+                        </div>
+                        <div class="col-sm-2">邀请者： SAO</div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-info">
+                                接受
+                            </button>
+                            <button type="button" class="btn btn-danger">
+                                拒绝
+                            </button>
+                            <button type="button" class="btn btn-dark-grey">
+                                忽略
+                            </button>
+                        </div>
                     </div>
-                    <div class="col-sm-2">邀请者： SAO</div>
-                    <div class="col-sm-3">
-                        <button type="button" class="btn btn-info">
-                            接受
-                        </button>
-                        <button type="button" class="btn btn-danger">
-                            拒绝
-                        </button>
-                        <button type="button" class="btn btn-dark-grey">
-                            忽略
-                        </button>
-                    </div>
-                </div>
 
+                </div>
             </div>
+
             <!-- end: PAGE CONTENT-->
         </div>
     </div>

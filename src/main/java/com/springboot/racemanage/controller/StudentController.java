@@ -366,6 +366,21 @@ public class StudentController {
 //        return "student/projectDetail";
 
         return "redirect:/student/projectDetail.do?proUUID="+proUUID;
+    }
+
+    @RequestMapping("/inviteList.do")
+    public String inviteList(Model model,HttpSession httpSession) {
+        model.addAttribute("menuSelected1", "projectManage");
+        model.addAttribute("menuSelected2", "invitation");
+        Student student = (Student) httpSession.getAttribute("student");
+        List<Invite> inviteList = inviteService.findByToUuidAndStatus(student.getStuUuid(), 1);
+
+        System.out.println(inviteList);
+
+        model.addAttribute("inviteList", inviteList);
+        return "student/teamInterview";
 
     }
+
+
 }
