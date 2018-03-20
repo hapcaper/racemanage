@@ -28,4 +28,9 @@ public class TermServiceImpl implements TermService{
     public int update(Term pojo){
         return termDao.update(pojo);
     }
+
+    @Override
+    public Term findFirstByStatusOrderByTerm(Integer status) {
+        return termDao.findFirstByStatusOrderByTerm(status);
+    }
 }

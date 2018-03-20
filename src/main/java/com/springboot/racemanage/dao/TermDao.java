@@ -15,4 +15,8 @@ public interface TermDao {
     int insertList(@Param("pojos") List<Term> pojo);
 
     int update(@Param("pojo") Term pojo);
+
+    Term findFirstByStatusOrderByTerm(@Param("status")Integer status);
+
+
 }

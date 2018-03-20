@@ -13,4 +13,6 @@ public interface RaceinfoService {
 
     int update(Raceinfo pojo);
 
+    List<Raceinfo> findByStatusAndTerm(Integer status,Integer term);
+
 }

@@ -15,4 +15,8 @@ public interface RaceinfoDao {
     int insertList(@Param("pojos") List<Raceinfo> pojo);
 
     int update(@Param("pojo") Raceinfo pojo);
+
+    List<Raceinfo> findByStatusAndTerm(@Param("status")Integer status,@Param("term")Integer term);
+
+
 }

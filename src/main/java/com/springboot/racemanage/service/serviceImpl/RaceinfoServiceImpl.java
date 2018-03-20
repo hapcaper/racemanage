@@ -28,4 +28,9 @@ public class RaceinfoServiceImpl implements RaceinfoService{
     public int update(Raceinfo pojo){
         return raceinfoDao.update(pojo);
     }
+
+    @Override
+    public List<Raceinfo> findByStatusAndTerm(Integer status, Integer term) {
+        return raceinfoDao.findByStatusAndTerm(status,term);
+    }
 }

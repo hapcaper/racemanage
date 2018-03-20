@@ -20,10 +20,17 @@ import java.util.List;
 import java.util.UUID;
 import java.util.logging.Logger;
 
+/**
+ *  学生端的控制器
+ *  有空优化下代码 有些乱
+ */
 @Controller
 @RequestMapping("/student")
 @Transactional
 public class StudentController {
+
+    @Autowired
+    TermService termService;
 
     @Autowired
     StudentService studentService;
@@ -63,6 +70,8 @@ public class StudentController {
         System.out.println(teamerList);
         if (student != null)
             if (teamerList != null) {
+                Term term = termService.findFirstByStatusOrderByTerm(1);
+                httpSession.setAttribute("term",term);
                 httpSession.setAttribute("student", student);
                 httpSession.setAttribute("teamerList", teamerList);
                 return "student/index";
@@ -76,11 +85,6 @@ public class StudentController {
         }
     }
 
-    @RequestMapping("/toInsertStudent.do")
-    public String toInsertStudent(Model model) {
-
-        return "student/toInsertStudent";
-    }
 
     @RequestMapping("/insertStudent.do")
     public String insertStudent(Model model) {
@@ -380,6 +384,18 @@ public class StudentController {
         model.addAttribute("inviteList", inviteList);
         return "student/teamInterview";
 
+    }
+
+    @RequestMapping("/raceInfoList.do")
+    public String raceInfoList(Model model,HttpSession httpSession) {
+        model.addAttribute("menuSelected1", "raceManage");
+        model.addAttribute("menuSelected2", "raceInfo");
+        Term term = termService.findFirstByStatusOrderByTerm(1);
+        List<Raceinfo> raceinfoList = raceinfoService.findByStatusAndTerm(1,term.getTerm());
+
+        model.addAttribute("raceinfoList", raceinfoList);
+
+        return "student/raceInfoList";
     }
 
 }
