@@ -960,7 +960,9 @@
                     <tbody th:each="raceInfo:${raceinfoList}">
                     <tr>
                         <td class="center">#</td>
-                        <td class="hidden-xs"><a href="raceInfoDetail.html" rel="nofollow"><p th:text="${raceInfo.racename}">racename</p></a></td>
+                        <td class="hidden-xs"><a href="raceInfoDetail.html" th:href="${'/student/raceInfoDetail.do?raceInfoUUID='+raceInfo.uuid}" rel="nofollow">
+                            <p th:text="${raceInfo.racename}">racename</p></a>
+                        </td>
                         <td th:text="${raceInfo.kind}">kind</td>
                         <td th:text="${raceInfo.begaintime}">starttime</td>
                         <td class="hidden-xs" th:text="${raceInfo.endtime}">endtime</td>

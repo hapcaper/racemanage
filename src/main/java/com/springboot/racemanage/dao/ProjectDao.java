@@ -20,5 +20,23 @@ public interface ProjectDao {
 
     Project findFirstByUuid(@Param("uuid")String uuid);
 
+    List<Project> findByStatusAndUuidIn(@Param("status")Integer status,@Param("uuidList")List<String> uuidList);
+
+
+
+    /**
+     * raceinfoDetail页面需要项目的查询
+     * 查询所有登陆学生的没有参加该赛事的项目
+     * @param stuUuid
+     * @param raceinfoUuid
+     * @return
+     */
+
+    List<Project> getProjectForRaceinfoDetail(@Param("stuUuid") String stuUuid,@Param("raceinfoUuid") String raceinfoUuid);
+
+
+
+
+
 
 }

@@ -16,6 +16,8 @@ public class Race {
     private String file1;
     private String file2;
     private String file3;
+    private String raceinfoUuid;
+    private String proUuid;
 
     @Override
     public String toString() {
@@ -35,7 +37,25 @@ public class Race {
                 ", file1='" + file1 + '\'' +
                 ", file2='" + file2 + '\'' +
                 ", file3='" + file3 + '\'' +
+                ", raceinfoUuid='" + raceinfoUuid + '\'' +
+                ", proUuid='" + proUuid + '\'' +
                 '}';
+    }
+
+    public String getProUuid() {
+        return proUuid;
+    }
+
+    public void setProUuid(String proUuid) {
+        this.proUuid = proUuid;
+    }
+
+    public String getRaceinfoUuid() {
+        return raceinfoUuid;
+    }
+
+    public void setRaceinfoUuid(String raceinfoUuid) {
+        this.raceinfoUuid = raceinfoUuid;
     }
 
     public Integer getId() {

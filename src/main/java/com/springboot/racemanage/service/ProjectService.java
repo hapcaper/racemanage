@@ -16,4 +16,8 @@ public interface ProjectService {
     List<Project> findByUuid(String uuid);
 
     Project findFirstByUuid(String uuid);
+
+    List<Project> findByStatusAndUuidIn(Integer status,List<String> uuidList);
+
+    List<Project> getProjectForRaceinfoDetail(String stuUuid,String raceinfoUuid);
 }

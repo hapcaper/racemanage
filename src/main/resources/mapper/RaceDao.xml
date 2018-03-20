@@ -18,6 +18,8 @@
         <result column="file1" property="file1"/>
         <result column="file2" property="file2"/>
         <result column="file3" property="file3"/>
+        <result column="raceinfo_uuid" property="raceinfoUuid"/>
+        <result column="pro_uuid" property="proUuid"/>
     </resultMap>
 
     <!--auto generated Code-->
@@ -36,7 +38,9 @@
         `proname`,
         `file1`,
         `file2`,
-        `file3`
+        `file3`,
+        `raceinfo_uuid`,
+        `pro_uuid`
     </sql>
 
     <!--auto generated Code-->
@@ -56,7 +60,9 @@
             `proname`,
             `file1`,
             `file2`,
-            `file3`
+            `file3`,
+            `raceinfo_uuid`,
+            `pro_uuid`
         ) VALUES (
             #{pojo.id},
             #{pojo.uuid},
@@ -72,7 +78,9 @@
             #{pojo.proname},
             #{pojo.file1},
             #{pojo.file2},
-            #{pojo.file3}
+            #{pojo.file3},
+            #{pojo.raceinfoUuid},
+            #{pojo.proUuid}
         )
     </insert>
 
@@ -95,6 +103,9 @@
             <if test="pojo.file1!=null"> `file1`,</if>
             <if test="pojo.file2!=null"> `file2`,</if>
             <if test="pojo.file3!=null"> `file3`,</if>
+            <if test="pojo.raceinfoUuid!=null"> `raceinfo_uuid`,</if>
+            <if test="pojo.proUuid!=null"> `pro_uuid`,</if>
+
         </trim>
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -113,6 +124,8 @@
             <if test="pojo.file1!=null">#{pojo.file1},</if>
             <if test="pojo.file2!=null">#{pojo.file2},</if>
             <if test="pojo.file3!=null">#{pojo.file3},</if>
+            <if test="pojo.raceinfoUuid!=null"> #{pojo.raceinfoUuid},</if>
+            <if test="pojo.proUuid!=null"> #{pojo.proUuid},</if>
         </trim>
     </insert>
 
@@ -137,7 +150,9 @@
             #{pojo.proname},
             #{pojo.file1},
             #{pojo.file2},
-            #{pojo.file3}
+            #{pojo.file3},
+            #{pojo.raceinfoUuid},
+            #{pojo.proUuid}
             )
         </foreach>
     </insert>
@@ -160,9 +175,12 @@
             <if test="pojo.proname != null"> `proname` = #{pojo.proname}, </if>
             <if test="pojo.file1 != null"> `file1` = #{pojo.file1}, </if>
             <if test="pojo.file2 != null"> `file2` = #{pojo.file2}, </if>
-            <if test="pojo.file3 != null"> `file3` = #{pojo.file3} </if>
+            <if test="pojo.file3 != null"> `file3` = #{pojo.file3}, </if>
+            <if test="pojo.raceinfoUuid!=null"> `raceinfo_uuid` = #{pojo.raceinfoUuid},</if>
+            <if test="pojo.proUuid!=null"> `pro_uuid` = #{pojo.proUuid},</if>
         </set>
         WHERE id = #{pojo.id}
     </update>
+
 </mapper>
 

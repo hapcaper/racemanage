@@ -15,4 +15,6 @@ public interface RaceinfoService {
 
     List<Raceinfo> findByStatusAndTerm(Integer status,Integer term);
 
+    Raceinfo findFirstByUuid(String uuid);
+
 }

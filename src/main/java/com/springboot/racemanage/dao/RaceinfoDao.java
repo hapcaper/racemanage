@@ -18,5 +18,9 @@ public interface RaceinfoDao {
 
     List<Raceinfo> findByStatusAndTerm(@Param("status")Integer status,@Param("term")Integer term);
 
+    Raceinfo findFirstByUuid(@Param("uuid")String uuid);
+
+
+
 
 }

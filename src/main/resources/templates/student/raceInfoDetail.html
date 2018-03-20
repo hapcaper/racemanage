@@ -936,7 +936,7 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>Form Elements <small>common form elements and layouts</small></h1>
+                        <h1>报名竞赛 <small></small></h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
@@ -950,7 +950,7 @@
                             赛事名称
                         </label>
                         <div class="col-sm-9">
-                            <h5>racename</h5>
+                            <h5 th:text="${raceInfo.racename}">racename</h5>
                         </div>
                     </div>
                     <div class="form-group">
@@ -958,7 +958,7 @@
                             赛事描述
                         </label>
                         <div class="col-sm-9">
-                            <h5>description</h5>
+                            <h5 th:text="${raceInfo.description}">description</h5>
                         </div>
                     </div>
                     <div class="form-group">
@@ -966,7 +966,7 @@
                             赛事类型
                         </label>
                         <div class="col-sm-9">
-                            <h5>kind</h5>
+                            <h5 th:text="${raceInfo.kind}">kind</h5>
                         </div>
                     </div>
                     <div class="form-group">
@@ -974,7 +974,7 @@
                             开始时间
                         </label>
                         <div class="col-sm-9">
-                            <h5>begintime</h5>
+                            <h5 th:text="${raceInfo.begaintime}">begintime</h5>
                         </div>
                     </div>
                     <div class="form-group">
@@ -982,7 +982,7 @@
                             结束时间
                         </label>
                         <div class="col-sm-9">
-                            <h5>endtime</h5>
+                            <h5 th:text="${raceInfo.endtime}">endtime</h5>
                         </div>
                     </div>
                     <div class="form-group">
@@ -990,7 +990,7 @@
                             相关文件
                         </label>
                         <div class="col-sm-9">
-                            <h5 href="#">file</h5>
+                            <a href="#" th:href="${raceInfo.file1}">file</a>
                         </div>
                     </div>
                     <div class="form-group">
@@ -1000,9 +1000,9 @@
                         <div class="col-sm-6">
                             <select id="form-field-select-1" class="form-control">
                                 <option value="">&nbsp;</option>
-                                <option value="WV">项目a</option>
-                                <option value="WI">项目b</option>
-                                <option value="WY">项目c</option>
+                                <div th:each="project:${projectList}">
+                                    <option value="WV" th:value="${project.uuid}" th:text="${project.name}">项目a</option>
+                                </div>
                             </select>
                         </div>
                     </div>

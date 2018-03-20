@@ -38,4 +38,14 @@ public class ProjectServiceImpl implements ProjectService{
     public Project findFirstByUuid(String uuid) {
         return projectDao.findFirstByUuid(uuid);
     }
+
+    @Override
+    public List<Project> findByStatusAndUuidIn(Integer status, List<String> uuidList) {
+        return projectDao.findByStatusAndUuidIn(status, uuidList);
+    }
+
+    @Override
+    public List<Project> getProjectForRaceinfoDetail(String stuUuid, String raceinfoUuid) {
+        return projectDao.getProjectForRaceinfoDetail(stuUuid,raceinfoUuid);
+    }
 }

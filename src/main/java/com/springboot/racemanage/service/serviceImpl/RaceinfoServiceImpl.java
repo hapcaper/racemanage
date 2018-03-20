@@ -33,4 +33,9 @@ public class RaceinfoServiceImpl implements RaceinfoService{
     public List<Raceinfo> findByStatusAndTerm(Integer status, Integer term) {
         return raceinfoDao.findByStatusAndTerm(status,term);
     }
+
+    @Override
+    public Raceinfo findFirstByUuid(String uuid) {
+        return raceinfoDao.findFirstByUuid(uuid);
+    }
 }

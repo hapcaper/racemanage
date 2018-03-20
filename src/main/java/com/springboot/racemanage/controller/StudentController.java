@@ -2,7 +2,6 @@ package com.springboot.racemanage.controller;
 
 import com.springboot.racemanage.po.*;
 import com.springboot.racemanage.service.*;
-import com.sun.javafx.tools.packager.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,11 +12,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -396,6 +399,21 @@ public class StudentController {
         model.addAttribute("raceinfoList", raceinfoList);
 
         return "student/raceInfoList";
+    }
+
+    @RequestMapping("/raceInfoDetail.do")
+    public String raceInfoDetail(Model model,HttpSession httpSession,@RequestParam("raceInfoUUID")String raceInfoUUID) {
+        Student student = (Student) httpSession.getAttribute("student");
+
+        Raceinfo raceinfo = raceinfoService.findFirstByUuid(raceInfoUUID);
+        List<Project> projectList = projectService.getProjectForRaceinfoDetail(student.getStuUuid(), raceInfoUUID);
+
+        Logger.getGlobal().log(Level.WARNING,raceinfo.toString());
+        Logger.getGlobal().log(Level.WARNING,projectList.toString());
+        model.addAttribute("projectList", projectList);
+
+        model.addAttribute("raceInfo", raceinfo);
+        return "student/raceInfoDetail";
     }
 
 }
