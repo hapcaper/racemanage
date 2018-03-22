@@ -17,6 +17,12 @@ public interface RaceDao {
 
     int update(@Param("pojo") Race pojo);
 
+    List<Race> getStuRaceListByTerm(@Param("stuUuid")String stuUuid,@Param("term")Integer term);
+
+    Race findByUuid(@Param("uuid")String uuid);
+
+
+
 
 
 

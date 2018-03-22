@@ -3,6 +3,7 @@ package com.springboot.racemanage.service;
 import com.springboot.racemanage.po.Message;
 
 import java.util.List;
+import java.util.Map;
 
 public interface MessageService {
     int insert( Message pojo);
@@ -16,5 +17,7 @@ public interface MessageService {
     Integer countByToUuidAndStatus(String toUuid,Integer status);
 
     List<Message> findByToUuidAndStatus(String toUuid,Integer status);
+
+    List<Map<String, String>> getMsgWithStuName( String toUuid);
 
 }

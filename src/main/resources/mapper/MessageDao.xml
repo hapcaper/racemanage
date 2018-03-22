@@ -123,5 +123,25 @@
         from message
         where `to_uuid`=#{toUuid} and `status`=#{status}
     </select>
+
+
+    <select id="getMsgWithStuName" resultType="java.util.HashMap">
+        SELECT
+        message.id,
+        message.uuid,
+        message.content,
+        message.from_uuid,
+        message.to_uuid,
+        message.sendtime,
+        message.title,
+        message.status,
+        student.stu_name
+        FROM message
+        LEFT JOIN
+        student
+        ON student.stu_uuid = message.to_uuid
+        WHERE message.to_uuid = #{toUuid}
+    </select>
+
 </mapper>
 

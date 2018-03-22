@@ -28,4 +28,14 @@ public class RaceServiceImpl implements RaceService{
     public int update(Race pojo){
         return raceDao.update(pojo);
     }
+
+    @Override
+    public List<Race> getStuRaceListByTerm(String stuUuid, Integer term) {
+        return raceDao.getStuRaceListByTerm(stuUuid,term);
+    }
+
+    @Override
+    public Race findByUuid(String uuid) {
+        return raceDao.findByUuid(uuid);
+    }
 }

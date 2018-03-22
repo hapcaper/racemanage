@@ -1,8 +1,6 @@
 package com.springboot.racemanage.service;
 
 import com.springboot.racemanage.po.Race;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,4 +12,8 @@ public interface RaceService {
     int insertList(List<Race> pojo);
 
     int update(Race pojo);
+
+    List<Race> getStuRaceListByTerm(String stuUuid,Integer term);
+
+    Race findByUuid(String uuid);
 }

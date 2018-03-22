@@ -927,70 +927,43 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>标题 <small>细微描述</small></h1>
+                        <h1>消息中心 <small></small></h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            <div class="panel-group accordion-custom accordion-teal" id="accordion">
+            <div class="panel-group accordion-custom accordion-teal" id="accordion" th:each="m:${mapList}">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                     <div class="row">
                         <div class="col-sm-10">
 
                                 <h4 class="panel-title">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"th:href="${'#'+m.get('id')}" href="#collapseOne">
                                         <i class="icon-arrow"></i>
-                                        msg.title
+                                        <p th:text="${m.get('title') }">msg.title</p>
                                     </a></h4>
 
                         </div>
                         <div class="col-sm-2">
-                            <h6>msg.date</h6>
+                            <h6 th:text="${m.get('sendtime')}">msg.date</h6>
                         </div>
                     </div>
                     </div>
 
-                    <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+                    <div th:id="${m.get('id')}" id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
                         <div class="panel-body">
-                            <p>msg.form</p>
-                            <p>msg.content</p>
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                <i class="icon-arrow"></i>
-                                Collapsible Group Item #2
-                            </a></h4>
-                    </div>
-                    <div id="collapseTwo" class="panel-collapse collapse" style="height: 0px;">
-                        <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                <i class="icon-arrow"></i>
-                                Collapsible Group Item #3
-                            </a></h4>
-                    </div>
-                    <div id="collapseThree" class="panel-collapse collapse" style="height: 0px;">
-                        <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            <h4>from:</h4>
+                            <p th:text="${m.get('stu_name')}">who</p>
+                            <hr>
+                            <p th:text="${m.get('content')}">msg.content</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <form action="" role="form" class="form-horizontal">
+            <form action="#" role="form" class="form-horizontal">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">
                         发送给同学

@@ -4,6 +4,8 @@ import com.springboot.racemanage.service.MessageService;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
+
 import com.springboot.racemanage.po.Message;
 import com.springboot.racemanage.dao.MessageDao;
 
@@ -37,6 +39,11 @@ public class MessageServiceImpl implements MessageService{
     @Override
     public List<Message> findByToUuidAndStatus(String toUuid, Integer status) {
         return messageDao.findByToUuidAndStatus(toUuid,status);
+    }
+
+    @Override
+    public List<Map<String, String>> getMsgWithStuName(String toUuid) {
+        return messageDao.getMsgWithStuName(toUuid);
     }
 
 }
