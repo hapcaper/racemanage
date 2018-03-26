@@ -497,7 +497,7 @@ public class StudentController {
 
             //springboot不能使用transferTo(),可能是因为他的tomcat是运行时产生的
 //            file1.transferTo(to);
-            race.setFile1("uploadFiles\\projectDoc\\r"+file1Name.toString());
+            race.setFile1("uploadFiles/raceFiles/r"+file1Name.toString());
 
         }
 
@@ -533,7 +533,11 @@ public class StudentController {
 
 //            file3.transferTo(new File((file3Path.toString())));
 
-            race.setFile3("uploadFiles\\raceFiles\\"+file3Name.toString());
+            StringBuffer file3Path2 = file3Path;
+            file3Path2.replace(0, 19, "");
+            System.out.println(file3Path2);
+
+            race.setFile3(file3Path2.toString());
         }
 
         System.out.println(race);
