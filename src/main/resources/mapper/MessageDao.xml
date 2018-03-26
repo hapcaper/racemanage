@@ -11,6 +11,7 @@
         <result column="sendtime" property="sendtime"/>
         <result column="title" property="title"/>
         <result column="status" property="status"/>
+        <result column="stu_or_te" property="stuOrTe"/>
     </resultMap>
 
     <!--auto generated Code-->
@@ -22,7 +23,8 @@
         `to_uuid`,
         `sendtime`,
         `title`,
-        `status`
+        `status`,
+        `stu_or_te`
     </sql>
 
     <!--auto generated Code-->
@@ -35,7 +37,8 @@
         `to_uuid`,
         `sendtime`,
         `title`,
-        `status`
+        `status`,
+        `stu_or_te`
         ) VALUES (
         #{pojo.id},
         #{pojo.uuid},
@@ -44,7 +47,8 @@
         #{pojo.toUuid},
         #{pojo.sendtime},
         #{pojo.title},
-        #{pojo.status}
+        #{pojo.status},
+        #{pojo.stuOrTe}
         )
     </insert>
 
@@ -60,6 +64,7 @@
             <if test="pojo.sendtime!=null"> `sendtime`,</if>
             <if test="pojo.title!=null"> `title`,</if>
             <if test="pojo.status!=null"> `status`,</if>
+            <if test="pojo.stuOrTe!=null">`stu_or_te`,</if>
         </trim>
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -71,6 +76,7 @@
             <if test="pojo.sendtime!=null">#{pojo.sendtime},</if>
             <if test="pojo.title!=null">#{pojo.title},</if>
             <if test="pojo.status!=null">#{pojo.status},</if>
+            <if test="pojo.stuOrTe!=null">#{pojo.stuOrTe},</if>
         </trim>
     </insert>
 
@@ -88,7 +94,8 @@
             #{pojo.toUuid},
             #{pojo.sendtime},
             #{pojo.title},
-            #{pojo.status}
+            #{pojo.status},
+            #{pojo.stuOrTe}
             )
         </foreach>
     </insert>
@@ -104,7 +111,8 @@
             <if test="pojo.toUuid != null"> `to_uuid` = #{pojo.toUuid}, </if>
             <if test="pojo.sendtime != null"> `sendtime` = #{pojo.sendtime}, </if>
             <if test="pojo.title != null"> `title` = #{pojo.title}, </if>
-            <if test="pojo.status != null"> `status` = #{pojo.status} </if>
+            <if test="pojo.status != null"> `status` = #{pojo.status}, </if>
+            <if test="pojo.stuOrTe != null">`stu_or_te` = #{pojo.stuOrTe}</if>
         </set>
         WHERE id = #{pojo.id}
     </update>
@@ -135,11 +143,12 @@
         message.sendtime,
         message.title,
         message.status,
+        message.stu_or_te,
         student.stu_name
         FROM message
         LEFT JOIN
         student
-        ON student.stu_uuid = message.to_uuid
+        ON student.stu_uuid = message.from_uuid
         WHERE message.to_uuid = #{toUuid}
     </select>
 

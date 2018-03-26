@@ -945,15 +945,15 @@
                         </div>
                         <div class="col-sm-2">邀请者： SAO</div>
                         <div class="col-sm-3">
-                            <button type="button" class="btn btn-info">
+                            <a th:href="'/student/acceptInvite.do?inviteUUID='+${invite.uuid}"  class="btn btn-info">
                                 接受
-                            </button>
-                            <button type="button" class="btn btn-danger">
+                            </a>
+                            <a th:href="'/student/refuseInvite.do?inviteUUID='+${invite.uuid}"  class="btn btn-danger">
                                 拒绝
-                            </button>
-                            <button type="button" class="btn btn-dark-grey">
+                            </a>
+                            <a th:href="'/student/ignoreInvite.do?inviteUUID='+${invite.uuid}"  class="btn btn-dark-grey">
                                 忽略
-                            </button>
+                            </a>
                         </div>
                     </div>
 

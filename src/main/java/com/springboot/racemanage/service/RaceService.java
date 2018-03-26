@@ -16,4 +16,6 @@ public interface RaceService {
     List<Race> getStuRaceListByTerm(String stuUuid,Integer term);
 
     Race findByUuid(String uuid);
+
+    List<Race> getAchivementListByStuUuid(String stuUuid);
 }

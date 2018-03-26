@@ -87,14 +87,11 @@ public class StudentController {
         }
     }
 
+    @RequestMapping("/index.do")
+    public String index(Model model) {
+        model.addAttribute("menuSelected1", "index");
 
-    @RequestMapping("/insertStudent.do")
-    public String insertStudent(Model model) {
-        Student student = new Student();
-        student.setStuNumber("201470024136");
-        int a = studentService.insertSelective(student);
-        System.out.println(a+"'''''''''''''");
-        return "fuck";
+        return "student/index";
     }
 
     @RequestMapping("/profile.do")
@@ -113,15 +110,15 @@ public class StudentController {
 
     @RequestMapping(value = "/updateProfile.do",method = RequestMethod.POST)
     public String updateProfile(Model model , HttpSession httpSession,
-                                @RequestParam("email")String email,
-                                @RequestParam("phone")String phone,
-                                @RequestParam("oldPasswd")String oldPasswd,
-                                @RequestParam("newPasswd")String newPasswd,
-                                @RequestParam("photo")String photo) {
+                                @Nullable @RequestParam("email")String email,
+                                @Nullable @RequestParam("phone")String phone,
+                                @Nullable @RequestParam("oldPasswd")String oldPasswd,
+                                @Nullable @RequestParam("newPasswd")String newPasswd,
+                                @Nullable @RequestParam("photo")MultipartFile photo) {
         model.addAttribute("menuSelected1", "profile");
         Student student = (Student) httpSession.getAttribute("student");
         if (phone.length()!=0) {
-            student.setPhoto(photo);
+            student.setPhoto("");
         }
         if (email.length()!=0) {
             student.setStuEmail(email);
@@ -546,5 +543,103 @@ public class StudentController {
 
         return "redirect:/student/raceDetail.do?raceUUID="+raceUUID;
     }
+
+    @RequestMapping("/acceptInvite.do")
+    public String acceptInvite(Model model , HttpSession httpSession,
+                                  @RequestParam("inviteUUID")String inviteUUID) {
+
+        Student student = (Student) httpSession.getAttribute("student");
+        Invite invite = inviteService.findByUuid(inviteUUID);
+        Project project = projectService.findFirstByUuid(invite.getProUuid());
+        System.out.println("((((("+invite);
+
+        //添加teamer信息
+        Teamer teamer = new Teamer();
+        teamer.setUuid(UUID.randomUUID().toString());
+        teamer.setStuUuid(student.getStuUuid());
+        teamer.setStuname(student.getStuName());
+        teamer.setStatus(1);
+        teamer.setProUuid(invite.getProUuid());
+        teamer.setProame(invite.getProname());
+        teamer.setDuty("暂定");
+        teamer.setDutydescription(invite.getDutydescription());
+        System.out.println(")))))))))"+teamer);
+
+        //以系统身份发送邀请接受绝消息
+        Message message = new Message();
+        message.setUuid(UUID.randomUUID().toString());
+        message.setFromUuid("000");
+        String rfusMsg = student.getStuName() + "接受了您  " + project.getName() + "  的项目邀请。";
+        message.setContent(rfusMsg);
+        message.setSendtime(new Date());
+        message.setTitle("系统提示");
+        message.setToUuid(invite.getFromUuid());
+        message.setStatus(1);
+        System.out.println("+++++++"+message);
+
+        //修改邀请信息状态
+        invite.setStatus(2);
+
+        //执行
+        teamerService.insertSelective(teamer);
+        inviteService.update(invite);
+        messageService.insertSelective(message);
+        return "redirect:/student/inviteList.do";
+    }
+
+
+    @RequestMapping("/refuseInvite.do")
+    public String refuseInvite(Model model , HttpSession httpSession,
+                               @RequestParam("inviteUUID")String inviteUUID) {
+        Student student = (Student) httpSession.getAttribute("student");
+        Invite invite = inviteService.findByUuid(inviteUUID);
+        Project project = projectService.findFirstByUuid(invite.getProUuid());
+
+        //以系统身份发送邀请被拒绝消息
+        Message message = new Message();
+        message.setUuid(UUID.randomUUID().toString());
+        message.setFromUuid("000");
+        String rfusMsg = student.getStuName() + "拒绝了您  " + project.getName() + "  的项目邀请。";
+        message.setContent(rfusMsg);
+        message.setSendtime(new Date());
+        message.setTitle("系统提示");
+        message.setToUuid(invite.getFromUuid());
+        message.setStatus(1);
+        System.out.println("+++++++"+message);
+
+        //修改邀请信息状态
+        invite.setStatus(3);
+        System.out.println("~~~~~~"+invite);
+
+        inviteService.update(invite);
+        messageService.insertSelective(message);
+        return "redirect:/student/inviteList.do";
+    }
+
+    @RequestMapping("/ignoreInvite.do")
+    public String ignoreInvite(Model model,HttpSession httpSession,
+                               @RequestParam("inviteUUID")String inviteUUID) {
+
+        Invite invite = inviteService.findByUuid(inviteUUID);
+
+        invite.setStatus(4);
+        inviteService.update(invite);
+
+        return "redirect:/student/inviteList.do";
+    }
+
+    @RequestMapping("/achievementList.do")
+    public String achievementList(Model model,HttpSession httpSession) {
+        model.addAttribute("menuSelected1", "achievement");
+
+        Student student = (Student) httpSession.getAttribute("student");
+        List<Race> achivList = raceService.getAchivementListByStuUuid(student.getStuUuid());
+        System.out.println("$$$$$$$$$"+achivList);
+
+        model.addAttribute("achivList", achivList);
+        return "student/achievementList";
+    }
+
+
 
 }

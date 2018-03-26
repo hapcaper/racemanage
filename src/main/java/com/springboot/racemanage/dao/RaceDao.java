@@ -21,6 +21,8 @@ public interface RaceDao {
 
     Race findByUuid(@Param("uuid")String uuid);
 
+    List<Race> getByStuUuidAndStatusAndResultNot(@Param("stuUuid")String stuUuid,@Param("status")Integer status,@Param("resultnot")Integer resultnot);
+
 
 
 

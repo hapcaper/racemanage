@@ -22,6 +22,10 @@ public interface InviteDao {
 
     List<Invite> findByToUuidAndStatus(@Param("toUuid")String toUuid,@Param("status")Integer status);
 
+    Invite findByUuid(@Param("uuid")String uuid);
+
+
+
 
 
 

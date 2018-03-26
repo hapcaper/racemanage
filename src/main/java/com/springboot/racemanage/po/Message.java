@@ -12,6 +12,7 @@ public class Message {
     private Date sendtime;
     private String title;
     private Integer status;
+    private String stuOrTe;
 
 
 
@@ -26,7 +27,16 @@ public class Message {
                 ", sendtime=" + sendtime +
                 ", title='" + title + '\'' +
                 ", status=" + status +
+                ", stuOrTe='" + stuOrTe + '\'' +
                 '}';
+    }
+
+    public String getStuOrTe() {
+        return stuOrTe;
+    }
+
+    public void setStuOrTe(String stuOrTe) {
+        this.stuOrTe = stuOrTe;
     }
 
     public String getFromUuid() {

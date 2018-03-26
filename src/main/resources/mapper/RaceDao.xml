@@ -199,5 +199,14 @@
         where `uuid`=#{uuid}
     </select>
 
+    <select id="getByStuUuidAndStatusAndResultNot" resultType="java.util.HashMap">
+        SELECT
+        <include refid="all_column"/>
+        FROM race
+        WHERE pro_uuid IN (SELECT pro_uuid
+        FROM teamer
+        WHERE stu_uuid = #{stuUuid})  AND status = #{status} AND result !=#{resultnot}
+    </select>
+
 </mapper>
 

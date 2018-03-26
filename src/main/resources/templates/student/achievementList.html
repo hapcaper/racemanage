@@ -942,21 +942,21 @@
                         <th class="center">#</th>
                         <th>赛事名称</th>
                         <th class="hidden-xs">赛事类型</th>
-                        <th>参赛人员</th>
+                        <th>赛事期数</th>
                         <th class="hidden-xs">参赛项目</th>
                         <th>所获奖项</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td class="center">1</td>
-                        <td class="hidden-xs"><a href="raceDetail.html" rel="nofollow">race.racename</a></td>
-                        <td>race.kind</td>
-                        <td>teamer.name  teamer.name</td>
-                        <td class="hidden-xs">race.proname</td>
-                        <td >race.result</td>
+                    <tr th:each="achiv:${achivList}">
+                        <td class="center">#</td>
+                        <td class="hidden-xs"><a th:href="${'/student/raceDetail.do?raceUUID='+achiv.uuid}" href="raceDetail.html" rel="nofollow" th:text="${achiv.racename}">race.racename</a></td>
+                        <td th:text="${achiv.kind}">race.kind</td>
+                        <td th:text="${achiv.term}">race.term</td>
+                        <td class="hidden-xs" th:text="${achiv.proname}">race.proname</td>
+                        <td th:text="${achiv.result}">race.result</td>
                     </tr>
-                    <tr>
+                    <tr th:remove="all">
                         <td class="center">2</td>
                         <td>Internet Explorer</td>
                         <td class="hidden-xs">Microsoft, Spyglass</td>
@@ -996,7 +996,7 @@
                                 </div>
                             </div></td>
                     </tr>
-                    <tr>
+                    <tr th:remove="all">
                         <td class="center">3</td>
                         <td>Mozilla Firefox</td>
                         <td class="hidden-xs">Mozilla Foundation</td>
