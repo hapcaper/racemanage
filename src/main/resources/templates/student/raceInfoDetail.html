@@ -944,7 +944,7 @@
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
             <div class="panel-body">
-                <form role="form" class="form-horizontal">
+                <form role="form" class="form-horizontal" method="post" th:action="${'/student/addRace.do'}">
                     <div class="form-group">
                         <label class="col-sm-2 control-label" >
                             赛事名称
@@ -998,7 +998,7 @@
                             参赛项目
                         </label>
                         <div class="col-sm-6">
-                            <select id="form-field-select-1" class="form-control">
+                            <select name="projectUUID" id="form-field-select-1" class="form-control">
                                 <option value="">&nbsp;</option>
                                 <div th:each="project:${projectList}">
                                     <option value="WV" th:value="${project.uuid}" th:text="${project.name}">项目a</option>
@@ -1006,6 +1006,7 @@
                             </select>
                         </div>
                     </div>
+                    <input hidden="hidden" type="text" name="raceInfoUUID" th:value="${raceInfo.uuid}"/>
                     <div class="form-group"></div>
                     <div class="form-group">
                         <div class="col-sm-2 col-sm-offset-4">

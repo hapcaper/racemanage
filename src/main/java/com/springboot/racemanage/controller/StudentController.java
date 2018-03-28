@@ -64,8 +64,12 @@ public class StudentController {
     @Autowired
     SolutionService solutionService;
 
+    @Autowired
+    LogService logService;
+
     @RequestMapping(value = "/login.do",method = RequestMethod.POST)
-    public String login(HttpSession httpSession,Model model, @RequestParam("stunumber") String stunumber, @RequestParam("password") String password){
+    public String login(HttpSession httpSession,Model model, @RequestParam("stunumber") String stunumber,
+                        @RequestParam("password") String password){
         model.addAttribute("menuSelected1", "index");
         Student student = studentService.findFirstByStuNumberAndStuPasswordAndStuStatus(stunumber, password, 1);
         List<Teamer> teamerList = teamerService.findByStuUuid(student.getStuUuid());
@@ -202,7 +206,7 @@ public class StudentController {
         System.out.println(docPath2);
         project.setDocument(docPath2.toString());
 
-        //TODO 添加自己teamer
+        //DONE 添加自己teamer
         Teamer teamer = new Teamer();
         teamer.setDuty("队长");
         teamer.setProame(project.getName());
@@ -255,7 +259,8 @@ public class StudentController {
 
         System.out.println("============"+httpSession.getServletContext().getContextPath());
         System.out.println("666666666666"+document.getOriginalFilename());
-        System.out.println("55555555555555555555"+httpSession.getServletContext().getRealPath("static\\uploadFiles\\projectDoc"));
+        System.out.println("55555555555555555555"+
+                httpSession.getServletContext().getRealPath("static\\uploadFiles\\projectDoc"));
 
 //        try {
 //
@@ -638,6 +643,46 @@ public class StudentController {
 
         model.addAttribute("achivList", achivList);
         return "student/achievementList";
+    }
+
+    @RequestMapping("/projectTimeLine.do")
+    public String projectTimeLine(Model model,HttpSession httpSession,
+                                  @RequestParam("projectUUID")String projectUUID) {
+
+        Project project = projectService.findFirstByUuid(projectUUID);
+
+        //名字太不优雅  回来想到更好的就改下
+        List<Map> logandteamernameList = logService.getLogAndTeamerNameByProUuid(projectUUID);
+
+        model.addAttribute("logandteamernameList", logandteamernameList);
+        model.addAttribute("project", project);
+        return "student/projectTimeLine";
+    }
+
+    @RequestMapping("/addRace.do")
+    public String addRace(Model model,HttpSession httpSession,@RequestParam("projectUUID")String projectUUID,
+                          @RequestParam("raceInfoUUID")String raceInfoUUID) {
+
+        Project project = projectService.findFirstByUuid(projectUUID);
+        Raceinfo raceinfo = raceinfoService.findFirstByUuid(raceInfoUUID);
+        Term term = (Term) httpSession.getAttribute("term");
+
+        Race race = new Race();
+        race.setDescription(raceinfo.getDescription());
+        race.setKind(raceinfo.getKind());
+        race.setProname(project.getName());
+        race.setProUuid(project.getUuid());
+        race.setRaceinfoUuid(raceInfoUUID);
+        race.setRacename(raceinfo.getRacename());
+        race.setRaceteacher(project.getTname());
+        race.setStatus(1);
+        race.setTerm(term.getTerm());
+        race.settUuid(project.gettUuid());
+        race.setUuid(UUID.randomUUID().toString());
+
+        System.out.println(";;;;;;"+race);
+        raceService.insertSelective(race);
+        return "redirect:/student/myRace.do";
     }
 
 

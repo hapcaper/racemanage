@@ -953,9 +953,9 @@
                     </h3>
                 </div>
                 <div class="col-sm-2">
-                    <button data-original-title="项目进度日志" data-placement="top" class="btn tooltips">
-                        <a th:href="${'/student/projecttimeline.do?proUUID='+project.uuid}" href="projectTimeLine.html">项目日志</a>
-                    </button>
+                    <a th:href="${'/student/projectTimeLine.do?projectUUID='+project.uuid}" href="projectTimeLine.html" data-original-title="项目进度日志" data-placement="top" class="btn btn-block tooltips">
+                        项目日志
+                    </a>
                 </div>
             </div>
             <div class="row">

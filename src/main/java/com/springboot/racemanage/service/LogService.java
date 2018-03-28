@@ -1,10 +1,9 @@
 package com.springboot.racemanage.service;
 
 import com.springboot.racemanage.po.Log;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface LogService {
     int insert(Log pojo);
@@ -14,4 +13,8 @@ public interface LogService {
     int insertList(List<Log> pojo);
 
     int update(Log pojo);
+
+    List<Log> findByStatusAndProUuid(Integer status,String proUuid);
+
+    List<Map> getLogAndTeamerNameByProUuid(String proUuid);
 }

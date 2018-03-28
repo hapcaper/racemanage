@@ -928,7 +928,7 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>标题 <small>细微描述</small></h1>
+                        <h1 th:text="${project.name}">标题</h1><small th:text="${project.description}">细微描述</small>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
@@ -946,15 +946,16 @@
                 <div class="date_separator">
                     <span> 2018年5月</span>
                 </div>
-                <ul class="columns">
+                <ul class="columns" th:each="logMap:${logandteamernameList}">
                     <li>
                         <div class="timeline_element bricky">
                             <div class="timeline_title">
-                                <span class="timeline_label">solved by LZH {task.solver}</span><span class="timeline_date" th:text="@{task.endtime}">task.endtime</span>
+                                <span class="timeline_label" th:text="${'solved by '+logMap.get('stuname')}">solved by LZH {task.solver}</span>
+                                <span class="timeline_date" th:text="${logMap.get('endtime')}">task.endtime</span>
                             </div>
                             <div class="content">
-                                <b> task.title</b>
-                                <p>task.description</p>
+                                <b th:text="${logMap.get('tasktitle')}"> task.title</b>
+                                <p th:text="${logMap.get('description')}">task.description</p>
                             </div>
                             <div class="readmore">
                                 <a href="#" class="btn btn-warning">
@@ -963,7 +964,7 @@
                             </div>
                         </div>
                     </li>
-                    <li>
+                    <li th:remove="all">
                         <div class="timeline_element purple">
                             <div class="timeline_title">
                                 <span class="timeline_label">Event Title</span><span class="timeline_date">12 December 2014</span>
@@ -978,7 +979,7 @@
                             </div>
                         </div>
                     </li>
-                    <li>
+                    <li th:remove="all">
                         <div class="timeline_element">
                             <div class="timeline_title">
                                 <span class="timeline_label">Event Title</span><span class="timeline_date">16 December 2014</span>
@@ -993,7 +994,7 @@
                             </div>
                         </div>
                     </li>
-                    <li>
+                    <li th:remove="all">
                         <div class="timeline_element teal">
                             <div class="timeline_title">
                                 <span class="timeline_label">Event Title</span><span class="timeline_date">18 December 2014</span>
