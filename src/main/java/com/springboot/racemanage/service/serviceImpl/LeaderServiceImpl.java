@@ -28,4 +28,14 @@ public class LeaderServiceImpl implements LeaderService{
     public int update(Leader pojo){
         return leaderDao.update(pojo);
     }
+
+    @Override
+    public Leader findByLStatusAndLPasswordAndLName(Integer lStatus, String lPassword, String lName) {
+        return leaderDao.findByLStatusAndLPasswordAndLName(lStatus,lPassword,lName);
+    }
+
+    @Override
+    public Leader findByLStatusAndLPasswordAndLNumber(Integer lStatus, String lPassword, String lNumber) {
+        return leaderDao.findByLStatusAndLPasswordAndLNumber(lStatus,lPassword,lNumber);
+    }
 }

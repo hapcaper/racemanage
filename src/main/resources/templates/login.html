@@ -80,7 +80,8 @@
                         <div id="panel_tab_example1" class="tab-pane active">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h3>学生登录</h3><p class="text-danger" th:text="${errorMsg}"></p>
+                                    <h3>学生登录</h3>
+                                    <p class="text-danger" th:text="${errorMsg}"></p>
                                     <p>
                                         请输入你的学号和密码登陆
                                     </p>
@@ -110,9 +111,9 @@
                                                            name="remember">
                                                     Keep me signed in
                                                 </label>
-                                                    <button type="submit" class="btn btn-bricky pull-right">
-                                                        登陆 <i class="fa fa-arrow-circle-right"></i>
-                                                    </button>
+                                                <button type="submit" class="btn btn-bricky pull-right">
+                                                    登陆 <i class="fa fa-arrow-circle-right"></i>
+                                                </button>
 
                                             </div>
 
@@ -129,7 +130,7 @@
                                     <p>
                                         请输入你的教师号和密码登陆
                                     </p>
-                                    <form class="form-login" action="">
+                                    <form class="form-login" action="" th:action="${'/leader/login.do'}">
                                         <div class="errorHandler alert alert-danger no-display">
                                             <i class="fa fa-remove-sign"></i> You have some form errors. Please check
                                             below.
@@ -137,7 +138,7 @@
                                         <fieldset>
                                             <div class="form-group">
 							<span class="input-icon">
-								<input type="text" class="form-control" name="username" placeholder="学号">
+								<input type="text" class="form-control" name="username" placeholder="教师号">
 								<i class="fa fa-user"></i> </span>
                                                 <!-- To mark the incorrectly filled input, you must add the class "error" to the input -->
                                                 <!-- example: <input type="text" class="login error" name="login" value="Username" /> -->

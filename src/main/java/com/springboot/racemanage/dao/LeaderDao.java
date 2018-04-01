@@ -15,4 +15,10 @@ public interface LeaderDao {
     int insertList(@Param("pojos") List<Leader> pojo);
 
     int update(@Param("pojo") Leader pojo);
+
+    Leader findByLStatusAndLPasswordAndLName(@Param("lStatus")Integer lStatus,@Param("lPassword")String lPassword,@Param("lName")String lName);
+
+    Leader findByLStatusAndLPasswordAndLNumber(@Param("lStatus")Integer lStatus,@Param("lPassword")String lPassword,@Param("lNumber")String lNumber);
+
+
 }

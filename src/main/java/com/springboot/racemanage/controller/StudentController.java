@@ -458,6 +458,21 @@ public class StudentController {
         return "student/raceDetail";
     }
 
+    @RequestMapping("/achievementDetail.do")
+    public String achievementDetail(Model model,HttpSession httpSession,@RequestParam("raceUUID")String raceUUID) {
+        Race race = raceService.findByUuid(raceUUID);
+        Raceinfo raceinfo = raceinfoService.findFirstByUuid(race.getRaceinfoUuid());
+        Project project = projectService.findFirstByUuid(race.getProUuid());
+        List<Teamer> teamerList = teamerService.findByStatusAndProUuid(1, project.getUuid());
+
+        model.addAttribute("race", race);
+        model.addAttribute("raceinfo", raceinfo);
+        model.addAttribute("teamerList", teamerList);
+
+
+        return "student/achievementDetail";
+    }
+
     @RequestMapping("/updateRace.do")
     public String updateRace(Model model,HttpSession httpSession,
                              @Nullable @RequestParam("file1")MultipartFile file1,
