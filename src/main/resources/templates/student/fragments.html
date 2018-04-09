@@ -1,8 +1,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 
-
-
 <div th:fragment="common_css">
     <meta charset="UTF-8"/>
     <meta name="viewport"
@@ -13,16 +11,16 @@
     <meta content="" name="author"/>
     <!-- end: META -->
     <!-- start: MAIN CSS -->
-    <link rel="stylesheet"  th:href="@{/assets/plugins/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/assets/plugins/font-awesome/css/font-awesome.min.css}">
-    <link rel="stylesheet"  th:href="@{/assets/fonts/style.css}">
-    <link rel="stylesheet"  th:href="@{/assets/css/main.css}">
-    <link rel="stylesheet"  th:href="@{/assets/css/main-responsive.css}">
-    <link rel="stylesheet"  th:href="@{/assets/plugins/iCheck/skins/all.css}">
-    <link rel="stylesheet"  th:href="@{/assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css}">
-    <link rel="stylesheet"  th:href="@{/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css}">
-    <link rel="stylesheet"  id="skin_color" th:href="@{/assets/css/theme_light.css}">
-    <link rel="stylesheet"  type="text/css" media="print" th:href="@{/assets/css/print.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/fonts/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/main-responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/iCheck/skins/all.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css}">
+    <link rel="stylesheet" id="skin_color" th:href="@{/assets/css/theme_light.css}">
+    <link rel="stylesheet" type="text/css" media="print" th:href="@{/assets/css/print.css}"/>
     <!-- end: MAIN CSS -->
 
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
@@ -40,17 +38,16 @@
 </div>
 
 
-
-
 <div th:fragment="common_js">
     <!-- start: MAIN JAVASCRIPTS -->
 
     <!--[if gte IE 9]><!-->
-    <script type="text/javascript" th:src="@{/assets/plugins/Jquery/jquery-3.3.1.min.js}"></script>
     <!--<![endif]-->
+    <script type="text/javascript" th:src="@{/assets/plugins/Jquery/jquery-3.3.1.min.js}"></script>
     <script th:src="@{/assets/plugins/respond.min.js}"></script>
     <script th:src="@{/assets/plugins/excanvas.min.js}"></script>
-    <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js}"></script>
+    <script type="text/javascript"
+            th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js}"></script>
     <script th:src="@{/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js}"></script>
     <script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
     <script th:src="@{/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js}"></script>
@@ -98,7 +95,7 @@
     </script>
     <!--<input type="hidden" th:value="${student.stuUuid}" id="stuUuid"/>-->
     <script>
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             Main.init();
             let stuUuid = [[${session.student.stuUuid}]];
             initNum(stuUuid);
@@ -133,7 +130,7 @@
     <script th:inline="javascript">
         var level1menuId = [[${menuSelected1}]];
         var level2menuId = [[${menuSelected2}]];
-        $(".open").each(function() {
+        $(".open").each(function () {
             $(this).removeClass('active open');
         });
 
@@ -145,7 +142,6 @@
     </script>
 
 </div>
-
 
 
 <div th:fragment="header" class="navbar navbar-inverse navbar-fixed-top">
@@ -168,13 +164,14 @@
             <ul class="nav navbar-right">
                 <!-- start: TO-DO DROPDOWN -->
                 <li class="dropdown">
-                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
+                       href="#">
                         <i class="clip-list-5"></i>
                         <span class="badge" id="newTaskNumber"> 12</span>
                     </a>
                     <ul class="dropdown-menu todo">
                         <li>
-                            <span class="dropdown-menu-title" > 你有<small id="newTaskNum">？</small>个新任务</span>
+                            <span class="dropdown-menu-title"> 你有<small id="newTaskNum">？</small>个新任务</span>
                         </li>
                         <li>
                             <div class="drop-down-wrapper">
@@ -187,42 +184,43 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a  href="javascript:void(0)">
+                                        <a href="javascript:void(0)">
                                             <i class="fa fa-square-o"></i>
                                             <span class="desc"> Hire developers</span>
                                             <span class="label label-success"> this week</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a  href="javascript:void(0)">
+                                        <a href="javascript:void(0)">
                                             <i class="fa fa-square-o"></i>
                                             <span class="desc"> New frontend layout</span>
                                             <span class="label label-info"> this month</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a  href="javascript:void(0)">
+                                        <a href="javascript:void(0)">
                                             <i class="fa fa-square-o"></i>
                                             <span class="desc"> Hire developers</span>
                                             <span class="label label-info"> this month</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a  href="javascript:void(0)">
+                                        <a href="javascript:void(0)">
                                             <i class="fa fa-square-o"></i>
-                                            <span class="desc" style="opacity: 1; text-decoration: none;">Staff Meeting</span>
+                                            <span class="desc"
+                                                  style="opacity: 1; text-decoration: none;">Staff Meeting</span>
                                             <span class="label label-danger" style="opacity: 1;"> today</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a  href="javascript:void(0)">
+                                        <a href="javascript:void(0)">
                                             <i class="fa fa-square-o"></i>
                                             <span class="desc" style="opacity: 1; text-decoration: none;"> New frontend layout</span>
                                             <span class="label label-danger" style="opacity: 1;"> today</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a  href="javascript:void(0)">
+                                        <a href="javascript:void(0)">
                                             <i class="fa fa-square-o"></i>
                                             <span class="desc"> Hire developers</span>
                                             <span class="label label-warning"> tommorow</span>
@@ -241,7 +239,8 @@
                 <!-- end: TO-DO DROPDOWN-->
                 <!-- start: NOTIFICATION DROPDOWN -->
                 <li class="dropdown">
-                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
+                       href="#">
                         <i class="clip-notification-2"></i>
                         <span class="badge" id="newInviteNumber"> 11</span>
                     </a>
@@ -307,7 +306,8 @@
                 <!-- end: NOTIFICATION DROPDOWN -->
                 <!-- start: MESSAGE DROPDOWN -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown" href="#">
+                    <a class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown"
+                       href="#">
                         <i class="clip-bubble-3"></i>
                         <span class="badge" id="newMsgNumber"> 9</span>
                     </a>
@@ -401,7 +401,8 @@
                 <!-- end: MESSAGE DROPDOWN -->
                 <!-- start: USER DROPDOWN -->
                 <li class="dropdown current-user">
-                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
+                       href="#">
                         <img src="../../static/assets/images/avatar-1-small.jpg" class="circle-img" alt="">
                         <span class="username" th:text="${session.student.stuName}">username</span>
                         <i class="clip-chevron-down"></i>
@@ -1034,7 +1035,9 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>UI Elements <small>common UI features &amp; Elements</small></h1>
+                        <h1>UI Elements
+                            <small>common UI features &amp; Elements</small>
+                        </h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
@@ -1078,7 +1081,8 @@
                                     &times;
                                 </button>
                                 <i class="fa fa-info-circle"></i>
-                                <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+                                <strong>Heads up!</strong> This alert needs your attention, but it's not super
+                                important.
                             </div>
                             <div class="alert alert-warning">
                                 <button data-dismiss="alert" class="close">
@@ -1131,7 +1135,8 @@
                                 <h4 class="alert-heading"><i class="fa fa-times-circle"></i> Error!</h4>
                                 <p>
                                     Duis mollis, est non commodo luctus,
-                                    nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
+                                    nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur
+                                    purus sit amet fermentum.
                                 </p>
                                 <p>
                                     <a href="#" class="btn btn-bricky">
@@ -1149,7 +1154,8 @@
                                 <h4 class="alert-heading"><i class="fa fa-check-circle"></i> Success!</h4>
                                 <p>
                                     Duis mollis, est non commodo luctus,
-                                    nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
+                                    nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur
+                                    purus sit amet fermentum.
                                 </p>
                                 <p>
                                     <a href="#" class="btn btn-green">
@@ -1167,7 +1173,8 @@
                                 <h4 class="alert-heading"><i class="fa fa-info-circle"></i> Info!</h4>
                                 <p>
                                     Duis mollis, est non commodo luctus,
-                                    nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
+                                    nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur
+                                    purus sit amet fermentum.
                                 </p>
                                 <p>
                                     <a href="#" class="btn btn-blue">
@@ -1185,7 +1192,8 @@
                                 <h4 class="alert-heading"><i class="fa fa-exclamation-triangle"></i> Warning!</h4>
                                 <p>
                                     Duis mollis, est non commodo luctus,
-                                    nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
+                                    nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur
+                                    purus sit amet fermentum.
                                 </p>
                                 <p>
                                     <a href="#" class="btn btn-yellow">
@@ -1237,7 +1245,8 @@
                                         Sticky notification
                                     </a>
                                     <p>
-                                        Doesn't run on a fade timer.  Just sits there until the user manually removes it by clicking on the (X).
+                                        Doesn't run on a fade timer. Just sits there until the user manually removes it
+                                        by clicking on the (X).
                                     </p>
                                 </li>
                                 <li class="space10">
@@ -1424,7 +1433,8 @@
                                     you probably
                                 </a>
                                 haven't heard of them.
-                                Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel
+                                Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table
+                                seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel
                                 <a data-original-title="Another tooltip" class="tooltips" href="#">
                                     have a
                                 </a>
@@ -1438,13 +1448,16 @@
                                 <button data-original-title="Tooltip in top" data-placement="top" class="btn tooltips">
                                     Top
                                 </button>
-                                <button data-original-title="Tooltip in left" data-placement="left" class="btn tooltips">
+                                <button data-original-title="Tooltip in left" data-placement="left"
+                                        class="btn tooltips">
                                     Left
                                 </button>
-                                <button data-original-title="Tooltip in right" data-placement="right" class="btn tooltips">
+                                <button data-original-title="Tooltip in right" data-placement="right"
+                                        class="btn tooltips">
                                     Right
                                 </button>
-                                <button data-original-title="Tooltip in bottom" data-placement="bottom" class="btn tooltips">
+                                <button data-original-title="Tooltip in bottom" data-placement="bottom"
+                                        class="btn tooltips">
                                     Bottom
                                 </button>
                             </p>
@@ -1476,27 +1489,41 @@
                         <div class="panel-body">
                             <p>
                                 Tight pants next level keffiyeh
-                                <a data-original-title="Default Popover" data-content="Popover body goes here! Popover body goes here!" class="popovers" href="javascript:;">
+                                <a data-original-title="Default Popover"
+                                   data-content="Popover body goes here! Popover body goes here!" class="popovers"
+                                   href="javascript:;">
                                     trigger me on click
                                 </a>
                                 haven't heard of them.
-                                Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel
-                                <a data-original-title="Another Popover" data-content="Popover body goes here! Popover body goes here!" data-trigger="hover" class="popovers" href="javascript:;">
+                                Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table
+                                seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel
+                                <a data-original-title="Another Popover"
+                                   data-content="Popover body goes here! Popover body goes here!" data-trigger="hover"
+                                   class="popovers" href="javascript:;">
                                     trigger me on hover
                                 </a>
-                                terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa.
+                                terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats.
+                                Tofu biodiesel williamsburg marfa.
                             </p>
                             <p>
-                                <button data-original-title="Popover in top" data-content="Popover body goes here! Popover body goes here!" data-placement="top" data-trigger="hover" id="test" class="btn popovers">
+                                <button data-original-title="Popover in top"
+                                        data-content="Popover body goes here! Popover body goes here!"
+                                        data-placement="top" data-trigger="hover" id="test" class="btn popovers">
                                     Top
                                 </button>
-                                <button data-original-title="Popover in left" data-content="Popover body goes here! Popover body goes here!" data-placement="left" data-trigger="hover" class="btn popovers">
+                                <button data-original-title="Popover in left"
+                                        data-content="Popover body goes here! Popover body goes here!"
+                                        data-placement="left" data-trigger="hover" class="btn popovers">
                                     Left
                                 </button>
-                                <button data-original-title="Popover in right" data-content="Popover body goes here! Popover body goes here!" data-placement="right" data-trigger="hover" class="btn popovers">
+                                <button data-original-title="Popover in right"
+                                        data-content="Popover body goes here! Popover body goes here!"
+                                        data-placement="right" data-trigger="hover" class="btn popovers">
                                     Right
                                 </button>
-                                <button data-original-title="Popover in bottom" data-content="Popover body goes here! Popover body goes here!" data-placement="bottom" data-trigger="hover" class="btn popovers">
+                                <button data-original-title="Popover in bottom"
+                                        data-content="Popover body goes here! Popover body goes here!"
+                                        data-placement="bottom" data-trigger="hover" class="btn popovers">
                                     Bottom
                                 </button>
                             </p>
@@ -1562,83 +1589,100 @@
                         </div>
                         <div class="panel-body">
                             <div class="alert alert-block alert-warning">
-                                Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in IE7-9 or older versions of Firefox. Versions earlier than Internet Explorer 10 and Opera 12 do not support animations.
+                                Progress bars use CSS3 gradients, transitions, and animations to achieve all their
+                                effects. These features are not supported in IE7-9 or older versions of Firefox.
+                                Versions earlier than Internet Explorer 10 and Opera 12 do not support animations.
                             </div>
                             <h3>Basic</h3>
                             <div class="progress progress-xs">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                     aria-valuemax="100" style="width: 60%;">
                                     <span class="sr-only"> 60% Complete</span>
                                 </div>
                             </div>
                             <div class="progress progress-sm">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 40%">
                                     <span class="sr-only"> 40% Complete (success)</span>
                                 </div>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 20%">
                                     <span class="sr-only"> 20% Complete</span>
                                 </div>
                             </div>
                             <div class="progress progress-sm">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 60%">
                                     <span class="sr-only"> 60% Complete (warning)</span>
                                 </div>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 80%">
                                     <span class="sr-only"> 80% Complete</span>
                                 </div>
                             </div>
                             <h3>Striped</h3>
                             <div class="progress progress-striped progress-xs">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                     aria-valuemax="100" style="width: 60%">
                                     <span class="sr-only"> 60% Complete (success)</span>
                                 </div>
                             </div>
                             <div class="progress progress-striped progress-sm">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 40%">
                                     <span class="sr-only"> 40% Complete (success)</span>
                                 </div>
                             </div>
                             <div class="progress progress-striped">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 20%">
                                     <span class="sr-only"> 20% Complete</span>
                                 </div>
                             </div>
                             <div class="progress progress-striped progress-sm">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 60%">
                                     <span class="sr-only"> 60% Complete (warning)</span>
                                 </div>
                             </div>
                             <div class="progress progress-striped">
-                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 80%">
                                     <span class="sr-only"> 80% Complete (danger)</span>
                                 </div>
                             </div>
                             <h3>Animated</h3>
                             <div class="progress progress-striped active progress-xs">
-                                <div class="progress-bar"  role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                     aria-valuemax="100" style="width: 60%">
                                     <span class="sr-only"> 60% Complete</span>
                                 </div>
                             </div>
                             <div class="progress progress-striped active progress-sm">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 40%">
                                     <span class="sr-only"> 40% Complete (success)</span>
                                 </div>
                             </div>
                             <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 20%">
                                     <span class="sr-only"> 20% Complete</span>
                                 </div>
                             </div>
                             <div class="progress progress-striped active progress-sm">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 60%">
                                     <span class="sr-only"> 60% Complete (warning)</span>
                                 </div>
                             </div>
                             <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 80%">
                                     <span class="sr-only"> 80% Complete (danger)</span>
                                 </div>
                             </div>
@@ -1726,32 +1770,32 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class="hidden-xs"> Default </td>
+                                    <td class="hidden-xs"> Default</td>
                                     <td><span class="badge"> 1</span></td>
                                     <td><code> badge badge-default </code></td>
                                 </tr>
                                 <tr>
-                                    <td class="hidden-xs"> Success </td>
+                                    <td class="hidden-xs"> Success</td>
                                     <td><span class="badge badge-success"> 2</span></td>
                                     <td><code> badge badge-success </code></td>
                                 </tr>
                                 <tr>
-                                    <td class="hidden-xs"> Warning </td>
+                                    <td class="hidden-xs"> Warning</td>
                                     <td><span class="badge badge-warning"> 4</span></td>
                                     <td><code> badge badge-warning </code></td>
                                 </tr>
                                 <tr>
-                                    <td class="hidden-xs"> Danger </td>
+                                    <td class="hidden-xs"> Danger</td>
                                     <td><span class="badge badge-danger"> 6</span></td>
                                     <td><code> badge badge-danger </code></td>
                                 </tr>
                                 <tr>
-                                    <td class="hidden-xs"> Info </td>
+                                    <td class="hidden-xs"> Info</td>
                                     <td><span class="badge badge-info"> 8</span></td>
                                     <td><code> badge badge-info </code></td>
                                 </tr>
                                 <tr>
-                                    <td class="hidden-xs"> Inverse </td>
+                                    <td class="hidden-xs"> Inverse</td>
                                     <td><span class="badge badge-inverse"> 10</span></td>
                                     <td><code> badge badge-inverse </code></td>
                                 </tr>
@@ -2047,7 +2091,8 @@
         <div class="input-box">
             <div class="input">
                 <select name="layout">
-                    <option value="default">Wide</option><option value="boxed">Boxed</option>
+                    <option value="default">Wide</option>
+                    <option value="boxed">Boxed</option>
                 </select>
             </div>
         </div>
@@ -2057,7 +2102,8 @@
         <div class="input-box">
             <div class="input">
                 <select name="header">
-                    <option value="fixed">Fixed</option><option value="default">Default</option>
+                    <option value="fixed">Fixed</option>
+                    <option value="default">Default</option>
                 </select>
             </div>
         </div>
@@ -2067,7 +2113,8 @@
         <div class="input-box">
             <div class="input">
                 <select name="footer">
-                    <option value="default">Default</option><option value="fixed">Fixed</option>
+                    <option value="default">Default</option>
+                    <option value="fixed">Fixed</option>
                 </select>
             </div>
         </div>
@@ -2101,7 +2148,8 @@
                 </label>
                 <input type="text" value="#ffffff" class="color-base">
                 <div class="dropdown">
-                    <a class="add-on dropdown-toggle" data-toggle="dropdown"><i style="background-color: #ffffff"></i></a>
+                    <a class="add-on dropdown-toggle" data-toggle="dropdown"><i
+                            style="background-color: #ffffff"></i></a>
                     <ul class="dropdown-menu pull-right">
                         <li>
                             <div class="colorpalette"></div>
@@ -2115,7 +2163,8 @@
                 </label>
                 <input type="text" value="#555555" class="color-text">
                 <div class="dropdown">
-                    <a class="add-on dropdown-toggle" data-toggle="dropdown"><i style="background-color: #555555"></i></a>
+                    <a class="add-on dropdown-toggle" data-toggle="dropdown"><i
+                            style="background-color: #555555"></i></a>
                     <ul class="dropdown-menu pull-right">
                         <li>
                             <div class="colorpalette"></div>
@@ -2129,7 +2178,8 @@
                 </label>
                 <input type="text" value="#007AFF" class="color-badge">
                 <div class="dropdown">
-                    <a class="add-on dropdown-toggle" data-toggle="dropdown"><i style="background-color: #007AFF"></i></a>
+                    <a class="add-on dropdown-toggle" data-toggle="dropdown"><i
+                            style="background-color: #007AFF"></i></a>
                     <ul class="dropdown-menu pull-right">
                         <li>
                             <div class="colorpalette"></div>

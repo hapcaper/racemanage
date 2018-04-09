@@ -242,7 +242,7 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>lName <small>身份？</small></h1>
+                        <h1 th:text="${session.leader.lName}">lName</h1><small>身份？</small>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
@@ -258,29 +258,36 @@
                                     Overview
                                 </a>
                             </li>
-                            <li>
+                            <li class="">
                                 <a data-toggle="tab" href="#panel_edit_account">
                                     Edit Account
                                 </a>
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div id="panel_overview" class="tab-pane in active">
+                            <div id="panel_overview" class="tab-pane active">
                                 <div class="row">
                                     <div class="col-sm-5 col-md-4">
                                         <div class="user-left">
                                             <div class="center">
-                                                <h4>Peter Clark</h4>
+                                                <h4 th:text="${session.leader.lName}">leader.lName</h4>
                                                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                                     <div class="user-image">
-                                                        <div class="fileupload-new thumbnail"><img src="assets/images/avatar-1-xl.jpg" alt="">
+                                                        <div class="fileupload-new thumbnail"><img
+                                                                src="assets/images/avatar-1-xl.jpg" alt="">
                                                         </div>
-                                                        <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                                        <div class="fileupload-preview fileupload-exists thumbnail"
+                                                             style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                                         <div class="user-image-buttons">
-																	<span class="btn btn-teal btn-file btn-sm"><span class="fileupload-new"><i class="fa fa-pencil"></i></span><span class="fileupload-exists"><i class="fa fa-pencil"></i></span>
+																	<span class="btn btn-teal btn-file btn-sm"><span
+                                                                            class="fileupload-new"><i
+                                                                            class="fa fa-pencil"></i></span><span
+                                                                            class="fileupload-exists"><i
+                                                                            class="fa fa-pencil"></i></span>
 																		<input type="file">
 																	</span>
-                                                            <a href="#" class="btn fileupload-exists btn-bricky btn-sm" data-dismiss="fileupload">
+                                                            <a href="#" class="btn fileupload-exists btn-bricky btn-sm"
+                                                               data-dismiss="fileupload">
                                                                 <i class="fa fa-times"></i>
                                                             </a>
                                                         </div>
@@ -306,137 +313,87 @@
                                             <table class="table table-condensed table-hover">
                                                 <thead>
                                                 <tr>
-                                                    <th colspan="3">Contact Information</th>
+                                                    <th colspan="3">基础信息</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <tr>
-                                                    <td>url</td>
-                                                    <td>
-                                                        <a href="#">
-                                                            www.example.com
-                                                        </a></td>
-                                                    <td><a href="#panel_edit_account" class="show-tab"><i class="fa fa-pencil edit-user-info"></i></a></td>
+                                                    <td>工号</td>
+                                                    <td th:text="${session.leader.lNumber}">
+                                                        leader.lNumber
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>email:</td>
                                                     <td>
-                                                        <a href="">
-                                                            peter@example.com
-                                                        </a></td>
-                                                    <td><a href="#panel_edit_account" class="show-tab"><i class="fa fa-pencil edit-user-info"></i></a></td>
+                                                        <a href="#" th:text="${session.leader.lEmail}">
+                                                            leader.lEmail
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>phone:</td>
-                                                    <td>(641)-734-4763</td>
-                                                    <td><a href="#panel_edit_account" class="show-tab"><i class="fa fa-pencil edit-user-info"></i></a></td>
+                                                    <td>电话:</td>
+                                                    <td th:text="${session.leader.lPhone}">leader.lPhone</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>skye</td>
-                                                    <td>
-                                                        <a href="">
-                                                            peterclark82
-                                                        </a></td>
-                                                    <td><a href="#panel_edit_account" class="show-tab"><i class="fa fa-pencil edit-user-info"></i></a></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <table class="table table-condensed table-hover">
-                                                <thead>
-                                                <tr>
-                                                    <th colspan="3">General information</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>Position</td>
-                                                    <td>UI Designer</td>
-                                                    <td><a href="#panel_edit_account" class="show-tab"><i class="fa fa-pencil edit-user-info"></i></a></td>
+                                                    <td>性别</td>
+                                                    <td th:text="${session.leader.lGender}">
+                                                        leader.lGender 男
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Last Logged In</td>
-                                                    <td>56 min</td>
-                                                    <td><a href="#panel_edit_account" class="show-tab"><i class="fa fa-pencil edit-user-info"></i></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Position</td>
-                                                    <td>Senior Marketing Manager</td>
-                                                    <td><a href="#panel_edit_account" class="show-tab"><i class="fa fa-pencil edit-user-info"></i></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Supervisor</td>
-                                                    <td>
-                                                        <a href="#">
-                                                            Kenneth Ross
-                                                        </a></td>
-                                                    <td><a href="#panel_edit_account" class="show-tab"><i class="fa fa-pencil edit-user-info"></i></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Status</td>
-                                                    <td><span class="label label-sm label-info">Administrator</span></td>
-                                                    <td><a href="#panel_edit_account" class="show-tab"><i class="fa fa-pencil edit-user-info"></i></a></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <table class="table table-condensed table-hover">
-                                                <thead>
-                                                <tr>
-                                                    <th colspan="3">Additional information</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>Birth</td>
-                                                    <td>21 October 1982</td>
-                                                    <td><a href="#panel_edit_account" class="show-tab"><i class="fa fa-pencil edit-user-info"></i></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Groups</td>
-                                                    <td>New company web site development, HR Management</td>
-                                                    <td><a href="#panel_edit_account" class="show-tab"><i class="fa fa-pencil edit-user-info"></i></a></td>
+                                                    <td>角色</td>
+                                                    <td><span class="label label-sm label-info" th:text="${session.leader.lDuty}">竞赛组长</span></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                     <div class="col-sm-7 col-md-8">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas convallis porta purus, pulvinar mattis nulla tempus ut. Curabitur quis dui orci. Ut nisi dolor, dignissim a aliquet quis, vulputate id dui. Proin ultrices ultrices ligula, dictum varius turpis faucibus non. Curabitur faucibus ultrices nunc, nec aliquet leo tempor cursus.
+                                        <p th:text="${session.leader.lDescription}">
+                                            {leader.lDescription}
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas convallis
+                                            porta purus, pulvinar mattis nulla tempus ut. Curabitur quis dui orci. Ut
+                                            nisi dolor, dignissim a aliquet quis, vulputate id dui. Proin ultrices
+                                            ultrices ligula, dictum varius turpis faucibus non. Curabitur faucibus
+                                            ultrices nunc, nec aliquet leo tempor cursus.
                                         </p>
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <button class="btn btn-icon btn-block">
-                                                    <i class="clip-clip"></i>
-                                                    Projects <span class="badge badge-info"> 4 </span>
-                                                </button>
+                                                <a href="projectList.html">
+                                                    <button class="btn btn-icon btn-block">
+                                                        <i class="clip-clip"></i>
+                                                        项目总数 <span class="badge badge-info" th:text="${proNum}"> 4 </span>
+                                                    </button>
+                                                </a>
                                             </div>
                                             <div class="col-sm-3">
-                                                <button class="btn btn-icon btn-block pulsate" style="outline: 0px; box-shadow: rgba(196, 60, 53, 0) 0px 0px 13px; outline-offset: 20px;">
-                                                    <i class="clip-bubble-2"></i>
-                                                    Messages <span class="badge badge-info"> 23 </span>
-                                                </button>
+                                                <a href="projectList.html">
+                                                    <button class="btn btn-icon btn-block">
+                                                        <i class="clip-clip"></i>
+                                                        教师总数 <span class="badge badge-info" th:text="${teNum}"> 1 </span>
+                                                    </button>
+                                                </a>
                                             </div>
                                             <div class="col-sm-3">
-                                                <button class="btn btn-icon btn-block">
-                                                    <i class="clip-calendar"></i>
-                                                    Calendar <span class="badge badge-info"> 5 </span>
-                                                </button>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <button class="btn btn-icon btn-block">
-                                                    <i class="clip-list-3"></i>
-                                                    Notifications <span class="badge badge-info"> 9 </span>
-                                                </button>
+                                                <a href="projectList.html">
+                                                    <button class="btn btn-icon btn-block">
+                                                        <i class="clip-clip"></i>
+                                                        学生总数 <span class="badge badge-info" th:text="${stuNum}"> 2 </span>
+                                                    </button>
+                                                </a>
                                             </div>
                                         </div>
+
                                         <div class="panel panel-white">
                                             <div class="panel-heading">
                                                 <i class="clip-menu"></i>
-                                                Recent Activities
+                                                我的动态（coming soon）
                                                 <div class="panel-tools">
                                                     <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
                                                     </a>
-                                                    <a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                                                    <a class="btn btn-xs btn-link panel-config" href="#panel-config"
+                                                       data-toggle="modal">
                                                         <i class="fa fa-wrench"></i>
                                                     </a>
                                                     <a class="btn btn-xs btn-link panel-refresh" href="#">
@@ -510,148 +467,64 @@
                                                         </a>
                                                     </li>
                                                 </ul>
-                                                <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: -133px; width: 793px; display: none;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 136px; right: 3px; height: 300px; display: inherit;"><div class="ps-scrollbar-y" style="top: 94px; height: 206px;"></div></div></div>
-                                        </div>
-                                        <div class="panel panel-white">
-                                            <div class="panel-heading">
-                                                <i class="clip-checkmark-2"></i>
-                                                To Do
-                                                <div class="panel-tools">
-                                                    <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
-                                                    </a>
-                                                    <a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
-                                                        <i class="fa fa-wrench"></i>
-                                                    </a>
-                                                    <a class="btn btn-xs btn-link panel-refresh" href="#">
-                                                        <i class="fa fa-refresh"></i>
-                                                    </a>
-                                                    <a class="btn btn-xs btn-link panel-close" href="#">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
+                                                <div class="ps-scrollbar-x-rail"
+                                                     style="left: 0px; bottom: 3px; width: 657px; display: none;">
+                                                    <div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div>
+                                                </div>
+                                                <div class="ps-scrollbar-y-rail"
+                                                     style="top: 0px; right: 3px; height: 300px; display: inherit;">
+                                                    <div class="ps-scrollbar-y" style="top: 0px; height: 206px;"></div>
                                                 </div>
                                             </div>
-                                            <div class="panel-body panel-scroll ps-container" style="height:300px">
-                                                <ul class="todo">
-                                                    <li>
-                                                        <a class="todo-actions" href="javascript:void(0)">
-                                                            <i class="fa fa-square-o"></i>
-                                                            <span class="desc" style="opacity: 1; text-decoration: none;">Staff Meeting</span>
-                                                            <span class="label label-danger" style="opacity: 1;"> today</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="todo-actions" href="javascript:void(0)">
-                                                            <i class="fa fa-square-o"></i>
-                                                            <span class="desc" style="opacity: 1; text-decoration: none;"> New frontend layout</span>
-                                                            <span class="label label-danger" style="opacity: 1;"> today</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="todo-actions" href="javascript:void(0)">
-                                                            <i class="fa fa-square-o"></i>
-                                                            <span class="desc"> Hire developers</span>
-                                                            <span class="label label-warning"> tommorow</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="todo-actions" href="javascript:void(0)">
-                                                            <i class="fa fa-square-o"></i>
-                                                            <span class="desc">Staff Meeting</span>
-                                                            <span class="label label-warning"> tommorow</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="todo-actions" href="javascript:void(0)">
-                                                            <i class="fa fa-square-o"></i>
-                                                            <span class="desc"> New frontend layout</span>
-                                                            <span class="label label-success"> this week</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="todo-actions" href="javascript:void(0)">
-                                                            <i class="fa fa-square-o"></i>
-                                                            <span class="desc"> Hire developers</span>
-                                                            <span class="label label-success"> this week</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="todo-actions" href="javascript:void(0)">
-                                                            <i class="fa fa-square-o"></i>
-                                                            <span class="desc"> New frontend layout</span>
-                                                            <span class="label label-info"> this month</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="todo-actions" href="javascript:void(0)">
-                                                            <i class="fa fa-square-o"></i>
-                                                            <span class="desc"> Hire developers</span>
-                                                            <span class="label label-info"> this month</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="todo-actions" href="javascript:void(0)">
-                                                            <i class="fa fa-square-o"></i>
-                                                            <span class="desc" style="opacity: 1; text-decoration: none;">Staff Meeting</span>
-                                                            <span class="label label-danger" style="opacity: 1;"> today</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="todo-actions" href="javascript:void(0)">
-                                                            <i class="fa fa-square-o"></i>
-                                                            <span class="desc" style="opacity: 1; text-decoration: none;"> New frontend layout</span>
-                                                            <span class="label label-danger" style="opacity: 1;"> today</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="todo-actions" href="javascript:void(0)">
-                                                            <i class="fa fa-square-o"></i>
-                                                            <span class="desc"> Hire developers</span>
-                                                            <span class="label label-warning"> tommorow</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                                <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px; width: 793px; display: none;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 300px; display: inherit;"><div class="ps-scrollbar-y" style="top: 0px; height: 216px;"></div></div></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div id="panel_edit_account" class="tab-pane">
-                                <form action="#" role="form" id="form">
+                                <form enctype="multipart/form-data" th:action="${'/leader/updateProfile.do'}" method="post" action="#" role="form" id="form">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <h3>Account Info</h3>
+                                            <h3>个人信息
+                                                <small th:if="${updateMsg=='更新成功'}" class="text-info" th:text="${updateMsg}"></small>
+                                                <small th:if="${updateMsg=='更新失败'}" class="text-danger" th:text="${updateMsg}"></small>
+                                            </h3>
                                             <hr>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label">
-                                                    First Name
+                                                    姓名
                                                 </label>
-                                                <input type="text" placeholder="Peter" class="form-control" id="firstname" name="firstname">
+                                                <input th:value="${session.leader.lName}" type="text" placeholder="姓名" class="form-control" disabled="disabled"
+                                                       id="firstname" name="name"/>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label">
-                                                    Email Address
+                                                    邮件
                                                 </label>
-                                                <input type="email" placeholder="peter@example.com" class="form-control" id="email" name="email">
+                                                <input th:value="${session.leader.lEmail}" type="email" placeholder="peter@example.com" class="form-control"
+                                                       id="email" name="email"/>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label">
-                                                    Phone
+                                                    电话
                                                 </label>
-                                                <input type="email" placeholder="(641)-734-4763" class="form-control" id="phone" name="email">
+                                                <input th:value="${session.leader.lPhone}" type="tel" placeholder="(641)-734-4763" class="form-control"
+                                                       id="phone" name="phone"/>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label">
-                                                    Password
+                                                    旧密码
                                                 </label>
-                                                <input type="password" placeholder="password" class="form-control" name="password" id="password">
+                                                <input type="password" placeholder="password" class="form-control"
+                                                       name="oldPasswd" id="oldPasswd"/>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label">
-                                                    Confirm Password
+                                                    新密码
                                                 </label>
-                                                <input type="password" placeholder="password" class="form-control" id="password_again" name="password_again">
+                                                <input type="password" placeholder="password" class="form-control"
+                                                       id="newPasswd" name="newPasswd"/>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -660,22 +533,32 @@
                                                     性别
                                                 </label>
                                                 <div>
-                                                    <input type="text" placeholder="female" class="form-control" id="gender" name="gender">
+                                                    <input th:value="${session.leader.lGender}" type="text" placeholder="?" class="form-control" disabled="disabled"
+                                                           id="gender" name="gender"/>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label>
                                                     Image Upload
                                                 </label>
-                                                <div class="fileupload fileupload-new" data-provides="fileupload">
-                                                    <div class="fileupload-new thumbnail" style="width: 150px; height: 150px;"><img src="assets/images/avatar-1-xl.jpg" alt="">
+                                                <div class="fileupload fileupload-new" data-provides="fileupload"><input
+                                                        type="hidden">
+                                                    <div class="fileupload-new thumbnail"
+                                                         style="width: 250px; height: 250px;"><img th:src="${session.leader.lPhoto}"
+                                                                                                   src="assets/images/avatar-1-xl.jpg" alt="">
                                                     </div>
-                                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 150px; max-height: 150px; line-height: 20px;"></div>
+                                                    <div class="fileupload-preview fileupload-exists thumbnail"
+                                                         style="max-width: 150px; max-height: 150px; line-height: 10px;"></div>
                                                     <div class="user-edit-image-buttons">
-																<span class="btn btn-light-grey btn-file"><span class="fileupload-new"><i class="fa fa-picture"></i> Select image</span><span class="fileupload-exists"><i class="fa fa-picture"></i> Change</span>
-																	<input type="file">
+																<span class="btn btn-light-grey btn-file"><span
+                                                                        class="fileupload-new"><i
+                                                                        class="fa fa-picture"></i> Select image</span><span
+                                                                        class="fileupload-exists"><i
+                                                                        class="fa fa-picture"></i> Change</span>
+																	<input name="photo" th:value="${session.leader.lPhoto}" type="file">
 																</span>
-                                                        <a href="#" class="btn fileupload-exists btn-light-grey" data-dismiss="fileupload">
+                                                        <a href="#" class="btn fileupload-exists btn-light-grey"
+                                                           data-dismiss="fileupload">
                                                             <i class="fa fa-times"></i> Remove
                                                         </a>
                                                     </div>
@@ -684,13 +567,85 @@
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <div class="col-md-12">
+                                            <h3>社交媒体信息 （coming soon）</h3>
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Twitter
+                                                </label>
+                                                <span class="input-icon">
+															<input class="form-control" type="text"
+                                                                   placeholder="Text Field">
+															<i class="clip-twitter"></i> </span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Facebook
+                                                </label>
+                                                <span class="input-icon">
+															<input class="form-control" type="text"
+                                                                   placeholder="Text Field">
+															<i class="clip-facebook"></i> </span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Google Plus
+                                                </label>
+                                                <span class="input-icon">
+															<input class="form-control" type="text"
+                                                                   placeholder="Text Field">
+															<i class="clip-google-plus"></i> </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Github
+                                                </label>
+                                                <span class="input-icon">
+															<input class="form-control" type="text"
+                                                                   placeholder="Text Field">
+															<i class="clip-github-2"></i> </span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Linkedin
+                                                </label>
+                                                <span class="input-icon">
+															<input class="form-control" type="text"
+                                                                   placeholder="Text Field">
+															<i class="clip-linkedin"></i> </span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Skype
+                                                </label>
+                                                <span class="input-icon">
+															<input class="form-control" type="text"
+                                                                   placeholder="Text Field">
+															<i class="clip-skype"></i> </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-md-8">
                                             <p>
+                                                点击更新将会更新已修改信息
                                             </p>
                                         </div>
                                         <div class="col-md-4">
                                             <button class="btn btn-teal btn-block" type="submit">
-                                                Update <i class="fa fa-arrow-circle-right"></i>
+                                                更新 <i class="fa fa-arrow-circle-right"></i>
                                             </button>
                                         </div>
                                     </div>

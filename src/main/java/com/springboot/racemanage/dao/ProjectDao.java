@@ -34,6 +34,10 @@ public interface ProjectDao {
 
     List<Project> getProjectForRaceinfoDetail(@Param("stuUuid") String stuUuid,@Param("raceinfoUuid") String raceinfoUuid);
 
+    Integer countByStatus(@Param("status")Integer status);
+
+
+
 
 
 
