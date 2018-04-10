@@ -1,6 +1,7 @@
 package com.springboot.racemanage.controller;
 
 import com.springboot.racemanage.po.Leader;
+import com.springboot.racemanage.po.Student;
 import com.springboot.racemanage.po.Term;
 import com.springboot.racemanage.service.*;
 import com.springboot.racemanage.util.UploadFile;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * 这里leader就是headteacher(竞赛组长)
@@ -23,6 +25,8 @@ import java.io.IOException;
 @RequestMapping("/leader")
 @Transactional
 public class LeaderController {
+    public static final String PEOPLA_MANAGE = "peoplaManage";
+    public static final String STUDENT_MANAGE = "studentManage";
     @Autowired
     TermService termService;
 
@@ -141,6 +145,11 @@ public class LeaderController {
     //TODO
     @RequestMapping("/studentManage.do")
     public String studentManage(Model model) {
+        model.addAttribute("menuSelected1", PEOPLA_MANAGE);
+        model.addAttribute("menuSelected2", STUDENT_MANAGE);
+
+        List<Student> studentList = studentService.findByStuStatus(1);
+        model.addAttribute("studentList", studentList);
 
         return "leader/studentManage";
     }

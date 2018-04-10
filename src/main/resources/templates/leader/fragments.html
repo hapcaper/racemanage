@@ -267,14 +267,14 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a th:href="@{/student/profile.do}" href="profile.html">
+                            <a th:href="@{/leader/profile.do}" href="profile.html">
                                 <i class="clip-user-2"></i>
                                 &nbsp;个人信息
                             </a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a th:href="@{/student/logout.do}" href="#">
+                            <a th:href="@{/leader/logout.do}" href="#">
                                 <i class="clip-exit"></i>
                                 &nbsp;登出
                             </a>
@@ -312,19 +312,19 @@
                     <span class="selected"></span>
                 </a>
             </li>
-            <li>
+            <li id="peopleManage">
                 <a href="javascript:void(0)"><i class="clip-cog-2"></i>
                     <span class="title"> 人员管理 </span><i class="icon-arrow"></i>
                     <span class="selected"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li>
-                        <a href="ui_elements.html">
+                    <li id="teacherManage">
+                        <a th:href="${'/leader/teacherManage.do'}" href="ui_elements.html">
                             <span class="title"> 教师管理 </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="ui_buttons.html">
+                    <li id="studentManage">
+                        <a th:href="${'/leader/studentManage.do'}" href="ui_buttons.html">
                             <span class="title"> 学生管理 </span>
                         </a>
                     </li>

@@ -18,5 +18,7 @@ public interface StudentService {
 
     Integer countByStuStatus(Integer stuStatus);
 
+    List<Student> findByStuStatus(Integer stuStatus);
+
 
 }

@@ -27,6 +27,8 @@ public interface StudentDao {
 
     Integer countByStuStatus(@Param("stuStatus")Integer stuStatus);
 
+    List<Student> findByStuStatus(@Param("stuStatus")Integer stuStatus);
+
 
 
 }

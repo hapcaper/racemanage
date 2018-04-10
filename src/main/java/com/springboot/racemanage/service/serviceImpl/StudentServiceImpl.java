@@ -49,4 +49,9 @@ public class StudentServiceImpl implements StudentService{
     public Integer countByStuStatus(Integer stuStatus) {
         return studentDao.countByStuStatus(stuStatus);
     }
+
+    @Override
+    public List<Student> findByStuStatus(Integer stuStatus) {
+        return studentDao.findByStuStatus(1);
+    }
 }
