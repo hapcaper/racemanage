@@ -228,7 +228,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            学生管理
+                            教师管理
                         </li>
                         <li class="search-box">
                             <form class="sidebar-search">
@@ -242,7 +242,7 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>学生列表 <small></small></h1>
+                        <h1>教师列表 <small></small></h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
@@ -253,23 +253,23 @@
                 <thead>
                 <tr>
                     <th class="center">#</th>
-                    <th>学生姓名</th>
-                    <th class="hidden-xs">学号</th>
+                    <th>教师姓名</th>
+                    <th class="hidden-xs">工号</th>
                     <th>邮箱</th>
                     <th class="hidden-xs">手机号</th>
                     <th>操作（需要么？具体干啥?）</th>
                 </tr>
                 </thead>
-                <tbody th:each="student:${studentList}">
+                <tbody th:each="teacher:${teacherList}">
                 <tr>
                     <td class="center">#</td>
-                    <td class="hidden-xs" th:text="${student.stuName}">Google Chrome</td>
-                    <td th:text="${student.stuNumber}">Google</td>
+                    <td class="hidden-xs" th:text="${teacher.tName}">Google Chrome</td>
+                    <td th:text="${teacher.tNumber}">Google</td>
                     <td>
-                        <a href="#" rel="nofollow" target="_blank" th:text="${student.stuEmail}">
+                        <a href="#" rel="nofollow" target="_blank" th:text="${teacher.tEmail}">
                             Terms of Service
                         </a></td>
-                    <td class="hidden-xs" th:text="${student.stuPhone}">Blink</td>
+                    <td class="hidden-xs" th:text="${teacher.tPhone}">Blink</td>
                     <td class="center">
                         <div class="visible-md visible-lg hidden-sm hidden-xs">
                             <a href="#" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
@@ -463,6 +463,7 @@
                 </tr>
                 </tbody>
             </table>
+
             <!-- end: PAGE CONTENT-->
         </div>
     </div>

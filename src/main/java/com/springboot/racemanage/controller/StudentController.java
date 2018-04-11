@@ -360,7 +360,7 @@ public class StudentController {
         String proUUID = teamer.getProUuid();
 
 
-//        model.addAttribute("menuSelected1", "projectManage");
+//        model.addAttribute("MENU_SELECTED_", "projectManage");
 //        Project project = projectService.findFirstByUuid(proUUID);
 //        System.out.println(project);
 //        Teamer myTeamer = teamerService.findFirstByStatusAndStuUuidAndProUuid(1, student.getStuUuid(), proUUID);

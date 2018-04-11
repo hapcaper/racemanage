@@ -18,4 +18,6 @@ public interface TeacherService {
 
     Integer countByTStatus(Integer tStatus);
 
+    List<Teacher> findByTStatus(Integer tStatus);
+
 }

@@ -1,8 +1,6 @@
 package com.springboot.racemanage.controller;
 
-import com.springboot.racemanage.po.Leader;
-import com.springboot.racemanage.po.Student;
-import com.springboot.racemanage.po.Term;
+import com.springboot.racemanage.po.*;
 import com.springboot.racemanage.service.*;
 import com.springboot.racemanage.util.UploadFile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +25,11 @@ import java.util.List;
 public class LeaderController {
     public static final String PEOPLA_MANAGE = "peoplaManage";
     public static final String STUDENT_MANAGE = "studentManage";
+    public static final String TEACHER_MANAGE = "teacherManage";
+    public static final String MENU_SELECTED_1 = "MENU_SELECTED_";
+    public static final String MENU_SELECTED_2 = "menuSelected2";
+    public static final String RACE_MANAGE = "raceManage";
+    public static final String RACE_LIST = "raceList";
     @Autowired
     TermService termService;
 
@@ -135,18 +138,21 @@ public class LeaderController {
         return "redirect:/leader/profile.do";
     }
 
-    //TODO
     @RequestMapping("/teacherManage.do")
     public String teaherManage(Model model) {
+        model.addAttribute(MENU_SELECTED_1, PEOPLA_MANAGE);
+        model.addAttribute(MENU_SELECTED_2, TEACHER_MANAGE);
+
+        List<Teacher> teacherList = teacherService.findByTStatus(1);
+        model.addAttribute("teacherList", teacherList);
 
         return "leader/teacherManage";
     }
 
-    //TODO
     @RequestMapping("/studentManage.do")
     public String studentManage(Model model) {
-        model.addAttribute("menuSelected1", PEOPLA_MANAGE);
-        model.addAttribute("menuSelected2", STUDENT_MANAGE);
+        model.addAttribute(MENU_SELECTED_1, PEOPLA_MANAGE);
+        model.addAttribute(MENU_SELECTED_2, STUDENT_MANAGE);
 
         List<Student> studentList = studentService.findByStuStatus(1);
         model.addAttribute("studentList", studentList);
@@ -157,6 +163,7 @@ public class LeaderController {
     //TODO
     @RequestMapping("/publishAchievement.do")
     public String publishAchievement() {
+
 
         return "leader/publishAchievement";
     }
@@ -184,7 +191,13 @@ public class LeaderController {
 
     //TODO
     @RequestMapping("/raceList.do")
-    public String raceList() {
+    public String raceList(Model model,HttpSession httpSession) {
+        model.addAttribute(MENU_SELECTED_1, RACE_MANAGE);
+        model.addAttribute(MENU_SELECTED_2, RACE_LIST);
+        Term term = (Term) httpSession.getAttribute("term");
+
+        List<Race> raceList = raceService.findByStatusAndTerm(1, term.getTerm());
+        model.addAttribute("raceList", raceList);
 
         return "leader/raceList";
     }
