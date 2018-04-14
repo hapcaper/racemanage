@@ -1,11 +1,994 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html >
+<!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->
+<!--[if IE 8]>
+<html class="ie8 no-js" lang="en"><![endif]-->
+<!--[if IE 9]>
+<html class="ie9 no-js" lang="en"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<!-- start: HEAD -->
 <head>
-    <!--TODO 完成它-->
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <title>Clip-One - Responsive Admin Template</title>
+    <!-- start: MAIN CSS -->
+    <div th:replace="leader/fragments::common_css">
+        <link rel="stylesheet" href="../../static/assets/plugins/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../static/assets/fonts/style.css">
+        <link rel="stylesheet" href="../../static/assets/css/main.css">
+        <link rel="stylesheet" href="../../static/assets/css/main-responsive.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/iCheck/skins/all.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+        <link rel="stylesheet" href="../../static/assets/css/theme_light.css" type="text/css" id="skin_color">
+        <link rel="stylesheet" href="../../static/assets/css/print.css" type="text/css" media="print"/>
 
+        <!--[if IE 7]>
+        <link rel="stylesheet" href="../../static/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+        <![endif]-->
+        <!-- end: MAIN CSS -->
+
+        <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+
+        <link rel="stylesheet" href="../../static/assets/plugins/select2/select2.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/datepicker/css/datepicker.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/jQuery-Tags-Input/jquery.tagsinput.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/summernote/build/summernote.css">
+        <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+    </div>
+</head>
+<!-- end: HEAD -->
+<!-- start: BODY -->
+<body>
+<!-- start: HEADER -->
+<div th:replace="leader/fragments::header" class="navbar navbar-inverse navbar-fixed-top">
+    <!-- start: TOP NAVIGATION CONTAINER -->
+    <div class="container">
+        <div class="navbar-header">
+            <!-- start: RESPONSIVE MENU TOGGLER -->
+            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                <span class="clip-list-2"></span>
+            </button>
+            <!-- end: RESPONSIVE MENU TOGGLER -->
+            <!-- start: LOGO -->
+            <a class="navbar-brand" href="index.html">
+                竞赛管理
+            </a>
+            <!-- end: LOGO -->
+        </div>
+        <div class="navbar-tools">
+            <!-- start: TOP NAVIGATION MENU -->
+            <ul class="nav navbar-right">
+                <!-- start: USER DROPDOWN -->
+                <li class="dropdown current-user">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
+                       href="#">
+                        <img src="assets/images/avatar-1-small.jpg" class="circle-img" alt="">
+                        <span class="username">Peter Clark</span>
+                        <i class="clip-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="pages_user_profile.html">
+                                <i class="clip-user-2"></i>
+                                &nbsp;个人信息
+                            </a>
+                        </li>
+                        <li>
+                            <a href="login_example1.html">
+                                <i class="clip-exit"></i>
+                                &nbsp;登出
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- end: USER DROPDOWN -->
+            </ul>
+            <!-- end: TOP NAVIGATION MENU -->
+        </div>
+    </div>
+    <!-- end: TOP NAVIGATION CONTAINER -->
+</div>
+<!-- end: HEADER -->
+<!-- start: MAIN CONTAINER -->
+<div class="main-container">
+    <div th:replace="leader/fragments::left" class="navbar-content">
+        <!-- start: SIDEBAR -->
+        <div class="main-navigation navbar-collapse collapse">
+            <!-- start: MAIN MENU TOGGLER BUTTON -->
+            <div class="navigation-toggler">
+                <i class="clip-chevron-left"></i>
+                <i class="clip-chevron-right"></i>
+            </div>
+            <!-- end: MAIN MENU TOGGLER BUTTON -->
+            <!-- start: MAIN NAVIGATION MENU -->
+            <ul class="main-navigation-menu">
+                <li class="active open">
+                    <a href="index.html"><i class="clip-home-3"></i>
+                        <span class="title"> 首页 </span><span class="selected"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html"><i class="clip-screen"></i>
+                        <span class="title"> 个人信息 </span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"><i class="clip-cog-2"></i>
+                        <span class="title"> 人员管理 </span><i class="icon-arrow"></i>
+                        <span class="selected"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="ui_elements.html">
+                                <span class="title"> 教师管理 </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ui_buttons.html">
+                                <span class="title"> 学生管理 </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"><i class="clip-grid-6"></i>
+                        <span class="title"> 成果管理 </span><i class="icon-arrow"></i>
+                        <span class="selected"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="table_static.html">
+                                <span class="title">发布竞赛成果信息</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="table_static.html">
+                                <span class="title">成果查询</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
+                        <span class="title"> 竞赛管理 </span><i class="icon-arrow"></i>
+                        <span class="selected"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="form_elements.html">
+                                <span class="title">添加赛事信息</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="form_wizard.html">
+                                <span class="title">查看赛事信息</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="form_validation.html">
+                                <span class="title">查看竞赛列表</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"><i class="clip-file"></i>
+                        <span class="title">项目查询</span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+            </ul>
+            <!-- end: MAIN NAVIGATION MENU -->
+        </div>
+        <!-- end: SIDEBAR -->
+    </div>
+    <!-- start: PAGE -->
+    <div class="main-content">
+        <!-- start: PANEL CONFIGURATION MODAL FORM -->
+        <div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title">Panel Configuration</h4>
+                    </div>
+                    <div class="modal-body">
+                        Here will be a configuration form
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            Save changes
+                        </button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+        <!-- end: SPANEL CONFIGURATION MODAL FORM -->
+        <div class="container">
+            <!-- start: PAGE HEADER -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- start: STYLE SELECTOR BOX -->
+                    <!-- end: STYLE SELECTOR BOX -->
+                    <!-- start: PAGE TITLE & BREADCRUMB -->
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="clip-pencil"></i>
+                            <a href="#">
+                                赛事管理
+                            </a>
+                        </li>
+                        <li class="active">
+                            添加赛事信息
+                        </li>
+                        <li class="search-box">
+                            <form class="sidebar-search">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Start Searching...">
+                                    <button class="submit">
+                                        <i class="clip-search-3"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </li>
+                    </ol>
+                    <div class="page-header">
+                        <h1>添加赛事信息
+                            <small>请填写比赛的信息，以供报名</small>
+                        </h1>
+                    </div>
+                    <!-- end: PAGE TITLE & BREADCRUMB -->
+                </div>
+            </div>
+            <!-- end: PAGE HEADER -->
+            <!-- start: PAGE CONTENT -->
+            <form action="#" class="smart-wizard form-horizontal" th:action="${'/leader/addRaceInfo.do'}"
+                  enctype="multipart/form-data" method="post">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="form-field-1">
+                        <span class="symbol required"></span>
+                        赛事名称
+                    </label>
+                    <div class="col-sm-7">
+                        <input name="racename" type="text" placeholder="赛事名称" id="form-field-1" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        赛事类型(选择？)
+                    </label>
+                    <div class="col-sm-7">
+                        <input name="kind" type="text" placeholder="赛事类型" id="raceKind" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        赛事报名时限
+                    </label>
+                    <div class="col-sm-7">
+                        <div class="input-group">
+                            <span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
+                            <input readonly="readonly" name="timeRange" type="text" class="form-control date-range">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        赛事文档
+                    </label>
+                    <div class="col-sm-7">
+                        <div class="fileupload fileupload-new" data-provides="fileupload"><input type="hidden" value=""
+                                                                                                 name="">
+                            <div class="input-group">
+                                <div class="form-control uneditable-input">
+                                    <i class="fa fa-file fileupload-exists"></i>
+                                    <span class="fileupload-preview"></span>
+                                </div>
+                                <div class="input-group-btn">
+                                    <div class="btn btn-light-grey btn-file">
+                                        <span class="fileupload-new"><i
+                                                class="fa fa-folder-open-o"></i> Select file</span>
+                                        <span class="fileupload-exists"><i
+                                                class="fa fa-folder-open-o"></i> Change</span>
+                                        <input type="file" class="file-input" name="file">
+                                    </div>
+                                    <a href="#" class="btn btn-light-grey fileupload-exists" data-dismiss="fileupload">
+                                        <i class="fa fa-times"></i> Remove
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        赛事简介
+                    </label>
+                    <div class="col-sm-7">
+                        <div class="input-group">
+                            <textarea name="description" class="autosize form-control" id="form-field-24"
+                                      style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 69px; margin-left: 0px; margin-right: -4.4px; width: 725px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 col-sm-offset-7">
+                        <button type="submit" class="btn btn-blue next-step btn-block">
+                            添加
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+            <!-- end: PAGE CONTENT-->
+        </div>
+    </div>
+    <!-- end: PAGE -->
+</div>
+<!-- end: MAIN CONTAINER -->
+<!-- start: FOOTER -->
+<div th:replace="leader/fragments::footer" class="footer clearfix">
+    <div class="footer-inner">
+        2018 &copy; 竞赛管理 by 李自豪 & 贾进进 @ SAO
+    </div>
+    <div class="footer-items">
+        <span class="go-top"><i class="clip-chevron-up"></i></span>
+    </div>
+</div>
+<!-- end: FOOTER -->
+
+<div th:replace="leader/fragments::common_js">
+    <!-- start: MAIN JAVASCRIPTS -->
+    <!--[if gte IE 9]><!-->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <![endif]-->
+    <!--<![endif]-->
+
+    <script src="../../static/assets/plugins/respond.min.js"></script>
+    <script src="../../static/assets/plugins/excanvas.min.js"></script>
+    <script type="text/javascript" src="../../static/assets/plugins/Jquery/jquery-3.3.1.min.js"></script>
+    <script src="../../static/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="../../static/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+    <script src="../../static/assets/plugins/blockUI/jquery.blockUI.js"></script>
+    <script src="../../static/assets/plugins/iCheck/jquery.icheck.min.js"></script>
+    <script src="../../static/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+    <script src="../../static/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+    <script src="../../static/assets/plugins/less/less-1.5.0.min.js"></script>
+    <script src="../../static/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
+    <script src="../../static/assets/js/main.js"></script>
+    <!-- end: MAIN JAVASCRIPTS -->
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script src="../../static/assets/plugins/jquery-inputlimiter/jquery.inputlimiter.1.3.1.min.js"></script>
+    <script src="../../static/assets/plugins/autosize/jquery.autosize.min.js"></script>
+    <script src="../../static/assets/plugins/select2/select2.min.js"></script>
+    <script src="../../static/assets/plugins/jquery.maskedinput/src/jquery.maskedinput.js"></script>
+    <script src="../../static/assets/plugins/jquery-maskmoney/jquery.maskMoney.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-colorpicker/js/commits.js"></script>
+    <script src="../../static/assets/plugins/jQuery-Tags-Input/jquery.tagsinput.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+    <script src="../../static/assets/plugins/summernote/build/summernote.min.js"></script>
+    <script src="../../static/assets/plugins/ckeditor/ckeditor.js"></script>
+    <script src="../../static/assets/plugins/ckeditor/adapters/jquery.js"></script>
+    <script src="../../static/assets/js/form-elements.js"></script>
+
+    <script src="../../static/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script>
+        jQuery(document).ready(function () {
+            Main.init();
+            FormElements.init();
+        });
+    </script>
+
+</div>
+<div class="cke_reset_all cke_1 cke_editor_editor1_dialog " dir="ltr" lang="zh-cn" role="dialog"
+     aria-labelledby="cke_dialog_title_62" style="display: none;">
+    <table class="cke_dialog cke_browser_webkit cke_ltr cke_single_page"
+           style="position: fixed; top: 20.5px; left: 593.5px; z-index: 10010; visibility: hidden;" role="presentation">
+        <tbody>
+        <tr>
+            <td role="presentation">
+                <div class="cke_dialog_body" role="presentation">
+                    <div id="cke_dialog_title_62" class="cke_dialog_title" role="presentation"
+                         style="user-select: none;">表格属性
+                    </div>
+                    <a id="cke_dialog_close_button_62" class="cke_dialog_close_button" href="javascript:void(0)"
+                       title="关闭" role="button" style="user-select: none;"><span class="cke_label">X</span></a>
+                    <div id="cke_dialog_tabs_62" class="cke_dialog_tabs" role="tablist"><a
+                            class="cke_dialog_tab cke_dialog_tab_selected" cke_first="" title="表格属性" id="cke_info_109"
+                            href="javascript:void(0)" tabindex="-1" hidefocus="true" role="tab"
+                            style="user-select: none;">表格属性</a></div>
+                    <table class="cke_dialog_contents" role="presentation">
+                        <tbody>
+                        <tr>
+                            <td id="cke_dialog_contents_62" class="cke_dialog_contents_body" role="presentation"
+                                style="width: 310px; height: 280px;">
+                                <div role="tabpanel" id="cke_108_uiElement"
+                                     class="cke_dialog_ui_vbox cke_dialog_page_contents" style="width: 100%"
+                                     aria-labelledby="cke_info_109" name="info" aria-hidden="false">
+                                    <table role="presentation" cellspacing="0" border="0" style="width:100%;float:none;"
+                                           align="left">
+                                        <tbody>
+                                        <tr>
+                                            <td role="presentation" class="cke_dialog_ui_vbox_child">
+                                                <table role="presentation" id="cke_99_uiElement"
+                                                       class="cke_dialog_ui_hbox">
+                                                    <tbody>
+                                                    <tr class="cke_dialog_ui_hbox">
+                                                        <td class="cke_dialog_ui_hbox_first" role="presentation">
+                                                            <div role="presentation" id="cke_82_uiElement"
+                                                                 class="cke_dialog_ui_vbox">
+                                                                <table role="presentation" cellspacing="0" border="0"
+                                                                       style="width:100%;float:none;" align="left">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td role="presentation" style="padding:0px"
+                                                                            class="cke_dialog_ui_vbox_child">
+                                                                            <div role="presentation"
+                                                                                 id="cke_68_uiElement"
+                                                                                 class="cke_dialog_ui_text"><label
+                                                                                    class="cke_dialog_ui_labeled_label cke_required"
+                                                                                    id="cke_67_label"
+                                                                                    for="cke_66_textInput">行数</label>
+                                                                                <div class="cke_dialog_ui_labeled_content"
+                                                                                     style="width:5em"
+                                                                                     role="presentation">
+                                                                                    <div class="cke_dialog_ui_input_text"
+                                                                                         role="presentation"><input
+                                                                                            class="cke_dialog_ui_input_text"
+                                                                                            id="cke_66_textInput"
+                                                                                            type="text"
+                                                                                            aria-labelledby="cke_67_label"
+                                                                                            aria-required="true"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td role="presentation" style="padding:0px"
+                                                                            class="cke_dialog_ui_vbox_child">
+                                                                            <div role="presentation"
+                                                                                 id="cke_71_uiElement"
+                                                                                 class="cke_dialog_ui_text"><label
+                                                                                    class="cke_dialog_ui_labeled_label cke_required"
+                                                                                    id="cke_70_label"
+                                                                                    for="cke_69_textInput">列数</label>
+                                                                                <div class="cke_dialog_ui_labeled_content"
+                                                                                     style="width:5em"
+                                                                                     role="presentation">
+                                                                                    <div class="cke_dialog_ui_input_text"
+                                                                                         role="presentation"><input
+                                                                                            class="cke_dialog_ui_input_text"
+                                                                                            id="cke_69_textInput"
+                                                                                            type="text"
+                                                                                            aria-labelledby="cke_70_label"
+                                                                                            aria-required="true"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td role="presentation" style="padding:0px"
+                                                                            class="cke_dialog_ui_vbox_child"><span
+                                                                                id="cke_72_uiElement"
+                                                                                class="cke_dialog_ui_html">&nbsp;</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td role="presentation" style="padding:0px"
+                                                                            class="cke_dialog_ui_vbox_child">
+                                                                            <div role="presentation"
+                                                                                 id="cke_75_uiElement"
+                                                                                 class="cke_dialog_ui_select"><label
+                                                                                    class="cke_dialog_ui_labeled_label"
+                                                                                    id="cke_74_label"
+                                                                                    for="cke_73_select">标题单元格</label>
+                                                                                <div class="cke_dialog_ui_labeled_content"
+                                                                                     role="presentation">
+                                                                                    <div class="cke_dialog_ui_input_select"
+                                                                                         role="presentation"><select
+                                                                                            id="cke_73_select"
+                                                                                            class="cke_dialog_ui_input_select"
+                                                                                            aria-labelledby="cke_74_label">
+                                                                                        <option value=""> 无</option>
+                                                                                        <option value="row"> 第一行
+                                                                                        </option>
+                                                                                        <option value="col"> 第一列
+                                                                                        </option>
+                                                                                        <option value="both"> 第一列和第一行
+                                                                                        </option>
+                                                                                    </select></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td role="presentation" style="padding:0px"
+                                                                            class="cke_dialog_ui_vbox_child">
+                                                                            <div role="presentation"
+                                                                                 id="cke_78_uiElement"
+                                                                                 class="cke_dialog_ui_text"><label
+                                                                                    class="cke_dialog_ui_labeled_label"
+                                                                                    id="cke_77_label"
+                                                                                    for="cke_76_textInput">边框</label>
+                                                                                <div class="cke_dialog_ui_labeled_content"
+                                                                                     style="width:3em"
+                                                                                     role="presentation">
+                                                                                    <div class="cke_dialog_ui_input_text"
+                                                                                         role="presentation"><input
+                                                                                            class="cke_dialog_ui_input_text"
+                                                                                            id="cke_76_textInput"
+                                                                                            type="text"
+                                                                                            aria-labelledby="cke_77_label">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td role="presentation" style="padding:0px"
+                                                                            class="cke_dialog_ui_vbox_child">
+                                                                            <div role="presentation"
+                                                                                 id="cke_81_uiElement"
+                                                                                 class="cke_dialog_ui_select"><label
+                                                                                    class="cke_dialog_ui_labeled_label"
+                                                                                    id="cke_80_label"
+                                                                                    for="cke_79_select">对齐方式</label>
+                                                                                <div class="cke_dialog_ui_labeled_content"
+                                                                                     role="presentation">
+                                                                                    <div class="cke_dialog_ui_input_select"
+                                                                                         role="presentation"><select
+                                                                                            id="cke_79_select"
+                                                                                            class="cke_dialog_ui_input_select"
+                                                                                            aria-labelledby="cke_80_label">
+                                                                                        <option value=""> &lt;没有设置&gt;
+                                                                                        </option>
+                                                                                        <option value="left"> 左对齐
+                                                                                        </option>
+                                                                                        <option value="center"> 居中
+                                                                                        </option>
+                                                                                        <option value="right"> 右对齐
+                                                                                        </option>
+                                                                                    </select></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td class="cke_dialog_ui_hbox_last" role="presentation">
+                                                            <div role="presentation" id="cke_98_uiElement"
+                                                                 class="cke_dialog_ui_vbox">
+                                                                <table role="presentation" cellspacing="0" border="0"
+                                                                       style="width:100%;float:none;" align="left">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td role="presentation" style="padding:0px"
+                                                                            class="cke_dialog_ui_vbox_child">
+                                                                            <table role="presentation"
+                                                                                   id="cke_86_uiElement"
+                                                                                   class="cke_dialog_ui_hbox">
+                                                                                <tbody>
+                                                                                <tr class="cke_dialog_ui_hbox">
+                                                                                    <td class="cke_dialog_ui_hbox_last"
+                                                                                        role="presentation"
+                                                                                        style="width:5em">
+                                                                                        <div role="presentation"
+                                                                                             id="cke_85_uiElement"
+                                                                                             class="cke_dialog_ui_text"
+                                                                                             title="输入一个表示像素值的数字，或加上一个有效的 CSS 长度单位(px, %, in, cm, mm, em, ex, pt 或 pc)。">
+                                                                                            <label class="cke_dialog_ui_labeled_label"
+                                                                                                   id="cke_84_label"
+                                                                                                   for="cke_83_textInput">宽度</label>
+                                                                                            <div class="cke_dialog_ui_labeled_content"
+                                                                                                 style="width:5em"
+                                                                                                 role="presentation">
+                                                                                                <div class="cke_dialog_ui_input_text"
+                                                                                                     role="presentation">
+                                                                                                    <input class="cke_dialog_ui_input_text"
+                                                                                                           id="cke_83_textInput"
+                                                                                                           type="text"
+                                                                                                           aria-labelledby="cke_84_label">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td role="presentation" style="padding:0px"
+                                                                            class="cke_dialog_ui_vbox_child">
+                                                                            <table role="presentation"
+                                                                                   id="cke_90_uiElement"
+                                                                                   class="cke_dialog_ui_hbox">
+                                                                                <tbody>
+                                                                                <tr class="cke_dialog_ui_hbox">
+                                                                                    <td class="cke_dialog_ui_hbox_last"
+                                                                                        role="presentation"
+                                                                                        style="width:5em">
+                                                                                        <div role="presentation"
+                                                                                             id="cke_89_uiElement"
+                                                                                             class="cke_dialog_ui_text"
+                                                                                             title="输入一个表示像素值的数字，或加上一个有效的 CSS 长度单位(px, %, in, cm, mm, em, ex, pt 或 pc)。">
+                                                                                            <label class="cke_dialog_ui_labeled_label"
+                                                                                                   id="cke_88_label"
+                                                                                                   for="cke_87_textInput">高度</label>
+                                                                                            <div class="cke_dialog_ui_labeled_content"
+                                                                                                 style="width:5em"
+                                                                                                 role="presentation">
+                                                                                                <div class="cke_dialog_ui_input_text"
+                                                                                                     role="presentation">
+                                                                                                    <input class="cke_dialog_ui_input_text"
+                                                                                                           id="cke_87_textInput"
+                                                                                                           type="text"
+                                                                                                           aria-labelledby="cke_88_label">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td role="presentation" style="padding:0px"
+                                                                            class="cke_dialog_ui_vbox_child"><span
+                                                                                id="cke_91_uiElement"
+                                                                                class="cke_dialog_ui_html">&nbsp;</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td role="presentation" style="padding:0px"
+                                                                            class="cke_dialog_ui_vbox_child">
+                                                                            <div role="presentation"
+                                                                                 id="cke_94_uiElement"
+                                                                                 class="cke_dialog_ui_text"><label
+                                                                                    class="cke_dialog_ui_labeled_label"
+                                                                                    id="cke_93_label"
+                                                                                    for="cke_92_textInput">间距</label>
+                                                                                <div class="cke_dialog_ui_labeled_content"
+                                                                                     style="width:3em"
+                                                                                     role="presentation">
+                                                                                    <div class="cke_dialog_ui_input_text"
+                                                                                         role="presentation"><input
+                                                                                            class="cke_dialog_ui_input_text"
+                                                                                            id="cke_92_textInput"
+                                                                                            type="text"
+                                                                                            aria-labelledby="cke_93_label">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td role="presentation" style="padding:0px"
+                                                                            class="cke_dialog_ui_vbox_child">
+                                                                            <div role="presentation"
+                                                                                 id="cke_97_uiElement"
+                                                                                 class="cke_dialog_ui_text"><label
+                                                                                    class="cke_dialog_ui_labeled_label"
+                                                                                    id="cke_96_label"
+                                                                                    for="cke_95_textInput">边距</label>
+                                                                                <div class="cke_dialog_ui_labeled_content"
+                                                                                     style="width:3em"
+                                                                                     role="presentation">
+                                                                                    <div class="cke_dialog_ui_input_text"
+                                                                                         role="presentation"><input
+                                                                                            class="cke_dialog_ui_input_text"
+                                                                                            id="cke_95_textInput"
+                                                                                            type="text"
+                                                                                            aria-labelledby="cke_96_label">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td role="presentation" class="cke_dialog_ui_vbox_child"><span
+                                                    id="cke_100_uiElement" class="cke_dialog_ui_html"
+                                                    style="margin-left:auto; margin-right:0"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td role="presentation" class="cke_dialog_ui_vbox_child">
+                                                <div role="presentation" id="cke_107_uiElement"
+                                                     class="cke_dialog_ui_vbox">
+                                                    <table role="presentation" cellspacing="0" border="0"
+                                                           style="width:100%;float:none;" align="left">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td role="presentation" style="padding:0px"
+                                                                class="cke_dialog_ui_vbox_child">
+                                                                <div role="presentation" id="cke_103_uiElement"
+                                                                     class="cke_dialog_ui_text"><label
+                                                                        class="cke_dialog_ui_labeled_label"
+                                                                        id="cke_102_label"
+                                                                        for="cke_101_textInput">标题</label>
+                                                                    <div class="cke_dialog_ui_labeled_content"
+                                                                         role="presentation">
+                                                                        <div class="cke_dialog_ui_input_text"
+                                                                             role="presentation"><input
+                                                                                class="cke_dialog_ui_input_text"
+                                                                                id="cke_101_textInput" type="text"
+                                                                                aria-labelledby="cke_102_label"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td role="presentation" style="padding:0px"
+                                                                class="cke_dialog_ui_vbox_child">
+                                                                <div role="presentation" id="cke_106_uiElement"
+                                                                     class="cke_dialog_ui_text"><label
+                                                                        class="cke_dialog_ui_labeled_label"
+                                                                        id="cke_105_label"
+                                                                        for="cke_104_textInput">摘要</label>
+                                                                    <div class="cke_dialog_ui_labeled_content"
+                                                                         role="presentation">
+                                                                        <div class="cke_dialog_ui_input_text"
+                                                                             role="presentation"><input
+                                                                                class="cke_dialog_ui_input_text"
+                                                                                id="cke_104_textInput" type="text"
+                                                                                aria-labelledby="cke_105_label"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="cke_dialog_footer_62" class="cke_dialog_footer" role="presentation">
+                                <div class="cke_resizer cke_resizer_ltr" title="拖拽以改变大小"
+                                     onmousedown="CKEDITOR.tools.callFunction(121, event )">◢
+                                </div>
+                                <table role="presentation" id="cke_115_uiElement"
+                                       class="cke_dialog_ui_hbox cke_dialog_footer_buttons">
+                                    <tbody>
+                                    <tr class="cke_dialog_ui_hbox">
+                                        <td class="cke_dialog_ui_hbox_first" role="presentation"><a
+                                                style="user-select: none;" href="javascript:void(0)" title="确定"
+                                                hidefocus="true" class="cke_dialog_ui_button cke_dialog_ui_button_ok"
+                                                role="button" aria-labelledby="cke_111_label"
+                                                id="cke_112_uiElement"><span id="cke_111_label"
+                                                                             class="cke_dialog_ui_button">确定</span></a>
+                                        </td>
+                                        <td class="cke_dialog_ui_hbox_last" role="presentation"><a
+                                                style="user-select: none;" href="javascript:void(0)" title="取消"
+                                                hidefocus="true"
+                                                class="cke_dialog_ui_button cke_dialog_ui_button_cancel" role="button"
+                                                aria-labelledby="cke_113_label" id="cke_114_uiElement"><span
+                                                id="cke_113_label" class="cke_dialog_ui_button">取消</span></a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="daterangepicker dropdown-menu opensright" style="top: 2379.2px; left: 295.4px; right: auto; display: none;">
+    <div class="calendar right" style="display: block;">
+        <div class="calendar-date">
+            <table class="table-condensed">
+                <thead>
+                <tr>
+                    <th class="prev available"><i class="icon-arrow-left glyphicon glyphicon-arrow-left"></i></th>
+                    <th colspan="5" style="width: auto">Aug 2018</th>
+                    <th class="next available"><i class="icon-arrow-right glyphicon glyphicon-arrow-right"></i></th>
+                </tr>
+                <tr>
+                    <th>Su</th>
+                    <th>Mo</th>
+                    <th>Tu</th>
+                    <th>We</th>
+                    <th>Th</th>
+                    <th>Fr</th>
+                    <th>Sa</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="available off in-range" data-title="r0c0">29</td>
+                    <td class="available off in-range" data-title="r0c1">30</td>
+                    <td class="available off in-range" data-title="r0c2">31</td>
+                    <td class="available in-range" data-title="r0c3">1</td>
+                    <td class="available in-range" data-title="r0c4">2</td>
+                    <td class="available in-range" data-title="r0c5">3</td>
+                    <td class="available in-range" data-title="r0c6">4</td>
+                </tr>
+                <tr>
+                    <td class="available in-range" data-title="r1c0">5</td>
+                    <td class="available in-range" data-title="r1c1">6</td>
+                    <td class="available in-range" data-title="r1c2">7</td>
+                    <td class="available in-range" data-title="r1c3">8</td>
+                    <td class="available in-range" data-title="r1c4">9</td>
+                    <td class="available in-range" data-title="r1c5">10</td>
+                    <td class="available in-range" data-title="r1c6">11</td>
+                </tr>
+                <tr>
+                    <td class="available in-range" data-title="r2c0">12</td>
+                    <td class="available in-range" data-title="r2c1">13</td>
+                    <td class="available in-range" data-title="r2c2">14</td>
+                    <td class="available in-range" data-title="r2c3">15</td>
+                    <td class="available in-range" data-title="r2c4">16</td>
+                    <td class="available in-range" data-title="r2c5">17</td>
+                    <td class="available in-range" data-title="r2c6">18</td>
+                </tr>
+                <tr>
+                    <td class="available in-range" data-title="r3c0">19</td>
+                    <td class="available in-range" data-title="r3c1">20</td>
+                    <td class="available in-range" data-title="r3c2">21</td>
+                    <td class="available in-range" data-title="r3c3">22</td>
+                    <td class="available in-range" data-title="r3c4">23</td>
+                    <td class="available in-range" data-title="r3c5">24</td>
+                    <td class="available active end-date" data-title="r3c6">25</td>
+                </tr>
+                <tr>
+                    <td class="available" data-title="r4c0">26</td>
+                    <td class="available" data-title="r4c1">27</td>
+                    <td class="available" data-title="r4c2">28</td>
+                    <td class="available" data-title="r4c3">29</td>
+                    <td class="available" data-title="r4c4">30</td>
+                    <td class="available" data-title="r4c5">31</td>
+                    <td class="available off" data-title="r4c6">1</td>
+                </tr>
+                <tr>
+                    <td class="available off" data-title="r5c0">2</td>
+                    <td class="available off" data-title="r5c1">3</td>
+                    <td class="available off" data-title="r5c2">4</td>
+                    <td class="available off" data-title="r5c3">5</td>
+                    <td class="available off" data-title="r5c4">6</td>
+                    <td class="available off" data-title="r5c5">7</td>
+                    <td class="available off" data-title="r5c6">8</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="calendar left" style="display: block;">
+        <div class="calendar-date">
+            <table class="table-condensed">
+                <thead>
+                <tr>
+                    <th class="prev available"><i class="icon-arrow-left glyphicon glyphicon-arrow-left"></i></th>
+                    <th colspan="5" style="width: auto">Apr 2018</th>
+                    <th class="next available"><i class="icon-arrow-right glyphicon glyphicon-arrow-right"></i></th>
+                </tr>
+                <tr>
+                    <th>Su</th>
+                    <th>Mo</th>
+                    <th>Tu</th>
+                    <th>We</th>
+                    <th>Th</th>
+                    <th>Fr</th>
+                    <th>Sa</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="available off" data-title="r0c0">25</td>
+                    <td class="available off" data-title="r0c1">26</td>
+                    <td class="available off" data-title="r0c2">27</td>
+                    <td class="available off" data-title="r0c3">28</td>
+                    <td class="available off" data-title="r0c4">29</td>
+                    <td class="available off" data-title="r0c5">30</td>
+                    <td class="available off" data-title="r0c6">31</td>
+                </tr>
+                <tr>
+                    <td class="available" data-title="r1c0">1</td>
+                    <td class="available" data-title="r1c1">2</td>
+                    <td class="available" data-title="r1c2">3</td>
+                    <td class="available" data-title="r1c3">4</td>
+                    <td class="available" data-title="r1c4">5</td>
+                    <td class="available" data-title="r1c5">6</td>
+                    <td class="available" data-title="r1c6">7</td>
+                </tr>
+                <tr>
+                    <td class="available" data-title="r2c0">8</td>
+                    <td class="available" data-title="r2c1">9</td>
+                    <td class="available" data-title="r2c2">10</td>
+                    <td class="available" data-title="r2c3">11</td>
+                    <td class="available active start-date" data-title="r2c4">12</td>
+                    <td class="available in-range" data-title="r2c5">13</td>
+                    <td class="available in-range" data-title="r2c6">14</td>
+                </tr>
+                <tr>
+                    <td class="available in-range" data-title="r3c0">15</td>
+                    <td class="available in-range" data-title="r3c1">16</td>
+                    <td class="available in-range" data-title="r3c2">17</td>
+                    <td class="available in-range" data-title="r3c3">18</td>
+                    <td class="available in-range" data-title="r3c4">19</td>
+                    <td class="available in-range" data-title="r3c5">20</td>
+                    <td class="available in-range" data-title="r3c6">21</td>
+                </tr>
+                <tr>
+                    <td class="available in-range" data-title="r4c0">22</td>
+                    <td class="available in-range" data-title="r4c1">23</td>
+                    <td class="available in-range" data-title="r4c2">24</td>
+                    <td class="available in-range" data-title="r4c3">25</td>
+                    <td class="available in-range" data-title="r4c4">26</td>
+                    <td class="available in-range" data-title="r4c5">27</td>
+                    <td class="available in-range" data-title="r4c6">28</td>
+                </tr>
+                <tr>
+                    <td class="available in-range" data-title="r5c0">29</td>
+                    <td class="available in-range" data-title="r5c1">30</td>
+                    <td class="available off in-range" data-title="r5c2">1</td>
+                    <td class="available off in-range" data-title="r5c3">2</td>
+                    <td class="available off in-range" data-title="r5c4">3</td>
+                    <td class="available off in-range" data-title="r5c5">4</td>
+                    <td class="available off in-range" data-title="r5c6">5</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="ranges">
+        <div class="range_inputs">
+            <div class="daterangepicker_start_input" style="float: left"><label>From</label><input
+                    class="input-mini" type="text" name="daterangepicker_start" value="" disabled="disabled"></div>
+            <div class="daterangepicker_end_input" style="float: left; padding-left: 11px"><label
+            >To</label><input class="input-mini" type="text" name="daterangepicker_end"
+                              value="" disabled="disabled"></div>
+            <button class="btn-success applyBtn btn btn-small">Apply</button>&nbsp;<button
+                class="btn-default cancelBtn btn btn-small">Cancel
+        </button>
+        </div>
+    </div>
+</div>
 </body>
+<!-- end: BODY -->
 </html>

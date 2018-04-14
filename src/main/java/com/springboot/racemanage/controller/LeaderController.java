@@ -23,13 +23,14 @@ import java.util.List;
 @RequestMapping("/leader")
 @Transactional
 public class LeaderController {
-    public static final String PEOPLA_MANAGE = "peoplaManage";
-    public static final String STUDENT_MANAGE = "studentManage";
-    public static final String TEACHER_MANAGE = "teacherManage";
-    public static final String MENU_SELECTED_1 = "MENU_SELECTED_";
-    public static final String MENU_SELECTED_2 = "menuSelected2";
-    public static final String RACE_MANAGE = "raceManage";
-    public static final String RACE_LIST = "raceList";
+    private static final String PEOPLA_MANAGE = "peoplaManage";
+    private static final String STUDENT_MANAGE = "studentManage";
+    private static final String TEACHER_MANAGE = "teacherManage";
+    private static final String MENU_SELECTED_1 = "menuSelected1";
+    private static final String MENU_SELECTED_2 = "menuSelected2";
+    private static final String RACE_MANAGE = "raceManage";
+    private static final String RACE_LIST = "raceList";
+    private static final String ADD_RACE_INFO = "addRaceInfo";
     @Autowired
     TermService termService;
 
@@ -175,11 +176,32 @@ public class LeaderController {
         return "leader/achievementList";
     }
 
-    //TODO
     @RequestMapping("/toAddRaceInfo.do")
-    public String toAddRaceInfo() {
+    public String toAddRaceInfo(Model model) {
+        model.addAttribute(MENU_SELECTED_1,RACE_MANAGE );
+        model.addAttribute(MENU_SELECTED_2, ADD_RACE_INFO);
 
         return "leader/addRaceInfo";
+    }
+    @RequestMapping("/addRaceInfo.do")
+    public String addRaceInfo(Model model,HttpSession httpSession,
+                              @RequestParam(value = "racename",required = false,defaultValue = "")String racename,
+                              @RequestParam(value = "kind",required = false,defaultValue = "")String kind,
+                              @RequestParam(value = "timeRange",required = false,defaultValue = "")String timeRange,
+                              @RequestParam(value = "file",required = false)MultipartFile file,
+                              @RequestParam(value = "description",required = false,defaultValue = "")String description){
+
+        Raceinfo raceinfo = new Raceinfo();
+        raceinfo.setDescription(description);
+        raceinfo.setRacename(racename);
+        raceinfo.setKind(kind);
+        System.out.println(raceinfo);
+        System.out.println(timeRange);
+        if (file != null) {
+            System.out.println(file.getOriginalFilename());
+        }
+
+        return "leader/raceList";
     }
 
     //TODO
