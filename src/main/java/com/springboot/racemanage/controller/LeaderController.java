@@ -2,6 +2,7 @@ package com.springboot.racemanage.controller;
 
 import com.springboot.racemanage.po.*;
 import com.springboot.racemanage.service.*;
+import com.springboot.racemanage.util.Tools;
 import com.springboot.racemanage.util.UploadFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
@@ -14,7 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * 这里leader就是headteacher(竞赛组长)
@@ -189,24 +192,49 @@ public class LeaderController {
                               @RequestParam(value = "kind",required = false,defaultValue = "")String kind,
                               @RequestParam(value = "timeRange",required = false,defaultValue = "")String timeRange,
                               @RequestParam(value = "file",required = false)MultipartFile file,
-                              @RequestParam(value = "description",required = false,defaultValue = "")String description){
+                              @RequestParam(value = "description",required = false,defaultValue = "")String description) throws ParseException {
 
+        Term term = (Term) httpSession.getAttribute("term");
         Raceinfo raceinfo = new Raceinfo();
         raceinfo.setDescription(description);
         raceinfo.setRacename(racename);
         raceinfo.setKind(kind);
+        raceinfo.setUuid(UUID.randomUUID().toString());
+        raceinfo.setTerm(term.getTerm());
+
+        //dates begainDate: 开始日期  endDate:结束日期
+        Map<String , Date> dates = Tools.dateRangeTransform(timeRange);
+        raceinfo.setBegaintime(dates.get("begainDate"));
+        raceinfo.setEndtime(dates.get("endDate"));
+
+
+//        raceinfo.setBegaintime();
+//        raceinfo.setEndtime();
+
         System.out.println(raceinfo);
         System.out.println(timeRange);
         if (file != null) {
             System.out.println(file.getOriginalFilename());
+            String fileUrl = null;
+            try {
+                fileUrl = UploadFile.upload(file,"src\\main\\resources\\templates\\uploadFiles\\raceInfoFile\\");
+
+            } catch (IOException e) {
+                System.out.println("赛事文件上传失败");
+                e.printStackTrace();
+            }
+            raceinfo.setFile1(fileUrl);
         }
 
-        return "leader/raceList";
+        System.out.println(raceinfo);
+        raceinfoService.insertSelective(raceinfo);
+        return "redirect:/leader/raceInfoList.do";
     }
 
     //TODO
     @RequestMapping("/raceInfoList.do")
-    public String raceInfoList() {
+    public String raceInfoList(Model model,HttpSession httpSession) {
+
 
         return "leader/raceInfoList";
     }
