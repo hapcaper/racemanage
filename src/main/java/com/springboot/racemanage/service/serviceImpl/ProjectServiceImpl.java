@@ -48,4 +48,9 @@ public class ProjectServiceImpl implements ProjectService{
     public List<Project> getProjectForRaceinfoDetail(String stuUuid, String raceinfoUuid) {
         return projectDao.getProjectForRaceinfoDetail(stuUuid,raceinfoUuid);
     }
+
+    @Override
+    public Integer countByStatus(Integer status) {
+        return projectDao.countByStatus(status);
+    }
 }

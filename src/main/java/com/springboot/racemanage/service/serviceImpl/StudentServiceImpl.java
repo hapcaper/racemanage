@@ -44,4 +44,14 @@ public class StudentServiceImpl implements StudentService{
     public List<Student> findStuUuidAndStuNameByStuUuidNot(String notStuUuid) {
         return studentDao.findStuUuidAndStuNameByStuUuidNot(notStuUuid);
     }
+
+    @Override
+    public Integer countByStuStatus(Integer stuStatus) {
+        return studentDao.countByStuStatus(stuStatus);
+    }
+
+    @Override
+    public List<Student> findByStuStatus(Integer stuStatus) {
+        return studentDao.findByStuStatus(1);
+    }
 }

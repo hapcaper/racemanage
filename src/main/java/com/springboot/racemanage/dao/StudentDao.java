@@ -25,11 +25,9 @@ public interface StudentDao {
 
     List<Integer> findidByStuUuidNotIn(@Param("stuUuidList")List<String> stuUuidList);
 
+    Integer countByStuStatus(@Param("stuStatus")Integer stuStatus);
 
-
-
-
-
+    List<Student> findByStuStatus(@Param("stuStatus")Integer stuStatus);
 
 
 

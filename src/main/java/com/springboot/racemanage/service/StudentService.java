@@ -16,4 +16,9 @@ public interface StudentService {
 
     List<Student> findStuUuidAndStuNameByStuUuidNot(String notStuUuid);
 
+    Integer countByStuStatus(Integer stuStatus);
+
+    List<Student> findByStuStatus(Integer stuStatus);
+
+
 }

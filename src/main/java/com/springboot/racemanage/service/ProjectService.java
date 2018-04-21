@@ -20,4 +20,7 @@ public interface ProjectService {
     List<Project> findByStatusAndUuidIn(Integer status,List<String> uuidList);
 
     List<Project> getProjectForRaceinfoDetail(String stuUuid,String raceinfoUuid);
+
+    Integer countByStatus(Integer status);
+
 }

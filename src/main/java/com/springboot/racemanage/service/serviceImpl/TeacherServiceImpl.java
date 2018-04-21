@@ -33,4 +33,14 @@ public class TeacherServiceImpl implements TeacherService{
     public List<Teacher> findTNameAndTUuid() {
         return teacherDao.findTNameAndTUuid();
     }
+
+    @Override
+    public Integer countByTStatus(Integer tStatus) {
+        return teacherDao.countByTStatus(tStatus);
+    }
+
+    @Override
+    public List<Teacher> findByTStatus(Integer tStatus) {
+        return teacherDao.findByTStatus(tStatus);
+    }
 }

@@ -23,6 +23,8 @@ public interface RaceDao {
 
     List<Race> getByStuUuidAndStatusAndResultNot(@Param("stuUuid")String stuUuid,@Param("status")Integer status,@Param("resultnot")Integer resultnot);
 
+    List<Race> findByStatusAndTerm(@Param("status")Integer status,@Param("term")Integer term);
+
 
 
 

@@ -1,18 +1,14 @@
-
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-
 
 
 <div th:fragment="common_js">
     <!-- start: MAIN JAVASCRIPTS -->
 
     <!--[if gte IE 9]><!-->
-    <script type="text/javascript" th:src="@{/assets/plugins/Jquery/jquery-3.3.1.min.js}"></script>
     <!--<![endif]-->
+    <script type="text/javascript" th:src="@{/assets/plugins/Jquery/jquery-3.3.1.min.js}"></script>
     <script th:src="@{/assets/plugins/respond.min.js}"></script>
     <script th:src="@{/assets/plugins/excanvas.min.js}"></script>
-    <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js}"></script>
     <script th:src="@{/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js}"></script>
     <script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
     <script th:src="@{/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js}"></script>
@@ -50,57 +46,27 @@
     <script th:src="@{/assets/plugins/gritter/js/jquery.gritter.min.js}"></script>
     <script th:src="@{/assets/js/ui-elements.js}"></script>
     <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+
+
+
     <script>
-        // jQuery(document).ready(function () {
-        //     Main.init();
-        //     FormElements.init();
-        //     TableData.init();
-        // });
+        jQuery(document).ready(function () {
+            Main.init();
+            FormElements.init();
+        });
+
+
 
     </script>
-    <!--<input type="hidden" th:value="${student.stuUuid}" id="stuUuid"/>-->
-    <!--<script>-->
-        <!--jQuery(document).ready(function() {-->
-            <!--Main.init();-->
-            <!--let stuUuid = [[${session.student.stuUuid}]];-->
-            <!--initNum(stuUuid);-->
-        <!--});-->
-
-
-        <!--let initNum = function (stuUuid) {-->
-            <!--$.get('http://127.0.0.1:8080/restful/student/newTaskNum?stuUUID=' + stuUuid, function (data) {-->
-                <!--newTaskNum(data)-->
-            <!--});-->
-            <!--$.get('http://127.0.0.1:8080/restful/student/newMsgNum?stuUUID=' + stuUuid, function (data) {-->
-                <!--newMsgNum(data)-->
-            <!--});-->
-            <!--$.get('http://127.0.0.1:8080/restful/student/newInvititionNum?stuUUID=' + stuUuid, function (data) {-->
-                <!--newInviteNum(data)-->
-            <!--});-->
-        <!--};-->
-        <!--let newMsgNum = function (data) {-->
-            <!--$("#newMsgNum").text(data);-->
-            <!--$("#newMsgNumber").text(data);-->
-        <!--};-->
-        <!--let newInviteNum = function (data) {-->
-            <!--$("#newInviteNum").text(data);-->
-            <!--$("#newInviteNumber").text(data);-->
-        <!--};-->
-        <!--let newTaskNum = function (data) {-->
-            <!--$("#newTaskNum").text(data);-->
-            <!--$("#newTaskNumber").text(data);-->
-        <!--};-->
-
-    <!--</script>-->
-    <script th:inline="javascript">
-        var level1menuId = [[${menuSelected1}]];
-        var level2menuId = [[${menuSelected2}]];
-        $(".open").each(function() {
+    <script>
+        var level1menuId = "[[${menuSelected1}]]";
+        var level2menuId = "[[${menuSelected2}]]";
+        $(".open").each(function () {
             $(this).removeClass('active open');
         });
 
         $('#' + level1menuId).click();
-        $('#' + level1menuId).addClass('active open');
+        $('#' + level1menuId).addClass("active open");
         if ($('#' + level2menuId)) {
             $('#' + level2menuId).addClass('active open');
         }
@@ -118,16 +84,16 @@
     <meta content="" name="author"/>
     <!-- end: META -->
     <!-- start: MAIN CSS -->
-    <link rel="stylesheet"  th:href="@{/assets/plugins/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/assets/plugins/font-awesome/css/font-awesome.min.css}">
-    <link rel="stylesheet"  th:href="@{/assets/fonts/style.css}">
-    <link rel="stylesheet"  th:href="@{/assets/css/main.css}">
-    <link rel="stylesheet"  th:href="@{/assets/css/main-responsive.css}">
-    <link rel="stylesheet"  th:href="@{/assets/plugins/iCheck/skins/all.css}">
-    <link rel="stylesheet"  th:href="@{/assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css}">
-    <link rel="stylesheet"  th:href="@{/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css}">
-    <link rel="stylesheet"  id="skin_color" th:href="@{/assets/css/theme_light.css}">
-    <link rel="stylesheet"  type="text/css" media="print" th:href="@{/assets/css/print.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/fonts/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/main-responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/iCheck/skins/all.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css}">
+    <link rel="stylesheet" id="skin_color" th:href="@{/assets/css/theme_light.css}">
+    <link rel="stylesheet" type="text/css" media="print" th:href="@{/assets/css/print.css}"/>
     <!-- end: MAIN CSS -->
 
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
@@ -165,7 +131,8 @@
         <div class="input-box">
             <div class="input">
                 <select name="layout">
-                    <option value="default">Wide</option><option value="boxed">Boxed</option>
+                    <option value="default">Wide</option>
+                    <option value="boxed">Boxed</option>
                 </select>
             </div>
         </div>
@@ -175,7 +142,8 @@
         <div class="input-box">
             <div class="input">
                 <select name="header">
-                    <option value="fixed">Fixed</option><option value="default">Default</option>
+                    <option value="fixed">Fixed</option>
+                    <option value="default">Default</option>
                 </select>
             </div>
         </div>
@@ -185,7 +153,8 @@
         <div class="input-box">
             <div class="input">
                 <select name="footer">
-                    <option value="default">Default</option><option value="fixed">Fixed</option>
+                    <option value="default">Default</option>
+                    <option value="fixed">Fixed</option>
                 </select>
             </div>
         </div>
@@ -219,7 +188,8 @@
                 </label>
                 <input type="text" value="#ffffff" class="color-base">
                 <div class="dropdown">
-                    <a class="add-on dropdown-toggle" data-toggle="dropdown"><i style="background-color: #ffffff"></i></a>
+                    <a class="add-on dropdown-toggle" data-toggle="dropdown"><i
+                            style="background-color: #ffffff"></i></a>
                     <ul class="dropdown-menu pull-right">
                         <li>
                             <div class="colorpalette"></div>
@@ -233,7 +203,8 @@
                 </label>
                 <input type="text" value="#555555" class="color-text">
                 <div class="dropdown">
-                    <a class="add-on dropdown-toggle" data-toggle="dropdown"><i style="background-color: #555555"></i></a>
+                    <a class="add-on dropdown-toggle" data-toggle="dropdown"><i
+                            style="background-color: #555555"></i></a>
                     <ul class="dropdown-menu pull-right">
                         <li>
                             <div class="colorpalette"></div>
@@ -247,7 +218,8 @@
                 </label>
                 <input type="text" value="#007AFF" class="color-badge">
                 <div class="dropdown">
-                    <a class="add-on dropdown-toggle" data-toggle="dropdown"><i style="background-color: #007AFF"></i></a>
+                    <a class="add-on dropdown-toggle" data-toggle="dropdown"><i
+                            style="background-color: #007AFF"></i></a>
                     <ul class="dropdown-menu pull-right">
                         <li>
                             <div class="colorpalette"></div>
@@ -288,21 +260,22 @@
             <ul class="nav navbar-right">
                 <!-- start: USER DROPDOWN -->
                 <li class="dropdown current-user">
-                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
+                       href="#">
                         <img src="../../static/assets/images/avatar-1-small.jpg" class="circle-img" alt="">
                         <span class="username" th:text="${session.leader.lName}">leaderName</span>
                         <i class="clip-chevron-down"></i>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a th:href="@{/student/profile.do}" href="profile.html">
+                            <a th:href="@{/leader/profile.do}" href="profile.html">
                                 <i class="clip-user-2"></i>
                                 &nbsp;个人信息
                             </a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a th:href="@{/student/logout.do}" href="#">
+                            <a th:href="@{/leader/logout.do}" href="#">
                                 <i class="clip-exit"></i>
                                 &nbsp;登出
                             </a>
@@ -315,5 +288,100 @@
         </div>
     </div>
     <!-- end: TOP NAVIGATION CONTAINER -->
+</div>
+
+<div th:fragment="left" class="navbar-content">
+
+    <!-- start: SIDEBAR -->
+    <div class="main-navigation navbar-collapse collapse">
+        <!-- start: MAIN MENU TOGGLER BUTTON -->
+        <div class="navigation-toggler">
+            <i class="clip-chevron-left"></i>
+            <i class="clip-chevron-right"></i>
+        </div>
+        <!-- end: MAIN MENU TOGGLER BUTTON -->
+        <!-- start: MAIN NAVIGATION MENU -->
+        <ul class="main-navigation-menu">
+            <li class="active open" id="index" >
+                <a href="index.html" th:href="@{'/leader/index.do'}"><i class="clip-home-3"></i>
+                    <span class="title"> 首页 </span><span class="selected"></span>
+                </a>
+            </li>
+            <li id="profile">
+                <a href="profile.html" th:href="${'/leader/profile.do'}"><i class="clip-screen"></i>
+                    <span class="title"> 个人信息 </span>
+                    <span class="selected"></span>
+                </a>
+            </li>
+            <li id="peopleManage">
+                <a href="javascript:void(0)"><i class="clip-cog-2"></i>
+                    <span class="title"> 人员管理 </span><i class="icon-arrow"></i>
+                    <span class="selected"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li id="teacherManage">
+                        <a th:href="${'/leader/teacherManage.do'}" href="ui_elements.html">
+                            <span class="title"> 教师管理 </span>
+                        </a>
+                    </li>
+                    <li id="studentManage">
+                        <a th:href="${'/leader/studentManage.do'}" href="ui_buttons.html">
+                            <span class="title"> 学生管理 </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0)"><i class="clip-grid-6"></i>
+                    <span class="title"> 成果管理 </span><i class="icon-arrow"></i>
+                    <span class="selected"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="table_static.html">
+                            <span class="title">发布竞赛成果信息</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="table_static.html">
+                            <span class="title">成果查询</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li id="raceManage">
+                <a href="javascript:void(0)"><i class="clip-pencil"></i>
+                    <span class="title"> 竞赛管理 </span><i class="icon-arrow"></i>
+                    <span class="selected"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li id="addRaceInfo">
+                        <a th:href="${'/leader/toAddRaceInfo.do'}" href="form_elements.html">
+                            <span class="title">添加赛事信息</span>
+                        </a>
+                    </li>
+                    <li id="raceInfoList">
+                        <a href="form_wizard.html">
+                            <span class="title">查看赛事信息</span>
+                        </a>
+                    </li>
+                    <li id="raceList">
+                        <a href="form_validation.html">
+                            <span class="title">查看竞赛列表</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li id="projectList">
+                <a href="javascript:void(0)"><i class="clip-file"></i>
+                    <span class="title">项目查询</span>
+                    <span class="selected"></span>
+                </a>
+            </li>
+        </ul>
+        <!-- end: MAIN NAVIGATION MENU -->
+    </div>
+    <!-- end: SIDEBAR -->
+
 </div>
 </html>

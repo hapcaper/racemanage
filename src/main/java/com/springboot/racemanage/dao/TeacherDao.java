@@ -18,5 +18,10 @@ public interface TeacherDao {
 
     List<Teacher> findTNameAndTUuid();
 
+    Integer countByTStatus(@Param("tStatus")Integer tStatus);
+
+    List<Teacher> findByTStatus(@Param("tStatus")Integer tStatus);
+
+
 
 }

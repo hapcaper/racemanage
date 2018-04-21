@@ -18,4 +18,6 @@ public interface RaceService {
     Race findByUuid(String uuid);
 
     List<Race> getAchivementListByStuUuid(String stuUuid);
+
+    List<Race> findByStatusAndTerm(Integer status,Integer term);
 }

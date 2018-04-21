@@ -43,4 +43,9 @@ public class RaceServiceImpl implements RaceService{
     public List<Race> getAchivementListByStuUuid(String stuUuid) {
         return raceDao.getByStuUuidAndStatusAndResultNot(stuUuid,1,0);
     }
+
+    @Override
+    public List<Race> findByStatusAndTerm(Integer status, Integer term) {
+        return raceDao.findByStatusAndTerm(status,term);
+    }
 }
