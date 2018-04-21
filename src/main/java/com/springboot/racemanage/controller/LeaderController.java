@@ -226,6 +226,7 @@ public class LeaderController {
             raceinfo.setFile1(fileUrl);
         }
 
+        new RuntimeException();
         System.out.println(raceinfo);
         raceinfoService.insertSelective(raceinfo);
         return "redirect:/leader/raceInfoList.do";
@@ -234,7 +235,6 @@ public class LeaderController {
     //TODO
     @RequestMapping("/raceInfoList.do")
     public String raceInfoList(Model model,HttpSession httpSession) {
-
 
         return "leader/raceInfoList";
     }
