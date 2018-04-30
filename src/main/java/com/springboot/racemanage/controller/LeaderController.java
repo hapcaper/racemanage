@@ -16,8 +16,10 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * 这里leader就是headteacher(竞赛组长)
@@ -26,7 +28,7 @@ import java.util.*;
 @RequestMapping("/leader")
 @Transactional
 public class LeaderController {
-    private static final String PEOPLA_MANAGE = "peoplaManage";
+    private static final String PEOPLA_MANAGE = "peopleManage";
     private static final String STUDENT_MANAGE = "studentManage";
     private static final String TEACHER_MANAGE = "teacherManage";
     private static final String MENU_SELECTED_1 = "menuSelected1";
@@ -34,6 +36,8 @@ public class LeaderController {
     private static final String RACE_MANAGE = "raceManage";
     private static final String RACE_LIST = "raceList";
     private static final String ADD_RACE_INFO = "addRaceInfo";
+    private static final String RACE_INFO_LIST = "raceInfoList";
+    private static final String PROJECT_LIST = "projectList";
     @Autowired
     TermService termService;
 
@@ -186,6 +190,7 @@ public class LeaderController {
 
         return "leader/addRaceInfo";
     }
+
     @RequestMapping("/addRaceInfo.do")
     public String addRaceInfo(Model model,HttpSession httpSession,
                               @RequestParam(value = "racename",required = false,defaultValue = "")String racename,
@@ -207,14 +212,7 @@ public class LeaderController {
         raceinfo.setBegaintime(dates.get("begainDate"));
         raceinfo.setEndtime(dates.get("endDate"));
 
-
-//        raceinfo.setBegaintime();
-//        raceinfo.setEndtime();
-
-        System.out.println(raceinfo);
-        System.out.println(timeRange);
         if (file != null) {
-            System.out.println(file.getOriginalFilename());
             String fileUrl = null;
             try {
                 fileUrl = UploadFile.upload(file,"src\\main\\resources\\templates\\uploadFiles\\raceInfoFile\\");
@@ -226,37 +224,51 @@ public class LeaderController {
             raceinfo.setFile1(fileUrl);
         }
 
-        new RuntimeException();
         System.out.println(raceinfo);
         raceinfoService.insertSelective(raceinfo);
         return "redirect:/leader/raceInfoList.do";
     }
 
-    //TODO
     @RequestMapping("/raceInfoList.do")
     public String raceInfoList(Model model,HttpSession httpSession) {
-
+        model.addAttribute(MENU_SELECTED_1, RACE_MANAGE);
+        model.addAttribute(MENU_SELECTED_2, RACE_INFO_LIST);
+        Term term = (Term) httpSession.getAttribute("term");
+        List<Raceinfo> raceinfoList = raceinfoService.findByStatusAndTerm(1, term.getTerm());
+        model.addAttribute("raceInfoList", raceinfoList);
         return "leader/raceInfoList";
     }
 
-    //TODO
     @RequestMapping("/raceList.do")
     public String raceList(Model model,HttpSession httpSession) {
         model.addAttribute(MENU_SELECTED_1, RACE_MANAGE);
         model.addAttribute(MENU_SELECTED_2, RACE_LIST);
         Term term = (Term) httpSession.getAttribute("term");
-
         List<Race> raceList = raceService.findByStatusAndTerm(1, term.getTerm());
         model.addAttribute("raceList", raceList);
 
         return "leader/raceList";
     }
 
-    //TODO
     @RequestMapping("/projectList.do")
-    public String projectList() {
+    public String projectList(Model model, HttpSession httpSession) {
+        model.addAttribute(MENU_SELECTED_1, PROJECT_LIST);
+        List<Project> projectList = projectService.findByStatus(1);
+        model.addAttribute("projectList", projectList);
 
         return "leader/projectList";
+    }
+
+    @RequestMapping("/projectDetail.do")
+    public String projectDetail(Model model, HttpSession httpSession,
+                                @RequestParam("id")Integer id) {
+        Project project = projectService.findById(id);
+        model.addAttribute("project", project);
+
+        List<Teamer> teamerList = teamerService.findByStatusAndProUuid(1, project.getUuid());
+        model.addAttribute("teamerList", teamerList);
+
+        return "leader/projectDetail";
     }
 
 }

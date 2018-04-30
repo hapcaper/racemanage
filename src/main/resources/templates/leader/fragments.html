@@ -338,12 +338,12 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="table_static.html">
+                        <a th:href="${'/leader/publishAchievement.do'}" href="table_static.html">
                             <span class="title">发布竞赛成果信息</span>
                         </a>
                     </li>
                     <li>
-                        <a href="table_static.html">
+                        <a th:href="${'/leader/achievementList.do'}" href="table_static.html">
                             <span class="title">成果查询</span>
                         </a>
                     </li>
@@ -361,19 +361,19 @@
                         </a>
                     </li>
                     <li id="raceInfoList">
-                        <a href="form_wizard.html">
+                        <a th:href="${'/leader/raceInfoList.do'}" href="form_wizard.html">
                             <span class="title">查看赛事信息</span>
                         </a>
                     </li>
                     <li id="raceList">
-                        <a href="form_validation.html">
+                        <a th:href="${'/leader/raceList.do'}" href="form_validation.html">
                             <span class="title">查看竞赛列表</span>
                         </a>
                     </li>
                 </ul>
             </li>
             <li id="projectList">
-                <a href="javascript:void(0)"><i class="clip-file"></i>
+                <a th:href="${'/leader/projectList.do'}" href="javascript:void(0)"><i class="clip-file"></i>
                     <span class="title">项目查询</span>
                     <span class="selected"></span>
                 </a>

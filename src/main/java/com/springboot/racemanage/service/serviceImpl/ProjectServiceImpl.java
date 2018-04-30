@@ -53,4 +53,14 @@ public class ProjectServiceImpl implements ProjectService{
     public Integer countByStatus(Integer status) {
         return projectDao.countByStatus(status);
     }
+
+    @Override
+    public List<Project> findByStatus(Integer status) {
+        return projectDao.findByStatus(status);
+    }
+
+    @Override
+    public Project findById(Integer id) {
+        return projectDao.findById(id);
+    }
 }

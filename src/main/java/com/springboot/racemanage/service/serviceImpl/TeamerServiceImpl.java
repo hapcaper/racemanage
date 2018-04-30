@@ -68,4 +68,9 @@ public class TeamerServiceImpl implements TeamerService{
     public List<Teamer> findByStatusAndStuUuid(Integer status, String stuUuid) {
         return teamerDao.findByStatusAndStuUuid(status,stuUuid);
     }
+
+    @Override
+    public List<String> findStunameByStatusAndProUuid(Integer status, String proUuid) {
+        return teamerDao.findStunameByStatusAndProUuid(status,proUuid);
+    }
 }

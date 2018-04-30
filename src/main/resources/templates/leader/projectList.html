@@ -224,11 +224,8 @@
                         <li>
                             <i class="clip-pencil"></i>
                             <a href="#">
-                                Forms
+                                项目列表
                             </a>
-                        </li>
-                        <li class="active">
-                            Form Elements
                         </li>
                         <li class="search-box">
                             <form class="sidebar-search">
@@ -242,14 +239,193 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>标题 <small>细微描述</small></h1>
+                        <h1>项目列表 <small>所有在本系统的项目</small></h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            Page Content
+            <table class="table table-hover" id="sample-table-1">
+                <thead>
+                <tr>
+                    <th class="center">#</th>
+                    <th>项目编号</th>
+                    <th class="hidden-xs">项目名称</th>
+                    <th>指导教师</th>
+                    <th class="hidden-xs">项目简介</th>
+                </tr>
+                </thead>
+                <tbody th:each="project:${projectList}">
+                <tr>
+                    <td class="center">#</td>
+                    <td class="hidden-xs" th:text="${project.id}">id</td>
+                    <td ><a href="#" th:href="${'/leader/projectDetail.do?id='+project.id}" th:text="${project.name}">name</a></td>
+                    <td th:text="${project.tname}">tname</td>
+                    <td class="hidden-xs" th:text="${project.description}">description</td>
+                </tr>
+                <tr th:hidden="all">
+                    <td class="center">2</td>
+                    <td>Internet Explorer</td>
+                    <td class="hidden-xs">Microsoft, Spyglass</td>
+                    <td>
+                        <a href="#" rel="nofollow" target="_blank">
+                            Proprietary
+                        </a></td>
+                    <td class="hidden-xs">Trident</td>
+                    <td class="center">
+                        <div class="visible-md visible-lg hidden-sm hidden-xs">
+                            <a href="#" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="#" class="btn btn-xs btn-green tooltips" data-placement="top" data-original-title="Share"><i class="fa fa-share"></i></a>
+                            <a href="#" class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="Remove"><i class="fa fa-times fa fa-white"></i></a>
+                        </div>
+                        <div class="visible-xs visible-sm hidden-md hidden-lg">
+                            <div class="btn-group">
+                                <a class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-cog"></i> <span class="caret"></span>
+                                </a>
+                                <ul role="menu" class="dropdown-menu pull-right">
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="#">
+                                            <i class="fa fa-edit"></i> Edit
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="#">
+                                            <i class="fa fa-share"></i> Share
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="#">
+                                            <i class="fa fa-times"></i> Remove
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div></td>
+                </tr>
+                <tr th:hidden="all">
+                    <td class="center">3</td>
+                    <td>Mozilla Firefox</td>
+                    <td class="hidden-xs">Mozilla Foundation</td>
+                    <td>
+                        <a href="#" rel="nofollow" target="_blank">
+                            MPR
+                        </a></td>
+                    <td class="hidden-xs">Gecko</td>
+                    <td class="center">
+                        <div class="visible-md visible-lg hidden-sm hidden-xs">
+                            <a href="#" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="#" class="btn btn-xs btn-green tooltips" data-placement="top" data-original-title="Share"><i class="fa fa-share"></i></a>
+                            <a href="#" class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="Remove"><i class="fa fa-times fa fa-white"></i></a>
+                        </div>
+                        <div class="visible-xs visible-sm hidden-md hidden-lg">
+                            <div class="btn-group">
+                                <a class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-cog"></i> <span class="caret"></span>
+                                </a>
+                                <ul role="menu" class="dropdown-menu pull-right">
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="#">
+                                            <i class="fa fa-edit"></i> Edit
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="#">
+                                            <i class="fa fa-share"></i> Share
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="#">
+                                            <i class="fa fa-times"></i> Remove
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div></td>
+                </tr>
+                <tr th:hidden="all">
+                    <td class="center">4</td>
+                    <td>Safari</td>
+                    <td class="hidden-xs">Apple Inc.</td>
+                    <td>
+                        <a href="#" rel="nofollow" target="_blank">
+                            Proprietary
+                        </a></td>
+                    <td class="hidden-xs">WebKit</td>
+                    <td class="center">
+                        <div class="visible-md visible-lg hidden-sm hidden-xs">
+                            <a href="#" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="#" class="btn btn-xs btn-green tooltips" data-placement="top" data-original-title="Share"><i class="fa fa-share"></i></a>
+                            <a href="#" class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="Remove"><i class="fa fa-times fa fa-white"></i></a>
+                        </div>
+                        <div class="visible-xs visible-sm hidden-md hidden-lg">
+                            <div class="btn-group">
+                                <a class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-cog"></i> <span class="caret"></span>
+                                </a>
+                                <ul role="menu" class="dropdown-menu pull-right">
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="#">
+                                            <i class="fa fa-edit"></i> Edit
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="#">
+                                            <i class="fa fa-share"></i> Share
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="#">
+                                            <i class="fa fa-times"></i> Remove
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div></td>
+                </tr>
+                <tr th:hidden="all">
+                    <td class="center">5</td>
+                    <td>Opera</td>
+                    <td class="hidden-xs">Opera Software</td>
+                    <td>
+                        <a href="#" rel="nofollow" target="_blank">
+                            Proprietary
+                        </a></td>
+                    <td class="hidden-xs">Presto</td>
+                    <td class="center">
+                        <div class="visible-md visible-lg hidden-sm hidden-xs">
+                            <a href="#" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="#" class="btn btn-xs btn-green tooltips" data-placement="top" data-original-title="Share"><i class="fa fa-share"></i></a>
+                            <a href="#" class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="Remove"><i class="fa fa-times fa fa-white"></i></a>
+                        </div>
+                        <div class="visible-xs visible-sm hidden-md hidden-lg">
+                            <div class="btn-group">
+                                <a class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-cog"></i> <span class="caret"></span>
+                                </a>
+                                <ul role="menu" class="dropdown-menu pull-right">
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="#">
+                                            <i class="fa fa-edit"></i> Edit
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="#">
+                                            <i class="fa fa-share"></i> Share
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="#">
+                                            <i class="fa fa-times"></i> Remove
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div></td>
+                </tr>
+                </tbody>
+            </table>
             <!-- end: PAGE CONTENT-->
         </div>
     </div>
