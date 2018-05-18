@@ -206,7 +206,6 @@ public class StudentController {
         System.out.println(docPath2);
         project.setDocument(docPath2.toString());
 
-        //DONE 添加自己teamer
         Teamer teamer = new Teamer();
         teamer.setDuty("队长");
         teamer.setProame(project.getName());
@@ -571,7 +570,6 @@ public class StudentController {
         Student student = (Student) httpSession.getAttribute("student");
         Invite invite = inviteService.findByUuid(inviteUUID);
         Project project = projectService.findFirstByUuid(invite.getProUuid());
-        System.out.println("((((("+invite);
 
         //添加teamer信息
         Teamer teamer = new Teamer();
@@ -583,7 +581,6 @@ public class StudentController {
         teamer.setProame(invite.getProname());
         teamer.setDuty("暂定");
         teamer.setDutydescription(invite.getDutydescription());
-        System.out.println(")))))))))"+teamer);
 
         //以系统身份发送邀请接受绝消息
         Message message = new Message();

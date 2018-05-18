@@ -20,6 +20,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 /**
  * 这里leader就是headteacher(竞赛组长)
@@ -215,7 +216,7 @@ public class LeaderController {
         if (file != null) {
             String fileUrl = null;
             try {
-                fileUrl = UploadFile.upload(file,"src\\main\\resources\\templates\\uploadFiles\\raceInfoFile\\");
+                fileUrl = UploadFile.upload(file,"src/main/resources/templates/uploadFiles/raceInfoFile/");
 
             } catch (IOException e) {
                 System.out.println("赛事文件上传失败");
@@ -239,6 +240,49 @@ public class LeaderController {
         return "leader/raceInfoList";
     }
 
+    @RequestMapping("/raceInfoDetail.do")
+    public String raceInfoDetail(Model model,HttpSession httpSession,
+                                 @RequestParam("id") Integer id) {
+        Raceinfo raceinfo = raceinfoService.findById(id);
+        model.addAttribute("raceInfo", raceinfo);
+        return "leader/raceInfoDetail";
+    }
+
+    @RequestMapping("/raceInfoEdit.do")
+    public String raceInfoEdit(Model model,HttpSession httpSession,
+                               @RequestParam("id") Integer id) {
+        Raceinfo raceinfo = raceinfoService.findById(id);
+        model.addAttribute("raceInfo", raceinfo);
+        return "leader/raceInfoEdit";
+    }
+
+    @RequestMapping("/editRaceInfo.do")
+    public String editRaceInfo(@RequestParam("id") Integer id,
+                               @RequestParam("racename") String racename,
+                               @RequestParam("raceKind") String raceKind,
+                               @RequestParam("timeRange") String timeRange,
+                               @RequestParam("description") String description) throws ParseException {
+        Raceinfo raceinfo = raceinfoService.findById(id);
+        raceinfo.setRacename(racename);
+        raceinfo.setKind(raceKind);
+        Map<String , Date> dates = Tools.dateRangeTransform(timeRange);
+        raceinfo.setBegaintime(dates.get("begainDate"));
+        raceinfo.setEndtime(dates.get("endDate"));
+        raceinfo.setDescription(description);
+        int sqlStatus = raceinfoService.update(raceinfo);
+        Logger.getLogger("lzh_debug").info("修改raceinfo返回结果码sqlStatus:  "+sqlStatus);
+        return "forward:/leader/raceInfoList.do";
+    }
+    @RequestMapping("/deleteRaceInfo.do")
+    public String deleteRaceInfo(Model model,HttpSession httpSession,
+                                 @RequestParam("id") Integer id) {
+        Raceinfo raceinfo = raceinfoService.findById(id);
+        raceinfo.setStatus(0);
+        Integer sqlStatus = raceinfoService.update(raceinfo);
+        Logger.getLogger("lzh_debug").info("赛事信息逻辑删除sql返回结果："+sqlStatus);
+        return "forward:/leader/raceInfoList.do";
+    }
+
     @RequestMapping("/raceList.do")
     public String raceList(Model model,HttpSession httpSession) {
         model.addAttribute(MENU_SELECTED_1, RACE_MANAGE);
@@ -248,6 +292,35 @@ public class LeaderController {
         model.addAttribute("raceList", raceList);
 
         return "leader/raceList";
+    }
+
+    @RequestMapping("/raceDetail.do")
+    public String raceDetail(Model model,HttpSession httpSession,
+                             @RequestParam(value = "raceUUID",required = false)String raceUUID){
+        model.addAttribute(MENU_SELECTED_1, RACE_MANAGE);
+        Race race = raceService.findByUuid(raceUUID);
+        Raceinfo raceinfo = raceinfoService.findFirstByUuid(race.getRaceinfoUuid());
+        Project project = projectService.findFirstByUuid(race.getProUuid());
+        List<Teamer> teamerList = teamerService.findByStatusAndProUuid(1, project.getUuid());
+        model.addAttribute("race", race);
+        model.addAttribute("raceinfo", raceinfo);
+        model.addAttribute("teamerList", teamerList);
+        return "leader/raceDetail";
+
+    }
+
+    @RequestMapping("/verifyRace.do")
+    public String verifyRace(Model model,HttpSession httpSession,
+                             @RequestParam(value = "award",defaultValue = "0")Integer award,
+                             @RequestParam("raceUUID") String raceUUID) {
+        if (award != 0) {
+            Race race = raceService.findByUuid(raceUUID);
+            race.setResult(award);
+            race.setProgress(1);
+            int sqlStatus = raceService.update(race);
+            Logger.getGlobal().info("赛事审核sql返回结果码:"+sqlStatus);
+        }
+        return "forward:/leader/raceList.do";
     }
 
     @RequestMapping("/projectList.do")
@@ -264,7 +337,6 @@ public class LeaderController {
                                 @RequestParam("id")Integer id) {
         Project project = projectService.findById(id);
         model.addAttribute("project", project);
-
         List<Teamer> teamerList = teamerService.findByStatusAndProUuid(1, project.getUuid());
         model.addAttribute("teamerList", teamerList);
 

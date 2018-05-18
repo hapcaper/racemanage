@@ -38,4 +38,9 @@ public class RaceinfoServiceImpl implements RaceinfoService{
     public Raceinfo findFirstByUuid(String uuid) {
         return raceinfoDao.findFirstByUuid(uuid);
     }
+
+    @Override
+    public Raceinfo findById(Integer id) {
+        return raceinfoDao.findById(id);
+    }
 }

@@ -224,11 +224,11 @@
                         <li>
                             <i class="clip-pencil"></i>
                             <a href="#">
-                                Forms
+                                赛事管理
                             </a>
                         </li>
                         <li class="active">
-                            Form Elements
+                            赛事详情
                         </li>
                         <li class="search-box">
                             <form class="sidebar-search">
@@ -242,228 +242,169 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>竞赛信息列表 <small></small></h1>
+                        <h1>标题 <small>细微描述</small></h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            <table class="table table-hover" id="sample-table-1">
-                <thead>
-                <tr>
-                    <th class="center">#</th>
-                    <th>赛事编号</th>
-                    <th class="hidden-xs">赛事名称</th>
-                    <!-- 赛事状态由时间判定-->
-                    <th>赛事状态</th>
-                    <th>赛事类型</th>
-                    <th class="center">操作</th>
-                </tr>
-                </thead>
-                <tbody th:each="raceInfo:${raceInfoList}">
-                <tr>
-                    <td class="center">#</td>
-                    <td class="hidden-xs" th:text="${raceInfo.id}">id</td>
-                    <td ><a href="#" th:href="${'/leader/raceInfoDetail.do?id='+raceInfo.id}" th:text="${raceInfo.racename}" ></a></td>
-                    <td>
-                        <span class="label label-warning" th:if="${raceInfo.begaintime > #dates.createNow()}"> 赛事未开始</span>
-                        <span class="label label-success" th:if="${raceInfo.begaintime<#dates.createNow() && raceInfo.endtime>#dates.createNow()}"> 赛事报名中</span>
-                        <span class="label label-inverse" th:if="${raceInfo.endtime<#dates.createNow()}"> 赛事已截止</span>
-                    </td>
-                    <td class="hidden-xs" th:text="${raceInfo.kind}">kind</td>
-                    <td class="center" >
-                        <div th:if="${raceInfo.begaintime > #dates.createNow()}">
-                            <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                <a th:href="${'/leader/raceInfoEdit.do?id='+raceInfo.id}" href="#" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit">
-                                    <i class="fa fa-edit"></i></a>
-                                <a th:href="${'/leader/deleteRaceInfo.do?id='+raceInfo.id}" href="#" class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="Remove">
-                                    <i class="fa fa-times fa fa-white"></i></a>
+            <form action="#" th:action="${'/leader/verifyRace.do'}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" >
+                                赛事名称
+                            </label>
+                            <div class="col-sm-9">
+                                <h5 th:text="${race.racename}">racename</h5>
+                                <input name="raceUUID" type="text" th:value="${race.uuid}" hidden="hidden"/>
                             </div>
-                            <div class="visible-xs visible-sm hidden-md hidden-lg">
-                                <div class="btn-group">
-                                    <a class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" href="#">
-                                        <i class="fa fa-cog"></i> <span class="caret"></span>
-                                    </a>
-                                    <ul role="menu" class="dropdown-menu pull-right">
-                                        <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="#">
-                                                <i class="fa fa-edit"></i> Edit
-                                            </a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="#">
-                                                <i class="fa fa-times"></i> Remove
-                                            </a>
-                                        </li>
-                                    </ul>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" >
+                                赛事描述
+                            </label>
+                            <div class="col-sm-9">
+                                <h5 th:text="${raceinfo.description}">description</h5>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" >
+                                赛事类型
+                            </label>
+                            <div class="col-sm-9">
+                                <h5 th:text="${race.kind}">kind</h5>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" >
+                                开始时间
+                            </label>
+                            <div class="col-sm-9">
+                                <h5 th:text="${raceinfo.begaintime}">raceinfo.begintime</h5>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" >
+                                结束时间
+                            </label>
+                            <div class="col-sm-9">
+                                <h5 th:text="${raceinfo.endtime}">raceinfo.endtime</h5>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" >
+                                相关文件
+                            </label>
+                            <div class="col-sm-9">
+                                <a href="#" th:href="${raceinfo.file1}" th:text="'下载'">raceinfo.file1</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" >
+                                参赛项目
+                            </label>
+                            <div class="col-sm-9">
+                                <h5 href="#" th:text="${race.proname}">race.proname</h5>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" >
+                                参赛人员
+                            </label>
+                            <div class="col-sm-9" >
+                                <h5 href="#" th:each="teamer:${teamerList}">
+                                    <em  th:text="${teamer.stuname}">teamer.name   teamer.name</em>
+                                </h5>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" >
+                                指导教师
+                            </label>
+                            <div class="col-sm-9">
+                                <h5 href="#" th:text="${race.raceteacher}">race.raceteacher</h5>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" >
+                                比赛结果
+                            </label>
+                            <div class="col-sm-9">
+                                <h5 href="#" th:if="${race.progress!=0}" th:text="${race.result}">race.result</h5>
+                                <select th:if="${race.progress==0}" name="award" id="form-field-select-1" class="form-control">
+                                    <option value="">&nbsp;</option>
+                                    <option value="1">一等奖</option>
+                                    <option value="2">二等奖</option>
+                                    <option value="3">三等奖</option>
+                                    <option value="4">其他奖项</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" >
+                                竞赛结果文件1
+                            </label>
+                            <div class="col-sm-9">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                        <img th:src="${race.file1}" src="http://www.placehold.it/200x150/EFEFEF/AAAAAA?text=no+image" alt="">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" >
+                                竞赛结果文件2
+                            </label>
+                            <div class="col-sm-9">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                        <img th:src="${race.file2}" src="http://www.placehold.it/200x150/EFEFEF/AAAAAA?text=no+image" alt="">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" >
+                                竞赛结果文件3
+                            </label>
+                            <div class="col-sm-9">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                        <img th:src="${race.file3}" src="http://www.placehold.it/200x150/EFEFEF/AAAAAA?text=no+image" alt="">
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                    </td>
-                </tr>
-                <tr th:hidden="all">
-                    <td class="center">2</td>
-                    <td>Internet Explorer</td>
-                    <td class="hidden-xs">Microsoft, Spyglass</td>
-                    <td>
-                        <a href="#" rel="nofollow" target="_blank">
-                            Proprietary
-                        </a></td>
-                    <td class="hidden-xs">Trident</td>
-                    <td class="center">
-                        <div class="visible-md visible-lg hidden-sm hidden-xs">
-                            <a href="#" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                            <a href="#" class="btn btn-xs btn-green tooltips" data-placement="top" data-original-title="Share"><i class="fa fa-share"></i></a>
-                            <a href="#" class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="Remove"><i class="fa fa-times fa fa-white"></i></a>
-                        </div>
-                        <div class="visible-xs visible-sm hidden-md hidden-lg">
-                            <div class="btn-group">
-                                <a class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-cog"></i> <span class="caret"></span>
-                                </a>
-                                <ul role="menu" class="dropdown-menu pull-right">
-                                    <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#">
-                                            <i class="fa fa-edit"></i> Edit
-                                        </a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#">
-                                            <i class="fa fa-share"></i> Share
-                                        </a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#">
-                                            <i class="fa fa-times"></i> Remove
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div></td>
-                </tr>
-                <tr th:hidden="all">
-                    <td class="center">3</td>
-                    <td>Mozilla Firefox</td>
-                    <td class="hidden-xs">Mozilla Foundation</td>
-                    <td>
-                        <a href="#" rel="nofollow" target="_blank">
-                            MPR
-                        </a></td>
-                    <td class="hidden-xs">Gecko</td>
-                    <td class="center">
-                        <div class="visible-md visible-lg hidden-sm hidden-xs">
-                            <a href="#" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                            <a href="#" class="btn btn-xs btn-green tooltips" data-placement="top" data-original-title="Share"><i class="fa fa-share"></i></a>
-                            <a href="#" class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="Remove"><i class="fa fa-times fa fa-white"></i></a>
-                        </div>
-                        <div class="visible-xs visible-sm hidden-md hidden-lg">
-                            <div class="btn-group">
-                                <a class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-cog"></i> <span class="caret"></span>
-                                </a>
-                                <ul role="menu" class="dropdown-menu pull-right">
-                                    <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#">
-                                            <i class="fa fa-edit"></i> Edit
-                                        </a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#">
-                                            <i class="fa fa-share"></i> Share
-                                        </a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#">
-                                            <i class="fa fa-times"></i> Remove
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div></td>
-                </tr>
-                <tr th:hidden="all">
-                    <td class="center">4</td>
-                    <td>Safari</td>
-                    <td class="hidden-xs">Apple Inc.</td>
-                    <td>
-                        <a href="#" rel="nofollow" target="_blank">
-                            Proprietary
-                        </a></td>
-                    <td class="hidden-xs">WebKit</td>
-                    <td class="center">
-                        <div class="visible-md visible-lg hidden-sm hidden-xs">
-                            <a href="#" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                            <a href="#" class="btn btn-xs btn-green tooltips" data-placement="top" data-original-title="Share"><i class="fa fa-share"></i></a>
-                            <a href="#" class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="Remove"><i class="fa fa-times fa fa-white"></i></a>
-                        </div>
-                        <div class="visible-xs visible-sm hidden-md hidden-lg">
-                            <div class="btn-group">
-                                <a class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-cog"></i> <span class="caret"></span>
-                                </a>
-                                <ul role="menu" class="dropdown-menu pull-right">
-                                    <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#">
-                                            <i class="fa fa-edit"></i> Edit
-                                        </a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#">
-                                            <i class="fa fa-share"></i> Share
-                                        </a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#">
-                                            <i class="fa fa-times"></i> Remove
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div></td>
-                </tr>
-                <tr th:hidden="all">
-                    <td class="center">5</td>
-                    <td>Opera</td>
-                    <td class="hidden-xs">Opera Software</td>
-                    <td>
-                        <a href="#" rel="nofollow" target="_blank">
-                            Proprietary
-                        </a></td>
-                    <td class="hidden-xs">Presto</td>
-                    <td class="center">
-                        <div class="visible-md visible-lg hidden-sm hidden-xs">
-                            <a href="#" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                            <a href="#" class="btn btn-xs btn-green tooltips" data-placement="top" data-original-title="Share"><i class="fa fa-share"></i></a>
-                            <a href="#" class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="Remove"><i class="fa fa-times fa fa-white"></i></a>
-                        </div>
-                        <div class="visible-xs visible-sm hidden-md hidden-lg">
-                            <div class="btn-group">
-                                <a class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-cog"></i> <span class="caret"></span>
-                                </a>
-                                <ul role="menu" class="dropdown-menu pull-right">
-                                    <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#">
-                                            <i class="fa fa-edit"></i> Edit
-                                        </a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#">
-                                            <i class="fa fa-share"></i> Share
-                                        </a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#">
-                                            <i class="fa fa-times"></i> Remove
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div></td>
-                </tr>
-                </tbody>
-            </table>
+                    </div>
+                </div>
+
+                <div class="form-group"></div>
+                <div class="form-group" style="margin-top: 50px">
+                    <div class="col-sm-2 col-sm-offset-6">
+                        <button th:if="${race.progress==0}"  class="btn btn-blue next-step btn-block">
+                            <a href="raceList.html">审核</a>
+                        </button>
+                    </div>
+                    <div class="col-sm-2">
+
+                        <button  class="btn btn-blue next-step btn-block">
+                            <a href="raceList.html">返回</a>
+                        </button>
+                    </div>
+                </div>
+            </form>
             <!-- end: PAGE CONTENT-->
         </div>
     </div>

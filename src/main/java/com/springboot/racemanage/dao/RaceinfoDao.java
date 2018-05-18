@@ -20,6 +20,8 @@ public interface RaceinfoDao {
 
     Raceinfo findFirstByUuid(@Param("uuid")String uuid);
 
+    Raceinfo findById(@Param("id")Integer id);
+
 
 
 
