@@ -27,14 +27,23 @@ public interface ProjectDao {
     /**
      * raceinfoDetail页面需要项目的查询
      * 查询所有登陆学生的没有参加该赛事的项目
-     * @param stuUuid
-     * @param raceinfoUuid
-     * @return
+     * @param stuUuid 学生UUID
+     * @param raceinfoUuid 竞赛信息UUID
+     * @return List<Project> 登陆学生的没有参加该赛事的项目列表
      */
-
     List<Project> getProjectForRaceinfoDetail(@Param("stuUuid") String stuUuid,@Param("raceinfoUuid") String raceinfoUuid);
 
     Integer countByStatus(@Param("status")Integer status);
+
+    List<Project> findByStatus(@Param("status")Integer status);
+
+
+    List<Project> find();
+
+    Project findById(@Param("id")Integer id);
+
+
+
 
 
 

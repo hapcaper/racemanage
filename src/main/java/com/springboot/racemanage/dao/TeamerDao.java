@@ -32,6 +32,11 @@ public interface TeamerDao {
 
     List<Teamer> findByStatusAndStuUuid(@Param("status")Integer status,@Param("stuUuid")String stuUuid);
 
+    List<String> findStunameByStatusAndProUuid(@Param("status")Integer status,@Param("proUuid")String proUuid);
+
+
+
+
 
 
 

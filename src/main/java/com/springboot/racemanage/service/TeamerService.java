@@ -29,4 +29,6 @@ public interface TeamerService {
 
     List<Teamer> findByStatusAndStuUuid(Integer status,String stuUuid);
 
+    List<String> findStunameByStatusAndProUuid(Integer status,String proUuid);
+
 }

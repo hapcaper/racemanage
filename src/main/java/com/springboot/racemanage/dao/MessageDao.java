@@ -7,8 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.springboot.racemanage.po.Message;
+import org.springframework.stereotype.Component;
 
 @Mapper
+@Component
 public interface MessageDao {
     int insert(@Param("pojo") Message pojo);
 

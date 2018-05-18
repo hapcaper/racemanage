@@ -258,21 +258,31 @@
                         <th class="hidden-xs">赛事类型</th>
                         <th>指导教师</th>
                         <th class="hidden-xs">参赛项目</th>
-                        <th>状态</th>
+                        <th>赛事结果</th>
+                        <th>赛事进行状态</th>
                     </tr>
                     </thead>
                     <tbody th:each="race:${raceList}">
                     <tr>
                         <td class="center">#</td>
                         <td class="hidden-xs">
-                            <a href="raceDetail.html" th:href="${'/student/raceDetail.do?raceUUID='+race.uuid}" rel="nofollow" th:text="${race.racename}">
+                            <a href="raceDetail.html" th:href="${'/leader/raceDetail.do?raceUUID='+race.uuid}" rel="nofollow" th:text="${race.racename}">
                                 race.racename
                             </a>
                         </td>
                         <td th:text="${race.kind}">race.kind</td>
                         <td th:text="${race.raceteacher}">race.teacher</td>
                         <td class="hidden-xs" th:text="${race.proname}">race.proname</td>
-                        <td th:text="${race.status}">race.status</td>
+                        <td>
+                            <span th:if="${race.result==1}">一等奖</span>
+                            <span th:if="${race.result==2}">二等奖</span>
+                            <span th:if="${race.result==3}">三等奖</span>
+                            <span th:if="${race.result==4}">其他奖项</span>
+                        </td>
+                        <td>
+                            <span th:if="${race.progress==0}" class="label label-warning"> 赛事进行中</span>
+                            <span th:if="${race.progress==1}" class="label label-success"> 赛事已完成</span>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

@@ -17,4 +17,7 @@ public interface RaceinfoService {
 
     Raceinfo findFirstByUuid(String uuid);
 
+    Raceinfo findById(Integer id);
+
+
 }

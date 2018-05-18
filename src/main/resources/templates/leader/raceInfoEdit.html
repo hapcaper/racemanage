@@ -233,7 +233,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            添加赛事信息
+                            赛事信息修改
                         </li>
                         <li class="search-box">
                             <form class="sidebar-search">
@@ -247,8 +247,8 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>添加赛事信息
-                            <small>请填写比赛的信息，以供报名</small>
+                        <h1>赛事信息修改
+                            <small></small>
                         </h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
@@ -256,15 +256,24 @@
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            <form action="#" class="smart-wizard form-horizontal" th:action="${'/leader/addRaceInfo.do'}"
+            <form action="#" class="smart-wizard form-horizontal" th:action="${'/leader/editRaceInfo.do'}"
                   enctype="multipart/form-data" method="post">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span class="symbol required"></span>
+                        赛事id
+                    </label>
+                    <div class="col-sm-7">
+                        <input th:value="${raceInfo.id}" name="id" type="text" placeholder="赛事id" class="form-control">
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-1">
                         <span class="symbol required"></span>
                         赛事名称
                     </label>
                     <div class="col-sm-7">
-                        <input name="racename" type="text" placeholder="赛事名称" id="form-field-1" class="form-control">
+                        <input th:value="${raceInfo.racename}" name="racename" type="text" placeholder="赛事名称" id="form-field-1" class="form-control">
                     </div>
                 </div>
 
@@ -273,7 +282,7 @@
                         赛事类型
                     </label>
                     <div class="col-sm-7">
-                        <select name="kind" id="raceKind" class="form-control">
+                        <select th:value="${raceInfo.kind}" name="kind" id="raceKind" class="form-control">
                             <option value="">&nbsp;</option>
                             <option value="学院赛事">学院赛事</option>
                             <option value="校级赛事">校级赛事</option>
@@ -289,39 +298,10 @@
                     <div class="col-sm-7">
                         <div class="input-group">
                             <span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
-                            <input readonly="readonly" name="timeRange" type="text" class="form-control date-range">
+                            <input th:value="${raceInfo.begaintime+'-'+raceInfo.endtime}" readonly="readonly" name="timeRange" type="text" class="form-control date-range">
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        赛事文档
-                    </label>
-                    <div class="col-sm-7">
-                        <div class="fileupload fileupload-new" data-provides="fileupload"><input type="hidden" value=""
-                                                                                                 name="">
-                            <div class="input-group">
-                                <div class="form-control uneditable-input">
-                                    <i class="fa fa-file fileupload-exists"></i>
-                                    <span class="fileupload-preview"></span>
-                                </div>
-                                <div class="input-group-btn">
-                                    <div class="btn btn-light-grey btn-file">
-                                        <span class="fileupload-new"><i
-                                                class="fa fa-folder-open-o"></i> Select file</span>
-                                        <span class="fileupload-exists"><i
-                                                class="fa fa-folder-open-o"></i> Change</span>
-                                        <input type="file" class="file-input" name="file">
-                                    </div>
-                                    <a href="#" class="btn btn-light-grey fileupload-exists" data-dismiss="fileupload">
-                                        <i class="fa fa-times"></i> Remove
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="form-group">
                     <label class="col-sm-2 control-label">
                         赛事简介
@@ -337,7 +317,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 col-sm-offset-7">
                         <button type="submit" class="btn btn-blue next-step btn-block">
-                            添加
+                            修改
                         </button>
                     </div>
                 </div>

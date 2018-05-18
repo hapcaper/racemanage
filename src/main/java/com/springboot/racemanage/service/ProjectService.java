@@ -23,4 +23,9 @@ public interface ProjectService {
 
     Integer countByStatus(Integer status);
 
+    List<Project> findByStatus(Integer status);
+
+    Project findById(Integer id);
+
+
 }
