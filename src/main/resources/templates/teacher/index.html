@@ -9,7 +9,7 @@
 <head>
     <title>竞赛管理系统</title>
     <!-- start: MAIN CSS -->
-    <div th:replace="leader/fragments::common_css">
+    <div th:replace="teacher/fragments::common_css">
         <link rel="stylesheet" href="../../static/assets/plugins/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="../../static/assets/plugins/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="../../static/assets/fonts/style.css">
@@ -41,7 +41,7 @@
 <!-- start: BODY -->
 <body>
 <!-- start: HEADER -->
-<div th:replace="fragments::header" class="navbar navbar-inverse navbar-fixed-top">
+<div th:replace="teacher/fragments::header" class="navbar navbar-inverse navbar-fixed-top">
     <!-- start: TOP NAVIGATION CONTAINER -->
     <div class="container">
         <div class="navbar-header">
@@ -91,7 +91,7 @@
 <!-- end: HEADER -->
 <!-- start: MAIN CONTAINER -->
 <div class="main-container">
-    <div th:replace="fragments::left" class="navbar-content">
+    <div th:replace="teacher/fragments::left" class="navbar-content">
         <!-- start: SIDEBAR -->
         <div class="main-navigation navbar-collapse collapse">
             <!-- start: MAIN MENU TOGGLER BUTTON -->
@@ -246,7 +246,7 @@
 </div>
 <!-- end: MAIN CONTAINER -->
 <!-- start: FOOTER -->
-<div th:replace="fragments::footer" class="footer clearfix">
+<div th:replace="teacher/fragments::footer" class="footer clearfix">
     <div class="footer-inner">
         2018 &copy; 竞赛管理 by 李自豪 & 贾进进 @ SAO
     </div>
@@ -256,7 +256,7 @@
 </div>
 <!-- end: FOOTER -->
 
-<div th:replace="fragments::common_js">
+<div th:replace="teacher/fragments::common_js">
     <!-- start: MAIN JAVASCRIPTS -->
     <!--[if gte IE 9]><!-->
     <!--[if lt IE 9]>

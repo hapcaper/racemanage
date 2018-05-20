@@ -3,13 +3,18 @@ package com.springboot.racemanage.controller;
 
 import com.springboot.racemanage.po.Teacher;
 import com.springboot.racemanage.service.*;
+import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -53,9 +58,9 @@ public class TeacherController {
     @Autowired
     LogService logService;
 
-    @RequestMapping("/login.do")
+    @RequestMapping(value = "/login.do",method = RequestMethod.POST)
     public String login(Model model, HttpSession httpSession,
-                        @RequestParam("tNumber") String tNumber,
+                        @RequestParam("username") String tNumber,
                         @RequestParam("password") String password) {
         Teacher teacher = teacherService.login(1, tNumber, password);
 
@@ -79,17 +84,36 @@ public class TeacherController {
     public String profile(Model model, HttpSession httpSession) {
         Teacher teacher = (Teacher) httpSession.getAttribute("teacher");
         model.addAttribute("teacher", teacher);
-
         return "teacher/profile";
     }
 
+    @RequestMapping("/updateProfile.do")
     public String updateProfile(Model model, HttpSession httpSession,
-                                //TODO 参数结合页面搞一下
-                                @RequestParam("tEmail")String tEmail) {
+                                @RequestParam(value = "tEmail",required = false) String tEmail,
+                                @RequestParam("phone") String phone,
+                                @RequestParam("oldPasswd") String oldPasswd,
+                                @RequestParam("newPasswd") String newPasswd,
+
+                                //TODO 上传文件需要重新再搞下
+
+                                @RequestParam("photo") MultipartFile photo) {
         Teacher teacher = (Teacher) httpSession.getAttribute("teacher");
+        if (oldPasswd.equals(teacher.gettPassword())) {
+            teacher.settEmail(tEmail);
+            teacher.settPhone(phone);
+            teacher.settPassword(newPasswd);
+            model.addAttribute("updateMsg", "更新成功");
+            return "forward:/teacher/profile.do";
 
-
-        return "forward:/teacher/profile.do";
+        } else if (oldPasswd.length() == 0) {
+            teacher.settEmail(tEmail);
+            teacher.settPhone(phone);
+            model.addAttribute("updateMsg", "更新成功");
+            return "forward:/teacher/profile.do";
+        } else {
+            model.addAttribute("updateMsg", "更新失败");
+            return "forward:/teacher/profile.do";
+        }
     }
 
 

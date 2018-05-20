@@ -2,6 +2,8 @@ package com.springboot.racemanage.controller.restful;
 
 
 import com.springboot.racemanage.controller.restful.restfulDO.ResultDO;
+import com.springboot.racemanage.dao.RaceDao;
+import com.springboot.racemanage.dao.TermDao;
 import com.springboot.racemanage.po.*;
 import com.springboot.racemanage.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +39,11 @@ public class StudentControllerRestful {
     StudentService studentService;
 
     @Autowired
-    MessageService messageService;
-
+    private MessageService messageService;
+    @Autowired
+    private TermService termService;
+    @Autowired
+    private RaceService raceService;
 
 
     @RequestMapping(value = "/newMsgNum",method = RequestMethod.GET)
@@ -91,15 +96,10 @@ public class StudentControllerRestful {
         return taskService.countByStatusNotAndToUuidAndProgress(0, teamerUUID, 1);
     }
 
-    @RequestMapping(value = "/getMyRaceProjectList",method = RequestMethod.GET)
-    public Object getMyRaceProjectList(@RequestParam("stuUUID") String stuUUID) {
-        //TODO
-        return null;
-    }
 
     @RequestMapping(value = "/login")
     public ResultDO login(@RequestParam("stuNumber") String stuNumber,
-                        @RequestParam("password") String password) throws URISyntaxException {
+                        @RequestParam("password") String password)  {
         System.out.println(stuNumber);
         System.out.println(password);
         Student student = studentService.findFirstByStuNumberAndStuPasswordAndStuStatus(stuNumber, password, 1);
@@ -146,5 +146,34 @@ public class StudentControllerRestful {
         return resultDO;
     }
 
+    @RequestMapping("/getMyRaceList")
+    public ResultDO getMyRaceList(@RequestParam("stuUUID") String stuUUID,
+                                  //progress   all:所有进度的赛事    complete:已完成的赛事
+                                  @RequestParam("progress")String progress) {
+        Term term = termService.findFirstByStatusOrderByTerm(1);
+        List<Race> myRaceList = null;
+        ResultDO resultDO = new ResultDO();
+        switch (progress) {
+            case "all":
+                myRaceList = raceService.getStuRaceListByTerm(stuUUID, term.getTerm());
+                break;
+            case "complete":
+                myRaceList = raceService.getAchivementListByStuUuid(stuUUID);
+                break;
+            default:
+                resultDO.setCode(0);
+                resultDO.setMsg("progress字段不合法  progress可选：all,complete");
+                break;
+        }
+        if (myRaceList != null) {
+            resultDO.setCode(1);
+            resultDO.setMsg("正常结果");
+            resultDO.setResult(myRaceList);
+        } else {
+            resultDO.setCode(0);
+            resultDO.setMsg("查询失败");
+        }
+        return resultDO;
+    }
 
 }
