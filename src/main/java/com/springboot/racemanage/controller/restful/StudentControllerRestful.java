@@ -97,7 +97,7 @@ public class StudentControllerRestful {
         return null;
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @RequestMapping(value = "/login")
     public ResultDO login(@RequestParam("stuNumber") String stuNumber,
                         @RequestParam("password") String password) throws URISyntaxException {
         System.out.println(stuNumber);
