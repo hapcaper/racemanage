@@ -63,4 +63,9 @@ public class ProjectServiceImpl implements ProjectService{
     public Project findById(Integer id) {
         return projectDao.findById(id);
     }
+
+    @Override
+    public List<Project> findByStatusAndTUuid(Integer status, String tUuid) {
+        return projectDao.findByStatusAndTUuid(status,tUuid);
+    }
 }

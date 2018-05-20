@@ -82,7 +82,7 @@
         select
         <include refid="all_column"/>
         from term
-        where `status`=#{status} order by `term` asc limit 1
+        where `status`=#{status} order by `term` desc limit 1
     </select>
 </mapper>
 

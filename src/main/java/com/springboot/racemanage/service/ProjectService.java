@@ -27,5 +27,7 @@ public interface ProjectService {
 
     Project findById(Integer id);
 
+    List<Project> findByStatusAndTUuid(Integer status,String tUuid);
+
 
 }

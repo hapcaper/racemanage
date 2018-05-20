@@ -43,6 +43,8 @@ public interface ProjectDao {
     Project findById(@Param("id")Integer id);
 
 
+    List<Project> findByStatusAndTUuid(@Param("status")Integer status,@Param("tUuid")String tUuid);
+
 
 
 

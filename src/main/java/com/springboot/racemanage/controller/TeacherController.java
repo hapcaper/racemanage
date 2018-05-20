@@ -1,7 +1,10 @@
 package com.springboot.racemanage.controller;
 
 
+import com.springboot.racemanage.po.Project;
+import com.springboot.racemanage.po.Raceinfo;
 import com.springboot.racemanage.po.Teacher;
+import com.springboot.racemanage.po.Term;
 import com.springboot.racemanage.service.*;
 import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/teacher")
@@ -68,6 +72,8 @@ public class TeacherController {
             model.addAttribute("errMsg", "工号或密码错误");
             return "login";
         } else {
+            Term term = termService.findFirstByStatusOrderByTerm(1);
+            httpSession.setAttribute("term", term);
             httpSession.setAttribute("teacher", teacher);
             return "forward:/teacher/index.do";
         }
@@ -116,5 +122,32 @@ public class TeacherController {
         }
     }
 
+    @RequestMapping("raceInfoList.do")
+    public String raceInfoList(Model model, HttpSession httpSession) {
+        Term term = (Term) httpSession.getAttribute("term");
+        List<Raceinfo> raceinfoList = raceinfoService.findByStatusAndTerm(1, term.getTerm());
+        model.addAttribute("raceinfoList", raceinfoList);
+        return "teacher/raceInfoList";
+    }
+
+    @RequestMapping("/raceInfoDetail.do")
+    public String raceInfoDetail(Model model,HttpSession httpSession,
+                                 @RequestParam("raceInfoUUID")String raceInfoUUID) {
+        Teacher teacher = (Teacher) httpSession.getAttribute("teacher");
+        Raceinfo raceinfo = raceinfoService.findFirstByUuid(raceInfoUUID);
+        List<Project> projectList = projectService.findByStatusAndTUuid(1, teacher.gettUuid());
+        //TODO 检查是否可以报名
+        model.addAttribute("raceInfo", raceinfo);
+        model.addAttribute("projectList", projectList);
+        return "teacher/raceInfoDetail";
+    }
+
+    @RequestMapping("/addRace.do")
+    public String addRace(Model model, HttpSession httpSession,
+                          @RequestParam("projectUUID") String projectUUID) {
+        //TODO 参照学生搞一下  有点小麻烦
+
+        return "forward:/teacher/teacInfoList.do";
+    }
 
 }
