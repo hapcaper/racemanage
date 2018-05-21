@@ -87,6 +87,14 @@ public class StudentController {
         }
     }
 
+    @RequestMapping("logout.do")
+    public String logout(HttpSession httpSession) {
+        httpSession.removeAttribute("student");
+        httpSession.removeAttribute("term");
+        httpSession.removeAttribute("teamerList");
+        return "login";
+    }
+
     @RequestMapping("/index.do")
     public String index(Model model) {
         model.addAttribute("menuSelected1", "index");

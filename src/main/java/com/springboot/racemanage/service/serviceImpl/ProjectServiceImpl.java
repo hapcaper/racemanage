@@ -68,4 +68,16 @@ public class ProjectServiceImpl implements ProjectService{
     public List<Project> findByStatusAndTUuid(Integer status, String tUuid) {
         return projectDao.findByStatusAndTUuid(status,tUuid);
     }
+
+    /**
+     * 教师查询自己的可以参加比赛的项目
+     * @param tUUID 教师的tUUID
+     * @param term 当前期
+     * @param raceInfoUUID 要报名的赛事UUID
+     * @return 教师可以报名该赛事的项目列表
+     */
+    @Override
+    public List<Project> findCanRaceProject(String tUUID, Integer term, String raceInfoUUID) {
+        return projectDao.findCanRaceProject(tUUID,term,raceInfoUUID);
+    }
 }

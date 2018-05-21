@@ -1,10 +1,7 @@
 package com.springboot.racemanage.controller;
 
 
-import com.springboot.racemanage.po.Project;
-import com.springboot.racemanage.po.Raceinfo;
-import com.springboot.racemanage.po.Teacher;
-import com.springboot.racemanage.po.Term;
+import com.springboot.racemanage.po.*;
 import com.springboot.racemanage.service.*;
 import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +17,18 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.UUID;
+import java.util.logging.Logger;
 
 @Controller
 @RequestMapping("/teacher")
 @Transactional
 public class TeacherController {
 
+    public static final String MENU_SELECTED_1 = "menuSelected1";
+    public static final String RACE_INFO_LIST = "raceInfoList";
+    public static final String MENU_SELECTED_2 = "menuSelected2";
+    public static final String RACE_MANAGE = "raceManage";
     @Autowired
     TermService termService;
 
@@ -62,7 +65,7 @@ public class TeacherController {
     @Autowired
     LogService logService;
 
-    @RequestMapping(value = "/login.do",method = RequestMethod.POST)
+    @RequestMapping(value = "/login.do", method = RequestMethod.POST)
     public String login(Model model, HttpSession httpSession,
                         @RequestParam("username") String tNumber,
                         @RequestParam("password") String password) {
@@ -77,6 +80,13 @@ public class TeacherController {
             httpSession.setAttribute("teacher", teacher);
             return "forward:/teacher/index.do";
         }
+    }
+
+    @RequestMapping("logout.do")
+    public String logout(HttpSession httpSession) {
+        httpSession.removeAttribute("teacher");
+        httpSession.removeAttribute("term");
+        return "login";
     }
 
     @RequestMapping("/index.do")
@@ -95,7 +105,7 @@ public class TeacherController {
 
     @RequestMapping("/updateProfile.do")
     public String updateProfile(Model model, HttpSession httpSession,
-                                @RequestParam(value = "tEmail",required = false) String tEmail,
+                                @RequestParam(value = "tEmail", required = false) String tEmail,
                                 @RequestParam("phone") String phone,
                                 @RequestParam("oldPasswd") String oldPasswd,
                                 @RequestParam("newPasswd") String newPasswd,
@@ -124,6 +134,8 @@ public class TeacherController {
 
     @RequestMapping("raceInfoList.do")
     public String raceInfoList(Model model, HttpSession httpSession) {
+        model.addAttribute(MENU_SELECTED_1, RACE_MANAGE);
+        model.addAttribute(MENU_SELECTED_2, RACE_INFO_LIST);
         Term term = (Term) httpSession.getAttribute("term");
         List<Raceinfo> raceinfoList = raceinfoService.findByStatusAndTerm(1, term.getTerm());
         model.addAttribute("raceinfoList", raceinfoList);
@@ -131,23 +143,67 @@ public class TeacherController {
     }
 
     @RequestMapping("/raceInfoDetail.do")
-    public String raceInfoDetail(Model model,HttpSession httpSession,
-                                 @RequestParam("raceInfoUUID")String raceInfoUUID) {
+    public String raceInfoDetail(Model model, HttpSession httpSession,
+                                 @RequestParam("raceInfoUUID") String raceInfoUUID) {
         Teacher teacher = (Teacher) httpSession.getAttribute("teacher");
+        Term term = (Term) httpSession.getAttribute("term");
         Raceinfo raceinfo = raceinfoService.findFirstByUuid(raceInfoUUID);
-        List<Project> projectList = projectService.findByStatusAndTUuid(1, teacher.gettUuid());
-        //TODO 检查是否可以报名
+        System.out.println("[[[[[[[[");
+        System.out.println(term);
+        System.out.println(raceInfoUUID);
+        System.out.println(teacher);
+        System.out.println("]]]]]]]]]]]");
+        List<Project> projectList = projectService.findCanRaceProject(teacher.gettUuid(), term.getTerm(), raceInfoUUID);
         model.addAttribute("raceInfo", raceinfo);
         model.addAttribute("projectList", projectList);
+        System.out.println("{{{{{{{{{{{{{");
+        System.out.println(projectList);
+        System.out.println("}}}}}}}}}}}}");
         return "teacher/raceInfoDetail";
     }
 
     @RequestMapping("/addRace.do")
     public String addRace(Model model, HttpSession httpSession,
-                          @RequestParam("projectUUID") String projectUUID) {
-        //TODO 参照学生搞一下  有点小麻烦
+                          @RequestParam("projectUUID") String projectUUID,
+                          @RequestParam("raceInfoUUID") String raceInfoUUID) {
+        Project project = projectService.findFirstByUuid(projectUUID);
+        Raceinfo raceinfo = raceinfoService.findFirstByUuid(raceInfoUUID);
+        Term term = (Term) httpSession.getAttribute("term");
+        if (projectUUID == null || projectUUID.length() == 0) {
+            System.out.println("项目不能为空");
+            return "forward:/teacher/raceInfoDetail.do?raceInfoUUID=" + raceInfoUUID;
+        }
+        Race race = new Race();
+        race.setDescription(raceinfo.getDescription());
+        race.setKind(raceinfo.getKind());
+        race.setProname(project.getName());
+        race.setProUuid(project.getUuid());
+        race.setRaceinfoUuid(raceInfoUUID);
+        race.setRacename(raceinfo.getRacename());
+        race.setRaceteacher(project.getTname());
+        race.setStatus(1);
+        race.setTerm(term.getTerm());
+        race.settUuid(project.gettUuid());
+        race.setUuid(UUID.randomUUID().toString());
+
+        System.out.println(";;;;;;" + race);
+        raceService.insertSelective(race);
 
         return "forward:/teacher/teacInfoList.do";
+    }
+
+    @RequestMapping("/myRaceList.do")
+    public String raceList(Model model, HttpSession httpSession) {
+
+        Teacher teacher = (Teacher) httpSession.getAttribute("teacher");
+        Term term = (Term) httpSession.getAttribute("term");
+        List<Race> raceList = raceService.findByStatusAndTermAndTUuid(1, term.getTerm(), teacher.gettUuid());
+        System.out.println("{{{{{{{");
+        System.out.println(raceList);
+        System.out.println("}}}}}}}}}}}}");
+        model.addAttribute("myRaceList", raceList);
+        return "teacher/myRaceList";
+
     }
 
 }

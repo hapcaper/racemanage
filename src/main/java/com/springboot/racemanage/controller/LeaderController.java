@@ -96,6 +96,13 @@ public class LeaderController {
         return "leader/index";
     }
 
+    @RequestMapping("logout.do")
+    public String logout(HttpSession httpSession) {
+        httpSession.removeAttribute("leader");
+        httpSession.removeAttribute("term");
+        return "login";
+    }
+
     @RequestMapping("/index.do")
     public String index(Model model) {
         model.addAttribute("menuSelected1", "index");
