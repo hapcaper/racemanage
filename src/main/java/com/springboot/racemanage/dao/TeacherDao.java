@@ -24,6 +24,8 @@ public interface TeacherDao {
 
     Teacher findByTStatusAndTNumberAndTPassword(@Param("tStatus")Integer tStatus,@Param("tNumber")String tNumber,@Param("tPassword")String tPassword);
 
+    Teacher findByTUuid(@Param("tUuid")String tUuid);
+
 
 
 }

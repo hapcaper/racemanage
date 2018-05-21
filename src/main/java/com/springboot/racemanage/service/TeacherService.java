@@ -22,4 +22,7 @@ public interface TeacherService {
 
     Teacher login(Integer tStatus,String tNumber,String tPassword);
 
+    Teacher findByTUuid(String tUuid);
+
+
 }

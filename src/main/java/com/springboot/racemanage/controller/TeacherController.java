@@ -3,6 +3,7 @@ package com.springboot.racemanage.controller;
 
 import com.springboot.racemanage.po.*;
 import com.springboot.racemanage.service.*;
+import com.springboot.racemanage.util.UploadFile;
 import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 import java.util.logging.Logger;
@@ -148,17 +150,9 @@ public class TeacherController {
         Teacher teacher = (Teacher) httpSession.getAttribute("teacher");
         Term term = (Term) httpSession.getAttribute("term");
         Raceinfo raceinfo = raceinfoService.findFirstByUuid(raceInfoUUID);
-        System.out.println("[[[[[[[[");
-        System.out.println(term);
-        System.out.println(raceInfoUUID);
-        System.out.println(teacher);
-        System.out.println("]]]]]]]]]]]");
         List<Project> projectList = projectService.findCanRaceProject(teacher.gettUuid(), term.getTerm(), raceInfoUUID);
         model.addAttribute("raceInfo", raceinfo);
         model.addAttribute("projectList", projectList);
-        System.out.println("{{{{{{{{{{{{{");
-        System.out.println(projectList);
-        System.out.println("}}}}}}}}}}}}");
         return "teacher/raceInfoDetail";
     }
 
@@ -186,7 +180,6 @@ public class TeacherController {
         race.settUuid(project.gettUuid());
         race.setUuid(UUID.randomUUID().toString());
 
-        System.out.println(";;;;;;" + race);
         raceService.insertSelective(race);
 
         return "forward:/teacher/teacInfoList.do";
@@ -198,12 +191,84 @@ public class TeacherController {
         Teacher teacher = (Teacher) httpSession.getAttribute("teacher");
         Term term = (Term) httpSession.getAttribute("term");
         List<Race> raceList = raceService.findByStatusAndTermAndTUuid(1, term.getTerm(), teacher.gettUuid());
-        System.out.println("{{{{{{{");
-        System.out.println(raceList);
-        System.out.println("}}}}}}}}}}}}");
         model.addAttribute("myRaceList", raceList);
         return "teacher/myRaceList";
 
     }
+
+    @RequestMapping("/raceDetail.do")
+    public String raceDetail(Model model, HttpSession httpSession,
+                             @RequestParam("raceUUID") String raceUUID) {
+        Race race = raceService.findByUuid(raceUUID);
+        List<Teamer> teamerList = teamerService.findByStatusAndProUuid(1, race.getProUuid());
+        Raceinfo raceinfo = raceinfoService.findFirstByUuid(race.getRaceinfoUuid());
+        model.addAttribute("race", race);
+        model.addAttribute("teamerList", teamerList);
+        model.addAttribute("raceinfo", raceinfo);
+        return "teacher/raceDetail";
+    }
+
+
+    @RequestMapping("/updateRace.do")
+    public String updateRace(Model model, HttpSession httpSession,
+                             @RequestParam("raceUUID") String raceUUID,
+                             @RequestParam(value = "file1", required = false) MultipartFile file1,
+                             @RequestParam(value = "file2", required = false) MultipartFile file2,
+                             @RequestParam(value = "file3", required = false) MultipartFile file3) throws IOException {
+        Race race = raceService.findByUuid(raceUUID);
+        if (file1 != null) {
+            String file1Path = UploadFile.upload(file1, "/uploadFile/raceFile/");
+            race.setFile1(file1Path);
+        }
+        if (file2 != null) {
+            String file2Path = UploadFile.upload(file2, "uploadFile/raceFile/");
+            race.setFile2(file2Path);
+        }
+        if (file3 != null) {
+            String file3Path = UploadFile.upload(file3, "uploadFile/raceFile/");
+            race.setFile3(file3Path);
+        }
+
+        raceService.update(race);
+        return "forward:/teacher//myRaceList.do";
+
+    }
+
+    @RequestMapping("/achievementList.do")
+    public String achievementList(Model model, HttpSession httpSession) {
+        Teacher teacher = (Teacher) httpSession.getAttribute("teacher");
+        List<Race> achivList = raceService.findByStatusAndTUuidAndProgress(1, teacher.gettUuid(), 1);
+        model.addAttribute("achivList", achivList);
+        return "teacher/achievementList";
+    }
+
+    @RequestMapping("/achievementDetail.do")
+    public String achievementDetail(Model model,
+                                    @RequestParam("raceUUID") String raceUUID) {
+        Race race = raceService.findByUuid(raceUUID);
+        Raceinfo raceinfo = raceinfoService.findFirstByUuid(race.getRaceinfoUuid());
+        Project project = projectService.findFirstByUuid(race.getProUuid());
+        List<Teamer> teamerList = teamerService.findByStatusAndProUuid(1, project.getUuid());
+        Teacher raceTeacher = teacherService.findByTUuid(race.gettUuid());
+        model.addAttribute("race", race);
+        model.addAttribute("raceinfo", raceinfo);
+        model.addAttribute("teamerList", teamerList);
+        model.addAttribute("raceTeacher", raceTeacher);
+        return "teacher/achievementDetail";
+    }
+
+    @RequestMapping("/toAddProject.do")
+    public String toAddProject(Model model, HttpSession httpSession) {
+        List<Student> stuList = studentService.findByStuStatus(1);
+        model.addAttribute("stuList", stuList);
+        return "teacher/addProject";
+    }
+
+    @RequestMapping("/addProject.do")
+    public String addProject() {
+        //TODO 接着写
+        return "forward:/teacher/projectList.do";
+    }
+
 
 }

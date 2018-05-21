@@ -337,7 +337,7 @@ public class StudentController {
 
         StringBuffer file1Name = new StringBuffer(UUID.randomUUID().toString());
         file1Name.append("_" + file1.getOriginalFilename());
-        StringBuffer file1Path = new StringBuffer("src\\main\\resources\\templates\\uploadFiles\\solutionFiles\\");
+        StringBuffer file1Path = new StringBuffer("src/main/resources/templates/uploadFiles/solutionFiles/");
         file1Path.append(file1Name.toString());
         BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(file1Path.toString())));
         out.write(file1.getBytes());
@@ -467,8 +467,10 @@ public class StudentController {
         Raceinfo raceinfo = raceinfoService.findFirstByUuid(race.getRaceinfoUuid());
         Project project = projectService.findFirstByUuid(race.getProUuid());
         List<Teamer> teamerList = teamerService.findByStatusAndProUuid(1, project.getUuid());
+        Teacher raceTeacer = teacherService.findByTUuid(race.gettUuid());
 
         model.addAttribute("race", race);
+        model.addAttribute("raceTeacer", raceTeacer);
         model.addAttribute("raceinfo", raceinfo);
         model.addAttribute("teamerList", teamerList);
 
@@ -696,7 +698,6 @@ public class StudentController {
         race.settUuid(project.gettUuid());
         race.setUuid(UUID.randomUUID().toString());
 
-        System.out.println(";;;;;;" + race);
         raceService.insertSelective(race);
         return "redirect:/student/myRace.do";
     }

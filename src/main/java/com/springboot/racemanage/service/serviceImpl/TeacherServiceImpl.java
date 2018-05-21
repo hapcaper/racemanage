@@ -48,4 +48,9 @@ public class TeacherServiceImpl implements TeacherService{
     public Teacher login(Integer tStatus, String tNumber, String tPassword) {
         return teacherDao.findByTStatusAndTNumberAndTPassword(tStatus, tNumber, tPassword);
     }
+
+    @Override
+    public Teacher findByTUuid(String tUuid) {
+        return teacherDao.findByTUuid(tUuid);
+    }
 }

@@ -23,4 +23,6 @@ public interface RaceService {
 
     List<Race> findByStatusAndTermAndTUuid(Integer status,Integer term,String tUuid);
 
+    List<Race> findByStatusAndTUuidAndProgress(Integer status,String tUuid,Integer progress);
+
 }
