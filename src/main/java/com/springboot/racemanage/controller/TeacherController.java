@@ -4,9 +4,7 @@ package com.springboot.racemanage.controller;
 import com.springboot.racemanage.po.*;
 import com.springboot.racemanage.service.*;
 import com.springboot.racemanage.util.UploadFile;
-import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -15,12 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-import java.util.logging.Logger;
 
 @Controller
 @RequestMapping("/teacher")
@@ -217,7 +214,7 @@ public class TeacherController {
                              @RequestParam(value = "file3", required = false) MultipartFile file3) throws IOException {
         Race race = raceService.findByUuid(raceUUID);
         if (file1 != null) {
-            String file1Path = UploadFile.upload(file1, "/uploadFile/raceFile/");
+            String file1Path = UploadFile.upload(file1, "uploadFile/raceFile/");
             race.setFile1(file1Path);
         }
         if (file2 != null) {
@@ -230,7 +227,7 @@ public class TeacherController {
         }
 
         raceService.update(race);
-        return "forward:/teacher//myRaceList.do";
+        return "forward:/teacher/myRaceList.do";
 
     }
 
@@ -265,10 +262,52 @@ public class TeacherController {
     }
 
     @RequestMapping("/addProject.do")
-    public String addProject() {
-        //TODO 接着写
-        return "forward:/teacher/projectList.do";
+    public String addProject(Model model,HttpSession httpSession,
+                             @RequestParam("proName")String proName,
+                             @RequestParam("proDescription")String proDescription,
+                             @RequestParam(value = "document",required = false)MultipartFile document,
+                             @RequestParam("stuUuid[]")List<String> stuUUIDList) {
+        Teacher teacher = (Teacher) httpSession.getAttribute("teacher");
+        Project project = new Project();
+        project.setName(proName);
+        project.setDescription(proDescription);
+        project.setUuid(UUID.randomUUID().toString());
+        project.setDocument("");//后期处理文件上传一并解决
+        project.settUuid(teacher.gettUuid());
+        project.setTname(teacher.gettName());
+        project.setStatus(1);
+        projectService.insertSelective(project);
+
+        Invite stuInvite = new Invite();
+        stuUUIDList.forEach(tostuuuid -> {
+            stuInvite.setDuty("1");
+            stuInvite.setTeamerDescription(project.getDescription());
+            stuInvite.setFromUuid(teacher.gettUuid());
+            stuInvite.setUuid(UUID.randomUUID().toString());
+            stuInvite.setProname(project.getName());
+            stuInvite.setProUuid(project.getUuid());
+            stuInvite.setSendtime(new Date());
+            stuInvite.setToUuid(tostuuuid);
+            stuInvite.setStatus(1);
+            inviteService.insertSelective(stuInvite);
+        });
+
+        return "redirect:/teacher/projectList.do";
     }
 
+    @RequestMapping("/projectList.do")
+    public String projectList(Model model , HttpSession httpSession) {
+        Teacher teacher = (Teacher) httpSession.getAttribute("teacher");
+        List<Project> projectList = projectService.findByStatusAndTUuid(1, teacher.gettUuid());
+        model.addAttribute("projectList", projectList);
+        return "teacher/projectList";
+    }
+
+    @RequestMapping("/projectDetail.do")
+    public String projectDetail() {
+        //TODO 接着做
+
+        return "teacher/projectDetail";
+    }
 
 }

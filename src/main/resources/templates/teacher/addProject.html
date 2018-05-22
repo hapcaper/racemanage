@@ -238,7 +238,7 @@
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            <form th:action="${'/teacher/addProject.do'}" action="#"  class="form-horizontal" enctype="multipart/form-data" method="post">
+            <form  action="/teacher/addProject.do"  class="form-horizontal" enctype="multipart/form-data" method="post">
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-1">
                         项目名称
@@ -300,8 +300,8 @@
                 </div>
                 <div class="form-group" style="margin-top: 50px">
                     <div class="col-sm-2 col-sm-offset-9">
-                        <button  class="btn btn-blue next-step btn-block">
-                            <a href="projectList.html">提交</a>
+                        <button type="submit" class="btn btn-blue btn-block">
+                            提交
                         </button>
                     </div>
                 </div>
