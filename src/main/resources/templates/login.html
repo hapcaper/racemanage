@@ -85,7 +85,7 @@
                                     <p>
                                         请输入你的学号和密码登陆
                                     </p>
-                                    <form class="form-login" action="/student/login.do" method="post">
+                                    <form class="form-login" th:action="@{/student/login.do}" action="/student/login.do" method="post">
                                         <div class="errorHandler alert alert-danger no-display">
                                             <i class="fa fa-remove-sign"></i> You have some form errors. Please check
                                             below.
@@ -130,7 +130,7 @@
                                     <p>
                                         请输入你的教师号和密码登陆
                                     </p>
-                                    <form class="form-login" action="" th:action="${'/leader/login.do'}">
+                                    <form class="form-login" action="" method="post" th:action="${'/teacher/login.do'}">
                                         <div class="errorHandler alert alert-danger no-display">
                                             <i class="fa fa-remove-sign"></i> You have some form errors. Please check
                                             below.
@@ -173,7 +173,7 @@
                                     <p>
                                         请输入你的工号和密码登陆
                                     </p>
-                                    <form class="form-login" action="">
+                                    <form class="form-login" action="" method="post" th:action="@{/leader/login.do}">
                                         <div class="errorHandler alert alert-danger no-display">
                                             <i class="fa fa-remove-sign"></i> You have some form errors. Please check
                                             below.
@@ -181,7 +181,7 @@
                                         <fieldset>
                                             <div class="form-group">
 							<span class="input-icon">
-								<input type="text" class="form-control" name="username" placeholder="学号">
+								<input type="text" class="form-control" name="lnumber" placeholder="工号">
 								<i class="fa fa-user"></i> </span>
                                                 <!-- To mark the incorrectly filled input, you must add the class "error" to the input -->
                                                 <!-- example: <input type="text" class="login error" name="login" value="Username" /> -->

@@ -1,0 +1,378 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<div th:fragment="common_js">
+    <!-- start: MAIN JAVASCRIPTS -->
+
+    <!--[if gte IE 9]><!-->
+    <!--<![endif]-->
+    <script type="text/javascript" th:src="@{/assets/plugins/Jquery/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/assets/plugins/respond.min.js}"></script>
+    <script th:src="@{/assets/plugins/excanvas.min.js}"></script>
+    <script th:src="@{/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js}"></script>
+    <script th:src="@{/assets/plugins/blockUI/jquery.blockUI.js}"></script>
+    <script th:src="@{/assets/plugins/iCheck/jquery.icheck.min.js}"></script>
+    <script th:src="@{/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js}"></script>
+    <script th:src="@{/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js}"></script>
+    <script th:src="@{/assets/plugins/less/less-1.5.0.min.js}"></script>
+    <script th:src="@{/assets/plugins/jquery-cookie/jquery.cookie.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js}"></script>
+    <script th:src="@{/assets/js/main.js}"></script>
+    <!-- end: MAIN JAVASCRIPTS -->
+
+
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script th:src="@{/assets/plugins/jquery-inputlimiter/jquery.inputlimiter.1.3.1.min.js}"></script>
+    <script th:src="@{/assets/plugins/autosize/jquery.autosize.min.js}"></script>
+    <script th:src="@{/assets/plugins/select2/select2.min.js}"></script>
+    <script th:src="@{/assets/plugins/jquery.maskedinput/src/jquery.maskedinput.js}"></script>
+    <script th:src="@{/assets/plugins/jquery-maskmoney/jquery.maskMoney.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-daterangepicker/moment.min.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-daterangepicker/daterangepicker.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-colorpicker/js/commits.js}"></script>
+    <script th:src="@{/assets/plugins/jQuery-Tags-Input/jquery.tagsinput.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js}"></script>
+    <script th:src="@{/assets/plugins/summernote/build/summernote.min.js}"></script>
+    <script th:src="@{/assets/plugins/ckeditor/ckeditor.js}"></script>
+    <script th:src="@{/assets/plugins/ckeditor/adapters/jquery.js}"></script>
+    <script th:src="@{/assets/js/form-elements.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap-paginator/src/bootstrap-paginator.js}"></script>
+    <script th:src="@{/assets/plugins/jquery.pulsate/jquery.pulsate.min.js}"></script>
+    <script th:src="@{/assets/plugins/gritter/js/jquery.gritter.min.js}"></script>
+    <script th:src="@{/assets/js/ui-elements.js}"></script>
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+
+
+
+    <script>
+        jQuery(document).ready(function () {
+            Main.init();
+            FormElements.init();
+        });
+
+
+
+    </script>
+    <script>
+        var level1menuId = "[[${menuSelected1}]]";
+        var level2menuId = "[[${menuSelected2}]]";
+        $(".open").each(function () {
+            $(this).removeClass('active open');
+        });
+
+        $('#' + level1menuId).click();
+        $('#' + level1menuId).addClass("active open");
+        if ($('#' + level2menuId)) {
+            $('#' + level2menuId).addClass('active open');
+        }
+    </script>
+
+</div>
+
+<div th:fragment="common_css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <!-- end: META -->
+    <!-- start: MAIN CSS -->
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/fonts/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/main-responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/iCheck/skins/all.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css}">
+    <link rel="stylesheet" id="skin_color" th:href="@{/assets/css/theme_light.css}">
+    <link rel="stylesheet" type="text/css" media="print" th:href="@{/assets/css/print.css}"/>
+    <!-- end: MAIN CSS -->
+
+    <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <link rel="stylesheet" th:href="@{/assets/plugins/select2/select2.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/datepicker/css/datepicker.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/jQuery-Tags-Input/jquery.tagsinput.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/summernote/build/summernote.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/gritter/css/jquery.gritter.css}">
+
+    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+</div>
+
+<div th:fragment="footer" class="footer clearfix">
+    <div class="footer-inner">
+        2018 &copy; 竞赛管理系统 by Lee & JJ & SAO
+    </div>
+    <div class="footer-items">
+        <span class="go-top"><i class="clip-chevron-up"></i></span>
+    </div>
+</div>
+
+
+<div th:fragment="style_selector" id="style_selector" class="hidden-xs">
+    <div id="style_selector_container">
+        <div class="style-main-title">
+            Style Selector
+        </div>
+        <div class="box-title">
+            Choose Your Layout Style
+        </div>
+        <div class="input-box">
+            <div class="input">
+                <select name="layout">
+                    <option value="default">Wide</option>
+                    <option value="boxed">Boxed</option>
+                </select>
+            </div>
+        </div>
+        <div class="box-title">
+            Choose Your Header Style
+        </div>
+        <div class="input-box">
+            <div class="input">
+                <select name="header">
+                    <option value="fixed">Fixed</option>
+                    <option value="default">Default</option>
+                </select>
+            </div>
+        </div>
+        <div class="box-title">
+            Choose Your Footer Style
+        </div>
+        <div class="input-box">
+            <div class="input">
+                <select name="footer">
+                    <option value="default">Default</option>
+                    <option value="fixed">Fixed</option>
+                </select>
+            </div>
+        </div>
+        <div class="box-title">
+            Backgrounds for Boxed Version
+        </div>
+        <div class="images boxed-patterns">
+            <a id="bg_style_1" href="#"><img alt="" src="../static/assets/images/bg.png"></a>
+            <a id="bg_style_2" href="#"><img alt="" src="../static/assets/images/bg_2.png"></a>
+            <a id="bg_style_3" href="#"><img alt="" src="../static/assets/images/bg_3.png"></a>
+            <a id="bg_style_4" href="#"><img alt="" src="../static/assets/images/bg_4.png"></a>
+            <a id="bg_style_5" href="#"><img alt="" src="../static/assets/images/bg_5.png"></a>
+        </div>
+        <div class="box-title">
+            5 Predefined Color Schemes
+        </div>
+        <div class="images icons-color">
+            <a id="light" href="#"><img class="active" alt="" src="../static/assets/images/lightgrey.png"></a>
+            <a id="dark" href="#"><img alt="" src="../static/assets/images/darkgrey.png"></a>
+            <a id="black_and_white" href="#"><img alt="" src="../static/assets/images/blackandwhite.png"></a>
+            <a id="navy" href="#"><img alt="" src="../static/assets/images/navy.png"></a>
+            <a id="green" href="#"><img alt="" src="../static/assets/images/green.png"></a>
+        </div>
+        <div class="box-title">
+            Style it with LESS
+        </div>
+        <div class="images">
+            <div class="form-group">
+                <label>
+                    Basic
+                </label>
+                <input type="text" value="#ffffff" class="color-base">
+                <div class="dropdown">
+                    <a class="add-on dropdown-toggle" data-toggle="dropdown"><i
+                            style="background-color: #ffffff"></i></a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <div class="colorpalette"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>
+                    Text
+                </label>
+                <input type="text" value="#555555" class="color-text">
+                <div class="dropdown">
+                    <a class="add-on dropdown-toggle" data-toggle="dropdown"><i
+                            style="background-color: #555555"></i></a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <div class="colorpalette"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>
+                    Elements
+                </label>
+                <input type="text" value="#007AFF" class="color-badge">
+                <div class="dropdown">
+                    <a class="add-on dropdown-toggle" data-toggle="dropdown"><i
+                            style="background-color: #007AFF"></i></a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <div class="colorpalette"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="height:25px;line-height:25px; text-align: center">
+            <a class="clear_style" href="#">
+                Clear Styles
+            </a>
+            <a class="save_style" href="#">
+                Save Styles
+            </a>
+        </div>
+    </div>
+    <div class="style-toggle close"></div>
+</div>
+
+<div th:fragment="header" class="navbar navbar-inverse navbar-fixed-top">
+    <!-- start: TOP NAVIGATION CONTAINER -->
+    <div class="container">
+        <div class="navbar-header">
+            <!-- start: RESPONSIVE MENU TOGGLER -->
+            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                <span class="clip-list-2"></span>
+            </button>
+            <!-- end: RESPONSIVE MENU TOGGLER -->
+            <!-- start: LOGO -->
+            <a class="navbar-brand" href="../../static/index.html">
+                竞赛管理系统
+            </a>
+            <!-- end: LOGO -->
+        </div>
+        <div class="navbar-tools">
+            <!-- start: TOP NAVIGATION MENU -->
+            <ul class="nav navbar-right">
+                <!-- start: USER DROPDOWN -->
+                <li class="dropdown current-user">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
+                       href="#">
+                        <img src="../../static/assets/images/avatar-1-small.jpg" class="circle-img" alt="">
+                        <span class="username" th:text="${session.teacher.tName}">leaderName</span>
+                        <i class="clip-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a th:href="@{/teacher/profile.do}" href="profile.html">
+                                <i class="clip-user-2"></i>
+                                &nbsp;个人信息
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a th:href="@{/teacher/logout.do}" href="#">
+                                <i class="clip-exit"></i>
+                                &nbsp;登出
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- end: USER DROPDOWN -->
+            </ul>
+            <!-- end: TOP NAVIGATION MENU -->
+        </div>
+    </div>
+    <!-- end: TOP NAVIGATION CONTAINER -->
+</div>
+
+<div th:fragment="left" class="navbar-content">
+
+    <!-- start: SIDEBAR -->
+    <div class="main-navigation navbar-collapse collapse">
+        <!-- start: MAIN MENU TOGGLER BUTTON -->
+        <div class="navigation-toggler">
+            <i class="clip-chevron-left"></i>
+            <i class="clip-chevron-right"></i>
+        </div>
+        <!-- end: MAIN MENU TOGGLER BUTTON -->
+        <!-- start: MAIN NAVIGATION MENU -->
+        <ul class="main-navigation-menu">
+            <li class="active open" id="index" >
+                <a href="index.html" th:href="@{'/teacher/index.do'}"><i class="clip-home-3"></i>
+                    <span class="title"> 首页 </span><span class="selected"></span>
+                </a>
+            </li>
+            <li id="profile">
+                <a href="profile.html" th:href="${'/teacher/profile.do'}"><i class="clip-screen"></i>
+                    <span class="title"> 个人信息 </span>
+                    <span class="selected"></span>
+                </a>
+            </li>
+            <li id="raceManage">
+                <a href="javascript:void(0)"><i class="clip-pencil"></i>
+                    <span class="title"> 竞赛管理 </span><i class="icon-arrow"></i>
+                    <span class="selected"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li id="raceInfoList">
+                        <a th:href="@{/teacher/raceInfoList.do}" href="form_wizard.html">
+                            <span class="title">查看赛事信息</span>
+                        </a>
+                    </li>
+                    <li id="myRaceList">
+                        <a th:href="@{/teacher/myRaceList.do}" href="form_validation.html">
+                            <span class="title">我的竞赛</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0)"><i class="clip-grid-6"></i>
+                    <span class="title"> 成果管理 </span><i class="icon-arrow"></i>
+                    <span class="selected"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a th:href="@{/teacher/achievementList.do}" href="table_static.html">
+                            <span class="title">成果查询</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li id="projectManage">
+                <a href="javascript:void(0)"><i class="clip-file"></i>
+                    <span class="title">项目管理</span><i class="icon-arrow"></i>
+                    <span class="selected"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li id="addProject">
+                        <a th:href="@{/teacher/toAddProject.do}" href="#">
+                            <span class="title">添加项目</span>
+                        </a>
+                    </li>
+                    <li id="projectList">
+                        <a th:href="@{/teacher/projectList1.do}" href="#">
+                            <span class="title">项目列表</span>
+                            <span class="badge badge-new">new</span>
+                        </a>
+                    </li>
+                    <li id="invitation">
+                        <a href="#" th:href="@{/teacher/inviteList.do}">
+                            <span class="title">邀请信息</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </li>
+        </ul>
+        <!-- end: MAIN NAVIGATION MENU -->
+    </div>
+    <!-- end: SIDEBAR -->
+
+</div>
+</html>

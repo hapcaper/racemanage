@@ -27,5 +27,16 @@ public interface ProjectService {
 
     Project findById(Integer id);
 
+    List<Project> findByStatusAndTUuid(Integer status,String tUuid);
+
+
+    /**
+     * 教师查询自己的可以参加比赛的项目
+     * @param tUUID 教师的tUUID
+     * @param term 当前期
+     * @param raceInfoUUID 要报名的赛事UUID
+     * @return 教师可以报名该赛事的项目列表
+     */
+    List<Project> findCanRaceProject(String tUUID, Integer term, String raceInfoUUID);
 
 }

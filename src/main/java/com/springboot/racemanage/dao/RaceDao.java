@@ -1,11 +1,10 @@
 package com.springboot.racemanage.dao;
 
-import com.springboot.racemanage.po.Project;
+import com.springboot.racemanage.po.Race;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-import com.springboot.racemanage.po.Race;
 
 @Mapper
 public interface RaceDao {
@@ -25,9 +24,9 @@ public interface RaceDao {
 
     List<Race> findByStatusAndTerm(@Param("status")Integer status,@Param("term")Integer term);
 
+    List<Race> findByStatusAndTermAndTUuid(@Param("status")Integer status,@Param("term")Integer term,@Param("tUuid")String tUuid);
 
-
-
+    List<Race> findByStatusAndTUuidAndProgress(@Param("status")Integer status,@Param("tUuid")String tUuid,@Param("progress")Integer progress);
 
 
 

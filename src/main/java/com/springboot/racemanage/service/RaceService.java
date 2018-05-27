@@ -20,4 +20,9 @@ public interface RaceService {
     List<Race> getAchivementListByStuUuid(String stuUuid);
 
     List<Race> findByStatusAndTerm(Integer status,Integer term);
+
+    List<Race> findByStatusAndTermAndTUuid(Integer status,Integer term,String tUuid);
+
+    List<Race> findByStatusAndTUuidAndProgress(Integer status,String tUuid,Integer progress);
+
 }

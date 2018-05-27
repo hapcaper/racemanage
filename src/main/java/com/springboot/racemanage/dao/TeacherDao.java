@@ -22,6 +22,10 @@ public interface TeacherDao {
 
     List<Teacher> findByTStatus(@Param("tStatus")Integer tStatus);
 
+    Teacher findByTStatusAndTNumberAndTPassword(@Param("tStatus")Integer tStatus,@Param("tNumber")String tNumber,@Param("tPassword")String tPassword);
+
+    Teacher findByTUuid(@Param("tUuid")String tUuid);
+
 
 
 }

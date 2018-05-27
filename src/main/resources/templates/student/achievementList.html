@@ -954,7 +954,12 @@
                         <td th:text="${achiv.kind}">race.kind</td>
                         <td th:text="${achiv.term}">race.term</td>
                         <td class="hidden-xs" th:text="${achiv.proname}">race.proname</td>
-                        <td th:text="${achiv.result}">race.result</td>
+                        <td >
+                            <span th:if="${achiv.result == 1}" class="label label-info"> 一等奖</span>
+                            <span th:if="${achiv.result == 2}" class="label label-info"> 二等奖</span>
+                            <span th:if="${achiv.result == 3}" class="label label-info"> 三等奖</span>
+                            <span th:if="${achiv.result == 4}" class="label label-info"> 其他奖项</span>
+                        </td>
                     </tr>
                     <tr th:remove="all">
                         <td class="center">2</td>

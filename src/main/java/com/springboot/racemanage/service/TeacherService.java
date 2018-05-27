@@ -20,4 +20,9 @@ public interface TeacherService {
 
     List<Teacher> findByTStatus(Integer tStatus);
 
+    Teacher login(Integer tStatus,String tNumber,String tPassword);
+
+    Teacher findByTUuid(String tUuid);
+
+
 }

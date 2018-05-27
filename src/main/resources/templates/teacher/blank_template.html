@@ -1,0 +1,311 @@
+<!DOCTYPE html >
+<!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->
+<!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9 no-js" lang="en"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<!-- start: HEAD -->
+<head>
+    <title>竞赛管理系统</title>
+    <!-- start: MAIN CSS -->
+    <div th:replace="teacher/fragments::common_css">
+        <link rel="stylesheet" href="../../static/assets/plugins/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../static/assets/fonts/style.css">
+        <link rel="stylesheet" href="../../static/assets/css/main.css">
+        <link rel="stylesheet" href="../../static/assets/css/main-responsive.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/iCheck/skins/all.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+        <link rel="stylesheet" href="../../static/assets/css/theme_light.css" type="text/css" id="skin_color">
+        <link rel="stylesheet" href="../../static/assets/css/print.css" type="text/css" media="print"/>
+        <!--[if IE 7]>
+        <link rel="stylesheet" href="../../static/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+        <![endif]-->
+        <!-- end: MAIN CSS -->
+
+        <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+        <link rel="stylesheet" href="../../static/assets/plugins/select2/select2.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/datepicker/css/datepicker.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/jQuery-Tags-Input/jquery.tagsinput.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
+        <link rel="stylesheet" href="../../static/assets/plugins/summernote/build/summernote.css">
+        <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+    </div>
+</head>
+<!-- end: HEAD -->
+<!-- start: BODY -->
+<body>
+<!-- start: HEADER -->
+<div th:replace="teacher/fragments::header" class="navbar navbar-inverse navbar-fixed-top">
+    <!-- start: TOP NAVIGATION CONTAINER -->
+    <div class="container">
+        <div class="navbar-header">
+            <!-- start: RESPONSIVE MENU TOGGLER -->
+            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                <span class="clip-list-2"></span>
+            </button>
+            <!-- end: RESPONSIVE MENU TOGGLER -->
+            <!-- start: LOGO -->
+            <a class="navbar-brand" href="index.html">
+                竞赛管理
+            </a>
+            <!-- end: LOGO -->
+        </div>
+        <div class="navbar-tools">
+            <!-- start: TOP NAVIGATION MENU -->
+            <ul class="nav navbar-right">
+                <!-- start: USER DROPDOWN -->
+                <li class="dropdown current-user">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                        <img src="assets/images/avatar-1-small.jpg" class="circle-img" alt="">
+                        <span class="username">Peter Clark</span>
+                        <i class="clip-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="pages_user_profile.html">
+                                <i class="clip-user-2"></i>
+                                &nbsp;个人信息
+                            </a>
+                        </li>
+                        <li>
+                            <a href="login_example1.html">
+                                <i class="clip-exit"></i>
+                                &nbsp;登出
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- end: USER DROPDOWN -->
+            </ul>
+            <!-- end: TOP NAVIGATION MENU -->
+        </div>
+    </div>
+    <!-- end: TOP NAVIGATION CONTAINER -->
+</div>
+<!-- end: HEADER -->
+<!-- start: MAIN CONTAINER -->
+<div class="main-container">
+    <div th:replace="teacher/fragments::left" class="navbar-content">
+        <!-- start: SIDEBAR -->
+        <div class="main-navigation navbar-collapse collapse">
+            <!-- start: MAIN MENU TOGGLER BUTTON -->
+            <div class="navigation-toggler">
+                <i class="clip-chevron-left"></i>
+                <i class="clip-chevron-right"></i>
+            </div>
+            <!-- end: MAIN MENU TOGGLER BUTTON -->
+            <!-- start: MAIN NAVIGATION MENU -->
+            <ul class="main-navigation-menu">
+                <li class="active open">
+                    <a href="index.html"><i class="clip-home-3"></i>
+                        <span class="title"> 首页 </span><span class="selected"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html"><i class="clip-screen"></i>
+                        <span class="title"> 个人中心 </span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
+                        <span class="title"> 竞赛管理 </span><i class="icon-arrow"></i>
+                        <span class="selected"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="form_elements.html">
+                                <span class="title">竞赛列表</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="form_wizard.html">
+                                <span class="title">我的竞赛</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"><i class="clip-grid-6"></i>
+                        <span class="title"> 成果管理 </span><i class="icon-arrow"></i>
+                        <span class="selected"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="table_static.html">
+                                <span class="title">成果查询</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li >
+                    <a href="javascript:void(0)"><i class="clip-file"></i>
+                        <span class="title">项目管理</span><i class="icon-arrow"></i>
+                            <span class="selected"></span>
+                        </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="table_static.html">
+                                <span class="title">添加项目</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="table_static.html">
+                                <span class="title">邀请信息</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="table_static.html">
+                                <span class="title">项目列表查看</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- end: MAIN NAVIGATION MENU -->
+        </div>
+        <!-- end: SIDEBAR -->
+    </div>
+    <!-- start: PAGE -->
+    <div class="main-content">
+        <!-- start: PANEL CONFIGURATION MODAL FORM -->
+        <div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title">Panel Configuration</h4>
+                    </div>
+                    <div class="modal-body">
+                        Here will be a configuration form
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            Save changes
+                        </button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+        <!-- end: SPANEL CONFIGURATION MODAL FORM -->
+        <div class="container">
+            <!-- start: PAGE HEADER -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- start: STYLE SELECTOR BOX -->
+                    <!-- end: STYLE SELECTOR BOX -->
+                    <!-- start: PAGE TITLE & BREADCRUMB -->
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="clip-pencil"></i>
+                            <a href="#">
+                                Forms
+                            </a>
+                        </li>
+                        <li class="active">
+                            Form Elements
+                        </li>
+                        <li class="search-box">
+                            <form class="sidebar-search">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Start Searching...">
+                                    <button class="submit">
+                                        <i class="clip-search-3"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </li>
+                    </ol>
+                    <div class="page-header">
+                        <h1>标题 <small>细微描述</small></h1>
+                    </div>
+                    <!-- end: PAGE TITLE & BREADCRUMB -->
+                </div>
+            </div>
+            <!-- end: PAGE HEADER -->
+            <!-- start: PAGE CONTENT -->
+            Page Content
+            <!-- end: PAGE CONTENT-->
+        </div>
+    </div>
+    <!-- end: PAGE -->
+</div>
+<!-- end: MAIN CONTAINER -->
+<!-- start: FOOTER -->
+<div th:replace="teacher/fragments::footer" class="footer clearfix">
+    <div class="footer-inner">
+        2018 &copy; 竞赛管理 by 李自豪 & 贾进进 @ SAO
+    </div>
+    <div class="footer-items">
+        <span class="go-top"><i class="clip-chevron-up"></i></span>
+    </div>
+</div>
+<!-- end: FOOTER -->
+
+<div th:replace="teacher/fragments::common_js">
+    <!-- start: MAIN JAVASCRIPTS -->
+    <!--[if gte IE 9]><!-->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <![endif]-->
+    <!--<![endif]-->
+
+    <script src="../../static/assets/plugins/respond.min.js"></script>
+    <script src="../../static/assets/plugins/excanvas.min.js"></script>
+    <script type="text/javascript" src="../../static/assets/plugins/Jquery/jquery-3.3.1.min.js"></script>
+    <script src="../../static/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="../../static/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+    <script src="../../static/assets/plugins/blockUI/jquery.blockUI.js"></script>
+    <script src="../../static/assets/plugins/iCheck/jquery.icheck.min.js"></script>
+    <script src="../../static/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+    <script src="../../static/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+    <script src="../../static/assets/plugins/less/less-1.5.0.min.js"></script>
+    <script src="../../static/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
+    <script src="../../static/assets/js/main.js"></script>
+    <!-- end: MAIN JAVASCRIPTS -->
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script src="../../static/assets/plugins/jquery-inputlimiter/jquery.inputlimiter.1.3.1.min.js"></script>
+    <script src="../../static/assets/plugins/autosize/jquery.autosize.min.js"></script>
+    <script src="../../static/assets/plugins/select2/select2.min.js"></script>
+    <script src="../../static/assets/plugins/jquery.maskedinput/src/jquery.maskedinput.js"></script>
+    <script src="../../static/assets/plugins/jquery-maskmoney/jquery.maskMoney.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-colorpicker/js/commits.js"></script>
+    <script src="../../static/assets/plugins/jQuery-Tags-Input/jquery.tagsinput.js"></script>
+    <script src="../../static/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+    <script src="../../static/assets/plugins/summernote/build/summernote.min.js"></script>
+    <script src="../../static/assets/plugins/ckeditor/ckeditor.js"></script>
+    <script src="../../static/assets/plugins/ckeditor/adapters/jquery.js"></script>
+    <script src="../../static/assets/js/form-elements.js"></script>
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script>
+        jQuery(document).ready(function() {
+            Main.init();
+        });
+    </script>
+
+</div>
+
+</body>
+<!-- end: BODY -->
+</html>
