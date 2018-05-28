@@ -337,8 +337,8 @@
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane in active" id="panel_tab2_example1" th:each="task:${allTaskList}">
-                            <div class="alert alert-block alert-warning fade in" th:if="${task.progress==2}">
+                        <div class="tab-pane in active" id="panel_tab2_example1" >
+                            <div class="alert alert-block alert-warning fade in" th:each="task:${allTaskList}" th:if="${task.progress==2}">
                                 <h4 class="alert-heading"><i class="fa clip-spinner-2" th:text="${task.title}"></i> task[0].title</h4>
                                 <p th:text="${task.description}">
                                     task[0].description
@@ -349,16 +349,16 @@
 
                             </div>
                         </div>
-                        <div class="tab-pane" id="panel_tab2_example2" th:each="task:${allTaskList}">
-                            <div class="alert alert-block alert-success fade in" th:if="${task.progress==1}">
+                        <div class="tab-pane" id="panel_tab2_example2" >
+                            <div class="alert alert-block alert-success fade in" th:each="task:${allTaskList}" th:if="${task.progress==1}">
                                 <h4 class="alert-heading" th:text="${task.title}"><i class="fa fa-check-circle"></i> task[1].title</h4>
                                 <p th:text="${task.description}">
                                     task[1].description
                                 </p>
                             </div>
                         </div>
-                        <div class="tab-pane" id="panel_tab2_example3" th:each="task:${allTaskList}">
-                            <div class="alert alert-block alert-info fade in" th:if="${task.progress==3}">
+                        <div class="tab-pane" id="panel_tab2_example3" >
+                            <div class="alert alert-block alert-info fade in" th:each="task:${allTaskList}" th:if="${task.progress==3}">
                                 <h4 class="alert-heading" th:text="${task.title}"><i class="fa fa-check"></i> task[1].title</h4>
                                 <p th:text="${task.description}">
                                     task[1].description

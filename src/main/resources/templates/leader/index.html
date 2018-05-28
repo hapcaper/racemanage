@@ -7,7 +7,7 @@
 <!--<![endif]-->
 <!-- start: HEAD -->
 <head>
-    <title>Clip-One - Responsive Admin Template</title>
+    <title>竞赛管理系统</title>
     <!-- start: MAIN CSS -->
     <div th:replace="leader/fragments::common_css">
         <link rel="stylesheet" href="../../static/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -241,14 +241,52 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>首页 <small>暂时不知道放什么</small></h1>
+                        <h1>首页 <small>当期的竞赛</small></h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            新闻？竞赛成果信息？其他？
+            <div class="table-responsive">
+                <table class="table table-hover" id="sample-table-1">
+                    <thead>
+                    <tr>
+                        <th class="center">#</th>
+                        <th>赛事名称</th>
+                        <th class="hidden-xs">赛事类型</th>
+                        <th>指导教师</th>
+                        <th class="hidden-xs">参赛项目</th>
+                        <th>赛事结果</th>
+                        <th>赛事进行状态</th>
+                    </tr>
+                    </thead>
+                    <tbody th:each="race:${raceList}">
+                    <tr>
+                        <td class="center">#</td>
+                        <td class="hidden-xs">
+                            <a href="raceDetail.html" th:href="${'/leader/raceDetail.do?raceUUID='+race.uuid}" rel="nofollow" th:text="${race.racename}">
+                                race.racename
+                            </a>
+                        </td>
+                        <td th:text="${race.kind}">race.kind</td>
+                        <td th:text="${race.raceteacher}">race.teacher</td>
+                        <td class="hidden-xs" th:text="${race.proname}">race.proname</td>
+                        <td>
+                            <span th:if="${race.result==1}">一等奖</span>
+                            <span th:if="${race.result==2}">二等奖</span>
+                            <span th:if="${race.result==3}">三等奖</span>
+                            <span th:if="${race.result==4}">其他奖项</span>
+                        </td>
+                        <td>
+                            <span th:if="${race.progress==0}" class="label label-warning"> 赛事进行中</span>
+                            <span th:if="${race.progress==1}" class="label label-success"> 赛事已完成</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <!-- end: PAGE CONTENT-->
         </div>
     </div>

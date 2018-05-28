@@ -25,3 +25,4 @@ nbdist/
 /src/main/resources/logs/
 /src/main/resources/templates/uploadFiles/
 /src/main/resources/static/uploadFiles/
+/src/main/resources/application.properties

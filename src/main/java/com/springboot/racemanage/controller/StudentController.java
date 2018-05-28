@@ -80,7 +80,7 @@ public class StudentController {
             httpSession.setAttribute("term", term);
             httpSession.setAttribute("student", student);
             httpSession.setAttribute("teamerList", teamerList);
-            return "student/index";
+            return "redirect:/student/index.do";
         } else {
             model.addAttribute("errorMsg", "学号或密码错误!!");
             return "login";
@@ -96,9 +96,11 @@ public class StudentController {
     }
 
     @RequestMapping("/index.do")
-    public String index(Model model) {
+    public String index(Model model,HttpSession httpSession) {
+        Term term = (Term) httpSession.getAttribute("term");
         model.addAttribute("menuSelected1", "index");
-
+        List<Raceinfo> raceinfoList = raceinfoService.findByStatusAndTerm(1, term.getTerm());
+        model.addAttribute("raceinfoList", raceinfoList);
         return "student/index";
     }
 

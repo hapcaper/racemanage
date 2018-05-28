@@ -93,7 +93,7 @@ public class LeaderController {
         httpSession.setAttribute("leader", leader);
         httpSession.setAttribute("term", term);
         model.addAttribute("menuSelected1", "index");
-        return "leader/index";
+        return "redirect:/leader/index.do";
     }
 
     @RequestMapping("logout.do")
@@ -104,9 +104,11 @@ public class LeaderController {
     }
 
     @RequestMapping("/index.do")
-    public String index(Model model) {
+    public String index(Model model,HttpSession httpSession) {
         model.addAttribute("menuSelected1", "index");
-
+        Term term = (Term) httpSession.getAttribute("term");
+        List<Race> raceList = raceService.findByStatusAndTerm(1, term.getTerm());
+        model.addAttribute("raceList", raceList);
         return "leader/index";
     }
 

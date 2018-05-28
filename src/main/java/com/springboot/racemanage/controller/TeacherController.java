@@ -91,8 +91,9 @@ public class TeacherController {
 
     @RequestMapping("/index.do")
     public String index(Model model, HttpSession httpSession) {
-        //TODO  首页待完成
-
+        Term term = (Term) httpSession.getAttribute("term");
+        List<Raceinfo> raceinfoList = raceinfoService.findByStatusAndTerm(1, term.getTerm());
+        model.addAttribute("raceinfoList", raceinfoList);
         return "teacher/index";
     }
 
