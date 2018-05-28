@@ -22,7 +22,7 @@ public interface RaceinfoDao {
 
     Raceinfo findById(@Param("id")Integer id);
 
-
+    List<Raceinfo> findByPageNo(@Param("pageNo")Integer pageNo);
 
 
 }

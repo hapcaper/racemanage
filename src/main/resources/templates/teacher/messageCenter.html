@@ -213,11 +213,11 @@
                         <li>
                             <i class="clip-pencil"></i>
                             <a href="#">
-                                项目管理
+                                消息管理
                             </a>
                         </li>
                         <li class="active">
-                            添加项目
+
                         </li>
                         <li class="search-box">
                             <form class="sidebar-search">
@@ -231,81 +231,43 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>添加项目 <small>请填写项目信息</small></h1>
+                        <h1>消息中心<small>系统提示消息</small></h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            <form  action="/teacher/addProject.do"  class="form-horizontal" enctype="multipart/form-data" method="post">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-1">
-                        项目名称
-                    </label>
-                    <div class="col-sm-9">
-                        <input name="proName" type="text" placeholder="" id="form-field-1" class="form-control"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-2">
-                        项目描述
-                    </label>
-                    <div class="col-sm-9">
-                        <textarea name="proDescription" placeholder="项目大致描述" id="form-field-2" class="form-control"
-                                  style="margin: 0px 33.4px 0px 0px; height: 124px; width: 493px;"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-2">
-                        项目文档
-                    </label>
-                    <div class="col-sm-9">
-                        <div class="fileupload fileupload-new" data-provides="fileupload">
-                            <div class="input-group">
-                                <div class="form-control uneditable-input">
-                                    <i class="fa fa-file fileupload-exists"></i>
-                                    <span class="fileupload-preview"></span>
-                                </div>
-                                <div class="input-group-btn">
-                                    <div class="btn btn-light-grey btn-file">
-                                        <span class="fileupload-new"><i
-                                                class="fa fa-folder-open-o"></i> Select file</span>
-                                        <span class="fileupload-exists"><i
-                                                class="fa fa-folder-open-o"></i> Change</span>
-                                        <input name="document" type="file" class="file-input">
-                                    </div>
-                                    <a href="#" class="btn btn-light-grey fileupload-exists" data-dismiss="fileupload">
-                                        <i class="fa fa-times"></i> Remove
-                                    </a>
-                                </div>
+            <div class="panel-group accordion-custom accordion-teal" id="accordion" th:each="m:${mapList}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-10">
+
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"th:href="${'#'+m.get('id')}" href="#collapseOne">
+                                        <i class="icon-arrow"></i>
+                                        <p th:text="${m.get('title') }">msg.title</p>
+                                    </a></h4>
+
+                            </div>
+                            <div class="col-sm-2">
+                                <h6 th:text="${m.get('sendtime')}">msg.date</h6>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        邀请学生
-                    </label>
-                    <div class="col-sm-9">
-                        <select multiple="multiple" name="stuUuid[]" id="select2"
-                                class="form-control search-select select2-offscreen" >
-                            <!-- 未加入项目的人员list -->
-                            <div th:each="stu:${stuList}">
-                                <option th:text="${stu.stuName}" th:value="${stu.stuUuid}">?</option>
-                            </div>
-                        </select>
-                        <br>
+
+                    <div th:id="${m.get('id')}" id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+                        <div class="panel-body">
+                            <h4>from:</h4>
+                            <p th:text="${m.get('stu_name')}">who</p>
+                            <hr>
+                            <p th:text="${m.get('content')}">msg.content</p>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group" style="margin-top: 50px">
-                    <div class="col-sm-2 col-sm-offset-9">
-                        <button type="submit" class="btn btn-blue btn-block">
-                            提交
-                        </button>
-                    </div>
-                </div>
-            </form>
+            </div>
+
             <!-- end: PAGE CONTENT-->
         </div>
     </div>

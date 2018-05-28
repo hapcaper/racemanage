@@ -1,7 +1,9 @@
 <!DOCTYPE html >
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->
-<!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
-<!--[if IE 9]><html class="ie9 no-js" lang="en"><![endif]-->
+<!--[if IE 8]>
+<html class="ie8 no-js" lang="en"><![endif]-->
+<!--[if IE 9]>
+<html class="ie9 no-js" lang="en"><![endif]-->
 <!--[if !IE]><!-->
 <html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
 <!--<![endif]-->
@@ -61,7 +63,8 @@
             <ul class="nav navbar-right">
                 <!-- start: USER DROPDOWN -->
                 <li class="dropdown current-user">
-                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
+                       href="#">
                         <img src="assets/images/avatar-1-small.jpg" class="circle-img" alt="">
                         <span class="username">Peter Clark</span>
                         <i class="clip-chevron-down"></i>
@@ -144,7 +147,7 @@
                         </li>
                     </ul>
                 </li>
-                <li >
+                <li>
                     <a href="javascript:void(0)"><i class="clip-file"></i>
                         <span class="title">项目管理</span><i class="icon-arrow"></i>
                         <span class="selected"></span>
@@ -217,7 +220,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            添加项目
+                            审核任务
                         </li>
                         <li class="search-box">
                             <form class="sidebar-search">
@@ -231,78 +234,42 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>添加项目 <small>请填写项目信息</small></h1>
+                        <h1>
+                            <small></small>
+                        </h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            <form  action="/teacher/addProject.do"  class="form-horizontal" enctype="multipart/form-data" method="post">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-1">
-                        项目名称
-                    </label>
-                    <div class="col-sm-9">
-                        <input name="proName" type="text" placeholder="" id="form-field-1" class="form-control"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-2">
-                        项目描述
-                    </label>
-                    <div class="col-sm-9">
-                        <textarea name="proDescription" placeholder="项目大致描述" id="form-field-2" class="form-control"
-                                  style="margin: 0px 33.4px 0px 0px; height: 124px; width: 493px;"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-2">
-                        项目文档
-                    </label>
-                    <div class="col-sm-9">
-                        <div class="fileupload fileupload-new" data-provides="fileupload">
-                            <div class="input-group">
-                                <div class="form-control uneditable-input">
-                                    <i class="fa fa-file fileupload-exists"></i>
-                                    <span class="fileupload-preview"></span>
-                                </div>
-                                <div class="input-group-btn">
-                                    <div class="btn btn-light-grey btn-file">
-                                        <span class="fileupload-new"><i
-                                                class="fa fa-folder-open-o"></i> Select file</span>
-                                        <span class="fileupload-exists"><i
-                                                class="fa fa-folder-open-o"></i> Change</span>
-                                        <input name="document" type="file" class="file-input">
-                                    </div>
-                                    <a href="#" class="btn btn-light-grey fileupload-exists" data-dismiss="fileupload">
-                                        <i class="fa fa-times"></i> Remove
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        邀请学生
-                    </label>
-                    <div class="col-sm-9">
-                        <select multiple="multiple" name="stuUuid[]" id="select2"
-                                class="form-control search-select select2-offscreen" >
-                            <!-- 未加入项目的人员list -->
-                            <div th:each="stu:${stuList}">
-                                <option th:text="${stu.stuName}" th:value="${stu.stuUuid}">?</option>
-                            </div>
-                        </select>
-                        <br>
-                    </div>
-                </div>
+            <h5>任务</h5>
+            <div class="alert alert-block alert-warning">
+                <h4 th:text="${task.title}">title</h4>
+                <p th:text="${task.description}">desc</p>
+                <a href="#" th:href="${task.file1}"> 相关文件</a>
+            </div>
+            <h5>解决方案</h5>
+            <div class="alert alert-block alert-info fade in">
+                <h4 th:text="${solution.title}">title</h4>
+                <p th:text="${solution.content}">content</p>
+                <a href="#" th:href="${solution.file1}">相关文件1</a>
+                <a href="#" th:href="${solution.file2}"> 相关文件2</a>
+                <a href="#" th:href="${solution.file3}"> 相关文件3</a>
+
+                <p class="" th:text="${'by  '+teamer.stuname}">by lzh</p>
+            </div>
+            <form action="#" th:action="${'#'}">
                 <div class="form-group" style="margin-top: 50px">
-                    <div class="col-sm-2 col-sm-offset-9">
-                        <button type="submit" class="btn btn-blue btn-block">
-                            提交
-                        </button>
+                    <div class="col-sm-2 col-sm-offset-8">
+                        <a th:href="${'/teacher/passTask.do?solutionUUID='+solution.uuid}" class="btn btn-blue btn-block">
+                            通过
+                        </a>
+                    </div>
+                    <div class="col-sm-2">
+                        <a th:href="${'/teacher/rejectTask.do?solutionUUID='+solution.uuid}" class="btn btn-blue btn-block">
+                            不通过
+                        </a>
                     </div>
                 </div>
             </form>
@@ -366,7 +333,7 @@
     <script src="../../static/assets/js/form-elements.js"></script>
     <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
     <script>
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             Main.init();
         });
     </script>

@@ -28,4 +28,19 @@ public class SolutionServiceImpl implements SolutionService{
     public int update(Solution pojo){
         return solutionDao.update(pojo);
     }
+
+    @Override
+    public Solution findByUuid(String uuid) {
+        return solutionDao.findByUuid(uuid);
+    }
+
+    @Override
+    public Solution findByResultAndStatusAndUuid(Integer result, Integer status, String uuid) {
+        return solutionDao.findByResultAndStatusAndUuid(result, status, uuid);
+    }
+
+    @Override
+    public Solution findByResultAndStatusAndTaskUuid(Integer result, Integer status, String taskUuid) {
+        return solutionDao.findByResultAndStatusAndTaskUuid(result, status, taskUuid);
+    }
 }

@@ -995,15 +995,15 @@
                                                href="#">
                                                 <i class="fa fa-cog"></i> <span class="caret"></span>
                                             </a>
-                                            <ul role="menu" class="dropdown-menu pull-right">
-                                                <li role="presentation">
-                                                    <a role="menuitem" tabindex="-1"
-                                                       th:href="${'/student/messageCenter.do?toUUID='+teamer.stuUuid}"
-                                                       href="messageCenter.html">
-                                                        <i class="fa fa-edit"></i> 发消息
-                                                    </a>
-                                                </li>
-                                            </ul>
+                                            <!--<ul role="menu" class="dropdown-menu pull-right">-->
+                                                <!--<li role="presentation">-->
+                                                    <!--<a role="menuitem" tabindex="-1"-->
+                                                       <!--th:href="${'/student/messageCenter.do?toUUID='+teamer.stuUuid}"-->
+                                                       <!--href="messageCenter.html">-->
+                                                        <!--<i class="fa fa-edit"></i> 发消息-->
+                                                    <!--</a>-->
+                                                <!--</li>-->
+                                            <!--</ul>-->
                                         </div>
                                     </div>
                                 </td>
@@ -1026,17 +1026,20 @@
                 <ul id="myTab" class="nav nav-tabs tab-bricky">
                     <li class="active">
                         <a href="#panel_tab2_example1" data-toggle="tab">
-                            <i class="green fa fa-home"></i> 待完成任务<span class="badge badge-default" id="notCompleteNum">0</span>
+                            <i class="green fa fa-home"></i> 待完成任务
+                            <!--<span class="badge badge-default" id="notCompleteNum">0</span>-->
                         </a>
                     </li>
                     <li>
                         <a href="#panel_tab2_example2" data-toggle="tab">
-                            已完成任务 <span class="badge badge-default" id="completedNum">0</span>
+                            已完成任务
+                            <!--<span class="badge badge-default" id="completedNum">0</span>-->
                         </a>
                     </li>
                     <li>
                         <a href="#panel_tab2_example3" data-toggle="tab">
-                            待审阅任务 <span class="badge badge-default" th:text="${myTaskList.size()}">0</span>
+                            待审阅任务
+                            <!--<span class="badge badge-default" th:text="${myTaskList.size()}">0</span>-->
                         </a>
                     </li>
                 </ul>
@@ -1051,11 +1054,8 @@
                                 purus sit amet fermentum.
                             </p>
                             <p>
-                                <a th:href="${'/student/toSubmitTask.do?taskUUID='+ task.uuid}" href="submitTask.html" class="btn btn-blue">
+                                <a th:href="${'/student/toSubmitTask.do?taskUUID='+task.uuid}" href="submitTask.html" class="btn btn-blue">
                                     提交进度
-                                </a>
-                                <a href="#" class="btn btn-yellow">
-                                    交互
                                 </a>
                             </p>
                         </div>

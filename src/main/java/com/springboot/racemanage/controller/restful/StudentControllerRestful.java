@@ -2,8 +2,7 @@ package com.springboot.racemanage.controller.restful;
 
 
 import com.springboot.racemanage.controller.restful.restfulDO.ResultDO;
-import com.springboot.racemanage.dao.RaceDao;
-import com.springboot.racemanage.dao.TermDao;
+import com.springboot.racemanage.dao.LogDao;
 import com.springboot.racemanage.po.*;
 import com.springboot.racemanage.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 @RestController
@@ -44,7 +44,11 @@ public class StudentControllerRestful {
     private TermService termService;
     @Autowired
     private RaceService raceService;
+    @Autowired
+    private LogService logService;
 
+    @Autowired
+    private RaceinfoService raceinfoService;
 
     @RequestMapping(value = "/newMsgNum",method = RequestMethod.GET)
     public Integer newMsgNum(@RequestParam("stuUUID")String stuUUID) {
@@ -173,6 +177,49 @@ public class StudentControllerRestful {
             resultDO.setCode(0);
             resultDO.setMsg("查询失败");
         }
+        return resultDO;
+    }
+
+    @RequestMapping("/getAllRaceByPageNo")
+    public ResultDO getAllRaceByPageNo(@RequestParam("pageNo")Integer pageNo) {
+        List<Race> raceList = raceService.findByPageNo(pageNo);
+        ResultDO resultDO = new ResultDO();
+        resultDO.setMsg("正常结果");
+        resultDO.setCode(1);
+        resultDO.setResult(raceList);
+        return resultDO;
+    }
+
+    @RequestMapping("/getAllRaceInfoByPageNo")
+    public ResultDO getAllRaceInfoByPageNo(@RequestParam("pageNo")Integer pageNo) {
+        List<Raceinfo> raceInfoList = raceinfoService.findByPageNo(pageNo);
+        ResultDO resultDO = new ResultDO();
+        resultDO.setMsg("正常结果");
+        resultDO.setCode(1);
+        resultDO.setResult(raceInfoList);
+        return resultDO;
+    }
+
+    @RequestMapping("/getProjectDetail")
+    public ResultDO getProjectDetail(@RequestParam("proUUID")String proUUID,@RequestParam("stuUUID")String stuUUID) {
+
+        Project project = projectService.findFirstByUuid(proUUID);
+        System.out.println(project);
+        Teamer myTeamer = teamerService.findFirstByStatusAndStuUuidAndProUuid(1, stuUUID, proUUID);
+        List<Task> myTaskList = taskService.findByToUuidAndStatusNot(myTeamer.getUuid(), 0);
+        List<Teamer> proTeamerList = teamerService.findByStatusAndProUuid(1, proUUID);
+        //名字太不优雅  回来想到更好的就改下
+        List<Map> logandteamernameList = logService.getLogAndTeamerNameByProUuid(proUUID);
+        Map<String, Object> result = new HashMap<>();
+        result.put("project", project);
+        result.put("myTaskList", myTaskList);
+        result.put("proTeamerList", proTeamerList);
+        result.put("log", logandteamernameList);
+
+        ResultDO resultDO = new ResultDO();
+        resultDO.setResult(result);
+        resultDO.setCode(1);
+        resultDO.setMsg("请求成功");
         return resultDO;
     }
 

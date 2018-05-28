@@ -25,4 +25,6 @@ public interface RaceService {
 
     List<Race> findByStatusAndTUuidAndProgress(Integer status,String tUuid,Integer progress);
 
+    List<Race> findByPageNo(Integer pageNo);
+
 }

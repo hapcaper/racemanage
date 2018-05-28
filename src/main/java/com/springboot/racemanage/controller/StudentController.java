@@ -305,11 +305,13 @@ public class StudentController {
         System.out.println(project);
         Teamer myTeamer = teamerService.findFirstByStatusAndStuUuidAndProUuid(1, student.getStuUuid(), proUUID);
         List<Task> myTaskList = taskService.findByToUuidAndStatusNot(myTeamer.getUuid(), 0);
+        List<Task> allTaskList = taskService.findByProUuidAndStatusNot(proUUID,0);
         List<Teamer> proTeamerList = teamerService.findByStatusAndProUuid(1, proUUID);
 
         model.addAttribute("myTeamer", myTeamer);
         model.addAttribute("project", project);
         model.addAttribute("myTaskList", myTaskList);
+        model.addAttribute("allTaskList", allTaskList);
         model.addAttribute("proTeamerListt", proTeamerList);
         return "student/projectDetail";
     }
@@ -335,19 +337,19 @@ public class StudentController {
         solution.setContent(content);
 
 
-        StringBuffer file1Name = new StringBuffer(UUID.randomUUID().toString());
-        file1Name.append("_" + file1.getOriginalFilename());
-        StringBuffer file1Path = new StringBuffer("src/main/resources/templates/uploadFiles/solutionFiles/");
-        file1Path.append(file1Name.toString());
-        BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(file1Path.toString())));
-        out.write(file1.getBytes());
-        out.flush();
-        out.close();
-
-        //更改数据库存储文件的路径
-        file1Path.replace(0, 19, "");
-
-        solution.setFile1(file1Path.toString());
+//        StringBuffer file1Name = new StringBuffer(UUID.randomUUID().toString());
+//        file1Name.append("_" + file1.getOriginalFilename());
+//        StringBuffer file1Path = new StringBuffer("src/main/resources/templates/uploadFiles/solutionFiles/");
+//        file1Path.append(file1Name.toString());
+//        BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(file1Path.toString())));
+//        out.write(file1.getBytes());
+//        out.flush();
+//        out.close();
+//
+//        //更改数据库存储文件的路径
+//        file1Path.replace(0, 19, "");
+//
+//        solution.setFile1(file1Path.toString());
         solution.setResult(3);
         solution.setStatus(1);
         solution.setStuUuid(student.getStuUuid());
@@ -588,7 +590,7 @@ public class StudentController {
         teamer.setDuty("暂定");
         teamer.setDutydescription(invite.getDutydescription());
 
-        //以系统身份发送邀请接受绝消息
+        //以系统身份发送邀请接受消息
         Message message = new Message();
         message.setUuid(UUID.randomUUID().toString());
         message.setFromUuid("000");
@@ -607,7 +609,7 @@ public class StudentController {
         teamerService.insertSelective(teamer);
         inviteService.update(invite);
         messageService.insertSelective(message);
-        return "redirect:/student/inviteList.do";
+        return "forward:/student/inviteList.do";
     }
 
 

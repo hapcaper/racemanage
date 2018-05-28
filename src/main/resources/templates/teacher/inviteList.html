@@ -217,7 +217,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            添加项目
+                            邀请信息列表
                         </li>
                         <li class="search-box">
                             <form class="sidebar-search">
@@ -231,81 +231,38 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>添加项目 <small>请填写项目信息</small></h1>
+                        <h1>项目指导邀请 <small></small></h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            <form  action="/teacher/addProject.do"  class="form-horizontal" enctype="multipart/form-data" method="post">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-1">
-                        项目名称
-                    </label>
-                    <div class="col-sm-9">
-                        <input name="proName" type="text" placeholder="" id="form-field-1" class="form-control"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-2">
-                        项目描述
-                    </label>
-                    <div class="col-sm-9">
-                        <textarea name="proDescription" placeholder="项目大致描述" id="form-field-2" class="form-control"
-                                  style="margin: 0px 33.4px 0px 0px; height: 124px; width: 493px;"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-2">
-                        项目文档
-                    </label>
-                    <div class="col-sm-9">
-                        <div class="fileupload fileupload-new" data-provides="fileupload">
-                            <div class="input-group">
-                                <div class="form-control uneditable-input">
-                                    <i class="fa fa-file fileupload-exists"></i>
-                                    <span class="fileupload-preview"></span>
-                                </div>
-                                <div class="input-group-btn">
-                                    <div class="btn btn-light-grey btn-file">
-                                        <span class="fileupload-new"><i
-                                                class="fa fa-folder-open-o"></i> Select file</span>
-                                        <span class="fileupload-exists"><i
-                                                class="fa fa-folder-open-o"></i> Change</span>
-                                        <input name="document" type="file" class="file-input">
-                                    </div>
-                                    <a href="#" class="btn btn-light-grey fileupload-exists" data-dismiss="fileupload">
-                                        <i class="fa fa-times"></i> Remove
-                                    </a>
-                                </div>
-                            </div>
+            <div th:each="invite:${inviteList}">
+                <div class="alert alert-info">
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <i class="fa fa-envelope-o"></i>
+                            <strong><a href="projectDetail.html" th:text="${invite.proname}">X项目</a></strong>
+                            <small th:text="${invite.teamerDescription}">desc</small>
+                        </div>
+                        <!--<div class="col-sm-2">邀请者： SAO</div>-->
+                        <div class="col-sm-3">
+                            <a th:href="'/teacher/acceptInvite.do?inviteUUID='+${invite.uuid}"  class="btn btn-info">
+                                接受
+                            </a>
+                            <a th:href="'/teacher/refuseInvite.do?inviteUUID='+${invite.uuid}"  class="btn btn-danger">
+                                拒绝
+                            </a>
+                            <a th:href="'/teacher/ignoreInvite.do?inviteUUID='+${invite.uuid}"  class="btn btn-dark-grey">
+                                忽略
+                            </a>
                         </div>
                     </div>
+
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        邀请学生
-                    </label>
-                    <div class="col-sm-9">
-                        <select multiple="multiple" name="stuUuid[]" id="select2"
-                                class="form-control search-select select2-offscreen" >
-                            <!-- 未加入项目的人员list -->
-                            <div th:each="stu:${stuList}">
-                                <option th:text="${stu.stuName}" th:value="${stu.stuUuid}">?</option>
-                            </div>
-                        </select>
-                        <br>
-                    </div>
-                </div>
-                <div class="form-group" style="margin-top: 50px">
-                    <div class="col-sm-2 col-sm-offset-9">
-                        <button type="submit" class="btn btn-blue btn-block">
-                            提交
-                        </button>
-                    </div>
-                </div>
-            </form>
+            </div>
+
             <!-- end: PAGE CONTENT-->
         </div>
     </div>

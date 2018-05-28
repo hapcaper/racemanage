@@ -217,7 +217,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            添加项目
+                            发布任务
                         </li>
                         <li class="search-box">
                             <form class="sidebar-search">
@@ -231,34 +231,34 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>添加项目 <small>请填写项目信息</small></h1>
+                        <h1 th:text="${project.name}"> </h1>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            <form  action="/teacher/addProject.do"  class="form-horizontal" enctype="multipart/form-data" method="post">
+            <form  action="/teacher/publishTask.do"  th:action="@{/teacher/publishTask.do}" class="form-horizontal" enctype="multipart/form-data" method="post">
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-1">
-                        项目名称
+                        任务标题
                     </label>
                     <div class="col-sm-9">
-                        <input name="proName" type="text" placeholder="" id="form-field-1" class="form-control"/>
+                        <input name="title" type="text" placeholder="" id="form-field-1" class="form-control"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-2">
-                        项目描述
+                        任务详情
                     </label>
                     <div class="col-sm-9">
-                        <textarea name="proDescription" placeholder="项目大致描述" id="form-field-2" class="form-control"
+                        <textarea name="description" placeholder="任务大致描述" id="form-field-2" class="form-control"
                                   style="margin: 0px 33.4px 0px 0px; height: 124px; width: 493px;"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="form-field-2">
-                        项目文档
+                        任务文档
                     </label>
                     <div class="col-sm-9">
                         <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -273,7 +273,7 @@
                                                 class="fa fa-folder-open-o"></i> Select file</span>
                                         <span class="fileupload-exists"><i
                                                 class="fa fa-folder-open-o"></i> Change</span>
-                                        <input name="document" type="file" class="file-input">
+                                        <input name="file1" type="file" class="file-input">
                                     </div>
                                     <a href="#" class="btn btn-light-grey fileupload-exists" data-dismiss="fileupload">
                                         <i class="fa fa-times"></i> Remove
@@ -283,19 +283,14 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label">
-                        邀请学生
+                        项目成员
                     </label>
                     <div class="col-sm-9">
-                        <select multiple="multiple" name="stuUuid[]" id="select2"
-                                class="form-control search-select select2-offscreen" >
-                            <!-- 未加入项目的人员list -->
-                            <div th:each="stu:${stuList}">
-                                <option th:text="${stu.stuName}" th:value="${stu.stuUuid}">?</option>
-                            </div>
-                        </select>
-                        <br>
+                        <input name="teamerName" readonly value="lzh" th:value="${teamer.stuname}" type="text" placeholder="" id="form-field-4" class="form-control"/>
+                        <input name="teamerUUID" th:value="${teamer.uuid}" type="hidden" placeholder="" id="form-field-5" class="form-control"/>
                     </div>
                 </div>
                 <div class="form-group" style="margin-top: 50px">

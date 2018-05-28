@@ -50,13 +50,6 @@ public class Log {
         this.uuid = uuid;
     }
 
-    public String getTaskname() {
-        return tasktitle;
-    }
-
-    public void setTaskname(String tasktitle) {
-        this.tasktitle = tasktitle;
-    }
 
     public String getProUuid() {
         return proUuid;

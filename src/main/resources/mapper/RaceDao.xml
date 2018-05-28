@@ -232,5 +232,12 @@
         where `status`=#{status} and `t_uuid`=#{tUuid} and `progress`=#{progress}
     </select>
 
+    <select id="findByPage" resultMap="AllColumnMap">
+        select
+        <include refid="all_column"/>
+        from race
+        limit #{startNo} , 10
+    </select>
+
 </mapper>
 

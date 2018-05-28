@@ -217,7 +217,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            添加项目
+                            timeline
                         </li>
                         <li class="search-box">
                             <form class="sidebar-search">
@@ -231,81 +231,88 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>添加项目 <small>请填写项目信息</small></h1>
+                        <h1 th:text="${project.name}">标题</h1><small th:text="${project.description}">细微描述</small>
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            <form  action="/teacher/addProject.do"  class="form-horizontal" enctype="multipart/form-data" method="post">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-1">
-                        项目名称
-                    </label>
-                    <div class="col-sm-9">
-                        <input name="proName" type="text" placeholder="" id="form-field-1" class="form-control"/>
-                    </div>
+            <div class="row"><div class="col-sm-2 col-sm-offset-10">
+                <button  data-placement="top" class="btn tooltips">
+                    <a class="btn btn-block" onclick="javascript:history.go(-1)">返回</a>
+                </button>
+            </div></div>
+            <div class="timeline">
+                <div class="spine"></div>
+                <div class="date_separator">
+                    <span> 2018年5月</span>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-2">
-                        项目描述
-                    </label>
-                    <div class="col-sm-9">
-                        <textarea name="proDescription" placeholder="项目大致描述" id="form-field-2" class="form-control"
-                                  style="margin: 0px 33.4px 0px 0px; height: 124px; width: 493px;"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="form-field-2">
-                        项目文档
-                    </label>
-                    <div class="col-sm-9">
-                        <div class="fileupload fileupload-new" data-provides="fileupload">
-                            <div class="input-group">
-                                <div class="form-control uneditable-input">
-                                    <i class="fa fa-file fileupload-exists"></i>
-                                    <span class="fileupload-preview"></span>
-                                </div>
-                                <div class="input-group-btn">
-                                    <div class="btn btn-light-grey btn-file">
-                                        <span class="fileupload-new"><i
-                                                class="fa fa-folder-open-o"></i> Select file</span>
-                                        <span class="fileupload-exists"><i
-                                                class="fa fa-folder-open-o"></i> Change</span>
-                                        <input name="document" type="file" class="file-input">
-                                    </div>
-                                    <a href="#" class="btn btn-light-grey fileupload-exists" data-dismiss="fileupload">
-                                        <i class="fa fa-times"></i> Remove
-                                    </a>
-                                </div>
+                <ul class="columns" th:each="logMap:${logandteamernameList}">
+                    <li>
+                        <div class="timeline_element bricky">
+                            <div class="timeline_title">
+                                <span class="timeline_label" th:text="${'solved by '+logMap.get('stuname')}">solved by LZH {task.solver}</span>
+                                <span class="timeline_date" th:text="${logMap.get('endtime')}">task.endtime</span>
+                            </div>
+                            <div class="content">
+                                <b th:text="${logMap.get('tasktitle')}"> task.title</b>
+                                <p th:text="${logMap.get('description')}">task.description</p>
+                            </div>
+                            <div class="readmore">
+                                <a href="#" class="btn btn-warning">
+                                    Read More <i class="fa fa-arrow-circle-right"></i>
+                                </a>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        邀请学生
-                    </label>
-                    <div class="col-sm-9">
-                        <select multiple="multiple" name="stuUuid[]" id="select2"
-                                class="form-control search-select select2-offscreen" >
-                            <!-- 未加入项目的人员list -->
-                            <div th:each="stu:${stuList}">
-                                <option th:text="${stu.stuName}" th:value="${stu.stuUuid}">?</option>
+                    </li>
+                    <li th:remove="all">
+                        <div class="timeline_element purple">
+                            <div class="timeline_title">
+                                <span class="timeline_label">Event Title</span><span class="timeline_date">12 December 2014</span>
                             </div>
-                        </select>
-                        <br>
-                    </div>
-                </div>
-                <div class="form-group" style="margin-top: 50px">
-                    <div class="col-sm-2 col-sm-offset-9">
-                        <button type="submit" class="btn btn-blue btn-block">
-                            提交
-                        </button>
-                    </div>
-                </div>
-            </form>
+                            <div class="content">
+                                <b>Lorem Ipsum</b> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            </div>
+                            <div class="readmore">
+                                <a href="#" class="btn btn-dark-grey">
+                                    Read More <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li th:remove="all">
+                        <div class="timeline_element">
+                            <div class="timeline_title">
+                                <span class="timeline_label">Event Title</span><span class="timeline_date">16 December 2014</span>
+                            </div>
+                            <div class="content">
+                                <b>Lorem Ipsum</b> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            </div>
+                            <div class="readmore">
+                                <a href="#" class="btn btn-info">
+                                    Read More <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li th:remove="all">
+                        <div class="timeline_element teal">
+                            <div class="timeline_title">
+                                <span class="timeline_label">Event Title</span><span class="timeline_date">18 December 2014</span>
+                            </div>
+                            <div class="content">
+                                <b>Lorem Ipsum</b> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            </div>
+                            <div class="readmore">
+                                <a href="#" class="btn btn-dark-beige">
+                                    Read More <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
             <!-- end: PAGE CONTENT-->
         </div>
     </div>
