@@ -28,6 +28,6 @@ public interface RaceDao {
 
     List<Race> findByStatusAndTUuidAndProgress(@Param("status")Integer status,@Param("tUuid")String tUuid,@Param("progress")Integer progress);
 
-
+    List<Race> findByPage(@Param("startNo")Integer startNo);
 
 }

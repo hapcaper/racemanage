@@ -15,4 +15,12 @@ public interface SolutionDao {
     int insertList(@Param("pojos") List<Solution> pojo);
 
     int update(@Param("pojo") Solution pojo);
+
+    Solution findByUuid(@Param("uuid")String uuid);
+
+    Solution findByResultAndStatusAndUuid(@Param("result")Integer result,@Param("status")Integer status,@Param("uuid")String uuid);
+
+    Solution findByResultAndStatusAndTaskUuid(@Param("result")Integer result,@Param("status")Integer status,@Param("taskUuid")String taskUuid);
+
+
 }

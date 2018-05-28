@@ -148,5 +148,12 @@
         from raceinfo
         where `id`=#{id}
     </select>
+
+    <select id="findByPageNo" resultMap="AllColumnMap">
+        select
+        <include refid="all_column"/>
+        from raceinfo
+        limit #{pageNo} , 10
+    </select>
 </mapper>
 

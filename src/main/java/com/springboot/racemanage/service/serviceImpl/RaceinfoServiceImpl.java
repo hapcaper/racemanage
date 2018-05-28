@@ -43,4 +43,10 @@ public class RaceinfoServiceImpl implements RaceinfoService{
     public Raceinfo findById(Integer id) {
         return raceinfoDao.findById(id);
     }
+
+    @Override
+    public List<Raceinfo> findByPageNo(Integer pageNo) {
+        //根据页数一次查10条数据
+        return raceinfoDao.findByPageNo((pageNo-1)*10);
+    }
 }

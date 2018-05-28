@@ -58,4 +58,10 @@ public class RaceServiceImpl implements RaceService{
     public List<Race> findByStatusAndTUuidAndProgress(Integer status, String tUuid, Integer progress) {
         return raceDao.findByStatusAndTUuidAndProgress(status,tUuid,progress);
     }
+
+    @Override
+    public List<Race> findByPageNo(Integer pageNo) {
+        //根据页数一次查10条数据
+        return raceDao.findByPage((pageNo-1)*10);
+    }
 }

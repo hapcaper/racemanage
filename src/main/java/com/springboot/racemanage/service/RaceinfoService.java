@@ -19,5 +19,7 @@ public interface RaceinfoService {
 
     Raceinfo findById(Integer id);
 
+    List<Raceinfo> findByPageNo(Integer pageNo);
+
 
 }
