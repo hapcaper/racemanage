@@ -7,7 +7,7 @@
 <!--<![endif]-->
 <!-- start: HEAD -->
 <head>
-    <title>Clip-One - Responsive Admin Template</title>
+    <title>竞赛管理系统</title>
     <!-- start: MAIN CSS -->
     <div th:replace="leader/fragments::common_css">
         <link rel="stylesheet" href="../../static/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -257,7 +257,7 @@
                     <th class="hidden-xs">工号</th>
                     <th>邮箱</th>
                     <th class="hidden-xs">手机号</th>
-                    <th>操作（需要么？具体干啥?）</th>
+                    <!--<th>操作（需要么？具体干啥?）</th>-->
                 </tr>
                 </thead>
                 <tbody th:each="teacher:${teacherList}">
@@ -270,36 +270,36 @@
                             Terms of Service
                         </a></td>
                     <td class="hidden-xs" th:text="${teacher.tPhone}">Blink</td>
-                    <td class="center">
-                        <div class="visible-md visible-lg hidden-sm hidden-xs">
-                            <a href="#" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                            <a href="#" class="btn btn-xs btn-green tooltips" data-placement="top" data-original-title="Share"><i class="fa fa-share"></i></a>
-                            <a href="#" class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="Remove"><i class="fa fa-times fa fa-white"></i></a>
-                        </div>
-                        <div class="visible-xs visible-sm hidden-md hidden-lg">
-                            <div class="btn-group">
-                                <a class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-cog"></i> <span class="caret"></span>
-                                </a>
-                                <ul role="menu" class="dropdown-menu pull-right">
-                                    <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#">
-                                            <i class="fa fa-edit"></i> Edit
-                                        </a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#">
-                                            <i class="fa fa-share"></i> Share
-                                        </a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#">
-                                            <i class="fa fa-times"></i> Remove
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div></td>
+                    <!--<td class="center">-->
+                        <!--<div class="visible-md visible-lg hidden-sm hidden-xs">-->
+                            <!--<a href="#" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>-->
+                            <!--<a href="#" class="btn btn-xs btn-green tooltips" data-placement="top" data-original-title="Share"><i class="fa fa-share"></i></a>-->
+                            <!--<a href="#" class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="Remove"><i class="fa fa-times fa fa-white"></i></a>-->
+                        <!--</div>-->
+                        <!--<div class="visible-xs visible-sm hidden-md hidden-lg">-->
+                            <!--<div class="btn-group">-->
+                                <!--<a class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" href="#">-->
+                                    <!--<i class="fa fa-cog"></i> <span class="caret"></span>-->
+                                <!--</a>-->
+                                <!--<ul role="menu" class="dropdown-menu pull-right">-->
+                                    <!--<li role="presentation">-->
+                                        <!--<a role="menuitem" tabindex="-1" href="#">-->
+                                            <!--<i class="fa fa-edit"></i> Edit-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                    <!--<li role="presentation">-->
+                                        <!--<a role="menuitem" tabindex="-1" href="#">-->
+                                            <!--<i class="fa fa-share"></i> Share-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                    <!--<li role="presentation">-->
+                                        <!--<a role="menuitem" tabindex="-1" href="#">-->
+                                            <!--<i class="fa fa-times"></i> Remove-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div></td>-->
                 </tr>
                 <tr th:remove="all">
                     <td class="center">2</td>

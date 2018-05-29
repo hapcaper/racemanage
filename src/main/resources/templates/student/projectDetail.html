@@ -9,7 +9,7 @@
 <!--<![endif]-->
 <!-- start: HEAD -->
 <head>
-    <title>Clip-One - Responsive Admin Template</title>
+    <title>竞赛管理系统</title>
     <!-- start: MAIN CSS -->
     <div th:replace="student/fragments::common_css">
         <link rel="stylesheet" href="../../static/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -918,11 +918,11 @@
                         <li>
                             <i class="clip-pencil"></i>
                             <a href="#">
-                                Forms
+                                项目管理
                             </a>
                         </li>
                         <li class="active">
-                            Form Elements
+                            项目详情
                         </li>
                         <li class="search-box">
                             <form class="sidebar-search">
@@ -1044,8 +1044,8 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane in active" id="panel_tab2_example1" th:each="task:${myTaskList}">
-                        <div class="alert alert-block alert-warning fade in" th:if="${task.progress==2}">
+                    <div class="tab-pane in active" id="panel_tab2_example1" >
+                        <div class="alert alert-block alert-warning fade in" th:each="task:${myTaskList}" th:if="${task.progress==2}">
                             <h4 class="alert-heading"><i class="fa clip-spinner-2" th:text="${task.title}"></i> task[0].title</h4>
                             <p th:text="${task.description}">
                                 task[0].description
@@ -1060,16 +1060,16 @@
                             </p>
                         </div>
                     </div>
-                    <div class="tab-pane" id="panel_tab2_example2" th:each="task:${myTaskList}">
-                        <div class="alert alert-block alert-success fade in" th:if="${task.progress==1}">
+                    <div class="tab-pane" id="panel_tab2_example2" >
+                        <div class="alert alert-block alert-success fade in" th:each="task:${myTaskList}" th:if="${task.progress==1}">
                             <h4 class="alert-heading" th:text="${task.title}"><i class="fa fa-check-circle"></i> task[1].title</h4>
                             <p th:text="${task.description}">
                                 task[1].description
                             </p>
                         </div>
                     </div>
-                    <div class="tab-pane" id="panel_tab2_example3" th:each="task:${myTaskList}">
-                        <div class="alert alert-block alert-info fade in" th:if="${task.progress==3}">
+                    <div class="tab-pane" id="panel_tab2_example3" >
+                        <div class="alert alert-block alert-info fade in" th:each="task:${myTaskList}" th:if="${task.progress==3}">
                             <h4 class="alert-heading" th:text="${task.title}"><i class="fa fa-check-circle"></i> task[1].title</h4>
                             <p th:text="${task.description}">
                                 task[1].description

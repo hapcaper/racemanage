@@ -7,7 +7,7 @@
 <!--<![endif]-->
 <!-- start: HEAD -->
 <head>
-    <title>Clip-One - Responsive Admin Template</title>
+    <title>竞赛管理系统</title>
     <!-- start: MAIN CSS -->
     <div th:replace="student/fragments::common_css">
         <link rel="stylesheet" href="../../static/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -974,7 +974,7 @@
                             开始时间
                         </label>
                         <div class="col-sm-9">
-                            <h5 th:text="${raceInfo.begaintime}">begintime</h5>
+                            <h5 th:text="${#dates.format(raceInfo.begaintime,'yyyy-MM-dd')}">begintime</h5>
                         </div>
                     </div>
                     <div class="form-group">
@@ -982,7 +982,7 @@
                             结束时间
                         </label>
                         <div class="col-sm-9">
-                            <h5 th:text="${raceInfo.endtime}">endtime</h5>
+                            <h5 th:text="${#dates.format(raceInfo.endtime,'yyyy-MM-dd')}">endtime</h5>
                         </div>
                     </div>
                     <div class="form-group">
@@ -1009,18 +1009,19 @@
                     <input hidden="hidden" type="text" name="raceInfoUUID" th:value="${raceInfo.uuid}"/>
                     <div class="form-group"></div>
                     <div class="form-group">
-                        <div class="col-sm-2 col-sm-offset-4">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-2" th:if="${raceInfo.begaintime<#dates.createNow() && raceInfo.endtime>#dates.createNow()}">
                             <button class="btn btn-blue next-step btn-block">
                                 报名
                             </button>
                         </div>
                         <div class="col-sm-2">
                             <button  class="btn btn-blue next-step btn-block">
-                                <a href="racenfoList.html">返回</a>
+                                返回
                             </button>
                         </div>
                     </div>
-                </form>I
+                </form>
             </div>
             <!-- end: PAGE CONTENT-->
         </div>

@@ -160,9 +160,9 @@
     <!--write by lzh-->
     <select id="getLogAndTeamerNameByProUuid" resultType="java.util.HashMap">
         SELECT
-        log.tasktitle,log.endtime,log.description,log.action,teamer.stuname
+        log.tasktitle,log.the_time,log.endtime,log.description,log.action,teamer.stuname
         FROM log INNER JOIN teamer ON log.teamer_uuid = teamer.uuid
-        WHERE log.pro_uuid = #{proUuid}
+        WHERE log.pro_uuid = #{proUuid} and log.status = 1
     </select>
 </mapper>
 

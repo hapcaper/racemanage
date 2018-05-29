@@ -6,8 +6,10 @@ import javax.annotation.Resource;
 import java.util.List;
 import com.springboot.racemanage.po.Teacher;
 import com.springboot.racemanage.dao.TeacherDao;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class TeacherServiceImpl implements TeacherService{
 
     @Resource

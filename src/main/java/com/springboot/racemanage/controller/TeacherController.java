@@ -72,7 +72,7 @@ public class TeacherController {
         Teacher teacher = teacherService.login(1, tNumber, password);
 
         if (teacher == null) {
-            model.addAttribute("errMsg", "工号或密码错误");
+            model.addAttribute("errorMsg", "工号或密码错误");
             return "login";
         } else {
             Term term = termService.findFirstByStatusOrderByTerm(1);
@@ -91,8 +91,9 @@ public class TeacherController {
 
     @RequestMapping("/index.do")
     public String index(Model model, HttpSession httpSession) {
-        //TODO  首页待完成
-
+        Term term = (Term) httpSession.getAttribute("term");
+        List<Raceinfo> raceinfoList = raceinfoService.findByStatusAndTerm(1, term.getTerm());
+        model.addAttribute("raceinfoList", raceinfoList);
         return "teacher/index";
     }
 

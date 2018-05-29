@@ -248,22 +248,18 @@
                 <div class="date_separator">
                     <span> 2018年5月</span>
                 </div>
-                <ul class="columns" th:each="logMap:${logandteamernameList}">
-                    <li>
+                <ul class="columns">
+                    <li th:each="logMap:${logandteamernameList}">
                         <div class="timeline_element bricky">
                             <div class="timeline_title">
                                 <span class="timeline_label" th:text="${'solved by '+logMap.get('stuname')}">solved by LZH {task.solver}</span>
-                                <span class="timeline_date" th:text="${logMap.get('endtime')}">task.endtime</span>
+                                <span class="timeline_date" th:text="${logMap.get('the_time')}">task.the_time</span>
                             </div>
                             <div class="content">
                                 <b th:text="${logMap.get('tasktitle')}"> task.title</b>
                                 <p th:text="${logMap.get('description')}">task.description</p>
                             </div>
-                            <div class="readmore">
-                                <a href="#" class="btn btn-warning">
-                                    Read More <i class="fa fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
+
                         </div>
                     </li>
                     <li th:remove="all">
@@ -304,11 +300,7 @@
                             <div class="content">
                                 <b>Lorem Ipsum</b> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
                             </div>
-                            <div class="readmore">
-                                <a href="#" class="btn btn-dark-beige">
-                                    Read More <i class="fa fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
+
                         </div>
                     </li>
                 </ul>

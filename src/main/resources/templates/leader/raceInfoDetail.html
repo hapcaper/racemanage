@@ -275,7 +275,7 @@
                         赛事时间
                     </label>
                     <div class="col-sm-9">
-                        <h5 th:text="${raceInfo.begaintime+' ---- '+raceInfo.endtime}">
+                        <h5 th:text="${#dates.format(raceInfo.begaintime,'yyyy-MM-dd')+' -- '+#dates.format(raceInfo.endtime,'yyyy-MM-dd')}">
                             begainTime - endTime
                         </h5>
                     </div>

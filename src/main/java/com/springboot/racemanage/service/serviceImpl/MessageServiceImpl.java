@@ -8,8 +8,10 @@ import java.util.Map;
 
 import com.springboot.racemanage.po.Message;
 import com.springboot.racemanage.dao.MessageDao;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class MessageServiceImpl implements MessageService{
 
     @Resource

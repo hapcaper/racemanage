@@ -6,8 +6,10 @@ import javax.annotation.Resource;
 import java.util.List;
 import com.springboot.racemanage.po.Student;
 import com.springboot.racemanage.dao.StudentDao;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class StudentServiceImpl implements StudentService{
 
     @Resource
@@ -53,5 +55,10 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public List<Student> findByStuStatus(Integer stuStatus) {
         return studentDao.findByStuStatus(1);
+    }
+
+    @Override
+    public String findStuNameByStuStatusAndStuUuid(Integer stuStatus, String stuUuid) {
+        return studentDao.findStuNameByStuStatusAndStuUuid(stuStatus, stuUuid);
     }
 }

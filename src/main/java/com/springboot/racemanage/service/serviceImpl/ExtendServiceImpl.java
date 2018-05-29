@@ -6,8 +6,10 @@ import javax.annotation.Resource;
 import java.util.List;
 import com.springboot.racemanage.po.Extend;
 import com.springboot.racemanage.dao.ExtendDao;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class ExtendServiceImpl implements ExtendService{
 
     @Resource

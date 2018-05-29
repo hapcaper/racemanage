@@ -7,7 +7,7 @@
 <!--<![endif]-->
 <!-- start: HEAD -->
 <head>
-    <title>Clip-One - Responsive Admin Template</title>
+    <title>竞赛管理系统</title>
     <!-- start: MAIN CSS -->
     <div th:replace="student/fragments::common_css">
         <link rel="stylesheet" href="../../static/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -918,11 +918,11 @@
                         <li>
                             <i class="clip-pencil"></i>
                             <a href="#">
-                                Forms
+                                竞赛管理
                             </a>
                         </li>
                         <li class="active">
-                            Form Elements
+                            竞赛列表
                         </li>
                         <li class="search-box">
                             <form class="sidebar-search">
@@ -966,7 +966,10 @@
                         <td th:text="${race.kind}">race.kind</td>
                         <td th:text="${race.raceteacher}">race.teacher</td>
                         <td class="hidden-xs" th:text="${race.proname}">race.proname</td>
-                        <td th:text="${race.status}">race.status</td>
+                        <td >
+                            <span class="label label-green" th:if="${race.progress==1}"> 竞赛已完成</span>
+                            <span class="label label-orange" th:if="${race.progress==0}"> 竞赛进行中</span>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

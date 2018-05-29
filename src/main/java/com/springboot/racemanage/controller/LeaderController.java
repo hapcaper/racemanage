@@ -86,14 +86,14 @@ public class LeaderController {
         Leader leader = leaderService.findByLStatusAndLPasswordAndLNumber(1, password, usernumber);
         if (leader == null) {       //leader不存在
             String errmsg = "账号或密码错误";
-            model.addAttribute("errmsg", errmsg);
+            model.addAttribute("errorMsg", errmsg);
             return "login";
         }
         Term term = termService.findFirstByStatusOrderByTerm(1);
         httpSession.setAttribute("leader", leader);
         httpSession.setAttribute("term", term);
         model.addAttribute("menuSelected1", "index");
-        return "leader/index";
+        return "redirect:/leader/index.do";
     }
 
     @RequestMapping("logout.do")
@@ -104,9 +104,11 @@ public class LeaderController {
     }
 
     @RequestMapping("/index.do")
-    public String index(Model model) {
+    public String index(Model model,HttpSession httpSession) {
         model.addAttribute("menuSelected1", "index");
-
+        Term term = (Term) httpSession.getAttribute("term");
+        List<Race> raceList = raceService.findByStatusAndTerm(1, term.getTerm());
+        model.addAttribute("raceList", raceList);
         return "leader/index";
     }
 
@@ -176,20 +178,18 @@ public class LeaderController {
         return "leader/studentManage";
     }
 
-    //TODO
-    @RequestMapping("/publishAchievement.do")
-    public String publishAchievement() {
-
-
-        return "leader/publishAchievement";
-    }
-
-    //TODO
-    @RequestMapping("/achievementList.do")
-    public String achievementList() {
-
-        return "leader/achievementList";
-    }
+//    @RequestMapping("/publishAchievement.do")
+//    public String publishAchievement() {
+//
+//
+//        return "leader/publishAchievement";
+//    }
+//
+//    @RequestMapping("/achievementList.do")
+//    public String achievementList() {
+//
+//        return "leader/achievementList";
+//    }
 
     @RequestMapping("/toAddRaceInfo.do")
     public String toAddRaceInfo(Model model) {
@@ -266,7 +266,7 @@ public class LeaderController {
     @RequestMapping("/editRaceInfo.do")
     public String editRaceInfo(@RequestParam("id") Integer id,
                                @RequestParam("racename") String racename,
-                               @RequestParam("raceKind") String raceKind,
+                               @RequestParam("kind") String raceKind,
                                @RequestParam("timeRange") String timeRange,
                                @RequestParam("description") String description) throws ParseException {
         Raceinfo raceinfo = raceinfoService.findById(id);
@@ -350,4 +350,18 @@ public class LeaderController {
         return "leader/projectDetail";
     }
 
+    @RequestMapping("/finishTerm.do")
+    public String finishTerm(HttpSession httpSession) {
+        Term oldTerm = (Term) httpSession.getAttribute("term");
+        Term newTerm = new Term();
+        newTerm.setStatus(1);
+        newTerm.setTerm(oldTerm.getTerm()+1);
+        newTerm.setUuid(UUID.randomUUID().toString());
+
+        termService.insertSelective(newTerm);
+        httpSession.removeAttribute("term");
+        httpSession.setAttribute("term", newTerm);
+
+        return "redirect:/leader/index.do";
+    }
 }

@@ -8,8 +8,10 @@ import java.util.Map;
 
 import com.springboot.racemanage.po.Log;
 import com.springboot.racemanage.dao.LogDao;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class LogServiceImpl implements LogService{
 
     @Resource

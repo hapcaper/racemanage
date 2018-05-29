@@ -7,7 +7,7 @@
 <!--<![endif]-->
 <!-- start: HEAD -->
 <head>
-    <title>Clip-One - Responsive Admin Template</title>
+    <title>竞赛管理系统</title>
     <!-- start: MAIN CSS -->
     <div th:replace="leader/fragments::common_css">
         <link rel="stylesheet" href="../../static/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -360,7 +360,7 @@
                                         </p>
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <a href="projectList.html">
+                                                <a href="projectList.html" th:href="@{/leader/projectList.di}">
                                                     <button class="btn btn-icon btn-block">
                                                         <i class="clip-clip"></i>
                                                         项目总数 <span class="badge badge-info" th:text="${proNum}"> 4 </span>
@@ -368,7 +368,7 @@
                                                 </a>
                                             </div>
                                             <div class="col-sm-3">
-                                                <a href="projectList.html">
+                                                <a href="teacherManage.html" th:href="@{/leader/teacherManage.do}">
                                                     <button class="btn btn-icon btn-block">
                                                         <i class="clip-clip"></i>
                                                         教师总数 <span class="badge badge-info" th:text="${teNum}"> 1 </span>
@@ -376,7 +376,7 @@
                                                 </a>
                                             </div>
                                             <div class="col-sm-3">
-                                                <a href="projectList.html">
+                                                <a href="studentManage.html" th:href="@{/leader/studentManage.do}">
                                                     <button class="btn btn-icon btn-block">
                                                         <i class="clip-clip"></i>
                                                         学生总数 <span class="badge badge-info" th:text="${stuNum}"> 2 </span>

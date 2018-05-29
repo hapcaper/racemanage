@@ -31,7 +31,7 @@ import java.util.logging.Logger;
 @Transactional
 public class StudentController {
 
-    public static final String MENU_SELECTED_1 = "menuSelected1";
+    private static final String MENU_SELECTED_1 = "menuSelected1";
     @Autowired
     TermService termService;
 
@@ -73,14 +73,13 @@ public class StudentController {
                         @RequestParam("password") String password) {
         model.addAttribute(MENU_SELECTED_1, "index");
         Student student = studentService.findFirstByStuNumberAndStuPasswordAndStuStatus(stunumber, password, 1);
-        List<Teamer> teamerList = teamerService.findByStuUuid(student.getStuUuid());
-        System.out.println(teamerList);
         if (student != null) {
+            List<Teamer> teamerList = teamerService.findByStuUuid(student.getStuUuid());
             Term term = termService.findFirstByStatusOrderByTerm(1);
             httpSession.setAttribute("term", term);
             httpSession.setAttribute("student", student);
             httpSession.setAttribute("teamerList", teamerList);
-            return "student/index";
+            return "redirect:/student/index.do";
         } else {
             model.addAttribute("errorMsg", "学号或密码错误!!");
             return "login";
@@ -96,9 +95,11 @@ public class StudentController {
     }
 
     @RequestMapping("/index.do")
-    public String index(Model model) {
+    public String index(Model model,HttpSession httpSession) {
+        Term term = (Term) httpSession.getAttribute("term");
         model.addAttribute("menuSelected1", "index");
-
+        List<Raceinfo> raceinfoList = raceinfoService.findByStatusAndTerm(1, term.getTerm());
+        model.addAttribute("raceinfoList", raceinfoList);
         return "student/index";
     }
 
@@ -155,7 +156,6 @@ public class StudentController {
         model.addAttribute("updateMsg", updateMsg);
         model.addAttribute("passwdMsg", passwdMsg);
 
-        System.out.println(student + "--------------------");
 
         return "student/profile";
 
@@ -197,7 +197,7 @@ public class StudentController {
         StringBuffer docName = new StringBuffer(UUID.randomUUID().toString());
         docName.append("_" + document.getOriginalFilename());
 
-        StringBuffer docPath = new StringBuffer("src\\main\\resources\\templates\\uploadFiles\\projectDoc\\p");
+        StringBuffer docPath = new StringBuffer("src/main/resources/templates/uploadFiles/projectDoc/p");
         docPath.append(docName.toString());
 
         BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(docPath.toString())));
@@ -415,8 +415,6 @@ public class StudentController {
         Raceinfo raceinfo = raceinfoService.findFirstByUuid(raceInfoUUID);
         List<Project> projectList = projectService.getProjectForRaceinfoDetail(student.getStuUuid(), raceInfoUUID);
 
-        Logger.getGlobal().log(Level.WARNING, raceinfo.toString());
-        Logger.getGlobal().log(Level.WARNING, projectList.toString());
         model.addAttribute("projectList", projectList);
 
         model.addAttribute("raceInfo", raceinfo);
@@ -630,11 +628,9 @@ public class StudentController {
         message.setTitle("系统提示");
         message.setToUuid(invite.getFromUuid());
         message.setStatus(1);
-        System.out.println("+++++++" + message);
 
         //修改邀请信息状态
         invite.setStatus(3);
-        System.out.println("~~~~~~" + invite);
 
         inviteService.update(invite);
         messageService.insertSelective(message);

@@ -29,6 +29,8 @@ public interface StudentDao {
 
     List<Student> findByStuStatus(@Param("stuStatus")Integer stuStatus);
 
+    String findStuNameByStuStatusAndStuUuid(@Param("stuStatus")Integer stuStatus,@Param("stuUuid")String stuUuid);
+
 
 
 }

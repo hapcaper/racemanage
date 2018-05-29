@@ -7,7 +7,7 @@
 <!--<![endif]-->
 <!-- start: HEAD -->
 <head>
-    <title>Clip-One - Responsive Admin Template</title>
+    <title>竞赛管理系统</title>
     <!-- start: MAIN CSS -->
     <div th:replace="leader/fragments::common_css">
         <link rel="stylesheet" href="../../static/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -241,14 +241,60 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>首页 <small>暂时不知道放什么</small></h1>
+                        <h1>首页 <small>当期竟赛</small><small th:text="${'(第'+session.term.term+'期)'}"></small></h1>
+
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
-            新闻？竞赛成果信息？其他？
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-10">
+                    <a data-toggle="modal" class="btn btn-beige" role="button" href="#myModal3">
+                        结束当前赛事期
+                    </a>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover" id="sample-table-1">
+                    <thead>
+                    <tr>
+                        <th class="center">#</th>
+                        <th>赛事名称</th>
+                        <th class="hidden-xs">赛事类型</th>
+                        <th>指导教师</th>
+                        <th class="hidden-xs">参赛项目</th>
+                        <th>赛事结果</th>
+                        <th>赛事进行状态</th>
+                    </tr>
+                    </thead>
+                    <tbody th:each="race:${raceList}">
+                    <tr>
+                        <td class="center">#</td>
+                        <td class="hidden-xs">
+                            <a href="raceDetail.html" th:href="${'/leader/raceDetail.do?raceUUID='+race.uuid}" rel="nofollow" th:text="${race.racename}">
+                                race.racename
+                            </a>
+                        </td>
+                        <td th:text="${race.kind}">race.kind</td>
+                        <td th:text="${race.raceteacher}">race.teacher</td>
+                        <td class="hidden-xs" th:text="${race.proname}">race.proname</td>
+                        <td>
+                            <span th:if="${race.result==1}">一等奖</span>
+                            <span th:if="${race.result==2}">二等奖</span>
+                            <span th:if="${race.result==3}">三等奖</span>
+                            <span th:if="${race.result==4}">其他奖项</span>
+                        </td>
+                        <td>
+                            <span th:if="${race.progress==0}" class="label label-warning"> 赛事进行中</span>
+                            <span th:if="${race.progress==1}" class="label label-success"> 赛事已完成</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <!-- end: PAGE CONTENT-->
         </div>
     </div>
@@ -316,6 +362,32 @@
 
 </div>
 
+
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title">警告</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    该操作将会结束当前的赛事期，以往的一切赛事和竞赛将会记入历史，新的赛事期将会开始（不可回退）
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button aria-hidden="true" data-dismiss="modal" class="btn btn-default">
+                    取消
+                </button>
+                <a th:href="@{/leader/finishTerm.do}" class="btn btn-default">
+                    结束当前期
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 <!-- end: BODY -->
 </html>
