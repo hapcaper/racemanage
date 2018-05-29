@@ -178,20 +178,18 @@ public class LeaderController {
         return "leader/studentManage";
     }
 
-    //TODO
-    @RequestMapping("/publishAchievement.do")
-    public String publishAchievement() {
-
-
-        return "leader/publishAchievement";
-    }
-
-    //TODO
-    @RequestMapping("/achievementList.do")
-    public String achievementList() {
-
-        return "leader/achievementList";
-    }
+//    @RequestMapping("/publishAchievement.do")
+//    public String publishAchievement() {
+//
+//
+//        return "leader/publishAchievement";
+//    }
+//
+//    @RequestMapping("/achievementList.do")
+//    public String achievementList() {
+//
+//        return "leader/achievementList";
+//    }
 
     @RequestMapping("/toAddRaceInfo.do")
     public String toAddRaceInfo(Model model) {
@@ -352,4 +350,18 @@ public class LeaderController {
         return "leader/projectDetail";
     }
 
+    @RequestMapping("/finishTerm.do")
+    public String finishTerm(HttpSession httpSession) {
+        Term oldTerm = (Term) httpSession.getAttribute("term");
+        Term newTerm = new Term();
+        newTerm.setStatus(1);
+        newTerm.setTerm(oldTerm.getTerm()+1);
+        newTerm.setUuid(UUID.randomUUID().toString());
+
+        termService.insertSelective(newTerm);
+        httpSession.removeAttribute("term");
+        httpSession.setAttribute("term", newTerm);
+
+        return "redirect:/leader/index.do";
+    }
 }

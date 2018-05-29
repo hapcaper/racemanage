@@ -241,13 +241,21 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>首页 <small>当期的竞赛</small></h1>
+                        <h1>首页 <small>当期竟赛</small><small th:text="${'(第'+session.term.term+'期)'}"></small></h1>
+
                     </div>
                     <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
             </div>
             <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-10">
+                    <a data-toggle="modal" class="btn btn-beige" role="button" href="#myModal3">
+                        结束当前赛事期
+                    </a>
+                </div>
+            </div>
             <div class="table-responsive">
                 <table class="table table-hover" id="sample-table-1">
                     <thead>
@@ -354,6 +362,32 @@
 
 </div>
 
+
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title">警告</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    该操作将会结束当前的赛事期，以往的一切赛事和竞赛将会记入历史，新的赛事期将会开始（不可回退）
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button aria-hidden="true" data-dismiss="modal" class="btn btn-default">
+                    取消
+                </button>
+                <a th:href="@{/leader/finishTerm.do}" class="btn btn-default">
+                    结束当前期
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 <!-- end: BODY -->
 </html>

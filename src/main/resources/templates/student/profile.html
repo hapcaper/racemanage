@@ -1054,7 +1054,7 @@
                                         </p>
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <a href="projectList.html">
+                                                <a href="projectList.html" th:href="@{/student/projectList1.do}">
                                                 <button class="btn btn-icon btn-block">
                                                     <i class="clip-clip"></i>
                                                     项目 <span class="badge badge-info" th:text="${proNum}"> 4 </span>
@@ -1063,27 +1063,22 @@
                                                 </a>
                                             </div>
                                             <div class="col-sm-3">
-                                                <button class="btn btn-icon btn-block pulsate"
-                                                        style="outline: 0px; box-shadow: rgba(196, 60, 53, 0) 0px 0px 13px; outline-offset: 20px;">
-                                                    <i class="clip-bubble-2"></i>
-                                                    消息 <span class="badge badge-info" th:text="${msgNum}"> 23 </span>
-                                                </button>
+                                                <a href="" th:href="@{/student/msgCenter.do}">
+                                                    <button class="btn btn-icon btn-block pulsate"
+                                                            style="outline: 0px; box-shadow: rgba(196, 60, 53, 0) 0px 0px 13px; outline-offset: 20px;">
+                                                        <i class="clip-bubble-2"></i>
+                                                        消息 <span class="badge badge-info" th:text="${msgNum}"> 23 </span>
+                                                    </button>
+                                                </a>
                                             </div>
                                             <div class="col-sm-3">
-                                                <a href="teamInterview.html">
+                                                <a href="teamInterview.html" th:href="@{/student/inviteList.do}">
                                                     <button class="btn btn-icon btn-block">
 
                                                         <i class="clip-calendar"></i>
                                                         邀请 <span class="badge badge-info" th:text="${inviteNum}"> 5 </span>
                                                     </button>
                                                 </a>
-
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <button class="btn btn-icon btn-block">
-                                                    <i class="clip-list-3"></i>
-                                                    提示 <span class="badge badge-info"> 9 </span>
-                                                </button>
                                             </div>
                                         </div>
                                         <div class="panel panel-white">

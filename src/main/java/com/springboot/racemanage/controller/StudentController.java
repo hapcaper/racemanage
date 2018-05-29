@@ -415,8 +415,6 @@ public class StudentController {
         Raceinfo raceinfo = raceinfoService.findFirstByUuid(raceInfoUUID);
         List<Project> projectList = projectService.getProjectForRaceinfoDetail(student.getStuUuid(), raceInfoUUID);
 
-        Logger.getGlobal().log(Level.WARNING, raceinfo.toString());
-        Logger.getGlobal().log(Level.WARNING, projectList.toString());
         model.addAttribute("projectList", projectList);
 
         model.addAttribute("raceInfo", raceinfo);

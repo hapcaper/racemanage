@@ -256,6 +256,22 @@ public class StudentControllerRestful {
         }
     }
 
+    @RequestMapping("/getCanApplyProject")
+    public ResultDO getCanApplyProject(@RequestParam("stuUUID")String stuUUID,
+                                       @RequestParam("raceInfoUUID")String raceInfoUUID) {
+        List<Project> projectList = projectService.getProjectForRaceinfoDetail(stuUUID, raceInfoUUID);
+        ResultDO resultDO = new ResultDO();
+        if (projectList != null) {
+            resultDO.setCode(1);
+            resultDO.setMsg("请求成功");
+            resultDO.setResult(projectList);
+        } else {
+            resultDO.setCode(0);
+            resultDO.setMsg("请求失败");
+        }
+        return resultDO;
+    }
+
 
 
 
