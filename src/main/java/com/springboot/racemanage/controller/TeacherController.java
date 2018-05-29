@@ -4,6 +4,11 @@ package com.springboot.racemanage.controller;
 import com.springboot.racemanage.po.*;
 import com.springboot.racemanage.service.*;
 import com.springboot.racemanage.util.UploadFile;
+import jxl.Workbook;
+import jxl.write.Label;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -239,6 +246,51 @@ public class TeacherController {
         List<Race> achivList = raceService.findByStatusAndTUuidAndProgress(1, teacher.gettUuid(), 1);
         model.addAttribute("achivList", achivList);
         return "teacher/achievementList";
+    }
+    @RequestMapping("/achievementToExcel.do")
+    public String achievementToExcel(HttpServletResponse response, HttpSession httpSession) throws IOException, WriteException {
+        Teacher teacher = (Teacher) httpSession.getAttribute("teacher");
+        List<Race> achivList = raceService.findByStatusAndTUuidAndProgress(1, teacher.gettUuid(), 1);
+        response.setCharacterEncoding("utf-8");
+        response.setHeader("Content-disposition","attachment;filename=achievement.xls");
+        response.setContentType("application/msexcel;");
+        OutputStream os = response.getOutputStream();
+        WritableWorkbook workbook = Workbook.createWorkbook(os);
+        WritableSheet sheet = workbook.createSheet("学科竞赛所获成果报表",0);
+        Integer xnum = 1;
+        sheet.addCell(new Label(0,0,"序号"));
+        sheet.addCell(new Label(1,0,"赛事名称"));
+        sheet.addCell(new Label(2,0,"赛事类型"));
+        sheet.addCell(new Label(3,0,"赛事期数"));
+        sheet.addCell(new Label(4,0,"参赛项目"));
+        sheet.addCell(new Label(5,0,"指导教师"));
+        sheet.addCell(new Label(6,0,"所获奖项"));
+        for(Race race : achivList){
+            if (xnum < achivList.size()+1){
+                sheet.addCell(new Label(0,xnum,race.getId().toString()));
+                sheet.addCell(new Label(1,xnum,race.getRacename()));
+                sheet.addCell(new Label(2,xnum,race.getKind()));
+                sheet.addCell(new Label(3,xnum,race.getTerm().toString()));
+                sheet.addCell(new Label(4,xnum,race.getProname()));
+                sheet.addCell(new Label(5,xnum,race.getRaceteacher()));
+                if (race.getResult()==0){
+                    sheet.addCell(new Label(6,xnum,"无奖项"));
+                }else if (race.getResult()==1){
+                    sheet.addCell(new Label(6,xnum,"一等奖"));
+                }else if (race.getResult()==2){
+                    sheet.addCell(new Label(6,xnum,"二等奖"));
+                }else if (race.getResult()==3){
+                    sheet.addCell(new Label(6,xnum,"三等奖"));
+                }else{
+                    sheet.addCell(new Label(6,xnum,"其他奖项"));
+                }
+            }
+            xnum++;
+        }
+        workbook.write();
+        workbook.close();
+        os.close();
+        return null;
     }
 
     @RequestMapping("/achievementDetail.do")
