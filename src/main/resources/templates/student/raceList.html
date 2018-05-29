@@ -966,7 +966,10 @@
                         <td th:text="${race.kind}">race.kind</td>
                         <td th:text="${race.raceteacher}">race.teacher</td>
                         <td class="hidden-xs" th:text="${race.proname}">race.proname</td>
-                        <td th:text="${race.status}">race.status</td>
+                        <td >
+                            <span class="label label-green" th:if="${race.progress==1}"> 竞赛已完成</span>
+                            <span class="label label-orange" th:if="${race.progress==0}"> 竞赛进行中</span>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

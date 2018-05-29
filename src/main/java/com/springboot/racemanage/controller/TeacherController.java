@@ -72,7 +72,7 @@ public class TeacherController {
         Teacher teacher = teacherService.login(1, tNumber, password);
 
         if (teacher == null) {
-            model.addAttribute("errMsg", "工号或密码错误");
+            model.addAttribute("errorMsg", "工号或密码错误");
             return "login";
         } else {
             Term term = termService.findFirstByStatusOrderByTerm(1);

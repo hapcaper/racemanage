@@ -951,17 +951,13 @@
                         <div class="timeline_element bricky">
                             <div class="timeline_title">
                                 <span class="timeline_label" th:text="${'solved by '+logMap.get('stuname')}">solved by LZH {task.solver}</span>
-                                <span class="timeline_date" th:text="${logMap.get('endtime')}">task.endtime</span>
+                                <span class="timeline_date" th:text="${#dates.format(logMap.get('endtime'),'yyyy-MM-dd')}">task.endtime</span>
                             </div>
                             <div class="content">
                                 <b th:text="${logMap.get('tasktitle')}"> task.title</b>
                                 <p th:text="${logMap.get('description')}">task.description</p>
                             </div>
-                            <div class="readmore">
-                                <a href="#" class="btn btn-warning">
-                                    Read More <i class="fa fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
+
                         </div>
                     </li>
                     <li th:remove="all">

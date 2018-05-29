@@ -953,9 +953,13 @@
                             <p th:text="${raceInfo.racename}">racename</p></a>
                         </td>
                         <td th:text="${raceInfo.kind}">kind</td>
-                        <td th:text="${raceInfo.begaintime}">starttime</td>
-                        <td class="hidden-xs" th:text="${raceInfo.endtime}">endtime</td>
-                        <td th:text="${raceInfo.status}">status</td>
+                        <td th:text="${#dates.format(raceInfo.begaintime,'yyyy-MM-dd')}">starttime</td>
+                        <td class="hidden-xs" th:text="${#dates.format(raceInfo.endtime,'yyyy-MM-dd')}">endtime</td>
+                        <td >
+                            <span class="label label-warning" th:if="${raceInfo.begaintime > #dates.createNow()}"> 赛事未开始</span>
+                            <span class="label label-success" th:if="${raceInfo.begaintime<#dates.createNow() && raceInfo.endtime>#dates.createNow()}"> 赛事报名中</span>
+                            <span class="label label-inverse" th:if="${raceInfo.endtime<#dates.createNow()}"> 赛事已截止</span>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

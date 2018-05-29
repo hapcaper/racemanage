@@ -86,7 +86,7 @@ public class LeaderController {
         Leader leader = leaderService.findByLStatusAndLPasswordAndLNumber(1, password, usernumber);
         if (leader == null) {       //leader不存在
             String errmsg = "账号或密码错误";
-            model.addAttribute("errmsg", errmsg);
+            model.addAttribute("errorMsg", errmsg);
             return "login";
         }
         Term term = termService.findFirstByStatusOrderByTerm(1);
@@ -268,7 +268,7 @@ public class LeaderController {
     @RequestMapping("/editRaceInfo.do")
     public String editRaceInfo(@RequestParam("id") Integer id,
                                @RequestParam("racename") String racename,
-                               @RequestParam("raceKind") String raceKind,
+                               @RequestParam("kind") String raceKind,
                                @RequestParam("timeRange") String timeRange,
                                @RequestParam("description") String description) throws ParseException {
         Raceinfo raceinfo = raceinfoService.findById(id);

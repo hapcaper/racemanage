@@ -968,7 +968,7 @@
                                     开始时间
                                 </label>
                                 <div class="col-sm-9">
-                                    <h5 th:text="${raceinfo.begaintime}">raceinfo.begintime</h5>
+                                    <h5 th:text="${#dates.format(raceinfo.begaintime,'yyyy-MM-dd')}">raceinfo.begintime</h5>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -976,7 +976,7 @@
                                     结束时间
                                 </label>
                                 <div class="col-sm-9">
-                                    <h5 th:text="${raceinfo.endtime}">raceinfo.endtime</h5>
+                                    <h5 th:text="${#dates.format(raceinfo.endtime,'yyyy-MM-dd')}">raceinfo.endtime</h5>
                                 </div>
                             </div>
                             <div class="form-group">

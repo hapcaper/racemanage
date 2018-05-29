@@ -8,8 +8,10 @@ import java.util.Map;
 
 import com.springboot.racemanage.po.Task;
 import com.springboot.racemanage.dao.TaskDao;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class TaskServiceImpl implements TaskService{
 
     @Resource

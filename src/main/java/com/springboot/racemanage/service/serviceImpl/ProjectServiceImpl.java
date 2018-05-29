@@ -6,8 +6,10 @@ import javax.annotation.Resource;
 import java.util.List;
 import com.springboot.racemanage.po.Project;
 import com.springboot.racemanage.dao.ProjectDao;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class ProjectServiceImpl implements ProjectService{
 
     @Resource

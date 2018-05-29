@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.IntStream;
 
 @RestController
@@ -221,6 +218,73 @@ public class StudentControllerRestful {
         resultDO.setCode(1);
         resultDO.setMsg("请求成功");
         return resultDO;
+    }
+
+    @RequestMapping("/getStuNameByUUID")
+    public ResultDO getStuNameByUUID(@RequestParam("stuUUID")String stuUUID) {
+        String stuName = studentService.findStuNameByStuStatusAndStuUuid(1, stuUUID);
+        ResultDO resultDO = new ResultDO();
+        resultDO.setResult(stuName);
+        resultDO.setMsg("查询成功");
+        resultDO.setCode(1);
+        return resultDO;
+    }
+
+
+    @RequestMapping("/applyRace")
+    public ResultDO applyRace(@RequestParam("projectUUID")String projectUUID,
+                              @RequestParam("raceInfoUUID")String raceInfoUUID) {
+        Project project = projectService.findFirstByUuid(projectUUID);
+        Raceinfo raceinfo = raceinfoService.findFirstByUuid(raceInfoUUID);
+
+        ResultDO resultDO = new ResultDO();
+
+        Term term = termService.findFirstByStatusOrderByTerm(1);
+        Race race = getRace(raceInfoUUID, project, raceinfo, term);
+
+        int sqlCode = raceService.insertSelective(race);
+        if (sqlCode == 1) {
+            resultDO.setMsg("报名成功");
+            resultDO.setCode(1);
+            resultDO.setResult("报名成功");
+            return resultDO;
+        } else {
+            resultDO.setCode(0);
+            resultDO.setMsg("报名失败");
+            resultDO.setResult("报名失败");
+            return resultDO;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private Race getRace(@RequestParam("raceInfoUUID") String raceInfoUUID, Project project, Raceinfo raceinfo, Term term) {
+        Race race = new Race();
+        race.setDescription(raceinfo.getDescription());
+        race.setKind(raceinfo.getKind());
+        race.setProname(project.getName());
+        race.setProUuid(project.getUuid());
+        race.setRaceinfoUuid(raceInfoUUID);
+        race.setRacename(raceinfo.getRacename());
+        race.setRaceteacher(project.getTname());
+        race.setStatus(1);
+        race.setTerm(term.getTerm());
+        race.settUuid(project.gettUuid());
+        race.setUuid(UUID.randomUUID().toString());
+        return race;
     }
 
 }

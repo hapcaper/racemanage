@@ -6,8 +6,10 @@ import javax.annotation.Resource;
 import java.util.List;
 import com.springboot.racemanage.po.Race;
 import com.springboot.racemanage.dao.RaceDao;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class RaceServiceImpl implements RaceService{
 
     @Resource

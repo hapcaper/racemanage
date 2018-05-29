@@ -20,5 +20,6 @@ public interface StudentService {
 
     List<Student> findByStuStatus(Integer stuStatus);
 
+    String findStuNameByStuStatusAndStuUuid(Integer stuStatus,String stuUuid);
 
 }
