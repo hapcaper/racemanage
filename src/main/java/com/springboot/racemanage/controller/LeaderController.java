@@ -132,24 +132,16 @@ public class LeaderController {
                                 @Nullable @RequestParam("phone") String phone,
                                 @Nullable @RequestParam("oldPasswd") String oldPasswd,
                                 @Nullable @RequestParam("newPasswd") String newPasswd,
-                                @Nullable @RequestParam("photo") MultipartFile photo) {
+                                @Nullable @RequestParam("photo") MultipartFile photo) throws IOException {
         Leader leader = (Leader) httpSession.getAttribute("leader");
         leader.setlEmail(email);
         leader.setlPhone(phone);
         if (oldPasswd.equals(leader.getlPassword())) {
             leader.setlPassword(newPasswd);
         }
-        String upload = null;
-        if (!phone.isEmpty()) {
-            try {
-                upload = UploadFile.upload(photo, "src\\main\\resources\\templates\\uploadFiles\\userPhoto\\");
-            } catch (IOException e) {
-                System.out.println("文件上传失败");
-                model.addAttribute("uploadfail", "图片上传失败");
-                e.printStackTrace();
-            }
+        if (!phone.isEmpty()&&photo!=null) {
+            leader.setlPhoto(UploadFile.uploadFile(photo,photo.getOriginalFilename(),"photo/").getPath());
         }
-        leader.setlPhoto(upload);
         leaderService.update(leader);
         httpSession.setAttribute("leader", leader);
 
@@ -205,7 +197,7 @@ public class LeaderController {
                               @RequestParam(value = "kind",required = false,defaultValue = "")String kind,
                               @RequestParam(value = "timeRange",required = false,defaultValue = "")String timeRange,
                               @RequestParam(value = "file",required = false)MultipartFile file,
-                              @RequestParam(value = "description",required = false,defaultValue = "")String description) throws ParseException {
+                              @RequestParam(value = "description",required = false,defaultValue = "")String description) throws ParseException, IOException {
 
         Term term = (Term) httpSession.getAttribute("term");
         Raceinfo raceinfo = new Raceinfo();
@@ -221,15 +213,7 @@ public class LeaderController {
         raceinfo.setEndtime(dates.get("endDate"));
 
         if (file != null) {
-            String fileUrl = null;
-            try {
-                fileUrl = UploadFile.upload(file,"src/main/resources/templates/uploadFiles/raceInfoFile/");
-
-            } catch (IOException e) {
-                System.out.println("赛事文件上传失败");
-                e.printStackTrace();
-            }
-            raceinfo.setFile1(fileUrl);
+            raceinfo.setFile1(UploadFile.uploadFile(file,file.getOriginalFilename(),"file/").getPath());
         }
 
         System.out.println(raceinfo);

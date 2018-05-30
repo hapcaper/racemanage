@@ -1,5 +1,6 @@
 package com.springboot.racemanage.util;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
@@ -49,6 +50,17 @@ public class UploadFile {
         System.out.println(filePath2);
 
         return filePath2.toString();
+    }
+    public static File uploadFile(MultipartFile doc, String fileName, String dir) throws IOException {
+        File file = new File(dir+fileName);
+        if (!new File(file.getParent()).exists()) {
+            file.getParentFile().mkdirs();
+        }
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+        doc.transferTo(file);
+        return file;
     }
 
 }

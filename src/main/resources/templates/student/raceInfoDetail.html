@@ -1009,16 +1009,16 @@
                     <input hidden="hidden" type="text" name="raceInfoUUID" th:value="${raceInfo.uuid}"/>
                     <div class="form-group"></div>
                     <div class="form-group">
-                        <div class="col-sm-4"></div>
+                        <div class="col-sm-6"></div>
                         <div class="col-sm-2" th:if="${raceInfo.begaintime<#dates.createNow() && raceInfo.endtime>#dates.createNow()}">
                             <button class="btn btn-blue next-step btn-block">
                                 报名
                             </button>
                         </div>
                         <div class="col-sm-2">
-                            <button  class="btn btn-blue next-step btn-block">
+                            <a href="javascript:history.go(-1)"  class="btn btn-blue ">
                                 返回
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </form>

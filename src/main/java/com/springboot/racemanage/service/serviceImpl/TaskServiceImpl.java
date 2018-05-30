@@ -78,4 +78,14 @@ public class TaskServiceImpl implements TaskService{
         return taskDao.findFirstByUuid(uuid);
     }
 
+    @Override
+    public Integer countByStatusAndProgressAndToUuid(Integer status, Integer progress, String toUuid) {
+        return taskDao.countByStatusAndProgressAndToUuid(status, progress, toUuid);
+    }
+
+    @Override
+    public Integer countByStatusNotAndProgressAndToUuid(Integer notStatus, Integer progress, String toUuid) {
+        return taskDao.countByStatusNotAndProgressAndToUuid(notStatus, progress, toUuid);
+    }
+
 }

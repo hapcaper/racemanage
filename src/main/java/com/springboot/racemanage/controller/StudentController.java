@@ -2,7 +2,7 @@ package com.springboot.racemanage.controller;
 
 import com.springboot.racemanage.po.*;
 import com.springboot.racemanage.service.*;
-import com.springboot.racemanage.service.serviceImpl.RaceServiceImpl;
+import com.springboot.racemanage.util.UploadFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
@@ -14,13 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * 学生端的控制器
@@ -123,7 +119,7 @@ public class StudentController {
                                 @Nullable @RequestParam("phone") String phone,
                                 @Nullable @RequestParam("oldPasswd") String oldPasswd,
                                 @Nullable @RequestParam("newPasswd") String newPasswd,
-                                @Nullable @RequestParam("photo") MultipartFile photo) {
+                                @Nullable @RequestParam("photo") MultipartFile photo) throws IOException {
         model.addAttribute("menuSelected1", "profile");
         Student student = (Student) httpSession.getAttribute("student");
         if (phone.length() != 0) {
@@ -142,6 +138,10 @@ public class StudentController {
         if (phone.length() != 0) {
             student.setStuPhone(phone);
         }
+
+        String photoName = UUID.randomUUID().toString() + photo.getOriginalFilename();
+        File file = UploadFile.uploadFile(photo, photoName, "photo/");
+        student.setPhoto(file.getPath());
         int a = studentService.update(student);
         String updateMsg = "更新成功";
         if (a == 0) {
@@ -193,22 +193,23 @@ public class StudentController {
         project.settUuid(teUuid);
         project.setHeadman(student.getStuUuid());
 
-        //得到文件名并拼接UUID ， 防止文件重名
-        StringBuffer docName = new StringBuffer(UUID.randomUUID().toString());
-        docName.append("_" + document.getOriginalFilename());
-
-        StringBuffer docPath = new StringBuffer("src/main/resources/templates/uploadFiles/projectDoc/p");
-        docPath.append(docName.toString());
-
-        BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(docPath.toString())));
-        out.write(document.getBytes());
-        out.flush();
-        out.close();
-
-        StringBuffer docPath2 = docPath;
-        docPath2.replace(0, 19, "");
-        System.out.println(docPath2);
-        project.setDocument(docPath2.toString());
+//        //得到文件名并拼接UUID ， 防止文件重名
+//        StringBuffer docName = new StringBuffer(UUID.randomUUID().toString());
+//        docName.append("_" + document.getOriginalFilename());
+//
+//        StringBuffer docPath = new StringBuffer("src/main/resources/templates/uploadFiles/projectDoc/p");
+//        docPath.append(docName.toString());
+//
+//        BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(docPath.toString())));
+//        out.write(document.getBytes());
+//        out.flush();
+//        out.close();
+//
+//        StringBuffer docPath2 = docPath;
+//        docPath2.replace(0, 19, "");
+//        System.out.println(docPath2);
+        File file = UploadFile.uploadFile(document, document.getOriginalFilename(), "doc/");
+        project.setDocument(file.getPath());
 
         Teamer teamer = new Teamer();
         teamer.setDuty("队长");
@@ -308,6 +309,14 @@ public class StudentController {
         List<Task> allTaskList = taskService.findByProUuidAndStatusNot(proUUID,0);
         List<Teamer> proTeamerList = teamerService.findByStatusAndProUuid(1, proUUID);
 
+        Integer pending = taskService.countByStatusNotAndToUuidAndProgress(0, myTeamer.getUuid(), 2);
+        Integer completed = taskService.countByStatusNotAndToUuidAndProgress(0, myTeamer.getUuid(), 1);
+        Integer review = taskService.countByStatusNotAndToUuidAndProgress(0, myTeamer.getUuid(), 3);
+        //echarts pie图的数据
+        model.addAttribute("pending", pending)
+                .addAttribute("completed", completed)
+                .addAttribute("review", review);
+        //
         model.addAttribute("myTeamer", myTeamer);
         model.addAttribute("project", project);
         model.addAttribute("myTaskList", myTaskList);
@@ -337,19 +346,8 @@ public class StudentController {
         solution.setContent(content);
 
 
-//        StringBuffer file1Name = new StringBuffer(UUID.randomUUID().toString());
-//        file1Name.append("_" + file1.getOriginalFilename());
-//        StringBuffer file1Path = new StringBuffer("src/main/resources/templates/uploadFiles/solutionFiles/");
-//        file1Path.append(file1Name.toString());
-//        BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(file1Path.toString())));
-//        out.write(file1.getBytes());
-//        out.flush();
-//        out.close();
-//
-//        //更改数据库存储文件的路径
-//        file1Path.replace(0, 19, "");
-//
-//        solution.setFile1(file1Path.toString());
+        File file = UploadFile.uploadFile(file1, file1.getOriginalFilename(), "doc/");
+        solution.setFile1(file.getPath());
         solution.setResult(3);
         solution.setStatus(1);
         solution.setStuUuid(student.getStuUuid());
@@ -363,20 +361,6 @@ public class StudentController {
         //主要是为了得到project的UUID  以后有机会改为sql查询
         Teamer teamer = teamerService.findFirstByUuid(t.getToUuid());
         String proUUID = teamer.getProUuid();
-
-
-//        model.addAttribute("MENU_SELECTED_", "projectManage");
-//        Project project = projectService.findFirstByUuid(proUUID);
-//        System.out.println(project);
-//        Teamer myTeamer = teamerService.findFirstByStatusAndStuUuidAndProUuid(1, student.getStuUuid(), proUUID);
-//        List<Task> myTaskList = taskService.findByToUuidAndStatusNot(myTeamer.getUuid(), 0);
-//        List<Teamer> proTeamerList = teamerService.findByStatusAndProUuid(1, proUUID);
-//
-//        model.addAttribute("myTeamer", myTeamer);
-//        model.addAttribute("project", project);
-//        model.addAttribute("myTaskList", myTaskList);
-//        model.addAttribute("proTeamerListt", proTeamerList);
-//        return "student/projectDetail";
 
         return "redirect:/student/projectDetail.do?proUUID=" + proUUID;
     }
@@ -427,7 +411,6 @@ public class StudentController {
         Student student = (Student) httpSession.getAttribute("student");
         List<Message> messageList = messageService.findByToUuidAndStatus(student.getStuUuid(), 1);
         List<Map<String, String>> mapList = messageService.getMsgWithStuName(student.getStuUuid());
-        System.out.println("_____" + mapList.size());
         model.addAttribute("msgList", messageList);
         model.addAttribute("mapList", mapList);
 
@@ -505,64 +488,14 @@ public class StudentController {
 
         //TODO 图片上传成了 页面url显示不出来
         if (file1 != null && file1.getOriginalFilename().length() > 0) {
-            //添加第一个文件
-            StringBuffer file1Name = new StringBuffer(UUID.randomUUID().toString());
-            file1Name.append("_" + file1.getOriginalFilename());
-            StringBuffer file1Path = new StringBuffer("src\\main\\resources\\templates\\uploadFiles\\projectDoc\\r");
-            file1Path.append(file1Name.toString());
-
-
-            BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(file1Path.toString())));
-            out.write(file1.getBytes());
-            out.flush();
-            out.close();
-
-            //springboot不能使用transferTo(),可能是因为他的tomcat是运行时产生的
-//            file1.transferTo(to);
-            race.setFile1("uploadFiles/raceFiles/r" + file1Name.toString());
-
+            race.setFile1(UploadFile.uploadFile(file1,file1.getOriginalFilename(),"doc/").getPath());
         }
-
-
         if (file2 != null && file2.getOriginalFilename().length() > 0) {
-            //添加第二个文件
-            StringBuffer file2Name = new StringBuffer(UUID.randomUUID().toString());
-            file2Name.append("_" + file2.getOriginalFilename());
-            StringBuffer file2Path = new StringBuffer("src\\main\\resources\\templates\\uploadFiles\\raceFiles\\");
-            file2Path.append(file2Name.toString());
-
-            BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(file2Path.toString())));
-            out.write(file2.getBytes());
-            out.flush();
-            out.close();
-
-//            file2.transferTo(new File((file2Path.toString())));
-            race.setFile2("uploadFiles\\raceFiles\\" + file2Name.toString());
+            race.setFile2(UploadFile.uploadFile(file2,file2.getOriginalFilename(),"dic/").getPath());
         }
-
-
         if (file3 != null && file3.getOriginalFilename().length() > 0) {
-            //添加第三个文件
-            StringBuffer file3Name = new StringBuffer(UUID.randomUUID().toString());
-            file3Name.append("_" + file3.getOriginalFilename());
-            StringBuffer file3Path = new StringBuffer("src\\main\\resources\\templates\\uploadFiles\\raceFiles\\");
-            file3Path.append(file3Name.toString());
-
-            BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(file3Path.toString())));
-            out.write(file3.getBytes());
-            out.flush();
-            out.close();
-
-//            file3.transferTo(new File((file3Path.toString())));
-
-            StringBuffer file3Path2 = file3Path;
-            file3Path2.replace(0, 19, "");
-            System.out.println(file3Path2);
-
-            race.setFile3(file3Path2.toString());
+            race.setFile3(UploadFile.uploadFile(file3,file3.getOriginalFilename(),"doc/").getPath());
         }
-
-        System.out.println(race);
         raceService.update(race);
 
 
@@ -655,7 +588,6 @@ public class StudentController {
 
         Student student = (Student) httpSession.getAttribute("student");
         List<Race> achivList = raceService.getAchivementListByStuUuid(student.getStuUuid());
-        System.out.println("$$$$$$$$$" + achivList);
 
         model.addAttribute("achivList", achivList);
         return "student/achievementList";

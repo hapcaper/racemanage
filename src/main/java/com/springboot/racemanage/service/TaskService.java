@@ -34,7 +34,9 @@ public interface TaskService {
 
     Task findFirstByUuid(String uuid);
 
+    Integer countByStatusAndProgressAndToUuid(Integer status,Integer progress,String toUuid);
 
+    Integer countByStatusNotAndProgressAndToUuid(Integer notStatus,Integer progress,String toUuid);
 
 
 
