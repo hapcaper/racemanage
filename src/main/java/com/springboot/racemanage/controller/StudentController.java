@@ -309,6 +309,14 @@ public class StudentController {
         List<Task> allTaskList = taskService.findByProUuidAndStatusNot(proUUID,0);
         List<Teamer> proTeamerList = teamerService.findByStatusAndProUuid(1, proUUID);
 
+        Integer pending = taskService.countByStatusNotAndToUuidAndProgress(0, myTeamer.getUuid(), 2);
+        Integer completed = taskService.countByStatusNotAndToUuidAndProgress(0, myTeamer.getUuid(), 1);
+        Integer review = taskService.countByStatusNotAndToUuidAndProgress(0, myTeamer.getUuid(), 3);
+        //echarts pie图的数据
+        model.addAttribute("pending", pending)
+                .addAttribute("completed", completed)
+                .addAttribute("review", review);
+        //
         model.addAttribute("myTeamer", myTeamer);
         model.addAttribute("project", project);
         model.addAttribute("myTaskList", myTaskList);

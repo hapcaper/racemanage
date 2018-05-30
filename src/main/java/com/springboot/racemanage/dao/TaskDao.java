@@ -38,6 +38,12 @@ public interface TaskDao {
 
     Task findFirstByUuid(@Param("uuid")String uuid);
 
+    Integer countByProgress(@Param("progress")Integer progress);
+
+    Integer countByStatusAndProgressAndToUuid(@Param("status")Integer status,@Param("progress")Integer progress,@Param("toUuid")String toUuid);
+
+    Integer countByStatusNotAndProgressAndToUuid(@Param("notStatus")Integer notStatus,@Param("progress")Integer progress,@Param("toUuid")String toUuid);
+
 
 
 

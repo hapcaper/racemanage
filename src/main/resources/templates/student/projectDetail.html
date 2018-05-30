@@ -949,11 +949,12 @@
             <div class="row">
                 <div class="col-sm-10">
                     <h3>项目文档:
-                        <small ><a th:href="'/'+${project.document}" href="#">下载</a></small>
+                        <small><a th:href="'/'+${project.document}" href="#">下载</a></small>
                     </h3>
                 </div>
                 <div class="col-sm-2">
-                    <a th:href="${'/student/projectTimeLine.do?projectUUID='+project.uuid}" href="projectTimeLine.html" data-original-title="项目进度日志" data-placement="top" class="btn btn-block tooltips">
+                    <a th:href="${'/student/projectTimeLine.do?projectUUID='+project.uuid}" href="projectTimeLine.html"
+                       data-original-title="项目进度日志" data-placement="top" class="btn btn-block tooltips">
                         项目日志
                     </a>
                 </div>
@@ -996,13 +997,13 @@
                                                 <i class="fa fa-cog"></i> <span class="caret"></span>
                                             </a>
                                             <!--<ul role="menu" class="dropdown-menu pull-right">-->
-                                                <!--<li role="presentation">-->
-                                                    <!--<a role="menuitem" tabindex="-1"-->
-                                                       <!--th:href="${'/student/messageCenter.do?toUUID='+teamer.stuUuid}"-->
-                                                       <!--href="messageCenter.html">-->
-                                                        <!--<i class="fa fa-edit"></i> 发消息-->
-                                                    <!--</a>-->
-                                                <!--</li>-->
+                                            <!--<li role="presentation">-->
+                                            <!--<a role="menuitem" tabindex="-1"-->
+                                            <!--th:href="${'/student/messageCenter.do?toUUID='+teamer.stuUuid}"-->
+                                            <!--href="messageCenter.html">-->
+                                            <!--<i class="fa fa-edit"></i> 发消息-->
+                                            <!--</a>-->
+                                            <!--</li>-->
                                             <!--</ul>-->
                                         </div>
                                     </div>
@@ -1044,8 +1045,9 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane in active" id="panel_tab2_example1" >
-                        <div class="alert alert-block alert-warning fade in" th:each="task:${myTaskList}" th:if="${task.progress==2}">
+                    <div class="tab-pane in active" id="panel_tab2_example1">
+                        <div class="alert alert-block alert-warning fade in" th:each="task:${myTaskList}"
+                             th:if="${task.progress==2}">
                             <h4 class="alert-heading"><i class="fa clip-spinner-2" th:text="${task.title}"></i></h4>
                             <p th:text="${task.description}">
                                 task[0].description
@@ -1054,23 +1056,28 @@
                                 purus sit amet fermentum.
                             </p>
                             <p>
-                                <a th:href="${'/student/toSubmitTask.do?taskUUID='+task.uuid}" href="submitTask.html" class="btn btn-blue">
+                                <a th:href="${'/student/toSubmitTask.do?taskUUID='+task.uuid}" href="submitTask.html"
+                                   class="btn btn-blue">
                                     提交进度
                                 </a>
                             </p>
                         </div>
                     </div>
-                    <div class="tab-pane" id="panel_tab2_example2" >
-                        <div class="alert alert-block alert-success fade in" th:each="task:${myTaskList}" th:if="${task.progress==1}">
-                            <h4 class="alert-heading" th:text="${task.title}"><i class="fa fa-check-circle"></i> task[1].title</h4>
+                    <div class="tab-pane" id="panel_tab2_example2">
+                        <div class="alert alert-block alert-success fade in" th:each="task:${myTaskList}"
+                             th:if="${task.progress==1}">
+                            <h4 class="alert-heading" th:text="${task.title}"><i class="fa fa-check-circle"></i>
+                                task[1].title</h4>
                             <p th:text="${task.description}">
                                 task[1].description
                             </p>
                         </div>
                     </div>
-                    <div class="tab-pane" id="panel_tab2_example3" >
-                        <div class="alert alert-block alert-info fade in" th:each="task:${myTaskList}" th:if="${task.progress==3}">
-                            <h4 class="alert-heading" th:text="${task.title}"><i class="fa fa-check-circle"></i> task[1].title</h4>
+                    <div class="tab-pane" id="panel_tab2_example3">
+                        <div class="alert alert-block alert-info fade in" th:each="task:${myTaskList}"
+                             th:if="${task.progress==3}">
+                            <h4 class="alert-heading" th:text="${task.title}"><i class="fa fa-check-circle"></i>
+                                task[1].title</h4>
                             <p th:text="${task.description}">
                                 task[1].description
                             </p>
@@ -1078,6 +1085,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div id="pieChart" style="width: 600px;height:400px;">
+
             </div>
             <!-- end: PAGE CONTENT-->
         </div>
@@ -1166,7 +1177,7 @@
             setNotCompleteNum(data);
         });
 
-        $.get('http://127.0.0.1:8080/restful/student/completedTaskNum?teamerUUID='+myTeamerUUID,function (data) {
+        $.get('http://127.0.0.1:8080/restful/student/completedTaskNum?teamerUUID=' + myTeamerUUID, function (data) {
             setCompletedNum(data);
         })
     }
@@ -1182,6 +1193,38 @@
 
 </script>
 
+<script th:src="@{/assets/js/echarts.common.min.js}"></script>
+<script>
+    let pending = [[${pending}]];
+    let completed = [[${completed}]];
+    let review = [[${review}]];
+    // 绘制图表。
+    echarts.init(document.getElementById('pieChart')).setOption({
+        series: {
+            type: 'pie',
+            name: '占比',
+            data: [
+                {name: '待处理', value: pending},
+                {name: '已解决', value: completed},
+                {name: '审阅中', value: review}
+            ]
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            type: 'scroll',
+            orient: 'vertical',
+            right: 10,
+            top: 20,
+            bottom: 20,
+            data: [pending,completed,review]
+
+        }
+
+    });
+</script>
 </body>
 <!-- end: BODY -->
 </html>
