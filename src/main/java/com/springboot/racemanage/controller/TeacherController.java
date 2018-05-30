@@ -113,12 +113,15 @@ public class TeacherController {
 
                                 //TODO 上传文件需要重新再搞下
 
-                                @RequestParam("photo") MultipartFile photo) {
+                                @RequestParam(value = "photo",required = false) MultipartFile photo) throws IOException {
         Teacher teacher = (Teacher) httpSession.getAttribute("teacher");
         if (oldPasswd.equals(teacher.gettPassword())) {
             teacher.settEmail(tEmail);
             teacher.settPhone(phone);
             teacher.settPassword(newPasswd);
+            if (phone!=null) {
+                teacher.settPhoto(UploadFile.uploadFile(photo,photo.getOriginalFilename(),"photo/").getPath());
+            }
             model.addAttribute("updateMsg", "更新成功");
             return "forward:/teacher/profile.do";
 
@@ -216,16 +219,13 @@ public class TeacherController {
                              @RequestParam(value = "file3", required = false) MultipartFile file3) throws IOException {
         Race race = raceService.findByUuid(raceUUID);
         if (file1 != null) {
-            String file1Path = UploadFile.upload(file1, "uploadFile/raceFile/");
-            race.setFile1(file1Path);
+            race.setFile1(UploadFile.uploadFile(file1,file1.getOriginalFilename(),"file/").getPath());
         }
         if (file2 != null) {
-            String file2Path = UploadFile.upload(file2, "uploadFile/raceFile/");
-            race.setFile2(file2Path);
+            race.setFile1(UploadFile.uploadFile(file2,file2.getOriginalFilename(),"file/").getPath());
         }
         if (file3 != null) {
-            String file3Path = UploadFile.upload(file3, "uploadFile/raceFile/");
-            race.setFile3(file3Path);
+            race.setFile1(UploadFile.uploadFile(file3,file3.getOriginalFilename(),"file/").getPath());
         }
 
         raceService.update(race);
@@ -268,7 +268,7 @@ public class TeacherController {
                              @RequestParam("proName") String proName,
                              @RequestParam("proDescription") String proDescription,
                              @RequestParam(value = "document", required = false) MultipartFile document,
-                             @RequestParam("stuUuid[]") List<String> stuUUIDList) {
+                             @RequestParam("stuUuid[]") List<String> stuUUIDList) throws IOException {
         Teacher teacher = (Teacher) httpSession.getAttribute("teacher");
         Project project = new Project();
         project.setName(proName);
@@ -278,6 +278,7 @@ public class TeacherController {
         project.settUuid(teacher.gettUuid());
         project.setTname(teacher.gettName());
         project.setStatus(1);
+        project.setDocument(UploadFile.uploadFile(document,document.getOriginalFilename(),"doc/").getPath());
         projectService.insertSelective(project);
 
         Invite stuInvite = new Invite();
@@ -360,12 +361,14 @@ public class TeacherController {
                               @RequestParam("title")String title,
                               @RequestParam(value = "description",required = false)String description,
                               @RequestParam("teamerUUID")String teamerUUID,
-                              @RequestParam(value = "file1",required = false)MultipartFile file1) {
+                              @RequestParam(value = "file1",required = false)MultipartFile file1) throws IOException {
         Teacher teacher = (Teacher) httpSession.getAttribute("teacher");
         Teamer teamer = teamerService.findFirstByUuid(teamerUUID);
         Task task = new Task();
         task.setDescription(description);
-        task.setFile1(file1.getOriginalFilename());
+        if (file1!=null) {
+            task.setFile1(UploadFile.uploadFile(file1,file1.getOriginalFilename(),"file/").getPath());
+        }
         task.setFromUuid(teacher.gettUuid());
         task.setProUuid(teamer.getProUuid());
         task.setStatus(2);

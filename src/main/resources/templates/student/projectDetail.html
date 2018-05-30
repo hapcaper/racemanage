@@ -1046,7 +1046,7 @@
                 <div class="tab-content">
                     <div class="tab-pane in active" id="panel_tab2_example1" >
                         <div class="alert alert-block alert-warning fade in" th:each="task:${myTaskList}" th:if="${task.progress==2}">
-                            <h4 class="alert-heading"><i class="fa clip-spinner-2" th:text="${task.title}"></i> task[0].title</h4>
+                            <h4 class="alert-heading"><i class="fa clip-spinner-2" th:text="${task.title}"></i></h4>
                             <p th:text="${task.description}">
                                 task[0].description
                                 Duis mollis, est non commodo luctus,
